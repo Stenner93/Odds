@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oddsklub Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap');
+:root{--bg:#0d0f14;--sf:#161922;--card:#1e2330;--bdr:#2a3040;--grn:#00e676;--gld:#ffd740;--red:#ff5252;--blu:#448aff;--pur:#e040fb;--txt:#e8eaf0;--mut:#7a8299;--rad:10px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:'Barlow',sans-serif;font-size:14px;min-height:100vh}
+header{background:var(--sf);border-bottom:2px solid var(--grn);padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:100}
+.logo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:24px;letter-spacing:2px;text-transform:uppercase}.logo span{color:var(--grn)}
+nav{display:flex;gap:2px}
+nav button{background:transparent;border:none;color:var(--mut);font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:7px 12px;border-radius:5px;cursor:pointer;transition:all .15s}
+nav button:hover{color:var(--txt);background:var(--card)}nav button.active{color:var(--grn);background:rgba(0,230,118,.1)}
+main{max-width:1440px;margin:0 auto;padding:22px 20px}
+.page{display:none}.page.active{display:block}
+.ph{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--bdr)}
+.ph h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:19px;letter-spacing:1px;text-transform:uppercase}
+.pill{background:rgba(0,230,118,.15);color:var(--grn);border-radius:4px;padding:2px 9px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.cs2{grid-column:span 2}.cs3{grid-column:span 3}.mb{margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--bdr);border-radius:var(--rad);padding:16px;position:relative;overflow:hidden}
+.ct{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mut);margin-bottom:12px}
+.sc{background:var(--card);border:1px solid var(--bdr);border-radius:var(--rad);padding:16px 20px;position:relative;overflow:hidden}
+.sc-accent{position:absolute;top:0;left:0;right:0;height:2px}
+.sl{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);margin-bottom:5px}
+.sv{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:36px;line-height:1}
+.ss{font-size:11px;color:var(--mut);margin-top:2px}
+.sb-wrap{display:flex;gap:5px;align-items:center}
+.sb-lbl{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mut)}
+.sb{background:var(--card);border:1px solid var(--bdr);color:var(--mut);border-radius:5px;padding:3px 10px;font-size:11px;font-weight:500;cursor:pointer;transition:all .15s}
+.sb:hover{border-color:var(--grn);color:var(--txt)}.sb.active{background:rgba(0,230,118,.15);border-color:var(--grn);color:var(--grn)}
+table.st{width:100%;border-collapse:collapse}
+table.st th{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mut);text-align:left;padding:6px 9px;border-bottom:1px solid var(--bdr)}
+table.st td{padding:8px 9px;border-bottom:1px solid rgba(42,48,64,.4);font-size:13px}
+table.st tr:last-child td{border-bottom:none}table.st tr:hover td{background:rgba(255,255,255,.02)}
+.rank{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;color:var(--mut);display:inline-block;text-align:right;width:26px}
+.r1{color:var(--gld)}.r2{color:#c0c0c0}.r3{color:#cd7f32}
+.pts{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;color:var(--grn)}
+.bw{width:90px;background:var(--bdr);border-radius:2px;height:4px;display:inline-block;vertical-align:middle}
+.bf{height:4px;border-radius:2px;background:var(--grn)}
+.cw{position:relative;height:290px}.cw-sm{position:relative;height:210px}.cw-xs{position:relative;height:160px}
+.hm-wrap{overflow-x:auto}
+table.hm{border-collapse:collapse;font-size:11px}
+table.hm th{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--mut);padding:3px 4px;text-align:center}
+table.hm td{padding:3px 4px;text-align:center;border-radius:3px;min-width:26px;height:26px;font-weight:600;font-size:10px}
+table.hm .pn{text-align:left;white-space:nowrap;padding-right:8px;font-weight:400;color:var(--txt);background:transparent!important;font-size:12px}
+.hm0{background:rgba(42,48,64,.4);color:rgba(122,130,153,.4)}
+.hml{background:rgba(0,179,89,.15);color:#66bb6a}.hmm{background:rgba(0,179,89,.4);color:#a5d6a7}
+.hmh{background:rgba(0,230,118,.6);color:#e8f5e9}.hmt{background:var(--grn);color:#0d0f14}.hmn{background:transparent;color:rgba(42,48,64,.6);font-size:8px}
+.bet-row{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.bp{width:120px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bb{flex:1;display:flex;height:15px;border-radius:3px;overflow:hidden}
+.b1{background:var(--blu)}.bx{background:#546e7a}.b2{background:var(--red)}
+.bpct{font-size:10px;color:var(--mut);display:flex;gap:5px;min-width:100px;justify-content:flex-end}
+select.ps{background:var(--card);border:1px solid var(--bdr);color:var(--txt);border-radius:6px;padding:6px 9px;font-size:12px;font-family:'Barlow',sans-serif;cursor:pointer;outline:none}
+select.ps:focus{border-color:var(--grn)}
+.pstat{margin-bottom:9px}
+.psl{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.psv{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px}
+.tag{display:inline-block;padding:2px 7px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:.5px}
+.tg{background:rgba(0,230,118,.15);color:var(--grn)}.tb{background:rgba(68,138,255,.15);color:var(--blu)}
+.tr{background:rgba(255,82,82,.15);color:var(--red)}.to{background:rgba(255,215,64,.15);color:var(--gld)}
+.follows-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;padding:7px 10px;background:var(--sf);border-radius:6px}
+.fr-name{width:130px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fr-bar-wrap{flex:1;background:var(--bdr);border-radius:3px;height:8px}
+.fr-bar{height:8px;border-radius:3px;background:var(--grn)}
+.fr-val{font-size:11px;font-weight:600;min-width:36px;text-align:right}
+.combo-box{background:var(--sf);border:1px solid var(--bdr);border-radius:8px;padding:14px;margin-bottom:12px}
+.combo-row{display:flex;gap:12px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+.combo-stat{text-align:center;flex:1;min-width:100px}
+.combo-val{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px}
+.combo-lbl{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:1px}
+.info-box{background:rgba(0,230,118,.05);border:1px solid rgba(0,230,118,.2);border-radius:6px;padding:12px;font-size:12px;line-height:1.7;margin-bottom:12px}
+.step{display:flex;gap:10px;margin-bottom:10px}
+.step-nr{width:24px;height:24px;border-radius:50%;background:var(--grn);color:#0d0f14;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Barlow Condensed',sans-serif}
+.step-text{font-size:13px;line-height:1.6}
+code{background:var(--sf);padding:1px 5px;border-radius:3px;font-size:11px}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.li{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--mut)}
+.ld{width:9px;height:9px;border-radius:50%}
+@media(max-width:800px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}.cs2,.cs3{grid-column:span 1}nav button{font-size:9px;padding:5px 7px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Odds<span>klub</span></div>
+  <nav>
+    <button class="active" onclick="showPage('stilling',this)">Stilling</button>
+    <button onclick="showPage('runder',this)">Runder</button>
+    <button onclick="showPage('næste',this)">Næste runde</button>
+    <button onclick="showPage('gæt',this)">Gæt-profil</button>
+    <button onclick="showPage('historik',this)">Historik</button>
+    <button onclick="showPage('eval',this)">Predictor-eval</button>
+    <button onclick="showPage('guide',this)">Workflow</button>
+  </nav>
+</header>
+<main>
+
+<!-- STILLING -->
+<div class="page active" id="page-stilling">
+  <div class="ph mb"><h2>Stilling</h2>
+    <div class="sb-wrap"><span class="sb-lbl">Sæson</span>
+      <button class="sb active" onclick="setSeason(5,this)">5 (nu)</button>
+      <button class="sb" onclick="setSeason(4,this)">4</button>
+      <button class="sb" onclick="setSeason(3,this)">3</button>
+      <button class="sb" onclick="setSeason(2,this)">2</button>
+      <button class="sb" onclick="setSeason(1,this)">1</button>
+    </div>
+  </div>
+  <div class="g5 mb" id="stat-cards"></div>
+  <div class="g2">
+    <div class="card"><div class="ct">Pointtabel</div>
+      <table class="st"><thead><tr><th>#</th><th>Spiller</th><th>Point</th><th style="text-align:right">Nøjagtighed</th></tr></thead>
+      <tbody id="standings-body"></tbody></table>
+    </div>
+    <div class="card"><div class="ct">Kumulative point over tid</div><div class="cw"><canvas id="chart-cum"></canvas></div></div>
+  </div>
+</div>
+
+<!-- RUNDER -->
+<div class="page" id="page-runder">
+  <div class="ph"><h2>Runder</h2><div class="pill">Sæson 5</div></div>
+  <div class="card mb"><div class="ct">Heatmap — point per runde</div>
+    <div class="hm-wrap"><table class="hm" id="heatmap-table"></table></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="ct">Snit point per runde</div><div class="cw"><canvas id="chart-rnd-bar"></canvas></div></div>
+    <div class="card"><div class="ct">Total sæson 5 per spiller</div><div class="cw"><canvas id="chart-rnd-total"></canvas></div></div>
+  </div>
+</div>
+
+<!-- NÆSTE RUNDE -->
+<div class="page" id="page-næste">
+  <div class="ph"><h2>Næste runde</h2><div class="pill">Predictors + modstander</div></div>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
+    <span class="sb-lbl">Din modstander:</span>
+    <select class="ps" id="opp-select" onchange="updateOppProfile()">
+      <option value="">— vælg —</option>
+    </select>
+  </div>
+  <div class="g2 mb">
+    <div class="card">
+      <div class="ct">Modstander — gæt-tendenser</div>
+      <div id="opp-profile"><div style="color:var(--mut);font-size:13px">Vælg en modstander ovenfor</div></div>
+    </div>
+    <div class="card">
+      <div class="ct">Odds/ELO/Opta — aktuel runde</div>
+      <div style="color:var(--mut);font-size:13px;line-height:1.8">
+        Odds-data vises her når du har kørt celle 02 i notebooken og genindlæst siden.<br>
+        Se <strong style="color:var(--txt)">Workflow</strong>-fanen for trin-for-trin guide.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GÆT-PROFIL -->
+<div class="page" id="page-gæt">
+  <div class="ph"><h2>Gæt-profiler</h2></div>
+  <div class="g2 mb">
+    <div class="card"><div class="ct">1 / X / 2 fordeling — alle sæsoner</div>
+      <div id="bet-bars"></div>
+      <div class="legend"><div class="li"><div class="ld" style="background:var(--blu)"></div>Hjemme (1)</div>
+        <div class="li"><div class="ld" style="background:#546e7a"></div>Uafgjort (X)</div>
+        <div class="li"><div class="ld" style="background:var(--red)"></div>Ude (2)</div></div>
+    </div>
+    <div class="card"><div class="ct">X-andel vs. accuracy</div>
+      <div class="cw"><canvas id="chart-scatter"></canvas></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ct">Følger bookies favorit? — alle spillere (% af gæt der matcher bookies favorit)</div>
+    <div id="follows-bars"></div>
+    <div class="legend" style="margin-top:8px">
+      <div class="li"><div class="ld" style="background:var(--grn)"></div>Bookies-favorit følge-rate</div>
+    </div>
+  </div>
+</div>
+
+<!-- HISTORIK -->
+<div class="page" id="page-historik">
+  <div class="ph"><h2>Historik</h2></div>
+  <div class="card cs2 mb"><div class="ct">Point per sæson — alle spillere</div><div class="cw"><canvas id="chart-hist-bar"></canvas></div></div>
+  <div class="g2">
+    <div class="card"><div class="ct">Spiller-profil</div>
+      <select class="ps mb" id="player-select" style="max-width:260px;display:block" onchange="updateProfile()"></select>
+      <div id="player-profile"></div>
+    </div>
+    <div class="card"><div class="ct">Sæson-udvikling</div><div class="cw"><canvas id="chart-profile-radar"></canvas></div></div>
+  </div>
+</div>
+
+<!-- EVAL -->
+<div class="page" id="page-eval">
+  <div class="ph"><h2>Predictor-evaluering</h2></div>
+  <div class="g5 mb" id="eval-stat-cards"></div>
+  <div class="combo-box mb">
+    <div class="ct">Kombinations-analyse: hvad sker der når Bookies og ELO er enige vs. uenige?</div>
+    <div class="combo-row" id="combo-stats"></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="ct">Nøjagtighed pr. turnering (ELO vs. Bookies)</div><div class="cw"><canvas id="chart-eval-bar"></canvas></div></div>
+    <div class="card"><div class="ct">Detailtabel</div><div id="eval-table-wrap" style="max-height:270px;overflow-y:auto"></div></div>
+  </div>
+</div>
+
+<!-- WORKFLOW -->
+<div class="page" id="page-guide">
+  <div class="ph"><h2>Workflow-guide</h2></div>
+  <div class="g2">
+    <div class="card">
+      <div class="ct">Tilføj 10 nye kampe (ny runde)</div>
+      <div class="step"><div class="step-nr">1</div><div class="step-text">Åbn notebooken i <strong>Google Colab</strong>. Kør celle <code>00</code> (opsætning, skal køres hver session).</div></div>
+      <div class="step"><div class="step-nr">2</div><div class="step-text">Sæt <code>CURRENT_ROUND</code> i celle <code>01-A</code> til det nye rundenummer.</div></div>
+      <div class="step"><div class="step-nr">3</div><div class="step-text">Kopier kampene fra din kilde (f.eks. Cognito Forms-link eller manuelt) og indsæt i <code>raw_match_input</code> i celle <code>01-C</code>. Formatet er:<br><code style="display:block;margin-top:4px;color:var(--grn)">27.04.25 16:00, Champions League<br>Arsenal - PSG</code></div></div>
+      <div class="step"><div class="step-nr">4</div><div class="step-text">Kør celle <code>01-D</code>. Den matcher holdnavne mod API-Sports og gemmer i <code>weekly_matches.csv</code>.</div></div>
+      <div class="step"><div class="step-nr">5</div><div class="step-text">Kør celle <code>02</code> for at hente odds fra The Odds API + ELO + Opta. Gemmes i <code>odds.csv</code>.</div></div>
+      <div class="step"><div class="step-nr">6</div><div class="step-text">Åbn dashboardet og gå til <strong>Næste runde</strong>. Vælg din modstander for at se dennes historiske tendenser.</div></div>
+    </div>
+    <div class="card">
+      <div class="ct">Tilføj spillernes gæt</div>
+      <div class="step"><div class="step-nr">1</div><div class="step-text">Når alle 18 spilleres gæt er klar, kopier tabellen fra Rod-fanen i Excel (formatet med rundetitel + spillerrækker).</div></div>
+      <div class="step"><div class="step-nr">2</div><div class="step-text">Indsæt i <code>RAW_PASTE</code> i celle <code>03-B</code> i notebooken og kør cellen. Parseren finder automatisk rundenummer, kampkoder og gæt.</div></div>
+      <div class="step"><div class="step-nr">3</div><div class="step-text">Kør celle <code>05-B</code> for at beregne point, H2H og ELO-stilling. Gemmes i <code>points.csv</code>.</div></div>
+    </div>
+    <div class="card">
+      <div class="ct">Tilføj resultater</div>
+      <div class="step"><div class="step-nr">1</div><div class="step-text">Kør celle <code>04-A</code> — den henter automatisk slutresultater fra API-Sports via fixture_id.</div></div>
+      <div class="step"><div class="step-nr">2</div><div class="step-text">Hvis en kamp mangler eller er forkert, tilføj manuel override i celle <code>04-B</code>.</div></div>
+      <div class="step"><div class="step-nr">3</div><div class="step-text">Kør <code>05-B</code> igen for opdateret stilling og ELO.</div></div>
+    </div>
+    <div class="card">
+      <div class="ct" style="color:var(--grn)">☁ Alt i skyen — fra enhver enhed</div>
+      <div class="info-box" style="margin-bottom:10px">
+        <strong style="color:var(--txt)">Google Colab + Google Drive</strong> er løsningen der giver adgang fra PC, tablet og mobil uden installation.
+      </div>
+      <div class="step"><div class="step-nr" style="background:var(--blu)">A</div><div class="step-text"><strong>Google Colab:</strong> Kør notebooken i browser. Gå til <a href="https://colab.research.google.com" style="color:var(--grn)">colab.research.google.com</a>, åbn filen fra Drive. Virker på PC og tablet.</div></div>
+      <div class="step"><div class="step-nr" style="background:var(--blu)">B</div><div class="step-text"><strong>CSV-filer</strong> gemmes automatisk i Google Drive (<code>fodboldquiz/data/</code>) og er tilgængelige fra alle enheder.</div></div>
+      <div class="step"><div class="step-nr" style="background:var(--blu)">C</div><div class="step-text"><strong>Dashboard</strong> kan hostes på <a href="https://pages.github.com" style="color:var(--grn)">GitHub Pages</a> gratis — så alle kan se stillingen fra mobilen uden at åbne notebooken. Se nedenfor.</div></div>
+      <div style="margin-top:12px;padding:10px;background:var(--sf);border-radius:6px;font-size:12px">
+        <div style="color:var(--grn);font-weight:600;margin-bottom:6px">GitHub Pages setup (én gang, ~5 min):</div>
+        1. Opret gratis konto på github.com<br>
+        2. Opret nyt repository kaldet f.eks. <code>oddsklub</code><br>
+        3. Upload <code>oddsklub_dashboard.html</code> og omdøb til <code>index.html</code><br>
+        4. Gå til Settings → Pages → Source: main branch<br>
+        5. Siden er nu live på <code>ditbrugernavn.github.io/oddsklub</code><br><br>
+        For at opdatere: regenerer HTML fra notebooken og upload den nye fil til GitHub.
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<script>
+const DATA = {"standings_by_season": {"1": [{"player": "Dennis Sveistrup", "points": 290, "answered": 584}, {"player": "Anders Stenner", "points": 285, "answered": 584}, {"player": "Morten Wamsler", "points": 285, "answered": 584}, {"player": "Søren Jakobsen", "points": 282, "answered": 569}, {"player": "Ricky Frederiksen", "points": 276, "answered": 579}, {"player": "Carsten Lektonen", "points": 273, "answered": 569}, {"player": "Lars Huus", "points": 271, "answered": 584}, {"player": "Inga Wamsler", "points": 267, "answered": 584}, {"player": "Curt Christensen", "points": 263, "answered": 574}, {"player": "Jørgen Frederiksen", "points": 262, "answered": 584}, {"player": "Noah Wamsler", "points": 257, "answered": 584}, {"player": "Nicolai Frederiksen", "points": 240, "answered": 574}, {"player": "Tanja Wamsler", "points": 184, "answered": 584}], "2": [{"player": "Søren Jakobsen", "points": 257, "answered": 509}, {"player": "Ricky Frederiksen", "points": 251, "answered": 509}, {"player": "Anders Stenner", "points": 246, "answered": 509}, {"player": "Dennis Sveistrup", "points": 241, "answered": 509}, {"player": "Jan Stenner", "points": 238, "answered": 499}, {"player": "Inga Wamsler", "points": 233, "answered": 509}, {"player": "Morten Wamsler", "points": 232, "answered": 509}, {"player": "Noah Wamsler", "points": 229, "answered": 509}, {"player": "Curt Christensen", "points": 225, "answered": 509}, {"player": "Lars Huus", "points": 223, "answered": 509}, {"player": "Nicolai Frederiksen", "points": 221, "answered": 509}, {"player": "Carsten Lektonen", "points": 220, "answered": 509}, {"player": "Jørgen Frederiksen", "points": 207, "answered": 509}, {"player": "Tanja Wamsler", "points": 162, "answered": 509}, {"player": "Christian Hammer", "points": 86, "answered": 170}], "3": [{"player": "Noah Wamsler", "points": 252, "answered": 502}, {"player": "Kasper Noer", "points": 251, "answered": 502}, {"player": "Inga Wamsler", "points": 244, "answered": 502}, {"player": "Søren Jakobsen", "points": 238, "answered": 502}, {"player": "Anders Stenner", "points": 236, "answered": 502}, {"player": "Ricky Frederiksen", "points": 235, "answered": 502}, {"player": "Dennis Sveistrup", "points": 234, "answered": 502}, {"player": "Jan Stenner", "points": 230, "answered": 502}, {"player": "Morten Wamsler", "points": 229, "answered": 502}, {"player": "Kristian Tophøj", "points": 217, "answered": 502}, {"player": "Nicolai Frederiksen", "points": 216, "answered": 502}, {"player": "Lars Huus", "points": 216, "answered": 502}, {"player": "Carsten Lektonen", "points": 213, "answered": 502}, {"player": "Kasper Søndergaard", "points": 203, "answered": 502}, {"player": "Tanja Wamsler", "points": 194, "answered": 502}, {"player": "Curt Christensen", "points": 193, "answered": 502}, {"player": "Christian Hammer", "points": 192, "answered": 502}, {"player": "Jørgen Frederiksen", "points": 162, "answered": 502}], "4": [], "5": [{"player": "Curt Christensen", "points": 1, "answered": 1}, {"player": "Morten Wamsler", "points": 1, "answered": 1}, {"player": "Tanja Wamsler", "points": 1, "answered": 1}, {"player": "Anders Stenner", "points": 0, "answered": 1}, {"player": "Inga Wamsler", "points": 0, "answered": 1}, {"player": "Jørgen Frederiksen", "points": 0, "answered": 1}, {"player": "Carsten Lektonen", "points": 0, "answered": 1}, {"player": "Dennis Sveistrup", "points": 0, "answered": 1}, {"player": "Lars Huus", "points": 0, "answered": 1}, {"player": "Kenneth Rylander", "points": 0, "answered": 1}, {"player": "Noah Wamsler", "points": 0, "answered": 1}, {"player": "Nicolai Frederiksen", "points": 0, "answered": 1}, {"player": "Rasmus Poulsen", "points": 0, "answered": 1}, {"player": "Ricky Frederiksen", "points": 0, "answered": 1}, {"player": "Sune Thøgersen", "points": 0, "answered": 1}, {"player": "Søren Jakobsen", "points": 0, "answered": 1}]}, "pts_per_round": {"1": {"rounds": [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], "data": {"Anders Stenner": [5, 9, 16, 21, 25, 31, 35, 40, 43, 47, 50, 57, 62, 72, 76, 79, 84, 88, 93, 99, 103, 110, 115, 119, 125, 131, 136, 139, 143, 148, 153, 158, 165, 171, 178, 183, 190, 196, 201, 204, 210, 212, 216, 217, 220, 223, 224, 229, 231, 236, 243, 250, 255, 259, 266, 271, 279, 281, 285], "Carsten Lektonen": [6, 12, 18, 23, 28, 33, 37, 41, 44, 51, 55, 59, 62, 66, 68, 72, 78, 84, 88, 91, 93, 99, 106, 108, 111, 117, 122, 126, 132, 137, 142, 147, 153, 158, 164, 172, 178, 183, 190, 193, 199, 200, 203, 205, 208, 210, 216, 223, 227, 231, 237, 241, 248, 250, 258, 263, 268, 270, 273], "Christian Hammer": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Curt Christensen": [3, 7, 14, 21, 25, 30, 33, 38, 43, 47, 52, 54, 57, 62, 68, 70, 77, 80, 88, 91, 93, 97, 103, 106, 110, 114, 117, 123, 130, 136, 141, 147, 151, 154, 161, 167, 170, 173, 178, 180, 187, 190, 193, 196, 202, 203, 206, 212, 215, 221, 225, 231, 237, 241, 246, 252, 254, 259, 263], "Dennis Sveistrup": [3, 8, 16, 21, 25, 31, 37, 41, 45, 51, 54, 59, 63, 70, 72, 75, 82, 88, 93, 99, 104, 112, 117, 121, 125, 130, 135, 139, 141, 146, 152, 158, 165, 170, 177, 183, 190, 196, 202, 207, 212, 214, 218, 219, 223, 227, 232, 236, 238, 244, 250, 256, 260, 264, 270, 276, 282, 285, 290], "Inga Wamsler": [5, 10, 17, 21, 27, 32, 36, 40, 42, 48, 53, 59, 62, 68, 72, 75, 81, 84, 89, 92, 95, 101, 108, 111, 114, 118, 124, 130, 136, 141, 146, 149, 156, 159, 165, 173, 178, 183, 189, 193, 200, 204, 207, 207, 211, 214, 216, 221, 225, 229, 234, 239, 244, 246, 252, 258, 264, 267, 267], "Jan Stenner": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Jørgen Frederiksen": [2, 7, 14, 21, 27, 30, 33, 36, 40, 46, 50, 55, 60, 65, 68, 73, 80, 86, 88, 93, 93, 98, 103, 106, 110, 114, 119, 125, 130, 137, 142, 147, 151, 156, 164, 169, 175, 181, 187, 193, 194, 199, 204, 206, 209, 212, 214, 219, 222, 227, 231, 234, 239, 243, 248, 252, 256, 259, 262], "Kasper Noer": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Kasper Søndergaard": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Kristian Tophøj": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Lars Huus": [4, 9, 15, 20, 25, 29, 34, 39, 44, 51, 56, 60, 64, 70, 74, 79, 84, 89, 95, 101, 105, 110, 116, 119, 124, 129, 133, 137, 141, 147, 152, 156, 162, 168, 175, 180, 185, 189, 196, 199, 204, 206, 208, 211, 216, 218, 220, 227, 229, 233, 239, 243, 248, 251, 258, 259, 265, 268, 271], "Morten Wamsler": [4, 10, 18, 22, 29, 35, 39, 43, 45, 48, 55, 60, 66, 69, 74, 77, 84, 86, 91, 97, 101, 105, 111, 116, 121, 127, 131, 138, 143, 150, 158, 162, 169, 175, 182, 186, 191, 195, 202, 203, 207, 209, 212, 214, 219, 220, 224, 228, 232, 237, 243, 249, 255, 260, 267, 270, 278, 282, 285], "Nicolai Frederiksen": [4, 9, 17, 21, 25, 31, 36, 38, 39, 45, 52, 57, 60, 65, 70, 71, 75, 81, 86, 90, 94, 100, 104, 109, 114, 119, 123, 126, 130, 136, 142, 144, 151, 152, 157, 162, 166, 168, 173, 179, 183, 185, 189, 189, 192, 193, 196, 200, 205, 209, 214, 219, 223, 228, 232, 236, 236, 239, 240], "Noah Wamsler": [3, 8, 15, 19, 24, 28, 33, 37, 40, 44, 49, 53, 56, 62, 66, 70, 75, 79, 85, 89, 91, 97, 103, 107, 111, 115, 120, 124, 130, 137, 140, 145, 151, 154, 160, 165, 172, 176, 184, 186, 190, 191, 193, 193, 199, 201, 203, 206, 211, 215, 221, 226, 231, 236, 243, 249, 253, 256, 257], "Ricky Frederiksen": [6, 10, 16, 20, 23, 30, 34, 39, 41, 46, 49, 55, 60, 68, 72, 77, 83, 88, 93, 100, 104, 112, 119, 124, 129, 132, 137, 140, 145, 150, 152, 157, 163, 168, 176, 181, 187, 192, 198, 203, 209, 212, 215, 217, 222, 224, 225, 232, 235, 238, 244, 249, 251, 254, 260, 264, 270, 273, 276], "Søren Jakobsen": [6, 12, 20, 23, 27, 33, 38, 41, 45, 49, 55, 62, 65, 73, 76, 81, 87, 90, 95, 101, 104, 111, 117, 120, 125, 131, 135, 139, 145, 152, 156, 162, 168, 173, 180, 185, 192, 197, 204, 208, 213, 214, 217, 217, 223, 227, 228, 234, 238, 243, 248, 253, 260, 264, 270, 276, 276, 278, 282], "Tanja Wamsler": [2, 3, 6, 10, 14, 17, 20, 24, 26, 29, 32, 41, 47, 49, 54, 57, 59, 65, 67, 71, 74, 76, 80, 85, 87, 90, 92, 95, 100, 105, 107, 109, 115, 117, 119, 123, 124, 126, 133, 135, 138, 142, 147, 149, 151, 155, 157, 159, 161, 162, 163, 165, 165, 168, 169, 171, 175, 177, 184]}}, "2": {"rounds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "data": {"Anders Stenner": [6, 15, 19, 24, 29, 32, 37, 41, 45, 50, 57, 60, 64, 68, 72, 73, 77, 79, 83, 89, 93, 96, 100, 109, 114, 116, 123, 129, 137, 140, 143, 146, 150, 158, 164, 168, 173, 176, 184, 189, 194, 196, 202, 209, 216, 219, 222, 229, 232, 239, 246], "Carsten Lektonen": [7, 14, 20, 26, 30, 32, 37, 41, 46, 50, 58, 62, 66, 70, 73, 78, 78, 83, 87, 92, 96, 98, 102, 107, 114, 119, 123, 130, 135, 137, 142, 145, 148, 153, 158, 162, 166, 170, 175, 181, 184, 186, 189, 192, 197, 204, 206, 212, 215, 217, 220], "Christian Hammer": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 12, 16, 19, 28, 35, 39, 42, 46, 51, 54, 60, 67, 73, 77, 83, 86], "Curt Christensen": [7, 14, 19, 23, 29, 32, 36, 42, 48, 50, 53, 58, 63, 69, 73, 75, 77, 80, 85, 92, 98, 101, 103, 110, 116, 122, 123, 129, 133, 137, 139, 144, 148, 155, 162, 166, 170, 173, 179, 184, 187, 189, 194, 198, 203, 209, 213, 219, 222, 223, 225], "Dennis Sveistrup": [8, 15, 20, 27, 35, 37, 43, 47, 50, 57, 64, 67, 71, 73, 77, 80, 82, 87, 92, 98, 102, 105, 109, 118, 122, 126, 132, 136, 143, 145, 149, 153, 156, 163, 167, 171, 176, 180, 187, 192, 193, 194, 199, 205, 214, 218, 220, 226, 230, 235, 241], "Inga Wamsler": [5, 12, 17, 20, 25, 28, 35, 40, 44, 47, 52, 55, 58, 62, 66, 68, 70, 73, 79, 85, 91, 94, 97, 101, 107, 109, 115, 122, 129, 131, 135, 137, 142, 151, 156, 161, 165, 170, 177, 183, 186, 190, 193, 198, 203, 209, 215, 221, 224, 229, 233], "Jan Stenner": [7, 16, 21, 21, 23, 26, 31, 34, 38, 41, 48, 50, 54, 58, 62, 64, 67, 68, 73, 81, 87, 88, 92, 97, 102, 105, 110, 116, 124, 126, 130, 133, 136, 144, 150, 154, 159, 166, 173, 179, 184, 187, 192, 199, 205, 209, 216, 224, 228, 233, 238], "Jørgen Frederiksen": [5, 13, 16, 20, 26, 29, 33, 37, 41, 44, 48, 51, 57, 62, 68, 70, 71, 72, 77, 84, 90, 94, 97, 100, 103, 108, 113, 118, 122, 126, 130, 133, 136, 141, 145, 149, 153, 158, 164, 171, 176, 181, 186, 189, 191, 194, 198, 200, 202, 203, 207], "Kasper Noer": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Kasper Søndergaard": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Kristian Tophøj": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Lars Huus": [6, 15, 18, 24, 31, 34, 40, 43, 46, 52, 59, 63, 67, 69, 71, 73, 77, 78, 80, 86, 89, 91, 93, 99, 104, 110, 115, 120, 127, 131, 135, 139, 143, 149, 155, 159, 164, 168, 176, 181, 184, 185, 189, 193, 197, 203, 209, 214, 217, 221, 223], "Morten Wamsler": [7, 15, 19, 25, 32, 35, 40, 45, 49, 52, 58, 61, 65, 70, 74, 75, 77, 79, 85, 93, 97, 101, 105, 111, 116, 118, 124, 130, 136, 138, 141, 144, 147, 152, 158, 161, 166, 169, 176, 183, 187, 188, 190, 195, 203, 208, 213, 217, 221, 226, 232], "Nicolai Frederiksen": [8, 13, 17, 24, 29, 31, 35, 38, 42, 47, 51, 54, 60, 62, 66, 68, 71, 73, 76, 82, 86, 91, 96, 101, 106, 111, 115, 121, 127, 130, 132, 136, 140, 147, 153, 157, 160, 165, 172, 176, 182, 187, 192, 197, 203, 207, 209, 211, 214, 216, 221], "Noah Wamsler": [7, 14, 16, 21, 25, 28, 33, 36, 42, 47, 53, 57, 62, 65, 69, 72, 75, 75, 80, 86, 89, 91, 96, 100, 107, 111, 115, 120, 128, 131, 136, 141, 145, 151, 157, 160, 165, 170, 177, 181, 185, 188, 190, 194, 196, 201, 207, 213, 217, 222, 229], "Ricky Frederiksen": [7, 15, 19, 26, 33, 35, 39, 43, 48, 54, 61, 64, 69, 73, 77, 79, 83, 85, 90, 96, 100, 104, 108, 115, 120, 127, 134, 138, 145, 147, 150, 156, 161, 169, 176, 181, 185, 189, 195, 201, 206, 211, 214, 220, 225, 229, 234, 238, 241, 247, 251], "Søren Jakobsen": [6, 14, 18, 25, 30, 32, 35, 38, 43, 46, 53, 57, 63, 66, 69, 72, 74, 77, 83, 91, 95, 98, 102, 108, 114, 116, 123, 129, 135, 137, 140, 145, 151, 159, 166, 171, 175, 180, 188, 195, 199, 203, 207, 213, 221, 228, 233, 241, 245, 251, 257], "Tanja Wamsler": [6, 12, 14, 20, 24, 25, 32, 35, 37, 39, 39, 42, 45, 51, 55, 57, 59, 62, 67, 71, 73, 78, 81, 84, 88, 93, 96, 97, 104, 106, 110, 112, 116, 118, 123, 127, 129, 131, 134, 135, 137, 141, 146, 149, 151, 152, 154, 155, 157, 161, 162]}}, "3": {"rounds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51], "data": {"Anders Stenner": [3, 8, 13, 20, 23, 28, 34, 40, 44, 45, 52, 56, 62, 67, 71, 77, 80, 83, 89, 94, 99, 102, 109, 113, 118, 121, 126, 131, 139, 145, 151, 152, 155, 160, 167, 171, 177, 180, 185, 191, 194, 200, 205, 210, 216, 220, 223, 223, 230, 232, 236], "Carsten Lektonen": [2, 7, 14, 21, 23, 28, 34, 41, 46, 49, 53, 55, 59, 63, 69, 74, 76, 80, 84, 88, 93, 99, 103, 105, 108, 113, 115, 120, 125, 129, 134, 139, 142, 144, 148, 153, 157, 162, 166, 170, 176, 178, 184, 187, 193, 195, 197, 201, 205, 208, 213], "Christian Hammer": [3, 5, 8, 14, 16, 18, 26, 31, 35, 39, 43, 48, 52, 55, 57, 61, 66, 70, 72, 74, 77, 80, 86, 88, 93, 95, 97, 102, 108, 110, 116, 117, 119, 125, 129, 135, 139, 142, 146, 149, 152, 156, 161, 166, 172, 173, 177, 178, 184, 184, 192], "Curt Christensen": [2, 6, 10, 16, 20, 24, 30, 34, 40, 46, 48, 52, 54, 58, 60, 65, 67, 69, 72, 76, 80, 84, 89, 90, 95, 98, 101, 106, 112, 116, 121, 124, 129, 132, 137, 140, 144, 146, 150, 154, 158, 161, 167, 169, 175, 177, 180, 183, 187, 189, 193], "Dennis Sveistrup": [7, 12, 16, 22, 26, 31, 36, 42, 48, 50, 56, 60, 66, 72, 79, 84, 87, 92, 99, 105, 108, 111, 116, 119, 124, 128, 133, 138, 147, 153, 156, 157, 160, 165, 169, 173, 177, 181, 186, 190, 193, 198, 202, 204, 208, 211, 215, 219, 226, 229, 234], "Inga Wamsler": [3, 9, 12, 18, 23, 29, 34, 41, 46, 50, 55, 59, 65, 70, 76, 81, 82, 85, 92, 95, 101, 106, 109, 114, 118, 121, 125, 131, 139, 143, 149, 150, 154, 159, 165, 171, 175, 180, 186, 191, 197, 205, 211, 214, 220, 223, 225, 229, 236, 239, 244], "Jan Stenner": [6, 12, 17, 23, 27, 30, 36, 41, 44, 46, 52, 56, 62, 66, 71, 77, 79, 83, 88, 91, 94, 98, 104, 108, 114, 119, 124, 130, 137, 141, 147, 149, 151, 157, 166, 171, 176, 181, 184, 191, 194, 199, 204, 205, 211, 214, 217, 219, 225, 226, 230], "Jørgen Frederiksen": [2, 4, 9, 12, 14, 18, 21, 25, 28, 34, 35, 37, 42, 47, 50, 52, 57, 61, 65, 67, 73, 77, 77, 79, 83, 85, 90, 94, 94, 98, 103, 104, 109, 111, 114, 117, 123, 124, 129, 131, 134, 135, 138, 142, 146, 148, 150, 152, 156, 157, 162], "Kasper Noer": [5, 10, 13, 21, 25, 28, 34, 41, 44, 46, 51, 56, 61, 65, 70, 77, 81, 85, 92, 95, 102, 105, 111, 114, 118, 122, 128, 135, 143, 149, 153, 155, 158, 164, 171, 179, 183, 188, 194, 199, 202, 208, 214, 219, 227, 230, 233, 237, 243, 246, 251], "Kasper Søndergaard": [5, 8, 11, 16, 17, 19, 22, 28, 32, 34, 39, 44, 48, 52, 57, 62, 64, 68, 70, 74, 77, 79, 82, 87, 91, 96, 102, 106, 113, 119, 121, 122, 126, 133, 140, 145, 149, 153, 157, 160, 165, 171, 176, 180, 183, 185, 188, 192, 196, 200, 203], "Kristian Tophøj": [3, 8, 14, 21, 25, 28, 33, 37, 41, 45, 52, 55, 62, 67, 72, 78, 83, 88, 92, 94, 100, 104, 111, 115, 120, 124, 126, 131, 135, 138, 142, 145, 147, 153, 158, 159, 161, 166, 172, 178, 181, 185, 191, 194, 201, 204, 208, 209, 213, 213, 217], "Lars Huus": [4, 8, 12, 17, 20, 23, 29, 33, 39, 41, 42, 46, 50, 55, 60, 63, 66, 70, 75, 79, 83, 87, 94, 100, 104, 110, 115, 120, 127, 132, 138, 139, 143, 148, 154, 158, 164, 168, 171, 175, 179, 184, 189, 189, 194, 198, 200, 203, 208, 213, 216], "Morten Wamsler": [4, 8, 13, 20, 27, 32, 37, 43, 46, 47, 52, 57, 64, 68, 72, 77, 81, 83, 88, 93, 98, 102, 105, 108, 111, 114, 119, 125, 133, 140, 146, 148, 151, 156, 163, 167, 170, 175, 179, 185, 188, 193, 197, 200, 206, 211, 213, 217, 223, 225, 229], "Nicolai Frederiksen": [3, 6, 10, 12, 16, 19, 24, 29, 36, 37, 40, 44, 48, 53, 57, 63, 66, 72, 79, 84, 88, 92, 97, 101, 103, 107, 112, 116, 123, 129, 135, 135, 140, 145, 150, 155, 160, 164, 169, 172, 175, 181, 187, 190, 192, 194, 197, 201, 204, 210, 216], "Noah Wamsler": [5, 8, 12, 19, 24, 29, 36, 43, 48, 51, 57, 61, 68, 71, 77, 84, 87, 91, 98, 101, 107, 112, 117, 121, 125, 128, 132, 138, 146, 151, 158, 159, 162, 168, 175, 180, 185, 189, 195, 202, 207, 214, 219, 222, 230, 235, 238, 241, 247, 248, 252], "Ricky Frederiksen": [3, 6, 11, 17, 19, 23, 29, 35, 39, 41, 46, 49, 54, 58, 62, 68, 73, 78, 85, 90, 95, 100, 104, 110, 114, 118, 124, 129, 135, 140, 145, 149, 152, 157, 164, 169, 173, 176, 183, 188, 190, 196, 203, 208, 211, 214, 216, 218, 226, 229, 235], "Søren Jakobsen": [3, 6, 11, 19, 22, 27, 33, 40, 44, 48, 55, 57, 61, 65, 71, 77, 80, 84, 90, 94, 99, 103, 108, 111, 115, 119, 124, 129, 136, 141, 145, 147, 150, 155, 162, 167, 172, 175, 179, 185, 188, 195, 201, 206, 213, 216, 219, 223, 229, 232, 238], "Tanja Wamsler": [2, 7, 11, 17, 19, 22, 24, 25, 29, 31, 36, 39, 42, 46, 51, 54, 57, 60, 62, 67, 68, 72, 74, 78, 81, 84, 89, 95, 103, 109, 111, 113, 117, 121, 127, 132, 134, 139, 143, 147, 151, 157, 162, 165, 169, 172, 173, 178, 185, 189, 194]}}, "4": {"rounds": [59, 60], "data": {"Anders Stenner": [0, 0], "Benjamin Jakobsen": [0, 0], "Carsten Lektonen": [0, 0], "Christian Hammer": [0, 0], "Curt Christensen": [0, 0], "Dennis Sveistrup": [0, 0], "Inga Wamsler": [0, 0], "Jan Stenner": [0, 0], "Jørgen Frederiksen": [0, 0], "Kasper Noer": [0, 0], "Kasper Søndergaard": [0, 0], "Kenneth Rylander": [0, 0], "Kristian Tophøj": [0, 0], "Lars Huus": [0, 0], "Leif W's eftf.": [0, 0], "Morten Wamsler": [0, 0], "Nicolai Frederiksen": [0, 0], "Noah Wamsler": [0, 0], "Ricky Frederiksen": [0, 0], "Sune Thøgersen": [0, 0], "Søren Jakobsen": [0, 0], "Tanja Wamsler": [0, 0]}}, "5": {"rounds": [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15], "data": {"Anders Stenner": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Carsten Lektonen": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Curt Christensen": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "Dennis Sveistrup": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Inga Wamsler": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Jørgen Frederiksen": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Kenneth Rylander": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Lars Huus": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Morten Wamsler": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "Nicolai Frederiksen": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Noah Wamsler": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Rasmus Poulsen": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Ricky Frederiksen": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Sune Thøgersen": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Søren Jakobsen": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "Tanja Wamsler": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "Benjamin Jakobsen": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}}, "bet_dist": {"Anders Stenner": {"1": 894, "X": 439, "2": 432, "total": 1765}, "Carsten Lektonen": {"1": 950, "X": 407, "2": 373, "total": 1730}, "Christian Hammer": {"1": 331, "X": 154, "2": 195, "total": 680}, "Curt Christensen": {"1": 828, "X": 473, "2": 449, "total": 1750}, "Dennis Sveistrup": {"1": 917, "X": 452, "2": 396, "total": 1765}, "Inga Wamsler": {"1": 893, "X": 364, "2": 508, "total": 1765}, "Jan Stenner": {"1": 596, "X": 65, "2": 349, "total": 1010}, "Jørgen Frederiksen": {"1": 804, "X": 722, "2": 239, "total": 1765}, "Kasper Noer": {"1": 292, "X": 10, "2": 208, "total": 510}, "Kasper Søndergaard": {"1": 274, "X": 101, "2": 135, "total": 510}, "Kristian Tophøj": {"1": 318, "X": 36, "2": 156, "total": 510}, "Lars Huus": {"1": 974, "X": 427, "2": 364, "total": 1765}, "Morten Wamsler": {"1": 861, "X": 400, "2": 504, "total": 1765}, "Nicolai Frederiksen": {"1": 779, "X": 719, "2": 257, "total": 1755}, "Noah Wamsler": {"1": 1015, "X": 13, "2": 737, "total": 1765}, "Ricky Frederiksen": {"1": 945, "X": 417, "2": 398, "total": 1760}, "Søren Jakobsen": {"1": 1083, "X": 228, "2": 439, "total": 1750}, "Tanja Wamsler": {"1": 309, "X": 1081, "2": 375, "total": 1765}, "Benjamin Jakobsen": {"1": 12, "X": 8, "2": 0, "total": 20}, "Kenneth Rylander": {"1": 88, "X": 25, "2": 47, "total": 160}, "Leif W's eftf.": {"1": 8, "X": 4, "2": 8, "total": 20}, "Sune Thøgersen": {"1": 71, "X": 21, "2": 38, "total": 130}, "Rasmus Poulsen": {"1": 76, "X": 28, "2": 36, "total": 140}}, "heatmap_s5": {"Anders Stenner": {"1": {"pts": 0, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Carsten Lektonen": {"1": {"pts": 0, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Curt Christensen": {"1": {"pts": 1, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Dennis Sveistrup": {"1": {"pts": 0, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Inga Wamsler": {"1": {"pts": 0, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Jørgen Frederiksen": {"1": {"pts": 0, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Kenneth Rylander": {"1": {"pts": 0, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Lars Huus": {"1": {"pts": 0, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Morten Wamsler": {"1": {"pts": 1, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Nicolai Frederiksen": {"1": {"pts": 0, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Noah Wamsler": {"1": {"pts": 0, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Rasmus Poulsen": {"1": {"pts": 0, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Ricky Frederiksen": {"1": {"pts": 0, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Sune Thøgersen": {"1": {"pts": 0, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Søren Jakobsen": {"1": {"pts": 0, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Tanja Wamsler": {"1": {"pts": 1, "answered": 1}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}, "Benjamin Jakobsen": {"1": {"pts": 0, "answered": 0}, "2": {"pts": 0, "answered": 0}, "3": {"pts": 0, "answered": 0}, "4": {"pts": 0, "answered": 0}, "5": {"pts": 0, "answered": 0}, "6": {"pts": 0, "answered": 0}, "8": {"pts": 0, "answered": 0}, "9": {"pts": 0, "answered": 0}, "10": {"pts": 0, "answered": 0}, "11": {"pts": 0, "answered": 0}, "12": {"pts": 0, "answered": 0}, "13": {"pts": 0, "answered": 0}, "14": {"pts": 0, "answered": 0}, "15": {"pts": 0, "answered": 0}}}, "hist_compare": {"Anders Stenner": {"1": 285, "2": 246, "3": 236, "4": 0, "5": 0}, "Carsten Lektonen": {"1": 273, "2": 220, "3": 213, "4": 0, "5": 0}, "Christian Hammer": {"1": 0, "2": 86, "3": 192, "4": 0, "5": 0}, "Curt Christensen": {"1": 263, "2": 225, "3": 193, "4": 0, "5": 1}, "Dennis Sveistrup": {"1": 290, "2": 241, "3": 234, "4": 0, "5": 0}, "Inga Wamsler": {"1": 267, "2": 233, "3": 244, "4": 0, "5": 0}, "Jan Stenner": {"1": 0, "2": 238, "3": 230, "4": 0, "5": 0}, "Jørgen Frederiksen": {"1": 262, "2": 207, "3": 162, "4": 0, "5": 0}, "Kasper Noer": {"1": 0, "2": 0, "3": 251, "4": 0, "5": 0}, "Kasper Søndergaard": {"1": 0, "2": 0, "3": 203, "4": 0, "5": 0}, "Kristian Tophøj": {"1": 0, "2": 0, "3": 217, "4": 0, "5": 0}, "Lars Huus": {"1": 271, "2": 223, "3": 216, "4": 0, "5": 0}, "Morten Wamsler": {"1": 285, "2": 232, "3": 229, "4": 0, "5": 1}, "Nicolai Frederiksen": {"1": 240, "2": 221, "3": 216, "4": 0, "5": 0}, "Noah Wamsler": {"1": 257, "2": 229, "3": 252, "4": 0, "5": 0}, "Ricky Frederiksen": {"1": 276, "2": 251, "3": 235, "4": 0, "5": 0}, "Søren Jakobsen": {"1": 282, "2": 257, "3": 238, "4": 0, "5": 0}, "Tanja Wamsler": {"1": 184, "2": 162, "3": 194, "4": 0, "5": 1}, "Benjamin Jakobsen": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}, "Kenneth Rylander": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}, "Leif W's eftf.": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}, "Sune Thøgersen": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}, "Rasmus Poulsen": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}}, "active_players": ["Anders Stenner", "Benjamin Jakobsen", "Carsten Lektonen", "Curt Christensen", "Dennis Sveistrup", "Inga Wamsler", "Jørgen Frederiksen", "Kenneth Rylander", "Lars Huus", "Morten Wamsler", "Nicolai Frederiksen", "Noah Wamsler", "Rasmus Poulsen", "Ricky Frederiksen", "Sune Thøgersen", "Søren Jakobsen", "Tanja Wamsler"], "seasons": [1, 2, 3, 4, 5], "player_stats": {"Anders Stenner": {"dist": {"1": 50.7, "X": 24.9, "2": 24.5}, "season_pts": {"1": 285, "2": 246, "3": 236, "4": 0, "5": 0}, "total_pts": 767, "total_bets": 1765, "accuracy": 43.5, "follows_bookies_pct": 51.7, "follows_elo_pct": 61.1, "follows_both_pct": 35.9, "recent_bets": {"1": 74, "X": 37, "2": 29}}, "Carsten Lektonen": {"dist": {"1": 54.9, "X": 23.5, "2": 21.6}, "season_pts": {"1": 273, "2": 220, "3": 213, "4": 0, "5": 0}, "total_pts": 706, "total_bets": 1730, "accuracy": 40.0, "follows_bookies_pct": 45.8, "follows_elo_pct": 47.5, "follows_both_pct": 28.8, "recent_bets": {"1": 78, "X": 38, "2": 24}}, "Christian Hammer": {"dist": {"1": 48.7, "2": 28.7, "X": 22.6}, "season_pts": {"1": 0, "2": 86, "3": 192, "4": 0, "5": 0}, "total_pts": 278, "total_bets": 680, "accuracy": 17.1, "follows_bookies_pct": 13.9, "follows_elo_pct": 18.1, "follows_both_pct": 6.1, "recent_bets": {}}, "Curt Christensen": {"dist": {"1": 47.3, "X": 27.0, "2": 25.7}, "season_pts": {"1": 263, "2": 225, "3": 193, "4": 0, "5": 1}, "total_pts": 682, "total_bets": 1750, "accuracy": 38.6, "follows_bookies_pct": 49.2, "follows_elo_pct": 46.7, "follows_both_pct": 30.1, "recent_bets": {"1": 66, "2": 35, "X": 34}}, "Dennis Sveistrup": {"dist": {"1": 52.0, "X": 25.6, "2": 22.4}, "season_pts": {"1": 290, "2": 241, "3": 234, "4": 0, "5": 0}, "total_pts": 765, "total_bets": 1765, "accuracy": 43.3, "follows_bookies_pct": 53.6, "follows_elo_pct": 60.4, "follows_both_pct": 36.4, "recent_bets": {"1": 83, "X": 29, "2": 28}}, "Inga Wamsler": {"dist": {"1": 50.6, "2": 28.8, "X": 20.6}, "season_pts": {"1": 267, "2": 233, "3": 244, "4": 0, "5": 0}, "total_pts": 744, "total_bets": 1765, "accuracy": 42.2, "follows_bookies_pct": 53.4, "follows_elo_pct": 59.0, "follows_both_pct": 35.5, "recent_bets": {"1": 77, "2": 35, "X": 28}}, "Jan Stenner": {"dist": {"1": 59.0, "2": 34.6, "X": 6.4}, "season_pts": {"1": 0, "2": 238, "3": 230, "4": 0, "5": 0}, "total_pts": 468, "total_bets": 1010, "accuracy": 28.8, "follows_bookies_pct": 21.6, "follows_elo_pct": 33.2, "follows_both_pct": 14.6, "recent_bets": {}}, "Jørgen Frederiksen": {"dist": {"1": 45.6, "X": 40.9, "2": 13.5}, "season_pts": {"1": 262, "2": 207, "3": 162, "4": 0, "5": 0}, "total_pts": 631, "total_bets": 1765, "accuracy": 35.8, "follows_bookies_pct": 51.4, "follows_elo_pct": 44.3, "follows_both_pct": 28.5, "recent_bets": {"1": 86, "X": 40, "2": 14}}, "Kasper Noer": {"dist": {"1": 57.3, "2": 40.8, "X": 2.0}, "season_pts": {"1": 0, "2": 0, "3": 251, "4": 0, "5": 0}, "total_pts": 251, "total_bets": 510, "accuracy": 15.4, "follows_bookies_pct": 0.8, "follows_elo_pct": 18.3, "follows_both_pct": 0.3, "recent_bets": {}}, "Kasper Søndergaard": {"dist": {"1": 53.7, "2": 26.5, "X": 19.8}, "season_pts": {"1": 0, "2": 0, "3": 203, "4": 0, "5": 0}, "total_pts": 203, "total_bets": 510, "accuracy": 12.5, "follows_bookies_pct": 6.6, "follows_elo_pct": 16.4, "follows_both_pct": 3.4, "recent_bets": {}}, "Kristian Tophøj": {"dist": {"1": 62.4, "2": 30.6, "X": 7.1}, "season_pts": {"1": 0, "2": 0, "3": 217, "4": 0, "5": 0}, "total_pts": 217, "total_bets": 510, "accuracy": 13.4, "follows_bookies_pct": 2.7, "follows_elo_pct": 15.6, "follows_both_pct": 1.5, "recent_bets": {}}, "Lars Huus": {"dist": {"1": 55.2, "X": 24.2, "2": 20.6}, "season_pts": {"1": 271, "2": 223, "3": 216, "4": 0, "5": 0}, "total_pts": 710, "total_bets": 1765, "accuracy": 40.2, "follows_bookies_pct": 48.6, "follows_elo_pct": 54.3, "follows_both_pct": 31.1, "recent_bets": {"1": 87, "X": 28, "2": 25}}, "Morten Wamsler": {"dist": {"1": 48.8, "2": 28.6, "X": 22.7}, "season_pts": {"1": 285, "2": 232, "3": 229, "4": 0, "5": 1}, "total_pts": 747, "total_bets": 1765, "accuracy": 42.3, "follows_bookies_pct": 49.8, "follows_elo_pct": 59.4, "follows_both_pct": 34.0, "recent_bets": {"1": 71, "2": 35, "X": 34}}, "Nicolai Frederiksen": {"dist": {"1": 44.4, "X": 41.0, "2": 14.6}, "season_pts": {"1": 240, "2": 221, "3": 216, "4": 0, "5": 0}, "total_pts": 677, "total_bets": 1755, "accuracy": 38.4, "follows_bookies_pct": 48.4, "follows_elo_pct": 51.4, "follows_both_pct": 29.5, "recent_bets": {"1": 67, "X": 59, "2": 14}}, "Noah Wamsler": {"dist": {"1": 57.5, "2": 41.8, "X": 0.7}, "season_pts": {"1": 257, "2": 229, "3": 252, "4": 0, "5": 0}, "total_pts": 738, "total_bets": 1765, "accuracy": 41.8, "follows_bookies_pct": 48.6, "follows_elo_pct": 57.6, "follows_both_pct": 34.0, "recent_bets": {"1": 80, "2": 58, "X": 2}}, "Ricky Frederiksen": {"dist": {"1": 53.7, "X": 23.7, "2": 22.6}, "season_pts": {"1": 276, "2": 251, "3": 235, "4": 0, "5": 0}, "total_pts": 762, "total_bets": 1760, "accuracy": 43.2, "follows_bookies_pct": 54.0, "follows_elo_pct": 57.1, "follows_both_pct": 35.0, "recent_bets": {"1": 80, "2": 31, "X": 29}}, "Søren Jakobsen": {"dist": {"1": 61.9, "2": 25.1, "X": 13.0}, "season_pts": {"1": 282, "2": 257, "3": 238, "4": 0, "5": 0}, "total_pts": 777, "total_bets": 1750, "accuracy": 44.0, "follows_bookies_pct": 55.7, "follows_elo_pct": 58.1, "follows_both_pct": 36.4, "recent_bets": {"1": 98, "2": 26, "X": 16}}, "Tanja Wamsler": {"dist": {"X": 61.2, "2": 21.2, "1": 17.5}, "season_pts": {"1": 184, "2": 162, "3": 194, "4": 0, "5": 1}, "total_pts": 541, "total_bets": 1765, "accuracy": 30.6, "follows_bookies_pct": 32.8, "follows_elo_pct": 42.3, "follows_both_pct": 17.6, "recent_bets": {"X": 81, "2": 48, "1": 11}}, "Benjamin Jakobsen": {"dist": {"1": 60.0, "X": 40.0}, "season_pts": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}, "total_pts": 0, "total_bets": 20, "accuracy": 0.0, "follows_bookies_pct": 0, "follows_elo_pct": 0, "follows_both_pct": 0, "recent_bets": {}}, "Kenneth Rylander": {"dist": {"1": 55.0, "2": 29.4, "X": 15.6}, "season_pts": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}, "total_pts": 0, "total_bets": 160, "accuracy": 0.0, "follows_bookies_pct": 0, "follows_elo_pct": 0, "follows_both_pct": 0, "recent_bets": {"1": 77, "2": 40, "X": 23}}, "Leif W's eftf.": {"dist": {"2": 40.0, "1": 40.0, "X": 20.0}, "season_pts": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}, "total_pts": 0, "total_bets": 20, "accuracy": 0.0, "follows_bookies_pct": 0, "follows_elo_pct": 0, "follows_both_pct": 0, "recent_bets": {}}, "Sune Thøgersen": {"dist": {"1": 54.6, "2": 29.2, "X": 16.2}, "season_pts": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}, "total_pts": 0, "total_bets": 130, "accuracy": 0.0, "follows_bookies_pct": 0, "follows_elo_pct": 0, "follows_both_pct": 0, "recent_bets": {"1": 63, "2": 30, "X": 17}}, "Rasmus Poulsen": {"dist": {"1": 54.3, "2": 25.7, "X": 20.0}, "season_pts": {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0}, "total_pts": 0, "total_bets": 140, "accuracy": 0.0, "follows_bookies_pct": 0, "follows_elo_pct": 0, "follows_both_pct": 0, "recent_bets": {"1": 76, "2": 36, "X": 28}}}, "eval_by_type": {"Champions League": {"ELO": {"accuracy": 42.5, "n": 207}, "Bookies": {"accuracy": 44.4, "n": 207}, "B+E Enige": {"accuracy": 48.6, "n": 105}, "Uenige(Bookies)": {"accuracy": 40.2, "n": 102}, "Uenige(ELO)": {"accuracy": 36.3, "n": 102}}, "Europa League": {"ELO": {"accuracy": 46.4, "n": 69}, "Bookies": {"accuracy": 39.1, "n": 69}, "B+E Enige": {"accuracy": 43.8, "n": 32}, "Uenige(Bookies)": {"accuracy": 35.1, "n": 37}, "Uenige(ELO)": {"accuracy": 48.6, "n": 37}}, "La Liga": {"ELO": {"accuracy": 51.8, "n": 139}, "Bookies": {"accuracy": 45.0, "n": 140}, "B+E Enige": {"accuracy": 54.2, "n": 72}, "Uenige(Bookies)": {"accuracy": 34.3, "n": 67}, "Uenige(ELO)": {"accuracy": 49.3, "n": 67}}, "Premier League": {"ELO": {"accuracy": 41.6, "n": 113}, "Bookies": {"accuracy": 38.1, "n": 113}, "B+E Enige": {"accuracy": 42.2, "n": 64}, "Uenige(Bookies)": {"accuracy": 32.7, "n": 49}, "Uenige(ELO)": {"accuracy": 40.8, "n": 49}}, "Andet": {"ELO": {"accuracy": 41.3, "n": 254}, "Bookies": {"accuracy": 34.7, "n": 262}, "B+E Enige": {"accuracy": 42.7, "n": 82}, "Uenige(Bookies)": {"accuracy": 30.2, "n": 172}, "Uenige(ELO)": {"accuracy": 40.7, "n": 172}}, "Championship": {"ELO": {"accuracy": 28.8, "n": 59}, "Bookies": {"accuracy": 24.6, "n": 65}, "B+E Enige": {"accuracy": 18.5, "n": 27}, "Uenige(Bookies)": {"accuracy": 31.2, "n": 32}, "Uenige(ELO)": {"accuracy": 37.5, "n": 32}}, "Serie A": {"ELO": {"accuracy": 49.2, "n": 130}, "Bookies": {"accuracy": 45.4, "n": 130}, "B+E Enige": {"accuracy": 54.4, "n": 79}, "Uenige(Bookies)": {"accuracy": 31.4, "n": 51}, "Uenige(ELO)": {"accuracy": 41.2, "n": 51}}, "Bundesliga": {"ELO": {"accuracy": 45.8, "n": 131}, "Bookies": {"accuracy": 42.4, "n": 132}, "B+E Enige": {"accuracy": 50.8, "n": 61}, "Uenige(Bookies)": {"accuracy": 35.7, "n": 70}, "Uenige(ELO)": {"accuracy": 41.4, "n": 70}}, "Superligaen": {"ELO": {"accuracy": 40.4, "n": 114}, "Bookies": {"accuracy": 40.5, "n": 116}, "B+E Enige": {"accuracy": 45.5, "n": 66}, "Uenige(Bookies)": {"accuracy": 35.4, "n": 48}, "Uenige(ELO)": {"accuracy": 33.3, "n": 48}}, "Conference League": {"ELO": {"accuracy": 44.3, "n": 70}, "Bookies": {"accuracy": 39.4, "n": 71}, "B+E Enige": {"accuracy": 47.6, "n": 42}, "Uenige(Bookies)": {"accuracy": 25.0, "n": 28}, "Uenige(ELO)": {"accuracy": 39.3, "n": 28}}, "Eliteserien": {"ELO": {"accuracy": 50.0, "n": 14}, "Bookies": {"accuracy": 46.7, "n": 15}, "B+E Enige": {"accuracy": 62.5, "n": 8}, "Uenige(Bookies)": {"accuracy": 33.3, "n": 6}, "Uenige(ELO)": {"accuracy": 33.3, "n": 6}}, "Eredivisie": {"ELO": {"accuracy": 42.1, "n": 19}, "Bookies": {"accuracy": 42.1, "n": 19}, "B+E Enige": {"accuracy": 55.6, "n": 9}, "Uenige(Bookies)": {"accuracy": 30.0, "n": 10}, "Uenige(ELO)": {"accuracy": 30.0, "n": 10}}, "Landshold": {"ELO": {"accuracy": 56.9, "n": 216}, "Bookies": {"accuracy": 44.7, "n": 217}, "B+E Enige": {"accuracy": 57.6, "n": 132}, "Uenige(Bookies)": {"accuracy": 25.0, "n": 84}, "Uenige(ELO)": {"accuracy": 56.0, "n": 84}}, "Primeira Liga": {"ELO": {"accuracy": 66.7, "n": 15}, "Bookies": {"accuracy": 66.7, "n": 15}, "B+E Enige": {"accuracy": 87.5, "n": 8}, "Uenige(Bookies)": {"accuracy": 42.9, "n": 7}, "Uenige(ELO)": {"accuracy": 42.9, "n": 7}}, "Allsvenskan": {"ELO": {"accuracy": 29.6, "n": 27}, "Bookies": {"accuracy": 42.9, "n": 28}, "B+E Enige": {"accuracy": 37.5, "n": 16}, "Uenige(Bookies)": {"accuracy": 54.5, "n": 11}, "Uenige(ELO)": {"accuracy": 18.2, "n": 11}}, "Ligue 1": {"ELO": {"accuracy": 54.5, "n": 11}, "Bookies": {"accuracy": 72.7, "n": 11}, "B+E Enige": {"accuracy": 80.0, "n": 5}, "Uenige(Bookies)": {"accuracy": 66.7, "n": 6}, "Uenige(ELO)": {"accuracy": 33.3, "n": 6}}}, "eval_overall": {"ELO": 45.6, "Bookies": 41.2, "B+E Enige": 49.3, "n_agree": 808, "n_disagree": 780, "disagree_bookies": 33.2, "disagree_elo": 41.8}, "eval_details": [{"type": "Champions League", "predictor": "ELO", "accuracy": 42.5, "n": 207}, {"type": "Champions League", "predictor": "Bookies", "accuracy": 44.4, "n": 207}, {"type": "Champions League", "predictor": "B+E Enige", "accuracy": 48.6, "n": 105}, {"type": "Champions League", "predictor": "Uenige(Bookies)", "accuracy": 40.2, "n": 102}, {"type": "Champions League", "predictor": "Uenige(ELO)", "accuracy": 36.3, "n": 102}, {"type": "Europa League", "predictor": "ELO", "accuracy": 46.4, "n": 69}, {"type": "Europa League", "predictor": "Bookies", "accuracy": 39.1, "n": 69}, {"type": "Europa League", "predictor": "B+E Enige", "accuracy": 43.8, "n": 32}, {"type": "Europa League", "predictor": "Uenige(Bookies)", "accuracy": 35.1, "n": 37}, {"type": "Europa League", "predictor": "Uenige(ELO)", "accuracy": 48.6, "n": 37}, {"type": "La Liga", "predictor": "ELO", "accuracy": 51.8, "n": 139}, {"type": "La Liga", "predictor": "Bookies", "accuracy": 45.0, "n": 140}, {"type": "La Liga", "predictor": "B+E Enige", "accuracy": 54.2, "n": 72}, {"type": "La Liga", "predictor": "Uenige(Bookies)", "accuracy": 34.3, "n": 67}, {"type": "La Liga", "predictor": "Uenige(ELO)", "accuracy": 49.3, "n": 67}, {"type": "Premier League", "predictor": "ELO", "accuracy": 41.6, "n": 113}, {"type": "Premier League", "predictor": "Bookies", "accuracy": 38.1, "n": 113}, {"type": "Premier League", "predictor": "B+E Enige", "accuracy": 42.2, "n": 64}, {"type": "Premier League", "predictor": "Uenige(Bookies)", "accuracy": 32.7, "n": 49}, {"type": "Premier League", "predictor": "Uenige(ELO)", "accuracy": 40.8, "n": 49}, {"type": "Andet", "predictor": "ELO", "accuracy": 41.3, "n": 254}, {"type": "Andet", "predictor": "Bookies", "accuracy": 34.7, "n": 262}, {"type": "Andet", "predictor": "B+E Enige", "accuracy": 42.7, "n": 82}, {"type": "Andet", "predictor": "Uenige(Bookies)", "accuracy": 30.2, "n": 172}, {"type": "Andet", "predictor": "Uenige(ELO)", "accuracy": 40.7, "n": 172}, {"type": "Championship", "predictor": "ELO", "accuracy": 28.8, "n": 59}, {"type": "Championship", "predictor": "Bookies", "accuracy": 24.6, "n": 65}, {"type": "Championship", "predictor": "B+E Enige", "accuracy": 18.5, "n": 27}, {"type": "Championship", "predictor": "Uenige(Bookies)", "accuracy": 31.2, "n": 32}, {"type": "Championship", "predictor": "Uenige(ELO)", "accuracy": 37.5, "n": 32}, {"type": "Serie A", "predictor": "ELO", "accuracy": 49.2, "n": 130}, {"type": "Serie A", "predictor": "Bookies", "accuracy": 45.4, "n": 130}, {"type": "Serie A", "predictor": "B+E Enige", "accuracy": 54.4, "n": 79}, {"type": "Serie A", "predictor": "Uenige(Bookies)", "accuracy": 31.4, "n": 51}, {"type": "Serie A", "predictor": "Uenige(ELO)", "accuracy": 41.2, "n": 51}, {"type": "Bundesliga", "predictor": "ELO", "accuracy": 45.8, "n": 131}, {"type": "Bundesliga", "predictor": "Bookies", "accuracy": 42.4, "n": 132}, {"type": "Bundesliga", "predictor": "B+E Enige", "accuracy": 50.8, "n": 61}, {"type": "Bundesliga", "predictor": "Uenige(Bookies)", "accuracy": 35.7, "n": 70}, {"type": "Bundesliga", "predictor": "Uenige(ELO)", "accuracy": 41.4, "n": 70}, {"type": "Superligaen", "predictor": "ELO", "accuracy": 40.4, "n": 114}, {"type": "Superligaen", "predictor": "Bookies", "accuracy": 40.5, "n": 116}, {"type": "Superligaen", "predictor": "B+E Enige", "accuracy": 45.5, "n": 66}, {"type": "Superligaen", "predictor": "Uenige(Bookies)", "accuracy": 35.4, "n": 48}, {"type": "Superligaen", "predictor": "Uenige(ELO)", "accuracy": 33.3, "n": 48}, {"type": "Conference League", "predictor": "ELO", "accuracy": 44.3, "n": 70}, {"type": "Conference League", "predictor": "Bookies", "accuracy": 39.4, "n": 71}, {"type": "Conference League", "predictor": "B+E Enige", "accuracy": 47.6, "n": 42}, {"type": "Conference League", "predictor": "Uenige(Bookies)", "accuracy": 25.0, "n": 28}, {"type": "Conference League", "predictor": "Uenige(ELO)", "accuracy": 39.3, "n": 28}, {"type": "Eliteserien", "predictor": "ELO", "accuracy": 50.0, "n": 14}, {"type": "Eliteserien", "predictor": "Bookies", "accuracy": 46.7, "n": 15}, {"type": "Eliteserien", "predictor": "B+E Enige", "accuracy": 62.5, "n": 8}, {"type": "Eliteserien", "predictor": "Uenige(Bookies)", "accuracy": 33.3, "n": 6}, {"type": "Eliteserien", "predictor": "Uenige(ELO)", "accuracy": 33.3, "n": 6}, {"type": "Eredivisie", "predictor": "ELO", "accuracy": 42.1, "n": 19}, {"type": "Eredivisie", "predictor": "Bookies", "accuracy": 42.1, "n": 19}, {"type": "Eredivisie", "predictor": "B+E Enige", "accuracy": 55.6, "n": 9}, {"type": "Eredivisie", "predictor": "Uenige(Bookies)", "accuracy": 30.0, "n": 10}, {"type": "Eredivisie", "predictor": "Uenige(ELO)", "accuracy": 30.0, "n": 10}, {"type": "Landshold", "predictor": "ELO", "accuracy": 56.9, "n": 216}, {"type": "Landshold", "predictor": "Bookies", "accuracy": 44.7, "n": 217}, {"type": "Landshold", "predictor": "B+E Enige", "accuracy": 57.6, "n": 132}, {"type": "Landshold", "predictor": "Uenige(Bookies)", "accuracy": 25.0, "n": 84}, {"type": "Landshold", "predictor": "Uenige(ELO)", "accuracy": 56.0, "n": 84}, {"type": "Primeira Liga", "predictor": "ELO", "accuracy": 66.7, "n": 15}, {"type": "Primeira Liga", "predictor": "Bookies", "accuracy": 66.7, "n": 15}, {"type": "Primeira Liga", "predictor": "B+E Enige", "accuracy": 87.5, "n": 8}, {"type": "Primeira Liga", "predictor": "Uenige(Bookies)", "accuracy": 42.9, "n": 7}, {"type": "Primeira Liga", "predictor": "Uenige(ELO)", "accuracy": 42.9, "n": 7}, {"type": "Allsvenskan", "predictor": "ELO", "accuracy": 29.6, "n": 27}, {"type": "Allsvenskan", "predictor": "Bookies", "accuracy": 42.9, "n": 28}, {"type": "Allsvenskan", "predictor": "B+E Enige", "accuracy": 37.5, "n": 16}, {"type": "Allsvenskan", "predictor": "Uenige(Bookies)", "accuracy": 54.5, "n": 11}, {"type": "Allsvenskan", "predictor": "Uenige(ELO)", "accuracy": 18.2, "n": 11}, {"type": "Ligue 1", "predictor": "ELO", "accuracy": 54.5, "n": 11}, {"type": "Ligue 1", "predictor": "Bookies", "accuracy": 72.7, "n": 11}, {"type": "Ligue 1", "predictor": "B+E Enige", "accuracy": 80.0, "n": 5}, {"type": "Ligue 1", "predictor": "Uenige(Bookies)", "accuracy": 66.7, "n": 6}, {"type": "Ligue 1", "predictor": "Uenige(ELO)", "accuracy": 33.3, "n": 6}], "derby_accuracy": {"ELO": 71.1, "Bookies": 70.9, "non_derby_ELO": 69.6, "n_derby": 96}, "combo_stats": {"agree_n": 808, "agree_acc": 49.3, "disagree_n": 780, "disagree_bookies_acc": 33.2, "disagree_elo_acc": 41.8}};
+const charts = {};
+let curSeason = 5;
+const PAL = ['#00e676','#448aff','#ffd740','#ff5252','#e040fb','#40c4ff','#69f0ae','#ffab40','#ea80fc','#80d8ff','#b9f6ca','#ffe57f','#ff9e80','#ccff90','#a7ffeb','#84ffff','#18ffff','#64ffda'];
+const CD = {responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#1e2330',borderColor:'#2a3040',borderWidth:1,titleColor:'#7a8299',bodyColor:'#e8eaf0'}},scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'}},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'}}}};
+function mk(id,type,data,opts={}){if(charts[id])charts[id].destroy();return charts[id]=new Chart(document.getElementById(id),{type,data,options:{...CD,...opts}});}
+function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));document.getElementById('page-'+id).classList.add('active');if(btn)btn.classList.add('active');({stilling:renderStilling,runder:renderRunder,næste:renderNæste,gæt:renderGæt,historik:renderHistorik,eval:renderEval,guide:()=>{}})[id]?.();}
+function setSeason(s,btn){curSeason=s;document.querySelectorAll('.sb').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderStilling();}
+
+function renderStilling(){
+  const st=DATA.standings_by_season[curSeason]||[];
+  const ppr=DATA.pts_per_round[curSeason]||{rounds:[],data:{}};
+  const sc=document.getElementById('stat-cards');
+  const ptMap={};st.forEach(s=>ptMap[s.player]=s);
+  const allRows=DATA.active_players.map(p=>ptMap[p]||{player:p,points:0,answered:0}).sort((a,b)=>b.points-a.points);
+  const maxPts=Math.max(...allRows.map(r=>r.points),1);
+  sc.innerHTML=[
+    ['Spillere',Object.keys(ppr.data).length||DATA.active_players.length,'aktive'],
+    ['Runder',ppr.rounds.length,'spillet'],
+    ['Førsteplads',allRows[0]?.points||'—',allRows[0]?.player?.split(' ').pop()||''],
+    ['Top-3 snit/runde',ppr.rounds.length>0?((allRows.slice(0,3).reduce((s,r)=>s+r.points,0)/3/ppr.rounds.length).toFixed(1)):'—','pt/runde'],
+    ['Spiller med flest X',(()=>{const p=Object.entries(DATA.bet_dist).filter(([k])=>DATA.active_players.includes(k)).sort((a,b)=>(b[1].X||0)-(a[1].X||0))[0];return p?p[1].X||0:'—';})(),'X-gæt total'],
+  ].map(([lbl,val,sub],i)=>`<div class="sc"><div class="sc-accent" style="background:${PAL[i]}"></div><div class="sl">${lbl}</div><div class="sv" style="color:${PAL[i]}">${val}</div><div class="ss">${sub}</div></div>`).join('');
+  const tbody=document.getElementById('standings-body');
+  tbody.innerHTML=allRows.map((row,i)=>{
+    const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';
+    const pct=row.answered>0?(row.points/row.answered*100).toFixed(1):'—';
+    const bw=Math.round(row.points/maxPts*100);
+    return `<tr><td><span class="rank ${rc}">${i+1}</span></td><td>${row.player}</td><td><span class="pts">${row.points}</span></td><td style="text-align:right"><div style="display:flex;align-items:center;gap:5px;justify-content:flex-end"><div class="bw"><div class="bf" style="width:${bw}%"></div></div><span style="font-size:11px;color:var(--mut)">${pct}%</span></div></td></tr>`;
+  }).join('');
+  const rounds=ppr.rounds;
+  mk('chart-cum','line',{labels:rounds.map(r=>'R'+r),datasets:Object.entries(ppr.data).map(([p,s],i)=>({label:p,data:s,borderColor:PAL[i%PAL.length],backgroundColor:'transparent',borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:.3}))},{plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,backgroundColor:'#1e2330',borderColor:'#2a3040',borderWidth:1,titleColor:'#7a8299',bodyColor:'#e8eaf0'}},scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299',maxTicksLimit:10}},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'}}}});
+}
+
+function renderRunder(){
+  const hm=DATA.heatmap_s5;
+  const players=DATA.active_players.filter(p=>hm[p]);
+  const rounds=[...new Set(Object.values(hm).flatMap(p=>Object.keys(p).map(Number)))].sort((a,b)=>a-b);
+  let html='<tr><th class="pn">Spiller</th>'+rounds.map(r=>`<th>R${r}</th>`).join('')+'<th>Σ</th></tr>';
+  const totals=players.map(player=>{
+    const pd=hm[player]||{};let t=0;
+    let row=`<tr><td class="hm pn">${player}</td>`;
+    rounds.forEach(r=>{const c=pd[r];if(!c||c.answered===0){row+=`<td class="hmn">·</td>`;}else{const p=c.pts;t+=p;const cls=p===0?'hm0':p<=3?'hml':p<=6?'hmm':p<=8?'hmh':'hmt';row+=`<td class="${cls}">${p}</td>`;}});
+    row+=`<td style="font-weight:700;color:var(--grn)">${t}</td></tr>`;html+=row;return{player,total:t};
+  });
+  document.getElementById('heatmap-table').innerHTML=html;
+  const avg=rounds.map(r=>{const vals=players.map(p=>(hm[p]?.[r]?.pts||0));return(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(2);});
+  mk('chart-rnd-bar','bar',{labels:rounds.map(r=>'R'+r),datasets:[{label:'Snit',data:avg,backgroundColor:'rgba(0,230,118,.4)',borderColor:'rgba(0,230,118,.8)',borderWidth:1,borderRadius:3}]},{plugins:{legend:{display:false}},scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'}},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'},beginAtZero:true}}});
+  const sorted=totals.sort((a,b)=>b.total-a.total);
+  mk('chart-rnd-total','bar',{labels:sorted.map(d=>d.player.split(' ').pop()),datasets:[{label:'Point',data:sorted.map(d=>d.total),backgroundColor:sorted.map((_,i)=>PAL[i%PAL.length]+'aa'),borderColor:sorted.map((_,i)=>PAL[i%PAL.length]),borderWidth:1,borderRadius:3}]},{plugins:{legend:{display:false}},scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299',maxRotation:45}},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'},beginAtZero:true}}});
+}
+
+function renderNæste(){
+  const sel=document.getElementById('opp-select');
+  if(sel.options.length<=1)DATA.active_players.forEach(p=>{const o=document.createElement('option');o.value=p;o.textContent=p;sel.appendChild(o);});
+  updateOppProfile();
+}
+function updateOppProfile(){
+  const opp=document.getElementById('opp-select').value;
+  const ps=opp?DATA.player_stats[opp]:null;
+  const el=document.getElementById('opp-profile');
+  if(!ps){el.innerHTML='<div style="color:var(--mut);font-size:13px">Vælg en modstander ovenfor for at se dennes historiske gæt-tendenser</div>';return;}
+  const d=DATA.bet_dist[opp]||{};const t=d.total||1;
+  const p1=Math.round((d['1']||0)/t*100),px=Math.round((d['X']||0)/t*100),p2=Math.round((d['2']||0)/t*100);
+  const styleLbl=p1>55?'<span class="tag tb">Hjemme-bias</span>':px>30?'<span class="tag to">X-elsker</span>':p2>35?'<span class="tag tr">Ude-bias</span>':'<span class="tag tg">Balanceret</span>';
+  el.innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px">
+      <div class="pstat"><div class="psl">Total point</div><div class="psv" style="color:var(--grn)">${ps.total_pts}</div></div>
+      <div class="pstat"><div class="psl">Nøjagtighed</div><div class="psv">${ps.accuracy}%</div></div>
+      <div class="pstat"><div class="psl">Gæt-stil</div><div style="margin-top:3px">${styleLbl}</div></div>
+    </div>
+    <div style="margin-bottom:10px">
+      <div class="psl" style="margin-bottom:5px">Fordeling 1 / X / 2</div>
+      <div style="display:flex;height:14px;border-radius:3px;overflow:hidden;margin-bottom:4px">
+        <div class="b1" style="width:${p1}%"></div><div class="bx" style="width:${px}%"></div><div class="b2" style="width:${p2}%"></div>
+      </div>
+      <div style="display:flex;gap:12px;font-size:11px">
+        <span style="color:var(--blu)">${p1}% hjemme</span>
+        <span style="color:#90a4ae">${px}% X</span>
+        <span style="color:var(--red)">${p2}% ude</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div class="pstat"><div class="psl">Følger bookies</div><div class="psv">${ps.follows_bookies_pct}%</div></div>
+      <div class="pstat"><div class="psl">Følger ELO</div><div class="psv">${ps.follows_elo_pct}%</div></div>
+    </div>
+    <div style="margin-top:10px;padding:8px;background:var(--sf);border-radius:6px;font-size:12px">
+      <div style="color:var(--mut);margin-bottom:4px">Point per sæson:</div>
+      ${[1,2,3,4,5].map(s=>`<span style="color:var(--txt)">S${s}: <strong style="color:var(--grn)">${ps.season_pts[s]||0}</strong></span>`).join(' · ')}
+    </div>`;
+}
+
+function renderGæt(){
+  const bd=DATA.bet_dist;
+  const players=DATA.active_players.filter(p=>bd[p]&&bd[p].total>0).sort((a,b)=>(bd[b]['1']||0)/bd[b].total-(bd[a]['1']||0)/bd[a].total);
+  const barsEl=document.getElementById('bet-bars');
+  barsEl.innerHTML=players.map(p=>{const d=bd[p];const p1=((d['1']||0)/d.total*100).toFixed(0),px=((d['X']||0)/d.total*100).toFixed(0),p2=((d['2']||0)/d.total*100).toFixed(0);return`<div class="bet-row"><div class="bp" title="${p}">${p.split(' ').pop()}</div><div class="bb"><div class="b1" style="width:${p1}%" title="Hjemme: ${p1}%"></div><div class="bx" style="width:${px}%"></div><div class="b2" style="width:${p2}%"></div></div><div class="bpct"><span style="color:var(--blu)">${p1}%</span><span>${px}%</span><span style="color:var(--red)">${p2}%</span></div></div>`;}).join('');
+  // Scatter
+  const scatterData=players.map((p,i)=>{const d=bd[p];if(!d||d.total===0)return null;const xRate=(d['X']||0)/d.total*100;let tp=0,ta=0;[1,2,3,4,5].forEach(s=>{const st=(DATA.standings_by_season[s]||[]).find(r=>r.player===p);if(st){tp+=st.points;ta+=st.answered;}});return{x:xRate,y:ta>0?tp/ta*100:0,label:p,r:7};}).filter(Boolean);
+  mk('chart-scatter','bubble',{datasets:[{data:scatterData,backgroundColor:PAL.map(c=>c+'88'),borderColor:PAL,borderWidth:1}]},{plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{const d=ctx.raw;return`${d.label}: X=${d.x.toFixed(1)}%, acc=${d.y.toFixed(1)}%`;}},backgroundColor:'#1e2330',borderColor:'#2a3040',borderWidth:1,titleColor:'#7a8299',bodyColor:'#e8eaf0'}},scales:{x:{title:{display:true,text:'X-andel (%)',color:'#7a8299'},grid:{color:'#2a3040'},ticks:{color:'#7a8299'}},y:{title:{display:true,text:'Accuracy (%)',color:'#7a8299'},grid:{color:'#2a3040'},ticks:{color:'#7a8299'}}}});
+  // Follows bookies
+  const fbEl=document.getElementById('follows-bars');
+  const fbData=DATA.active_players.filter(p=>DATA.player_stats[p]).map(p=>({player:p,pct:DATA.player_stats[p].follows_bookies_pct||0})).sort((a,b)=>b.pct-a.pct);
+  fbEl.innerHTML=fbData.map(d=>`<div class="follows-row"><div class="fr-name" title="${d.player}">${d.player.split(' ').pop()}</div><div class="fr-bar-wrap"><div class="fr-bar" style="width:${d.pct}%;background:${d.pct>55?'var(--grn)':d.pct>45?'var(--blu)':'var(--mut)'}"></div></div><div class="fr-val" style="color:${d.pct>55?'var(--grn)':d.pct>45?'var(--blu)':'var(--mut)'}">${d.pct}%</div></div>`).join('');
+}
+
+function renderHistorik(){
+  const hc=DATA.hist_compare;const players=DATA.active_players.filter(p=>hc[p]);
+  const sC=['#00e676','#448aff','#ffd740','#ff5252','#e040fb'];
+  mk('chart-hist-bar','bar',{labels:players.map(p=>p.split(' ').pop()),datasets:[1,2,3,4,5].map((s,i)=>({label:`Sæson ${s}`,data:players.map(p=>hc[p]?.[s]||0),backgroundColor:sC[i]+'88',borderColor:sC[i],borderWidth:1,borderRadius:2}))},{plugins:{legend:{display:true,labels:{color:'#7a8299',font:{size:10}}}},scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'}},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'},beginAtZero:true}}});
+  const sel=document.getElementById('player-select');
+  if(sel.options.length===0)players.forEach(p=>{const o=document.createElement('option');o.value=p;o.textContent=p;sel.appendChild(o);});
+  updateProfile();
+}
+function updateProfile(){
+  const p=document.getElementById('player-select').value;if(!p)return;
+  const hc=DATA.hist_compare[p]||{};const bd=DATA.bet_dist[p]||{'1':0,'X':0,'2':0,total:1};const ps=DATA.player_stats[p]||{};
+  const total=Object.values(hc).reduce((s,v)=>s+(v||0),0);
+  const bestS=[1,2,3,4,5].reduce((b,s)=>(hc[s]||0)>(hc[b]||0)?s:b,1);
+  const t=bd.total||1;const p1=Math.round((bd['1']||0)/t*100),px=Math.round((bd['X']||0)/t*100),p2=Math.round((bd['2']||0)/t*100);
+  const styleLbl=p1>55?'<span class="tag tb">Hjemme-bias</span>':px>30?'<span class="tag to">X-elsker</span>':p2>35?'<span class="tag tr">Ude-bias</span>':'<span class="tag tg">Balanceret</span>';
+  document.getElementById('player-profile').innerHTML=`
+    <div class="pstat"><div class="psl">Total point (alle sæsoner)</div><div class="psv" style="color:var(--grn)">${total}</div></div>
+    <div class="pstat"><div class="psl">Bedste sæson</div><div class="psv">Sæson ${bestS}: ${hc[bestS]||0} pt</div></div>
+    <div class="pstat"><div class="psl">Gæt-stil</div><div style="margin-top:3px">${styleLbl}</div></div>
+    <div class="pstat"><div class="psl">1 / X / 2</div><div style="font-size:13px;margin-top:2px"><span style="color:var(--blu)">${p1}%</span> · <span style="color:#90a4ae">${px}%</span> · <span style="color:var(--red)">${p2}%</span></div></div>
+    <div class="pstat"><div class="psl">Nøjagtighed</div><div class="psv">${ps.accuracy||0}%</div></div>
+    <div class="pstat"><div class="psl">Følger bookies / ELO</div><div style="font-size:13px;margin-top:2px"><span style="color:var(--grn)">${ps.follows_bookies_pct||0}%</span> · <span style="color:var(--blu)">${ps.follows_elo_pct||0}%</span></div></div>`;
+  mk('chart-profile-radar','radar',{labels:['Sæson 1','Sæson 2','Sæson 3','Sæson 4','Sæson 5'],datasets:[{label:p.split(' ').pop(),data:[1,2,3,4,5].map(s=>hc[s]||0),borderColor:'#00e676',backgroundColor:'rgba(0,230,118,.1)',pointBackgroundColor:'#00e676',borderWidth:2}]},{plugins:{legend:{display:false}},scales:{r:{grid:{color:'#2a3040'},angleLines:{color:'#2a3040'},ticks:{color:'#7a8299',backdropColor:'transparent',font:{size:9}},pointLabels:{color:'#7a8299',font:{size:10}}}}});
+}
+
+function renderEval(){
+  const ov=DATA.eval_overall||{};const ebt=DATA.eval_by_type||{};const cs=DATA.combo_stats||{};
+  const ecards=document.getElementById('eval-stat-cards');
+  ecards.innerHTML=[
+    ['ELO',ov.ELO||'—','%','var(--grn)'],
+    ['Bookies',ov.Bookies||'—','%','var(--blu)'],
+    ['B+E Enige',ov['B+E Enige']||'—','%','var(--gld)'],
+    ['Derby (ELO)',DATA.derby_accuracy?.ELO||'—','%','var(--red)'],
+    ['Kampe m. data',(DATA.eval_details||[]).reduce((s,r)=>s+(r.predictor==='ELO'?r.n:0),0),'kampe','var(--mut)'],
+  ].map(([lbl,val,unit,col])=>`<div class="sc"><div class="sc-accent" style="background:${col}"></div><div class="sl">${lbl}</div><div class="sv" style="color:${col}">${val}${val!=='—'?unit:''}</div></div>`).join('');
+  const comboEl=document.getElementById('combo-stats');
+  comboEl.innerHTML=`
+    <div class="combo-stat"><div class="combo-val" style="color:var(--gld)">${cs.agree_acc||'—'}%</div><div class="combo-lbl">B+E Enige (${cs.agree_n||0} kampe)</div></div>
+    <div style="font-size:24px;color:var(--bdr);align-self:center">vs</div>
+    <div class="combo-stat"><div class="combo-val" style="color:var(--blu)">${cs.disagree_bookies_acc||'—'}%</div><div class="combo-lbl">Bookies vinder uenige</div></div>
+    <div class="combo-stat"><div class="combo-val" style="color:var(--grn)">${cs.disagree_elo_acc||'—'}%</div><div class="combo-lbl">ELO vinder uenige (${cs.disagree_n||0} kampe)</div></div>`;
+  const types=Object.keys(ebt).sort();
+  const pC={'ELO':'#00e676aa','Bookies':'#448affaa','B+E Enige':'#ffd740aa','ECI':'#ff5252aa'};
+  const pB={'ELO':'#00e676','Bookies':'#448aff','B+E Enige':'#ffd740','ECI':'#ff5252'};
+  mk('chart-eval-bar','bar',{labels:types,datasets:['ELO','Bookies','B+E Enige'].map(pred=>({label:pred,data:types.map(t=>ebt[t]?.[pred]?.accuracy??null),backgroundColor:pC[pred],borderColor:pB[pred],borderWidth:1,borderRadius:3,spanGaps:false}))},{plugins:{legend:{display:true,labels:{color:'#7a8299',font:{size:10}}}},scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299',maxRotation:45,font:{size:9}}},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'},beginAtZero:true,max:80,title:{display:true,text:'Accuracy %',color:'#7a8299'}}}});
+  let thtml='<table class="st" style="font-size:11px"><thead><tr><th>Turnering</th><th>ELO</th><th>Bookies</th><th>Enige</th><th style="text-align:right">n</th></tr></thead><tbody>';
+  types.forEach(t=>{const row=ebt[t]||{};function cell(pred){const d=row[pred];if(!d)return`<td style="color:var(--bdr)">—</td>`;const c=d.accuracy>=50?'var(--grn)':d.accuracy>=45?'var(--txt)':'var(--mut)';return`<td style="color:${c};font-weight:${d.accuracy>=50?700:400}">${d.accuracy}%</td>`;}thtml+=`<tr><td>${t}</td>${cell('ELO')}${cell('Bookies')}${cell('B+E Enige')}<td style="text-align:right;color:var(--mut)">${row['ELO']?.n||'—'}</td></tr>`;});
+  thtml+='</tbody></table>';document.getElementById('eval-table-wrap').innerHTML=thtml;
+}
+
+// INIT
+renderStilling();
+document.querySelectorAll('.page').forEach(p=>{if(p.id==='page-næste'){renderNæste();}});
+</script>
+</body>
+</html>
