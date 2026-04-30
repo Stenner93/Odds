@@ -295,120 +295,93 @@ function setSeason(s,btn){curSeason=s;document.querySelectorAll('.sb').forEach(b
 // Season buttons — dynamic, only show seasons with data
 function renderH2HMatchup(){
   document.querySelectorAll('.cur-r').forEach(el=>el.textContent=DATA.current_round||'');
-  const matchups = DATA.cur_matchups||[];
-  const bets = DATA.cur_bets||{};
-  const results = DATA.cur_results||{};
-  const cr = DATA.current_round;
-  const cs = DATA.current_season;
-  const h2hBR = DATA.h2h_by_round?.[String(cs)]||DATA.h2h_by_round?.[cs]||{};
-  const rndPts = h2hBR[String(cr)]||h2hBR[cr]||{};
+  const matchups=DATA.cur_matchups||[];
+  const bets=DATA.cur_bets||{};
+  const results=DATA.cur_results||{};
+  const wm=DATA.cur_match_codes||[];  // weekly_matches: [{mc, home, away}] by match_no order
+  const cr=DATA.current_round;
+  const cs=DATA.current_season;
+  const h2hBR=DATA.h2h_by_round?.[String(cs)]||DATA.h2h_by_round?.[cs]||{};
+  const rndPts=h2hBR[String(cr)]||h2hBR[cr]||{};
+
   if(!matchups.length){
     document.getElementById('h2h-matchup-container').innerHTML=
       '<p style="color:var(--mut);padding:20px">Ingen H2H-matchups for aktuel runde — kør celle 03-B og 08</p>';
     return;
   }
-  // Byg match-kode liste fra prediction-bets (authoritative kilde med korrekte koder)
-  const allPredCodes=new Set();
-  Object.values(bets).forEach(pb=>Object.keys(pb).forEach(mc=>allPredCodes.add(mc)));
-  const wm=DATA.cur_match_codes||[];
-  const wmMap={};
-  wm.forEach(m=>{wmMap[m.mc]=`${m.home} vs ${m.away}`;});
-  // Ordnet liste: brug wm's rækkefølge men prediction-koder
-  const orderedCodes=[];
-  const usedPred=new Set();
-  wm.forEach((m,i)=>{
-    if(allPredCodes.has(m.mc)){
-      orderedCodes.push({mc:m.mc,label:`${m.home} vs ${m.away}`});
-      usedPred.add(m.mc);
-    } else {
-      // wm-kode matches ikke prediction — brug prediction-kode på samme position
-      const predArr=[...allPredCodes];
-      const pc=predArr[i];
-      if(pc&&!usedPred.has(pc)){
-        orderedCodes.push({mc:pc,label:wmMap[pc]||`${m.home} vs ${m.away}`});
-        usedPred.add(pc);
-      }
-    }
+
+  // Build authoritative ordered game list:
+  // Prediction codes are authoritative for bet lookup.
+  // weekly_matches gives display names and order.
+  // Map: wm[i].mc (stale) -> pred code at position i (correct)
+  // Collect all prediction codes, sorted by first appearance in any player's bets
+  const predCodeSet=new Set();
+  Object.values(bets).forEach(pb=>Object.keys(pb).forEach(mc=>predCodeSet.add(mc)));
+  const predCodes=[...predCodeSet];
+
+  // Build ordered list: wm position i -> predCodes[i] for display name
+  const orderedGames=wm.map((m,i)=>{
+    const predMc=predCodes[i]||m.mc;  // use prediction code by position
+    return {mc:predMc, label:`${m.home} vs ${m.away}`};
   });
-  // Tilføj resterende prediction-koder der ikke er dækket
-  allPredCodes.forEach(mc=>{if(!usedPred.has(mc))orderedCodes.push({mc,label:wmMap[mc]||mc});});
-  const TEAM_LABELS={};
-  orderedCodes.forEach(({mc,label})=>{TEAM_LABELS[mc]=label;});
-  
+  // Add any pred codes not covered (should not happen normally)
+  const covered=new Set(orderedGames.map(g=>g.mc));
+  predCodes.forEach(mc=>{if(!covered.has(mc))orderedGames.push({mc,label:mc});});
+
   function betBadge(b){
-    if(!b) return '<span style="color:var(--bdr)">—</span>';
-    const cls={1:'#1a3a5a;color:#7eb3f5','X':'#3a3a1a;color:#d4c060',2:'#3a1a1a;color:#f07070'}[b]||'background:#2a3040;color:#aaa';
-    return `<span style="display:inline-block;width:22px;height:19px;line-height:19px;text-align:center;border-radius:3px;font-weight:700;font-size:11px;background:${cls}">${b}</span>`;
+    if(!b)return'<span style="color:var(--bdr)">—</span>';
+    const bg={'1':'#1a3a5a','X':'#3a3a1a','2':'#3a1a1a'}[b]||'#2a3040';
+    const fg={'1':'#7eb3f5','X':'#d4c060','2':'#f07070'}[b]||'#aaa';
+    return `<span style="display:inline-block;width:22px;height:19px;line-height:19px;text-align:center;border-radius:3px;font-weight:700;font-size:11px;background:${bg};color:${fg}">${b}</span>`;
   }
-  
-  let out = '';
+
+  let out='';
   for(const mu of matchups){
-    const {p1, p2} = mu;
-    const bets1 = bets[p1]||{};
-    const bets2 = bets[p2]||{};
-    
-    // Rigtige gæt fra h2h.csv (correct_a/correct_b)
-    const correct1 = mu.correct_a??null;
-    const correct2 = mu.correct_b??null;
-    // H2H point
-    const pts1 = mu.h2h_pts_a??null;
-    const pts2 = mu.h2h_pts_b??null;
-    
-    // Count correct from h2h data
-    // Actually we need per-match correct — use pts_per_round match-level data isn't available
-    // So show bets + results only, no per-game correct indicator yet
-    
-    let canChange = false;
-    
-    // Build rows: kampe er rækker, spillere er kolonner
-    let rows = '';
-    for(const {mc, label} of orderedCodes){
-      const b1 = bets1[mc]||null;
-      const b2 = bets2[mc]||null;
-      const result = results[mc]||null;
-      const played = !!result;
-      const different = b1 && b2 && b1 !== b2;
-      if(!played && different) canChange = true;
-      
-      const rowStyle = different 
-        ? 'background:rgba(255,152,0,0.08);'
-        : played ? 'opacity:0.55;' : '';
-      
-      // Result badge
-      const resBadge = result
-        ? `<span style="display:inline-block;width:20px;height:19px;line-height:19px;text-align:center;background:#2a3040;border-radius:3px;font-size:11px;font-weight:700">${result}</span>`
-        : `<span style="color:var(--bdr);font-size:10px">—</span>`;
-      
-      const diffMark = different 
-        ? '<span style="color:#ff9800;font-size:12px;font-weight:700">!</span>'
-        : '<span style="color:var(--bdr)">·</span>';
-      
-      rows += `<tr style="${rowStyle}">
-        <td style="padding:6px 10px;font-size:11px;white-space:nowrap">${diffMark}</td>
-        <td style="padding:6px 10px;font-size:12px">${label||TEAM_LABELS[mc]||mc}</td>
+    const {p1,p2}=mu;
+    const bets1=bets[p1]||{};
+    const bets2=bets[p2]||{};
+    const correct1=mu.correct_a??null;
+    const correct2=mu.correct_b??null;
+    const pts1=mu.h2h_pts_a??null;
+    const pts2=mu.h2h_pts_b??null;
+
+    let canChange=false;
+    let rows='';
+    for(const {mc,label} of orderedGames){
+      const b1=bets1[mc]||null;
+      const b2=bets2[mc]||null;
+      const result=results[mc]||null;
+      const played=!!result;
+      const different=b1&&b2&&b1!==b2;
+      if(!played&&different)canChange=true;
+
+      const rowStyle=different?'background:rgba(255,152,0,0.08);':played?'opacity:0.55;':'';      const resBadge=result
+        ?`<span style="display:inline-block;width:20px;height:19px;line-height:19px;text-align:center;background:#2a3040;border-radius:3px;font-size:11px;font-weight:700">${result}</span>`
+        :'<span style="color:var(--bdr);font-size:10px">—</span>';
+      const diffMark=different
+        ?'<span style="color:#ff9800;font-size:13px;font-weight:700">!</span>'
+        :'<span style="color:var(--bdr)">\u00b7</span>';
+      rows+=`<tr style="${rowStyle}">
+        <td style="padding:6px 10px;width:20px">${diffMark}</td>
+        <td style="padding:6px 10px;font-size:12px">${label}</td>
         <td style="padding:6px 10px;text-align:center">${resBadge}</td>
         <td style="padding:6px 10px;text-align:center">${betBadge(b1)}</td>
         <td style="padding:6px 10px;text-align:center">${betBadge(b2)}</td>
       </tr>`;
     }
-    
-    // Verdict
-    let verdict, verdictBg;
+
+    // Verdict based on correct counts
+    let verdict,verdictBg;
     if(!canChange){
       if(correct1!==null&&correct2!==null){
-        if(correct1>correct2){verdict=`${p1.split(' ').pop()} vinder ✓`;verdictBg='#1a3a1a;color:#4caf50';}
-        else if(correct2>correct1){verdict=`${p2.split(' ').pop()} vinder ✓`;verdictBg='#1a3a1a;color:#4caf50';}
-        else{verdict='Uafgjort — afgjort ✓';verdictBg='#1a2a3a;color:#7eb3f5';}
-      } else {
-        verdict='Alle gæt ens — afgjort ✓';verdictBg='#1a2a3a;color:#7eb3f5';
-      }
-    } else {
-      verdict='Kan stadig ændre sig ▲';verdictBg='#3a2a0a;color:#ff9800';
-    }
-    
-    const scoreStr = (pts1!==null&&pts2!==null) ? `${pts1} – ${pts2}` : '— – —';
-    
-    out += `<div style="background:#1e2330;border:1px solid #2a3040;border-radius:10px;margin-bottom:14px;overflow:hidden">
+        if(correct1>correct2){verdict=`${p1.split(' ').pop()} vinder \u2713`;verdictBg='#1a3a1a;color:#4caf50';}
+        else if(correct2>correct1){verdict=`${p2.split(' ').pop()} vinder \u2713`;verdictBg='#1a3a1a;color:#4caf50';}
+        else{verdict='Uafgjort \u2014 afgjort \u2713';verdictBg='#1a2a3a;color:#7eb3f5';}
+      }else{verdict='Alle g\u00e6t ens \u2014 afgjort \u2713';verdictBg='#1a2a3a;color:#7eb3f5';}
+    }else{verdict='Kan stadig \u00e6ndre sig \u25b2';verdictBg='#3a2a0a;color:#ff9800';}
+
+    const sh=p=>p.split(' ').pop();
+    out+=`<div style="background:#1e2330;border:1px solid #2a3040;border-radius:10px;margin-bottom:14px;overflow:hidden">
       <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 16px;background:#252b3b;border-bottom:1px solid #2a3040">
         <div style="font-size:14px;font-weight:700">
           <span style="color:#7eb3f5">${p1}</span>
@@ -416,27 +389,28 @@ function renderH2HMatchup(){
           <span style="color:#f0a070">${p2}</span>
         </div>
         <div style="display:flex;gap:10px;align-items:center">
-          <span style="font-size:15px;font-weight:700"><span style="color:#7eb3f5">${correct1??'—'}</span><span style="color:var(--mut);margin:0 5px">–</span><span style="color:#f0a070">${correct2??'—'}</span></span>
-          <span style="font-size:11px;color:var(--mut)">(${pts1??'—'}–${pts2??'—'} H2H pt)</span>
+          <span style="font-size:15px;font-weight:700">
+            <span style="color:#7eb3f5">${correct1??'\u2014'}</span>
+            <span style="color:var(--mut);margin:0 5px">\u2013</span>
+            <span style="color:#f0a070">${correct2??'\u2014'}</span>
+          </span>
+          <span style="font-size:11px;color:var(--mut)">(${pts1??'\u2014'}\u2013${pts2??'\u2014'} H2H pt)</span>
           <span style="font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;background:${verdictBg}">${verdict}</span>
         </div>
       </div>
       <table style="width:100%;border-collapse:collapse">
-        <thead>
-          <tr style="background:#1a2030">
-            <th style="padding:7px 10px;font-size:10px;color:var(--mut);text-align:left;width:24px"></th>
-            <th style="padding:7px 10px;font-size:10px;color:var(--mut);text-align:left;text-transform:uppercase;letter-spacing:1px">Kamp</th>
-            <th style="padding:7px 10px;font-size:10px;color:var(--mut);text-align:center;text-transform:uppercase;letter-spacing:1px">Res.</th>
-            <th style="padding:7px 10px;font-size:10px;color:#7eb3f5;text-align:center;text-transform:uppercase;letter-spacing:1px">${p1.split(' ').pop()}</th>
-            <th style="padding:7px 10px;font-size:10px;color:#f0a070;text-align:center;text-transform:uppercase;letter-spacing:1px">${p2.split(' ').pop()}</th>
-          </tr>
-        </thead>
+        <thead><tr style="background:#1a2030">
+          <th style="padding:7px 10px;width:20px"></th>
+          <th style="padding:7px 10px;font-size:10px;color:var(--mut);text-align:left;text-transform:uppercase;letter-spacing:1px">Kamp</th>
+          <th style="padding:7px 10px;font-size:10px;color:var(--mut);text-align:center;text-transform:uppercase;letter-spacing:1px">Res.</th>
+          <th style="padding:7px 10px;font-size:10px;color:#7eb3f5;text-align:center;text-transform:uppercase;letter-spacing:1px">${sh(p1)}</th>
+          <th style="padding:7px 10px;font-size:10px;color:#f0a070;text-align:center;text-transform:uppercase;letter-spacing:1px">${sh(p2)}</th>
+        </tr></thead>
         <tbody>${rows}</tbody>
       </table>
     </div>`;
   }
-  
-  document.getElementById('h2h-matchup-container').innerHTML = out;
+  document.getElementById('h2h-matchup-container').innerHTML=out;
 }
 
 function buildSeasonBtns(){
