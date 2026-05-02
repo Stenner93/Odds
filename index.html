@@ -84,7 +84,7 @@ code{background:var(--sf);padding:1px 5px;border-radius:3px;font-size:11px}
 .legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
 .li{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--mut)}
 .ld{width:9px;height:9px;border-radius:50%}
-.odds-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 1fr 80px;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(42,48,64,.4);font-size:12px}
+.odds-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 1fr 1fr 80px;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(42,48,64,.4);font-size:12px}
 .odds-row:last-child{border-bottom:none}
 .odds-hdr{color:var(--mut);font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
 .odds-val{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;text-align:center}
@@ -533,7 +533,7 @@ function renderNæste(){
   const oddsEl=document.getElementById('odds-table');
   const odds=DATA.current_odds||[];
   if(!odds.length){oddsEl.innerHTML='<div style="color:var(--mut);font-size:12px;line-height:1.8">Odds-data vises her når du har kørt celle 02 og celle 08 i notebooken.<br>Tjek at odds.csv er genereret i Drive.</div>';return;}
-  let html=`<div class="odds-row odds-hdr"><span>Kamp</span><span style="text-align:center">1 % / odds</span><span style="text-align:center">X % / odds</span><span style="text-align:center">2 % / odds</span><span style="text-align:center">ELO hj/ud/diff</span><span style="text-align:center">Opta hj/ud/diff</span><span style="text-align:center">Favorit</span></div>`;
+  let html=`<div class="odds-row odds-hdr"><span>Kamp</span><span style="text-align:center">1 % / odds</span><span style="text-align:center">X % / odds</span><span style="text-align:center">2 % / odds</span><span style="text-align:center;color:#e040fb">DC</span><span style="text-align:center">ELO hj/ud/diff</span><span style="text-align:center">Opta hj/ud/diff</span><span style="text-align:center">Favorit</span></div>`;
   odds.forEach(m=>{
     if(!m.home_team||m.home_team.trim()===''||m.home_team==='nan')return;
     const favCls=m.favourit==='1'?'fav1':m.favourit==='X'?'favX':'fav2';
@@ -550,6 +550,13 @@ function renderNæste(){
     const eloDiff=(elo_h&&elo_a)?((elo_h-elo_a>0?'+':'')+(elo_h-elo_a)):'—';
     const opta_h=m.opta_home,opta_a=m.opta_away;
     const optaDiff=(opta_h&&opta_a)?((opta_h-opta_a>0?'+':'')+parseFloat(opta_h-opta_a).toFixed(0)):'—';
+    // DC-forudsigelse for denne kamp
+    const dcMatch=(DATA.dc_predictions||[]).find(d=>d.match_code===m.match_code)||null;
+    const dcP1=dcMatch?.dc_p1!=null?Math.round(dcMatch.dc_p1*100)+'%':'—';
+    const dcPX=dcMatch?.dc_px!=null?Math.round(dcMatch.dc_px*100)+'%':'—';
+    const dcP2=dcMatch?.dc_p2!=null?Math.round(dcMatch.dc_p2*100)+'%':'—';
+    const dcFav=dcMatch?.dc_fav||null;
+    const dcDisp=dcFav?`<span style="font-size:13px;font-weight:700;color:#e040fb">${dcFav}</span><br><span style="font-size:9px;color:var(--mut)">${{'1':dcP1,'X':dcPX,'2':dcP2}[dcFav]||''}</span>`:'<span style="color:var(--bdr)">—</span>';
     html+=`<div class="odds-row">
       <span style="font-size:12px">${m.home_team||''} vs ${m.away_team||''}<br><span style="color:var(--mut);font-size:10px">${m.league||''}</span></span>
       <span class="odds-val" style="color:var(--blu)">${p1}<br><span style="font-size:10px;color:var(--mut)">${m.odds_1?m.odds_1:'—'}</span></span>
@@ -557,6 +564,7 @@ function renderNæste(){
       <span class="odds-val" style="color:var(--red)">${p2}<br><span style="font-size:10px;color:var(--mut)">${m.odds_2?m.odds_2:'—'}</span></span>
       <span class="odds-val" style="font-size:11px">${elo_h||'—'}<br><span style="color:var(--mut);font-size:10px">${elo_a||'—'}</span><br><span style="color:${elo_h&&elo_a?(elo_h>elo_a?'var(--grn)':'var(--red)'):'var(--mut)'};font-size:10px">${eloDiff}</span></span>
       <span class="odds-val" style="font-size:11px">${opta_h||'—'}<br><span style="color:var(--mut);font-size:10px">${opta_a||'—'}</span><br><span style="color:${opta_h&&opta_a?(opta_h>opta_a?'var(--grn)':'var(--red)'):'var(--mut)'};font-size:10px">${optaDiff}</span></span>
+      <span class="odds-val" style="text-align:center">${dcDisp}</span>
       <span><span class="fav ${favCls}">${m.favourit||'—'}</span></span>
     </div>`;
   });
