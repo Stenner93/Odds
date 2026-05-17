@@ -316,6 +316,7 @@ function renderH2HMatchup(){
       [myMu.p1,myMu.p2]=[myMu.p2,myMu.p1];
       [myMu.correct_a,myMu.correct_b]=[myMu.correct_b,myMu.correct_a];
       [myMu.h2h_pts_a,myMu.h2h_pts_b]=[myMu.h2h_pts_b,myMu.h2h_pts_a];
+      [myMu.prob_a,myMu.prob_b]=[myMu.prob_b,myMu.prob_a];
     }
     matchups.unshift(myMu);
   } else if(myIdx===0 && matchups[0].p2===ME){
@@ -323,6 +324,7 @@ function renderH2HMatchup(){
     [mu.p1,mu.p2]=[mu.p2,mu.p1];
     [mu.correct_a,mu.correct_b]=[mu.correct_b,mu.correct_a];
     [mu.h2h_pts_a,mu.h2h_pts_b]=[mu.h2h_pts_b,mu.h2h_pts_a];
+    [mu.prob_a,mu.prob_b]=[mu.prob_b,mu.prob_a];
   }
 
   function betBadge(b){
