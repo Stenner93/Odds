@@ -1,0 +1,2356 @@
+season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team,fixture_id,league_id,home_team_id,away_team_id,result
+1,1,1,DIN-HAJ,,,KRO,,Dinamo Zagreb,Hajduk Split,,,,,1
+1,1,2,FCM-BIF,,,DAN,,FC Midtjylland,Brøndby,,,,,2
+1,1,3,FCM-SPO,,,EL,,FC Midtjylland,Sporting Lissabon,,,,,2
+1,1,4,FRA-NAP,,,CL,,Frankfurt,Napoli,,,,,2
+1,1,5,LIV-RMA,,,CL,,Liverpool,Real Madrid,,,,,2
+1,1,6,MAU-BAR,,,EL,,Manchester United,Barcelona,,,,,1
+1,1,7,MAU-NEW,,,ENG,,Manchester United,Newcastle,,,,,1
+1,1,8,RBL-MCI,,,CL,,RB Leipzig,Manchester City,,,,,X
+1,1,9,RMA-ATM,,,SPA,,Real Madrid,Atletico Madrid,,,,,X
+1,1,10,TOT-CHE,,,PL,,Tottenham,Chelsea,,,,,1
+1,2,1,AAB-VFF,,,DAN,,AaB,Viborg,,,,,1
+1,2,2,APO-OMO,,,Andet,,APOEL Nicosia,Omonia,,,,,2
+1,2,3,CRE-ROM,,,ITA,,Cremonese,Roma,,,,,1
+1,2,4,DUU-ABE,,,SKO,,Dundee Utd,Aberdeen,,,,,2
+1,2,5,FCK-OB,,,DAN,,FCK,OB,,,,,1
+1,2,6,FCK-VB,,,DAN,,FCK,Vejle,,,,,1
+1,2,7,LEV-HER,,,TYS,,Bayer Leverkusen,Hertha Berlin,,,,,1
+1,2,8,LIV-MAU,,,PL,,Liverpool,Manchester United,,,,,1
+1,2,9,MCI-NEW,,,PL,,Manchester City,Newcastle,,,,,1
+1,2,10,RMA-BAR,,,SPA,,Real Madrid,Barcelona,,,,,2
+1,3,1,BAY-PSG,,,CL,,Bayern München,PSG,,,,,1
+1,3,2,CHE-BVB,,,CL,,Chelsea,Dortmund,,,,,1
+1,3,3,FUL-ARS,,,PL,,Fulham,Arsenal,,,,,2
+1,3,4,LEV-FER,,,EL,,Bayer Leverkusen,Ferencvaros,,,,,1
+1,3,5,NAP-ATA,,,ITA,,Napoli,Atalanta,,,,,1
+1,3,6,S04-BVB,,,TYS,,Schalke 04,Dortmund,,,,,X
+1,3,7,SEV-ALM,,,SPA,,Sevilla,Almeria,,,,,1
+1,3,8,SLB-CLB,,,CL,,Benfica,Club Brügge,,,,,1
+1,3,9,TOT-ACM,,,CL,,Tottenham,AC Milan,,,,,X
+1,3,10,VFF-FCN,,,SL,,Viborg,FC Nordsjælland,,,,,X
+1,4,1,AJA-FEY,,,HOL,,Ajax,Feyenoord,,,,,2
+1,4,2,BAR-RMA,,,SPA,,Barcelona,Real Madrid,,,,,1
+1,4,3,CHE-EVE,,,PL,,Chelsea,Everton,,,,,X
+1,4,4,FCP-INT,,,CL,,Porto,Inter,,,,,X
+1,4,5,MCI-RBL,,,CL,,Manchester City,RB Leipzig,,,,,1
+1,4,6,NAP-FRA,,,CL,,Napoli,Frankfurt,,,,,1
+1,4,7,RMA-LIV,,,CL,,Real Madrid,Liverpool,,,,,1
+1,4,8,SIF-FCM,,,SL,,Silkeborg,FC Midtjylland,,,,,X
+1,4,9,STA-MOL,,,NOR,,Stabæk,Molde,,,,,X
+1,4,10,VIL-AND,,,ECL,,Villarreal,Anderlecht,,,,,2
+1,5,1,DAN-FIN,,,INT,,Danmark,Finland,,,,,1
+1,5,2,FRK-HOL,,,INT,,Frankrig,Holland,,,,,1
+1,5,3,ITA-ENG,,,INT,,Italien,England ,,,,,2
+1,5,4,KAZ-DAN,,,INT,,Kazakhstan,Danmark,,,,,1
+1,5,5,KOL-HIK,,,DAN,,Kolding,HIK,,,,,1
+1,5,6,KRO-WAL,,,INT,,Kroatien,Wales,,,,,X
+1,5,7,MAN-GRI,,,ENG,,Mansfield,Grimsby,,,,,X
+1,5,8,NI-FIN,,,INT,,Nordirland,Finland,,,,,2
+1,5,9,SLO-BOS,,,INT,,Slovenien,Bosnien,,,,,1
+1,5,10,SPA-NOR,,,INT,,Spanien,Norge,,,,,1
+1,6,1,B36-HB,,,FÆR,,B36,HB Thorshavn,,,,,2
+1,6,2,BAY-BVB,,,TYS,,Bayern München,Dortmund,,,,,1
+1,6,3,CAR-SWA,,,ENG,,Cardiff,Swansea,,,,,X
+1,6,4,CHE-WED,,,ENG,,Chelsea,Sheffield Wednesday,,,,,X
+1,6,5,CRE-ATA,,,ITA,,Cremonese,Atalanta,,,,,2
+1,6,6,GIR-ESP,,,SPA,,Girona,Espanyol,,,,,1
+1,6,7,OB-FCM,,,SL,,OB,FC Midtjylland,,,,,2
+1,6,8,SKO-SPA,,,INT,,Skotland,Spanien,,,,,1
+1,6,9,SWI-ISR,,,INT,,Schweiz,Israel,,,,,1
+1,6,10,TYR-KRO,,,INT,,Tyrkiet,Kroatien,,,,,2
+1,7,1,BAR-RMA,,,SPA,,Barcelona,Real Madrid,,,,,2
+1,7,2,CEL-RAN,,,SKO,,Celtic,Rangers,,,,,1
+1,7,3,CHE-LIV,,,PL,,Chelsea,Liverpool,,,,,X
+1,7,4,FRA-UNI,,,TYS,,Frankfurt,Union Berlin,,,,,1
+1,7,5,FRE-BAY,,,TYS,,Freiburg,Bayern München,,,,,2
+1,7,6,JUV-INT,,,ITA,,Juventus,Inter,,,,,X
+1,7,7,LAZ-JUV,,,ITA,,Lazio,Juventus,,,,,1
+1,7,8,VAL-ATM,,,SPA,,Valencia,Atletico Madrid,,,,,2
+1,7,9,VB-FCK,,,DAN,,Vejle,FCK,,,,,X
+1,7,10,VFF-AGF,,,SL,,Viborg,AGF,,,,,2
+1,8,1,ACM-NAP,,,CL,,AC Milan,Napoli,,,,,1
+1,8,2,BIL-RSO,,,SPA,,Athletic Bilbao,Sociedad,,,,,1
+1,8,3,FRA-GLA,,,TYS,,Frankfurt,Gladbach,,,,,X
+1,8,4,HES-DUD,,,LUX,,Hesperange,Dudelange,,,,,1
+1,8,5,MAU-SEV,,,EL,,Manchester United,Sevilla,,,,,X
+1,8,6,MCI-BAY,,,CL,,Manchester City,Bayern München,,,,,1
+1,8,7,RMA-CHE,,,CL,,Real Madrid,Chelsea,,,,,1
+1,8,8,ROM-UDI,,,ITA,,Roma,Udinese,,,,,1
+1,8,9,SLB-INT,,,CL,,Benfica,Inter,,,,,2
+1,8,10,SPA-SLA,,,TJE,,Spanien,Slavia Prag,,,,,X
+1,9,1,BAR-ATM,,,SPA,,Barcelona,Atletico Madrid,,,,,1
+1,9,2,BAY-MCI,,,CL,,Bayern München,Manchester City,,,,,X
+1,9,3,BHA-MAU,,,ENG,,Brighton,Manchester United,,,,,X
+1,9,4,CHE-RMA,,,CL,,Chelsea,Real Madrid,,,,,2
+1,9,5,INT-SLB,,,CL,,Inter,Benfica,,,,,X
+1,9,6,MAI-BAY,,,TYS,,Mainz,Bayern München,,,,,1
+1,9,7,MCI-SHU,,,ENG,,Manchester City,Sheffield United,,,,,1
+1,9,8,NAP-ACM,,,CL,,Napoli,AC Milan,,,,,X
+1,9,9,PSV-AJA,,,HOL,,PSV,Ajax,,,,,1
+1,9,10,SEV-MAU,,,EL,,Sevilla,Manchester United,,,,,1
+1,10,1,CRY-WHU,,,PL,,Crystal Palace,West Ham,,,,,1
+1,10,2,ESP-GET,,,SPA,,Espanyol,Getafe,,,,,1
+1,10,3,FCK-BIF,,,SL,,FCK,Brøndby,,,,,2
+1,10,4,FCN-FCK,,,DAN,,FC Nordsjælland,FCK,,,,,1
+1,10,5,FIO-CRE,,,ITA,,Fiorentina,Cremonese,,,,,X
+1,10,6,INT-JUV,,,ITA,,Inter,Juventus,,,,,1
+1,10,7,LEE-LEI,,,PL,,Leeds,Leicester,,,,,X
+1,10,8,NAP-SAL,,,ITA,,Napoli,Salernitana,,,,,X
+1,10,9,S04-WER,,,TYS,,Schalke 04,Werder Bremen,,,,,1
+1,10,10,SIF-AAB,,,DAN,,Silkeborg,AaB,,,,,X
+1,11,1,AAB-SIL,,,DAN,,AaB,Silkeborg,,,,,1
+1,11,2,AGF-VFF,,,SL,,AGF,Viborg,,,,,1
+1,11,3,FRE-RBL,,,TYS,,Freiburg,RB Leipzig,,,,,2
+1,11,4,LJU-MAR,,,SLO,,Olimpija Ljubljana,Maribor,,,,,X
+1,11,5,RIV-BOC,,,ARG,,River Plate,Boca,,,,,1
+1,11,6,RMA-OSA,,,SPA,,Real Madrid,Osasuna,,,,,1
+1,11,7,SLB-BRA,,,POR,,Benfica,Braga,,,,,1
+1,11,8,STU-FRA,,,TYS,,Stuttgart,Frankfurt,,,,,2
+1,11,9,UDI-NAP,,,ITA,,Udinese,Napoli,,,,,X
+1,11,10,VAL-VIL,,,SPA,,Valencia,Villarreal,,,,,X
+1,12,1,ACM-INT,,,CL,,AC Milan,Inter,,,,,2
+1,12,2,AGF-FCN,,,SL,,AGF,FC Nordsjælland,,,,,X
+1,12,3,ARS-BHA,,,PL,,Arsenal,Brighton,,,,,2
+1,12,4,BOL-BFC,,,ENG,,Bolton,Barnsley,,,,,X
+1,12,5,BVB-GLA,,,TYS,,Dortmund,Gladbach,,,,,1
+1,12,6,JUV-SEV,,,EL,,Juventus,Sevilla,,,,,X
+1,12,7,RMA-MCI,,,CL,,Real Madrid,Manchester City,,,,,X
+1,12,8,ROM-LEV,,,EL,,Roma,Bayer Leverkusen,,,,,1
+1,12,9,SPA-SLA,,,TJE,,Spanien,Slavia Prag,,,,,1
+1,12,10,WHU-AZ,,,ECL,,West Ham,AZ Alkmaar,,,,,1
+1,13,1,AAB-FCK,,,DAN,,AaB,FCK,,,,,2
+1,13,2,FCK-AGF,,,SL,,FCK,AGF,,,,,1
+1,13,3,INT-ACM,,,CL,,Inter,AC Milan,,,,,1
+1,13,4,KOL-B93,,,DAN,,Kolding,B93,,,,,X
+1,13,5,LEV-ROM,,,EL,,Bayer Leverkusen,Roma,,,,,X
+1,13,6,LIV-AVI,,,PL,,Liverpool,Aston Villa,,,,,X
+1,13,7,MCI-RMA,,,CL,,Manchester City,Real Madrid,,,,,1
+1,13,8,SEV-BET,,,SPA,,Sevilla,Betis,,,,,X
+1,13,9,SEV-JUV,,,EL,,Sevilla,Juventus,,,,,X
+1,13,10,SPO-SLB,,,POR,,Sporting Lissabon,Benfica,,,,,X
+1,14,1,AEK-PAO,,,GRÆ,,AEK Athen,PAOK,,,,,1
+1,14,2,ALM-VLL,,,SPA,,Almeria,Valladolid,,,,,X
+1,14,3,BET-GET,,,SPA,,Betis,Getafe,,,,,2
+1,14,4,CAR-STO,,,ENG,,Cardiff,Stoke,,,,,X
+1,14,5,COV-LUT,,,ENG,,Coventry,Luton,,,,,X
+1,14,6,FIO-INT,,,ITA,,Fiorentina,Inter,,,,,2
+1,14,7,JUV-ACM,,,ITA,,Juventus,AC Milan,,,,,2
+1,14,8,LBK-AAB,,,SL,,Lyngby,AaB,,,,,1
+1,14,9,MAU-CHE,,,PL,,Manchester United,Chelsea,,,,,1
+1,14,10,VIG-GIR,,,SPA,,Celta Vigo,Girona,,,,,X
+1,15,1,ACH-LBK,,,SL,,AC Horsens,Lyngby,,,,,X
+1,15,2,BRA-FCP,,,POR,,Braga,Porto,,,,,2
+1,15,3,GNK-ANT,,,BEL,,Genk,Antwerpen,,,,,X
+1,15,4,HEE-TWE,,,HOL,,Heerenveen,Twente,,,,,2
+1,15,5,IKB-OST,,,SVE,,Brage,Östersunds,,,,,1
+1,15,6,MCI-MAU,,,ENG,,Manchester City,Manchester United,,,,,1
+1,15,7,RBL-FRA,,,TYS,,RB Leipzig,Frankfurt,,,,,1
+1,15,8,RFC-AGF,,,SL,,Randers,AGF,,,,,2
+1,15,9,SEV-ROM,,,EL,,Sevilla,Roma,,,,,X
+1,15,10,STU-HSV,,,TYS,,Stuttgart,HSV Hamburg,,,,,1
+1,16,1,ALA-EIB,,,SPA,,Alaves,Eibar,,,,,1
+1,16,2,ALA-LVT,,,SPA,,Alaves,Levante,,,,,X
+1,16,3,BAI-CAG,,,ITA,,Bari,Cagliari,,,,,2
+1,16,4,COT-UNT,,,TYS,,Energie Cottbus,Unterhaching,,,,,2
+1,16,5,EFB-B93,,,DAN,,Esbjerg,B93,,,,,2
+1,16,6,FA2-VSK,,,DAN,,FA2000,VSK Aarhus,,,,,1
+1,16,7,FIO-WHU,,,ECL,,Fiorentina,West Ham,,,,,2
+1,16,8,GIF-GAI,,,SVE,,Sundsvall,GAIS,,,,,2
+1,16,9,LVT-ALB,,,SPA,,Levante,Albacete,,,,,1
+1,16,10,MCI-INT,,,CL,,Manchester City,Inter,,,,,1
+1,17,1,BEL-ØST,,,INT,,Belgien,Østrig,,,,,X
+1,17,2,COL-EST,,,ARG,,Colon,Estudiantes,,,,,1
+1,17,3,DAN-NI,,,INT,,Danmark,Nordirland,,,,,1
+1,17,4,FIN-SLO,,,INT,,Finland,Slovenien,,,,,1
+1,17,5,HOL-KRO,,,INT,,Holland,Kroatien,,,,,X
+1,17,6,KRO-SPA,,,INT,,Kroatien,Spanien,,,,,X
+1,17,7,LVT-ALA,,,SPA,,Levante,Alaves,,,,,X
+1,17,8,NOR-SKO,,,INT,,Norge,Skotland,,,,,2
+1,17,9,SLO-DAN,,,INT,,Slovenien,Danmark,,,,,X
+1,17,10,SPA-ITA,,,INT,,Spanien,Italien,,,,,1
+1,18,1,BEU-HOU,,,U21,,Belgien - U21,Holland - U21,,,,,X
+1,18,2,FRU-ITU,,,U21,,Frankrig - U21,Italien - U21,,,,,1
+1,18,3,ISL-POR,,,INT,,Island,Portugal,,,,,2
+1,18,4,MEX-HON,,,Int,,Mexico,Honduras,,,,,1
+1,18,5,RFS-VLM,,,LET,,RFS,Valmiera,,,,,1
+1,18,6,ROS-SAR,,,NOR,,Rosenborg,Sarpsborg,,,,,2
+1,18,7,SPU-KRU,,,INT,,Spanien - U21,Kroatien - U21,,,,,1
+1,18,8,STP-SHB,,,IRL,,St. Patricks,Shelbourne,,,,,1
+1,18,9,VIK-SKB,,,NOR,,Viking,Brann,,,,,1
+1,18,10,ØST-SVE,,,INT,,Østrig,Sverige,,,,,1
+1,19,1,BOD-MOL,,,NOR,,Bodø/Glimt,Molde,,,,,X
+1,19,2,BRO-AIK,,,SVE,,Brommapojkarna,AIK,,,,,2
+1,19,3,ENU-TYU,,,INT,,England - U21,Tyrkiet - U21,,,,,1
+1,19,4,HAK-HJK,,,FIN,,Haka,HJK Helsinki,,,,,X
+1,19,5,HAL-GÖT,,,SVE,,Halmstad,Göteborg,,,,,X
+1,19,6,HON-HJK,,,FIN,,Honduras,HJK Helsinki,,,,,X
+1,19,7,LEV-FLO,,,EST,,Bayer Leverkusen,Flora Tallinn,,,,,X
+1,19,8,QAT-HON,,,INT,,Qatar,Honduras,,,,,X
+1,19,9,STJ-HAF,,,ISL,,Stjarnan,Hafnafjordur,,,,,1
+1,19,10,USA-TRI,,,INT,,USA,Trinidad,,,,,1
+1,20,1,AKU-BRE,,,ISL,,KA Akureyri,Breidablik,,,,,X
+1,20,2,DAU-SUP,,,LET,,Daugavpils,Super Nova,,,,,1
+1,20,3,ENU-SPU,,,U21,,England - U21,Spanien - U21,,,,,1
+1,20,4,KAL-ELF,,,SVE,,Kalmar,Elfsborg,,,,,2
+1,20,5,LAG-LAF,,,MLS,,LA Galaxy,LAFC,,,,,1
+1,20,6,PAN-ELS,,,INT,,Panama,El Salvador,,,,,X
+1,20,7,ROS-LSØ,,,NOR,,Rosenborg,Lillestrøm,,,,,2
+1,20,8,VAR-DJU,,,SVE,,Värnamo,Djurgården,,,,,2
+1,20,9,VIK-HAU,,,NOR,,Viking,Haugesund,,,,,1
+1,20,10,ZAL-RIT,,,LIT,,Zalgiris,Riterai,,,,,1
+1,21,1,DIN-HAJ,,,KRO,,Dinamo Zagreb,Hajduk Split,,,,,1
+1,21,2,DUD-STP,,,ECL,,Dudelange,St. Patricks,,,,,1
+1,21,3,ELF-GÖT,,,SVE,,Elfsborg,Göteborg,,,,,X
+1,21,4,FAR-SHT,,,CL,,Farul Constanta,Sheriff Tiraspol,,,,,1
+1,21,5,HB-DER,,,ECL,,HB Thorshavn,Derry City,,,,,X
+1,21,6,HJK-LAR,,,CL,,HJK Helsinki,Larne,,,,,1
+1,21,7,KLA-FER,,,CL,,Klaksvik,Ferencvaros,,,,,X
+1,21,8,PLO-PLO,,,BUL,,Lokomotiv Plovdiv,Lokomotiv Plovdiv,,,,,X
+1,21,9,SAO-SAN,,,BRA,,Sao Paulo,Santos,,,,,1
+1,21,10,VÅL-MOL,,,NOR,,Vålerenga,Molde,,,,,2
+1,22,1,ANT-MEC,,,BEL,,Antwerpen,Mechelen,,,,,X
+1,22,2,BRE-SHA,,,CL,,Breidablik,Shakhtar Donetsk,,,,,1
+1,22,3,DIL-DUN,,,ECL,,Dila Gori,Dunajska Streda,,,,,1
+1,22,4,DUN-PAR,,,SKO,,Dunajska Streda,Partick Thistle,,,,,2
+1,22,5,GÖT-HAL,,,SVE,,Göteborg,Halmstad,,,,,X
+1,22,6,LAR-HJK,,,CL,,Larne,HJK Helsinki,,,,,1
+1,22,7,LBK-FCK,,,SL,,Lyngby,FCK,,,,,2
+1,22,8,SCH-ASC,,,TYS,,Schweinfurt,Aschaffenburg,,,,,X
+1,22,9,SIF-BIF,,,SL,,Silkeborg,Brøndby,,,,,2
+1,22,10,TNS-HÄC,,,CL,,The New Saints,Häcken,,,,,2
+1,23,1,AAB-ACH,,,DAN,,AaB,AC Horsens,,,,,1
+1,23,2,AUW-STG,,,ØST,,Austria Wien,Sturm Graz,,,,,2
+1,23,3,BIF-OB,,,SL,,Brøndby,OB,,,,,2
+1,23,4,BRE-FCK,,,CL,,Breidablik,FCK,,,,,2
+1,23,5,CLB-AGF,,,ECL,,Club Brügge,AGF,,,,,1
+1,23,6,FCK-PAU,,,TYS,,FCK,St. Pauli,,,,,2
+1,23,7,FCM-SIF,,,SL,,FC Midtjylland,Silkeborg,,,,,1
+1,23,8,KLA-HÄC,,,CL,,Klaksvik,Häcken,,,,,X
+1,23,9,SER-GNK,,,CL,,Servette,Genk,,,,,X
+1,23,10,TWE-HAM,,,ECL,,Twente,Hammarby,,,,,1
+1,24,1,BEI-PAO,,,ECL,,Beitar Jerusalem,PAOK,,,,,2
+1,24,2,FCK-RFC,,,SL,,FCK,Randers,,,,,1
+1,24,3,GNK-SER,,,CL,,Genk,Servette,,,,,X
+1,24,4,HAM-TWE,,,ECL,,Hammarby,Twente,,,,,X
+1,24,5,HIF-AGF,,,SL,,Hvidovre,AGF,,,,,2
+1,24,6,LEI-COV,,,ENG,,Leicester,Coventry,,,,,1
+1,24,7,LJU-LUD,,,CL,,Olimpija Ljubljana,Ludogorets,,,,,1
+1,24,8,MCI-ARS,,,ENG,,Manchester City,Arsenal,,,,,X
+1,24,9,MOL-HJK,,,CL,,Molde,HJK Helsinki,,,,,1
+1,24,10,S04-KAI,,,TYS,,Schalke 04,Kaiserslautern,,,,,1
+1,25,1,AIK-BRO,,,SVE,,AIK,Brommapojkarna,,,,,X
+1,25,2,BAY-RBL,,,TYS,,Bayern München,RB Leipzig,,,,,2
+1,25,3,BIL-RMA,,,SPA,,Athletic Bilbao,Real Madrid,,,,,2
+1,25,4,CHE-LIV,,,PL,,Chelsea,Liverpool,,,,,X
+1,25,5,FCK-SPA,,,CL,,FCK,Spanien,,,,,X
+1,25,6,FRm-VAN,,,DAN,,Frem,Vanløse,,,,,2
+1,25,7,OMO-FCM,,,ECL,,Omonia,FC Midtjylland,,,,,1
+1,25,8,PAN-OM,,,CL,,Panama,Marseille,,,,,1
+1,25,9,PSV-STG,,,CL,,PSV,Sturm Graz,,,,,1
+1,25,10,STE-FCN,,,ECL,,Steaua Bukarest,FC Nordsjælland,,,,,X
+1,26,1,BVB-KÖL,,,TYS,,Dortmund,Köln,,,,,1
+1,26,2,FCM-BIF,,,SL,,FC Midtjylland,Brøndby,,,,,2
+1,26,3,FCM-OMO,,,ECL,,FC Midtjylland,Omonia,,,,,1
+1,26,4,FCN-STE,,,ECL,,FC Nordsjælland,Steaua Bukarest,,,,,1
+1,26,5,MCI-SEV,,,SuperCup,,Manchester City,Sevilla,,,,,X
+1,26,6,OB-AGF,,,SL,,OB,AGF,,,,,X
+1,26,7,OM-PAN,,,CL,,Marseille,Panama,,,,,1
+1,26,8,ROT-FEY,,,HOL,,Sparta Rotterdam,Feyenoord,,,,,X
+1,26,9,SPA-FCK,,,CL,,Spanien,FCK,,,,,X
+1,26,10,TOT-MAU,,,PL,,Tottenham,Manchester United,,,,,1
+1,27,1,BRA-PAN,,,CL,,Braga,Panama,,,,,1
+1,27,2,FCM-LEG,,,ECL,,FC Midtjylland,Legia,,,,,X
+1,27,3,FCN-BEO,,,ECL,,FC Nordsjælland,Partizan Beograd,,,,,1
+1,27,4,FEN-TWE,,,ECL,,Fenerbahce,Twente,,,,,1
+1,27,5,HAI-YB,,,CL,,Maccabi Haifa,Young Boys,,,,,X
+1,27,6,MOL-GAL,,,CL,,Molde,Galatasaray,,,,,2
+1,27,7,OSA-CLB,,,ECL,,Osasuna,Club Brügge,,,,,2
+1,27,8,RAK-FCK,,,CL,,Rakow,FCK,,,,,2
+1,27,9,RAN-PSV,,,CL,,Rangers,PSV,,,,,X
+1,27,10,RFC-VFF,,,SL,,Randers,Viborg,,,,,1
+1,28,1,ACM-TOR,,,ITA,,AC Milan,Torino,,,,,1
+1,28,2,AEK-ANT,,,CL,,AEK Athen,Antwerpen,,,,,2
+1,28,3,FCK-RAK,,,CL,,FCK,Rakow,,,,,X
+1,28,4,FCN-FCM,,,SL,,FC Nordsjælland,FC Midtjylland,,,,,1
+1,28,5,MAI-FRA,,,TYS,,Mainz,Frankfurt,,,,,X
+1,28,6,NEW-LIV,,,PL,,Newcastle,Liverpool,,,,,2
+1,28,7,PAN-BRA,,,CL,,Panama,Braga,,,,,2
+1,28,8,PSV-RAN,,,CL,,PSV,Rangers,,,,,1
+1,28,9,SEV-GIR,,,SPA,,Sevilla,Girona,,,,,2
+1,28,10,YB-HAI,,,CL,,Young Boys,Maccabi Haifa,,,,,1
+1,29,1,ABE-HÄC,,,EL,,Aberdeen,Häcken,,,,,2
+1,29,2,LBK-FCN,,,SL,,Lyngby,FC Nordsjælland,,,,,X
+1,29,3,LEG-FCM,,,EL,,Legia,FC Midtjylland,,,,,X
+1,29,4,NAP-LAZ,,,ITA,,Napoli,Lazio,,,,,2
+1,29,5,OSA-BAR,,,SPA,,Osasuna,Barcelona,,,,,2
+1,29,6,RAN-CEL,,,SKO,,Rangers,Celtic,,,,,2
+1,29,7,SHT-KLA,,,EL,,Sheriff Tiraspol,Klaksvik,,,,,1
+1,29,8,SKB-AZ,,,ECL,,Brann,AZ Alkmaar,,,,,X
+1,29,9,SPA-ZAG,,,EL,,Spanien,Dinamo Zagreb,,,,,1
+1,29,10,STU-FRE,,,TYS,,Stuttgart,Freiburg,,,,,1
+1,30,1,FIN-DAN,,,INT,,Finland,Danmark,,,,,2
+1,30,2,HOL-GRÆ,,,INT,,Holland,Grækenland,,,,,1
+1,30,3,IRL-HOL,,,INT,,Irland,Holland,,,,,2
+1,30,4,OLD-MEP,,,TYS,,Oldenburg,Meppen,,,,,1
+1,30,5,OVI-GIJ,,,SPA,,Real Oviedo,Sporting Gijon,,,,,X
+1,30,6,PVA-CRW,,,ENG,,Port Vale,Crewe Alexandra,,,,,1
+1,30,7,SER-UNG,,,INT,,Servette,Ungarn,,,,,2
+1,30,8,SJE-VB,,,DAN,,Sønderjyske,Vejle,,,,,2
+1,30,9,STV-CAU,,,ENG,,Stevenage,Carlisle United,,,,,X
+1,30,10,UKR-ENG,,,INT,,Ukraine,England ,,,,,X
+1,31,1,BAL-TNS,,,WAL,,Bala Town,The New Saints,,,,,X
+1,31,2,CAR-SWA,,,ENG,,Cardiff,Swansea,,,,,1
+1,31,3,DAR-GLA,,,TYS,,Darmstadt,Gladbach,,,,,X
+1,31,4,FCN-FCK,,,SL,,FC Nordsjælland,FCK,,,,,X
+1,31,5,HBK-KIF,,,DAN,,HB Køge,Kolding IF,,,,,2
+1,31,6,INT-ACM,,,ITA,,Inter,AC Milan,,,,,1
+1,31,7,ITA-UKR,,,INT,,Italien,Ukraine,,,,,1
+1,31,8,NOR-GEO,,,INT,,Norge,Georgien,,,,,1
+1,31,9,RMA-RSO,,,SPA,,Real Madrid,Sociedad,,,,,1
+1,31,10,SVE-ØST,,,INT,,Sverige,Østrig,,,,,2
+1,32,1,ACM-NEW,,,CL,,AC Milan,Newcastle,,,,,X
+1,32,2,ARS-TOT,,,PL,,Arsenal,Tottenham,,,,,X
+1,32,3,ATM-RMA,,,SPA,,Atletico Madrid,Real Madrid,,,,,1
+1,32,4,BAY-MAU,,,CL,,Bayern München,Manchester United,,,,,1
+1,32,5,BIF-FCK,,,SL,,Brøndby,FCK,,,,,2
+1,32,6,FEN-FCN,,,ECL,,Fenerbahce,FC Nordsjælland,,,,,1
+1,32,7,GAL-FCK,,,CL,,Galatasaray,FCK,,,,,X
+1,32,8,GLA-RBL,,,TYS,,Gladbach,RB Leipzig,,,,,2
+1,32,9,LAZ-ATM,,,CL,,Lazio,Atletico Madrid,,,,,X
+1,32,10,SAS-JUV,,,ITA,,Sassuolo,Juventus,,,,,1
+1,33,1,ACM-LAZ,,,ITA,,AC Milan,Lazio,,,,,1
+1,33,2,AVI-BHA,,,PL,,Aston Villa,Brighton,,,,,1
+1,33,3,FCK-FCM,,,SL,,FCK,FC Midtjylland,,,,,2
+1,33,4,GRA-BET,,,SPA,,Grasshoppers,Betis,,,,,X
+1,33,5,LIL-REI,,,FRA,,Lille,Reims,,,,,2
+1,33,6,NAP-UDI,,,ITA,,Napoli,Udinese,,,,,1
+1,33,7,RBL-BAY,,,TYS,,RB Leipzig,Bayern München,,,,,X
+1,33,8,RSO-BIL,,,SPA,,Sociedad,Athletic Bilbao,,,,,1
+1,33,9,VÅL-BOD,,,NOR,,Vålerenga,Bodø/Glimt,,,,,2
+1,33,10,ZÜR-GRA,,,SCH,,Zürich,Grasshoppers,,,,,1
+1,34,1,ALA-OSA,,,SPA,,Alaves,Osasuna,,,,,2
+1,34,2,ATA-JUV,,,ITA,,Atalanta,Juventus,,,,,X
+1,34,3,BVB-ACM,,,CL,,Dortmund,AC Milan,,,,,X
+1,34,4,FCK-BAY,,,CL,,FCK,Bayern München,,,,,2
+1,34,5,FCP-BAR,,,CL,,Porto,Barcelona,,,,,2
+1,34,6,FRE-AUG,,,TYS,,Freiburg,Augsburg,,,,,1
+1,34,7,HIF-BIF,,,SL,,Hvidovre,Brøndby,,,,,2
+1,34,8,NAP-RMA,,,CL,,Napoli,Real Madrid,,,,,2
+1,34,9,OM-BHA,,,EL,,Marseille,Brighton,,,,,X
+1,34,10,REN-NAN,,,FRA,,Rennes,Nantes,,,,,1
+1,35,1,AGF-FCK,,,SL,,AGF,FCK,,,,,X
+1,35,2,CHT-SOC,,,FRA,,Chateareaux,Sochaux,,,,,X
+1,35,3,CYP-NOR,,,INT,,Cypern,Norge,,,,,2
+1,35,4,GWA-WFC,,,IRL,,Galway,Waterford FC,,,,,1
+1,35,5,HOL-FRK,,,INT,,Holland,Frankrig,,,,,2
+1,35,6,KIF-HBK,,,DAN,,Kolding IF,HB Køge,,,,,1
+1,35,7,KRO-TYR,,,INT,,Kroatien,Tyrkiet,,,,,2
+1,35,8,SUN-MID,,,ENG,,Sunderland,Middlesbrough,,,,,2
+1,35,9,VIL-LAS,,,SPA,,Villarreal,Las Palmas,,,,,2
+1,35,10,YB-BAS,,,SCH,,Young Boys,Basel,,,,,1
+1,36,1,BEL-SVE,,,INT,,Belgien,Sverige,,,,,X
+1,36,2,BOS-POR,,,INT,,Bosnien,Portugal,,,,,2
+1,36,3,BVB-WER,,,TYS,,Dortmund,Werder Bremen,,,,,1
+1,36,4,DAN-KAZ,,,INT,,Danmark,Kazakhstan,,,,,1
+1,36,5,ENG-ITA,,,INT,,England ,Italien,,,,,1
+1,36,6,FLU-COR,,,BRA,,Fluminense,Corinthians,,,,,X
+1,36,7,NOR-SPA,,,INT,,Norge,Spanien,,,,,2
+1,36,8,SER-MON,,,INT,,Servette,Montenegro,,,,,1
+1,36,9,SLO-FIN,,,INT,,Slovenien,Finland,,,,,1
+1,36,10,ZRI-MOS,,,BOS,,Zrinjski Mostar,Velez Mostar,,,,,1
+1,37,1,ACM-JUV,,,ITA,,AC Milan,Juventus,,,,,2
+1,37,2,BAR-BIL,,,SPA,,Barcelona,Athletic Bilbao,,,,,1
+1,37,3,CHE-ARS,,,PL,,Chelsea,Arsenal,,,,,X
+1,37,4,FCK-VB,,,SL,,FCK,Vejle,,,,,1
+1,37,5,GAL-BES,,,TYR,,Galatasaray,Besiktas,,,,,1
+1,37,6,HEI-AUG,,,TYS,,Heidenheim,Augsburg,,,,,2
+1,37,7,LBK-AGF,,,SL,,Lyngby,AGF,,,,,2
+1,37,8,VER-NAP,,,ITA,,Verona,Napoli,,,,,2
+1,37,9,VFF-FCN,,,SL,,Viborg,FC Nordsjælland,,,,,2
+1,37,10,WLF-LEV,,,TYS,,Wolfsburg,Bayer Leverkusen,,,,,2
+1,38,1,BAR-RMA,,,SPA,,Barcelona,Real Madrid,,,,,2
+1,38,2,BIF-FCN,,,SL,,Brøndby,FC Nordsjælland,,,,,1
+1,38,3,FEY-LAZ,,,CL,,Feyenoord,Lazio,,,,,1
+1,38,4,INT-ROM,,,ITA,,Inter,Roma,,,,,1
+1,38,5,MAU-FCK,,,CL,,Manchester United,FCK,,,,,1
+1,38,6,MAU-MCI,,,PL,,Manchester United,Manchester City,,,,,2
+1,38,7,PSG-ACM,,,CL,,PSG,AC Milan,,,,,1
+1,38,8,SEV-ARS,,,CL,,Sevilla,Arsenal,,,,,2
+1,38,9,STU-HOF,,,TYS,,Stuttgart,Hoffenheim,,,,,2
+1,38,10,TRN-FCN,,,ECL,,Trnava,FC Nordsjælland,,,,,2
+1,39,1,AJA-VOL,,,HOL,,Ajax,Volendam,,,,,1
+1,39,2,BER-MAI,,,TYS,,Hertha Berlin,Mainz,,,,,1
+1,39,3,BOC-FLU,,,SA,,Boca,Fluminense,,,,,X
+1,39,4,BVB-BAY,,,TYS,,Dortmund,Bayern München,,,,,2
+1,39,5,COM-TEN,,,SPA,,Compostela,Tenerife,,,,,2
+1,39,6,FCK-FCM,,,DAN,,FCK,FC Midtjylland,,,,,1
+1,39,7,SAL-NAP,,,ITA,,Salernitana,Napoli,,,,,2
+1,39,8,TOT-CHE,,,PL,,Tottenham,Chelsea,,,,,2
+1,39,9,UDI-CAG,,,ITA,,Udinese,Cagliari,,,,,X
+1,39,10,VIL-BIL,,,SPA,,Villarreal,Athletic Bilbao,,,,,2
+1,40,1,AEK-OM,,,EL,,AEK Athen,Marseille,,,,,2
+1,40,2,AJA-BHA,,,EL,,Ajax,Brighton,,,,,2
+1,40,3,ARS-SEV,,,CL,,Arsenal,Sevilla,,,,,1
+1,40,4,AVI-AZ,,,ECL,,Aston Villa,AZ Alkmaar,,,,,1
+1,40,5,BVB-NEW,,,CL,,Dortmund,Newcastle,,,,,1
+1,40,6,FCK-MAU,,,CL,,FCK,Manchester United,,,,,1
+1,40,7,LAZ-FEY,,,CL,,Lazio,Feyenoord,,,,,1
+1,40,8,LJU-KLA,,,ECL,,Olimpija Ljubljana,Klaksvik,,,,,1
+1,40,9,PSV-LEN,,,CL,,PSV,Lens,,,,,1
+1,40,10,WHU-OLY,,,EL,,West Ham,Olympiakos,,,,,1
+1,41,1,BCH-KÖL,,,TYS,,Bochum,Köln,,,,,X
+1,41,2,CRY-EVE,,,PL,,Crystal Palace,Everton,,,,,2
+1,41,3,FCK-BIF,,,SL,,FCK,Brøndby,,,,,X
+1,41,4,FIO-BLG,,,ITA,,Fiorentina,Bologna,,,,,1
+1,41,5,KIE-HSV,,,TYS,,Holstein Kiel,HSV Hamburg,,,,,1
+1,41,6,LAZ-ROM,,,ITA,,Lazio,Roma,,,,,X
+1,41,7,LEC-ACM,,,ITA,,Lecce,AC Milan,,,,,X
+1,41,8,MFF-ELF,,,SVE,,Malmö FF,Elfsborg,,,,,1
+1,41,9,NYK-THI,,,DAN,,Nykøbing FC,Thisted FC,,,,,X
+1,41,10,SEV-BET,,,SPA,,Sevilla,Betis,,,,,X
+1,42,1,ARM-WAL,,,INT,,Armenien,Wales,,,,,X
+1,42,2,BRB-AAF,,,DAN,,Brabrand,Aarhus Fremad,,,,,X
+1,42,3,BUR-PVA,,,ENG,,Burnley,Port Vale,,,,,2
+1,42,4,CRA-CHA,,,ENG,,Cray Village,Charlton,,,,,2
+1,42,5,DAN-SLO,,,INT,,Danmark,Slovenien,,,,,1
+1,42,6,HOL-IRL,,,INT,,Holland,Irland,,,,,1
+1,42,7,ISR-RUM,,,INT,,Israel,Rumænien,,,,,2
+1,42,8,LET-KRO,,,INT,,Letland,Kroatien,,,,,2
+1,42,9,POL-TJE,,,INT,,Polen,Tjekkiet,,,,,X
+1,42,10,SVK-ISL,,,INT,,Slovakiet,Island,,,,,1
+1,43,1,CAM-ROD,,,HOL,,Cambuur,Roda,,,,,X
+1,43,2,CRT-ALB,,,SPA,,Cartagena,Albacete,,,,,X
+1,43,3,FCF-B93,,,DAN,,FC Fredericia,B93,,,,,2
+1,43,4,GRÆ-FRK,,,INT,,Grækenland,Frankrig,,,,,X
+1,43,5,NI-DAN,,,INT,,Nordirland,Danmark,,,,,1
+1,43,6,RUM-SWI,,,INT,,Rumænien,Schweiz,,,,,1
+1,43,7,SKO-NOR,,,INT,,Skotland,Norge,,,,,X
+1,43,8,SMA-FSV,,,TYS,,Schott Mainz,FSV Frankfurt,,,,,X
+1,43,9,WAL-TYR,,,INT,,Wales,Tyrkiet,,,,,X
+1,43,10,ZRI-SIR,,,BOS,,Zrinjski Mostar,Siroki Brijeg,,,,,1
+1,44,1,ACM-FIO,,,ITA,,AC Milan,Fiorentina,,,,,1
+1,44,2,BVB-GLA,,,TYS,,Dortmund,Gladbach,,,,,1
+1,44,3,HEI-BCH,,,TYS,,Heidenheim,Bochum,,,,,X
+1,44,4,HOF-MAI,,,TYS,,Hoffenheim,Mainz,,,,,X
+1,44,5,JUV-INT,,,ITA,,Juventus,Inter,,,,,X
+1,44,6,LBK-BIF,,,SL,,Lyngby,Brøndby,,,,,X
+1,44,7,RFC-OB,,,SL,,Randers,OB,,,,,2
+1,44,8,RVA-BAR,,,SPA,,Rayo Vallecano,Barcelona,,,,,X
+1,44,9,SAL-LAZ,,,ITA,,Salernitana,Lazio,,,,,1
+1,44,10,VFF-FCK,,,SL,,Viborg,FCK,,,,,1
+1,45,1,ACM-BVB,,,CL,,AC Milan,Dortmund,,,,,2
+1,45,2,BAY-FCK,,,CL,,Bayern München,FCK,,,,,X
+1,45,3,FCN-FEN,,,ECL,,FC Nordsjælland,Fenerbahce,,,,,1
+1,45,4,FEY-ATM,,,CL,,Feyenoord,Atletico Madrid,,,,,2
+1,45,5,GAL-MAU,,,CL,,Galatasaray,Manchester United,,,,,X
+1,45,6,LAZ-CAG,,,ITA,,Lazio,Cagliari,,,,,1
+1,45,7,NEW-MAU,,,PL,,Newcastle,Manchester United,,,,,1
+1,45,8,OSA-RSO,,,SPA,,Osasuna,Sociedad,,,,,X
+1,45,9,OXF-GRI,,,ENG,,Oxford United,Grimsby,,,,,1
+1,45,10,STU-WER,,,TYS,,Stuttgart,Werder Bremen,,,,,1
+1,46,1,BAR-ATM,,,SPA,,Barcelona,Atletico Madrid,,,,,1
+1,46,2,BHA-BRN,,,PL,,Brighton,Brentford,,,,,1
+1,46,3,BIF-HIF,,,SL,,Brøndby,Hvidovre,,,,,1
+1,46,4,FEY-PSV,,,HOL,,Feyenoord,PSV,,,,,2
+1,46,5,LAZ-GEN,,,ITA,,Lazio,Genoa,,,,,1
+1,46,6,LEV-BVB,,,TYS,,Bayer Leverkusen,Dortmund,,,,,X
+1,46,7,OM-LYO,,,FRA,,Marseille,Lyon,,,,,1
+1,46,8,SAA-FRA,,,TYS,,Saarbrücken,Frankfurt,,,,,1
+1,46,9,SAS-ROM,,,ITA,,Sassuolo,Roma,,,,,2
+1,46,10,TOT-WHU,,,PL,,Tottenham,West Ham,,,,,X
+1,47,1,ATA-ACM,,,ITA,,Atalanta,AC Milan,,,,,1
+1,47,2,BES-FEN,,,TYR,,Besiktas,Fenerbahce,,,,,2
+1,47,3,BVB-RBL,,,TYS,,Dortmund,RB Leipzig,,,,,2
+1,47,4,FCC-UEC,,,AND,,FC Santa Coloma,UE Santa Coloma,,,,,2
+1,47,5,KÖL-MAI,,,TYS,,Köln,Mainz,,,,,X
+1,47,6,ROM-FIO,,,ITA,,Roma,Fiorentina,,,,,X
+1,47,7,STU-LEV,,,TYS,,Stuttgart,Bayer Leverkusen,,,,,X
+1,47,8,TOT-NEW,,,PL,,Tottenham,Newcastle,,,,,1
+1,47,9,VER-LAZ,,,ITA,,Verona,Lazio,,,,,X
+1,47,10,VIL-RSO,,,SPA,,Villarreal,Sociedad,,,,,2
+1,48,1,BET-RAN,,,EL,,Betis,Rangers,,,,,2
+1,48,2,FCK-GAL,,,CL,,FCK,Galatasaray,,,,,1
+1,48,3,FCP-SHA,,,CL,,Porto,Shakhtar Donetsk,,,,,1
+1,48,4,GEN-JUV,,,ITA,,Genoa,Juventus,,,,,X
+1,48,5,LEO-URA,,,FWC,,Leon,Urawa,,,,,2
+1,48,6,LUD-FCN,,,ECL,,Ludogorets,FC Nordsjælland,,,,,1
+1,48,7,NEW-ACM,,,CL,,Newcastle,AC Milan,,,,,2
+1,48,8,PVA-STV,,,ENG,,Port Vale,Stevenage,,,,,X
+1,48,9,SPE-BAI,,,ITA,,Spezia,Bari,,,,,1
+1,48,10,SUN-LEE,,,ENG,,Sunderland,Leeds,,,,,1
+1,49,1,BAY-STU,,,TYS,,Bayern München,Stuttgart,,,,,1
+1,49,2,BCH-UNI,,,TYS,,Bochum,Union Berlin,,,,,1
+1,49,3,BIL-ATM,,,SPA,,Athletic Bilbao,Atletico Madrid,,,,,1
+1,49,4,LAZ-INT,,,ITA,,Lazio,Inter,,,,,2
+1,49,5,LEV-FRA,,,TYS,,Bayer Leverkusen,Frankfurt,,,,,1
+1,49,6,LIV-MAU,,,PL,,Liverpool,Manchester United,,,,,X
+1,49,7,MEL-SYD,,,AUS,,Melbourne Victory,Sydney FC,,,,,1
+1,49,8,SGA-ZÜR,,,SCH,,St Gallen,Zürich,,,,,1
+1,49,9,TOR-EMP,,,ITA,,Torino,Empoli,,,,,1
+1,49,10,ZAG-HAJ,,,KRO,,Dinamo Zagreb,Hajduk Split,,,,,X
+1,50,1,APO-OMO,,,CYP,,APOEL Nicosia,Omonia,,,,,1
+1,50,2,CAP-MAM,,,SA,,Cape Town City,Mamelodi Sundowns,,,,,X
+1,50,3,FEN-GAL,,,TYR,,Fenerbahce,Galatasaray,,,,,X
+1,50,4,HAA-ROT,,,HOL,,ADO den Haag,Sparta Rotterdam,,,,,1
+1,50,5,HEI-FRE,,,TYS,,Heidenheim,Freiburg,,,,,1
+1,50,6,MAL-OSA,,,SPA,,Mallorca,Osasuna,,,,,1
+1,50,7,NAP-FRO,,,ITA,,Napoli,Frosinone,,,,,2
+1,50,8,NOT-BOU,,,PL,,Nottingham Forest,Bournemouth,,,,,2
+1,50,9,ROM-NAP,,,ITA,,Roma,Napoli,,,,,1
+1,50,10,WER-RBL,,,TYS,,Werder Bremen,RB Leipzig,,,,,X
+1,51,1,ABE-MOT,,,SKO,,Aberdeen,Motherwell,,,,,
+1,51,2,AVI-BUR,,,PL,,Aston Villa,Burnley,,,,,1
+1,51,3,CAS-BRA,,,POR,,Casa Pia,Braga,,,,,2
+1,51,4,CLB-USG,,,BEL,,Club Brügge,Union St Gilloise,,,,,X
+1,51,5,FUL-ARS,,,PL,,Fulham,Arsenal,,,,,1
+1,51,6,JUV-ROM,,,ITA,,Juventus,Roma,,,,,1
+1,51,7,LUT-CHE,,,PL,,Luton,Chelsea,,,,,2
+1,51,8,MAU-AVI,,,PL,,Manchester United,Aston Villa,,,,,1
+1,51,9,MLB-BRI,,,AUS,,Melbourne CIty,Brisbane Roar,,,,,1
+1,51,10,WBA-LEE,,,ENG,,West Bromwich,Leeds,,,,,1
+1,52,1,ACM-CAG,,,ITA,,AC Milan,Cagliari,,,,,1
+1,52,2,CRU-LIN,,,NI,,Crusaders,Linfield,,,,,2
+1,52,3,ESP-GET,,,SPA,,Espanyol,Getafe,,,,,2
+1,52,4,FRO-MOZ,,,ITA,,Frosinone,Monza,,,,,2
+1,52,5,GIR-ATM,,,SPA,,Girona,Atletico Madrid,,,,,1
+1,52,6,KAY-SIV,,,TYR,,Kayserispor,Sivasspor,,,,,2
+1,52,7,LAS-BAR,,,SPA,,Las Palmas,Barcelona,,,,,2
+1,52,8,LEN-ASM,,,FRA,,Lens,Monaco,,,,,X
+1,52,9,PSG-TOU,,,FRA,,PSG,Toulouse,,,,,1
+1,52,10,UDI-LAZ,,,ITA,,Udinese,Lazio,,,,,2
+1,53,1,ACM-ROM,,,ITA,,AC Milan,Roma,,,,,1
+1,53,2,CAG-BLG,,,ITA,,Cagliari,Bologna,,,,,1
+1,53,3,FIO-BLG,,,ITA,,Fiorentina,Bologna,,,,,X
+1,53,4,GLA-STU,,,TYS,,Gladbach,Stuttgart,,,,,1
+1,53,5,MID-CHE,,,ENG,,Middlesbrough,Chelsea,,,,,1
+1,53,6,NEW-MCI,,,PL,,Newcastle,Manchester City,,,,,2
+1,53,7,RMA-ATM,,,SPA,,Real Madrid,Atletico Madrid,,,,,X
+1,53,8,SLB-BRA,,,POR,,Benfica,Braga,,,,,1
+1,53,9,TRA-SAM,,,TYR,,Trabzonspor,Samsunspor,,,,,1
+1,53,10,ZES-NKW,,,ZAM,,Zesco United,Nkwazi,,,,,1
+1,54,1,BET-BAR,,,SPA,,Betis,Barcelona,,,,,2
+1,54,2,BFC-CAR,,,ENG,,Barnsley,Cardiff,,,,,1
+1,54,3,GLA-AUG,,,TYS,,Gladbach,Augsburg,,,,,2
+1,54,4,JUV-SAS,,,ITA,,Juventus,Sassuolo,,,,,1
+1,54,5,LEO-TIG,,,MEX,,Leon,Tigres,,,,,2
+1,54,6,NAP-FIO,,,ITA,,Napoli,Fiorentina,,,,,1
+1,54,7,NIJ-GOA,,,HOL,,Nijmegen,Go Ahead Eagles,,,,,1
+1,54,8,RBL-LEV,,,TYS,,RB Leipzig,Bayer Leverkusen,,,,,2
+1,54,9,VAL-BIL,,,SPA,,Valencia,Athletic Bilbao,,,,,1
+1,54,10,VIT-FEY,,,HOL,,Vitesse,Feyenoord,,,,,2
+1,55,1,BAR-VIL,,,SPA,,Barcelona,Villarreal,,,,,2
+1,55,2,BAY-UNI,,,TYS,,Bayern München,Union Berlin,,,,,1
+1,55,3,CHA-NRH,,,ENG,,Charlton,Northampton,,,,,2
+1,55,4,FIO-INT,,,ITA,,Fiorentina,Inter,,,,,2
+1,55,5,LAZ-NAP,,,ITA,,Lazio,Napoli,,,,,X
+1,55,6,OXF-BFC,,,ENG,,Oxford United,Barnsley,,,,,2
+1,55,7,RIZ-TRA,,,TYR,,Rizespor,Trabzonspor,,,,,1
+1,55,8,SJH-ABE,,,SKO,,St Johnstone,Aberdeen,,,,,X
+1,55,9,VIG-GIR,,,SPA,,Celta Vigo,Girona,,,,,2
+1,55,10,WOL-KÖL,,,TYS,,Wolfsburg,Köln,,,,,X
+1,56,1,ATM-VLL,,,SPA,,Atletico Madrid,Valladolid,,,,,1
+1,56,2,AVI-NEW,,,PL,,Aston Villa,Newcastle,,,,,2
+1,56,3,BAR-OSA,,,SPA,,Barcelona,Osasuna,,,,,1
+1,56,4,CHM-EIL,,,TYS,,Chemnitzer,Eilenburg,,,,,1
+1,56,5,GET-RMA,,,SPA,,Getafe,Real Madrid,,,,,2
+1,56,6,INT-JUV,,,ITA,,Inter,Juventus,,,,,1
+1,56,7,MAI-WER,,,TYS,,Mainz,Werder Bremen,,,,,2
+1,56,8,NAP-VER,,,ITA,,Napoli,Verona,,,,,1
+1,56,9,RMA-ATM,,,SPA,,Real Madrid,Atletico Madrid,,,,,X
+1,56,10,VAL-ALM,,,SPA,,Valencia,Almeria,,,,,1
+1,57,1,18M-RWE,,,TYS,,1860 München,Rot Weiss Essen,,,,,1
+1,57,2,ACM-NAP,,,ITA,,AC Milan,Napoli,,,,,1
+1,57,3,ALA-VIL,,,SPA,,Alaves,Villarreal,,,,,X
+1,57,4,CES-HRD,,,CRC,,Cartagines,Herediano,,,,,2
+1,57,5,GUI-GIL,,,POR,,Guimaraes,Gil Vicente,,,,,1
+1,57,6,LEV-BAY,,,TYS,,Bayer Leverkusen,Bayern München,,,,,1
+1,57,7,MAI-UNI,,,TYS,,Mainz,Union Berlin,,,,,X
+1,57,8,RMA-GIR,,,SPA,,Real Madrid,Girona,,,,,1
+1,57,9,SAL-EMP,,,ITA,,Salernitana,Empoli,,,,,2
+1,57,10,WED-BIR,,,ENG,,Sheffield Wednesday,Birmingham,,,,,1
+1,58,1,BET-ZAG,,,ECL,,Betis,Dinamo Zagreb,,,,,2
+1,58,2,FCK-MCI,,,CL,,FCK,Manchester City,,,,,2
+1,58,3,FEY-ROM,,,EL,,Feyenoord,Roma,,,,,X
+1,58,4,GAL-SPP,,,EL,,Galatasaray,Sparta Prag,,,,,1
+1,58,5,LAZ-BAY,,,CL,,Lazio,Bayern München,,,,,1
+1,58,6,PSG-RSO,,,CL,,PSG,Sociedad,,,,,1
+1,58,7,RBL-RMA,,,CL,,RB Leipzig,Real Madrid,,,,,2
+1,58,8,SHA-OM,,,EL,,Shakhtar Donetsk,Marseille,,,,,X
+1,58,9,SLB-TOU,,,EL,,Benfica,Toulouse,,,,,1
+1,58,10,YB-SPO,,,EL,,Young Boys,Sporting Lissabon,,,,,2
+2,1,1,AJA-AVI,,,ECL,,Ajax,Aston Villa,,,,,X
+2,1,2,BAY-LAZ,,,CL,,Bayern München,Lazio,,,,,1
+2,1,3,BIL-BAR,,,SPA,,Athletic Bilbao,Barcelona,,,,,X
+2,1,4,FCN-SIF,,,SL,,FC Nordsjælland,Silkeborg,,,,,1
+2,1,5,MCI-FCK,,,CL,,Manchester City,FCK,,,,,1
+2,1,6,MCI-MAU,,,PL,,Manchester City,Manchester United,,,,,1
+2,1,7,MOZ-ROM,,,ITA,,Monza,Roma,,,,,2
+2,1,8,RMA-RBL,,,CL,,Real Madrid,RB Leipzig,,,,,X
+2,1,9,RSO-PSG,,,CL,,Sociedad,PSG,,,,,2
+2,1,10,SPP-LIV,,,EL,,Sparta Prag,Liverpool,,,,,2
+2,2,1,ARS-FCP,,,CL,,Arsenal,Porto,,,,,1
+2,2,2,ATM-INT,,,CL,,Atletico Madrid,Inter,,,,,1
+2,2,3,AVI-AJA,,,ECL,,Aston Villa,Ajax,,,,,1
+2,2,4,BAR-NAP,,,CL,,Barcelona,Napoli,,,,,1
+2,2,5,BLG-INT,,,ITA,,Bologna,Inter,,,,,2
+2,2,6,BVB-PSV,,,CL,,Dortmund,PSV,,,,,1
+2,2,7,FRA-HOF,,,TYS,,Frankfurt,Hoffenheim,,,,,1
+2,2,8,GIR-OSA,,,SPA,,Girona,Osasuna,,,,,1
+2,2,9,LIV-MCI,,,PL,,Liverpool,Manchester City,,,,,X
+2,2,10,RFC-FCM,,,SL,,Randers,FC Midtjylland,,,,,2
+2,3,1,ADR-AMO,,,SPA,,FC Andorra,Amorebieta,,,,,2
+2,3,2,ATM-BAR,,,SPA,,Atletico Madrid,Barcelona,,,,,2
+2,3,3,BAB-CHM,,,TYS,,Babelsberg,Chemnitzer,,,,,1
+2,3,4,BIL-ALA,,,SPA,,Athletic Bilbao,Alaves,,,,,1
+2,3,5,BRD-NTC,,,ENG,,Bradford,Notts County,,,,,2
+2,3,6,CHE-LEI,,,ENG,,Chelsea,Leicester,,,,,1
+2,3,7,HOF-STU,,,TYS,,Hoffenheim,Stuttgart,,,,,2
+2,3,8,INT-NAP,,,ITA,,Inter,Napoli,,,,,X
+2,3,9,LBK-VFF,,,SL,,Lyngby,Viborg,,,,,1
+2,3,10,MAU-LIV,,,ENG,,Manchester United,Liverpool,,,,,X
+2,4,1,BOS-UKR,,,INT,,Bosnien,Ukraine,,,,,2
+2,4,2,GEO-LUX,,,INT,,Georgien,Luxembourg,,,,,1
+2,4,3,GIB-LIT,,,INT,,Gibraltar,Lituaen,,,,,2
+2,4,4,GRÆ-KAZ,,,INT,,Grækenland,Kazakhstan,,,,,1
+2,4,5,ISR-ISL,,,INT,,Israel,Island,,,,,2
+2,4,6,NOR-TJE,,,INT,,Norge,Tjekkiet,,,,,2
+2,4,7,POL-ESL,,,INT,,Polen,Estland,,,,,1
+2,4,8,POR-SVE,,,INT,,Portugal,Sverige,,,,,1
+2,4,9,SPA-CMB,,,INT,,Spanien,Colombia,,,,,2
+2,4,10,WAL-FIN,,,INT,,Wales,Finland,,,,,1
+2,5,1,ALB-FER,,,SPA,,Albacete,Ferencvaros,,,,,X
+2,5,2,CAN-TRI,,,INT,,Canada,Trinidad,,,,,1
+2,5,3,CRC-HON,,,INT,,Costa Rica,Honduras,,,,,1
+2,5,4,DAN-SWI,,,INT,,Danmark,Schweiz,,,,,X
+2,5,5,EFB-AAF,,,DAN,,Esbjerg,Aarhus Fremad,,,,,X
+2,5,6,FCR-NYK,,,DAN,,FC Roskilde,Nykøbing FC,,,,,1
+2,5,7,GEO-GRÆ,,,INT,,Georgien,Grækenland,,,,,X
+2,5,8,GIM-GUA,,,SPA,,Gimnastica Segoviana,Guadalajara,,,,,1
+2,5,9,UKR-ISL,,,INT,,Ukraine,Island,,,,,1
+2,5,10,WAL-POL,,,INT,,Wales,Polen,,,,,X
+2,6,1,AB-NYK,,,DAN,,AB,Nykøbing FC,,,,,2
+2,6,2,BAY-BVB,,,TYS,,Bayern München,Dortmund,,,,,2
+2,6,3,BRN-MAU,,,PL,,Brentford,Manchester United,,,,,X
+2,6,4,FCK-BIF,,,SL,,FCK,Brøndby,,,,,2
+2,6,5,FCN-AGF,,,DAN,,FC Nordsjælland,AGF,,,,,2
+2,6,6,FIO-ACM,,,ITA,,Fiorentina,AC Milan,,,,,2
+2,6,7,LAZ-JUV,,,ITA,,Lazio,Juventus,,,,,1
+2,6,8,MCI-ARS,,,PL,,Manchester City,Arsenal,,,,,X
+2,6,9,RMA-BIL,,,SPA,,Real Madrid,Athletic Bilbao,,,,,1
+2,6,10,SIF-FCF,,,DAN,,Silkeborg,FC Fredericia,,,,,1
+2,7,1,BRN-BHA,,,PL,,Brentford,Brighton,,,,,X
+2,7,2,CHE-MAU,,,PL,,Chelsea,Manchester United,,,,,1
+2,7,3,FIO-ATA,,,ITA,,Fiorentina,Atalanta,,,,,1
+2,7,4,FRA-WER,,,TYS,,Frankfurt,Werder Bremen,,,,,X
+2,7,5,GRN-VAL,,,SPA,,Granada,Valencia,,,,,2
+2,7,6,JUV-LAZ,,,ITA,,Juventus,Lazio,,,,,1
+2,7,7,LBK-OB,,,SL,,Lyngby,OB,,,,,X
+2,7,8,LEV-DÜS,,,TYS,,Bayer Leverkusen,Düsseldorf,,,,,1
+2,7,9,SAA-KAI,,,TYS,,Saarbrücken,Kaiserslautern,,,,,2
+2,7,10,WHU-TOT,,,PL,,West Ham,Tottenham,,,,,X
+2,8,1,AGF-FCN,,,DAN,,AGF,FC Nordsjælland,,,,,1
+2,8,2,ARS-BAY,,,CL,,Arsenal,Bayern München,,,,,X
+2,8,3,ATM-BVB,,,CL,,Atletico Madrid,Dortmund,,,,,1
+2,8,4,BIF-SIF,,,SL,,Brøndby,Silkeborg,,,,,X
+2,8,5,BIL-MAL,,,SPA,,Athletic Bilbao,Mallorca,,,,,X
+2,8,6,LIV-ATA,,,EL,,Liverpool,Atalanta,,,,,2
+2,8,7,MAU-LIV,,,PL,,Manchester United,Liverpool,,,,,X
+2,8,8,PSG-BAR,,,CL,,PSG,Barcelona,,,,,X
+2,8,9,RMA-MCI,,,CL,,Real Madrid,Manchester City,,,,,X
+2,8,10,ROM-LAZ,,,ITA,,Roma,Lazio,,,,,1
+2,9,1,ARS-AVI,,,PL,,Arsenal,Aston Villa,,,,,2
+2,9,2,ATM-GIR,,,SPA,,Atletico Madrid,Girona,,,,,1
+2,9,3,CHE-EVE,,,PL,,Chelsea,Everton,,,,,1
+2,9,4,FCM-FCK,,,SL,,FC Midtjylland,FCK,,,,,X
+2,9,5,GLA-BVB,,,TYS,,Gladbach,Dortmund,,,,,2
+2,9,6,LEC-EMP,,,ITA,,Lecce,Empoli,,,,,1
+2,9,7,NEW-TOT,,,PL,,Newcastle,Tottenham,,,,,1
+2,9,8,OSA-VAL,,,SPA,,Osasuna,Valencia,,,,,2
+2,9,9,STU-FRA,,,TYS,,Stuttgart,Frankfurt,,,,,1
+2,9,10,UDI-ROM,,,ITA,,Udinese,Roma,,,,,
+2,10,1,ATA-LIV,,,EL,,Atalanta,Liverpool,,,,,2
+2,10,2,BAR-PSG,,,CL,,Barcelona,PSG,,,,,2
+2,10,3,BAY-ARS,,,CL,,Bayern München,Arsenal,,,,,1
+2,10,4,BVB-ATM,,,CL,,Dortmund,Atletico Madrid,,,,,1
+2,10,5,FEN-OLY,,,ECL,,Fenerbahce,Olympiakos,,,,,1
+2,10,6,LIL-AVI,,,ECL,,Lille,Aston Villa,,,,,1
+2,10,7,MCI-RMA,,,CL,,Manchester City,Real Madrid,,,,,X
+2,10,8,PAO-CLB,,,ECL,,PAOK,Club Brügge,,,,,2
+2,10,9,ROM-ACM,,,EL,,Roma,AC Milan,,,,,1
+2,10,10,WHU-LEV,,,EL,,West Ham,Bayer Leverkusen,,,,,X
+2,11,1,ACM-INT,,,ITA,,AC Milan,Inter,,,,,2
+2,11,2,ATA-FIO,,,ITA,,Atalanta,Fiorentina,,,,,1
+2,11,3,BCH-HOF,,,TYS,,Bochum,Hoffenheim,,,,,1
+2,11,4,BHA-MCI,,,PL,,Brighton,Manchester City,,,,,2
+2,11,5,BIF-FCM,,,SL,,Brøndby,FC Midtjylland,,,,,1
+2,11,6,COV-MAU,,,ENG,,Coventry,Manchester United,,,,,X
+2,11,7,FEY-NIJ,,,HOL,,Feyenoord,Nijmegen,,,,,1
+2,11,8,LAZ-JUV,,,ITA,,Lazio,Juventus,,,,,1
+2,11,9,MCI-CHE,,,ENG,,Manchester City,Chelsea,,,,,1
+2,11,10,RMA-BAR,,,SPA,,Real Madrid,Barcelona,,,,,1
+2,12,1,AVI-OLY,,,ECL,,Aston Villa,Olympiakos,,,,,2
+2,12,2,BAY-RMA,,,CL,,Bayern München,Real Madrid,,,,,X
+2,12,3,BET-SEV,,,SPA,,Betis,Sevilla,,,,,X
+2,12,4,BVB-PSG,,,CL,,Dortmund,PSG,,,,,1
+2,12,5,FIO-CLB,,,ECL,,Fiorentina,Club Brügge,,,,,1
+2,12,6,MFF-DJU,,,SVE,,Malmö FF,Djurgården,,,,,X
+2,12,7,OM-ATA,,,EL,,Marseille,Atalanta,,,,,X
+2,12,8,ROM-LEV,,,EL,,Roma,Bayer Leverkusen,,,,,2
+2,12,9,SIF-FCM,,,SL,,Silkeborg,FC Midtjylland,,,,,1
+2,12,10,WHU-LIV,,,PL,,West Ham,Liverpool,,,,,X
+2,13,1,ARS-BOU,,,PL,,Arsenal,Bournemouth,,,,,1
+2,13,2,BUR-NEW,,,PL,,Burnley,Newcastle,,,,,2
+2,13,3,FCM-BIF,,,SL,,FC Midtjylland,Brøndby,,,,,1
+2,13,4,GIR-BAR,,,SPA,,Girona,Barcelona,,,,,1
+2,13,5,LIV-TOT,,,PL,,Liverpool,Tottenham,,,,,1
+2,13,6,ROM-JUV,,,ITA,,Roma,Juventus,,,,,X
+2,13,7,STU-BAY,,,TYS,,Stuttgart,Bayern München,,,,,1
+2,13,8,UDI-NAP,,,ITA,,Udinese,Napoli,,,,,X
+2,13,9,UNI-BCH,,,TYS,,Union Berlin,Bochum,,,,,2
+2,13,10,VB-OB,,,SL,,Vejle,OB,,,,,1
+2,14,1,ATA-OM,,,EL,,Atalanta,Marseille,,,,,1
+2,14,2,BOL-BFC,,,ENG,,Bolton,Barnsley,,,,,2
+2,14,3,CLB-FIO,,,ECL,,Club Brügge,Fiorentina,,,,,X
+2,14,4,LEV-ROM,,,EL,,Bayer Leverkusen,Roma,,,,,X
+2,14,5,OLY-AVI,,,ECL,,Olympiakos,Aston Villa,,,,,1
+2,14,6,PET-OXF,,,ENG,,Peterborough,Oxford United,,,,,X
+2,14,7,PSG-BVB,,,CL,,PSG,Dortmund,,,,,2
+2,14,8,RMA-BAY,,,CL,,Real Madrid,Bayern München,,,,,1
+2,14,9,SIF-AGF,,,DAN,,Silkeborg,AGF,,,,,1
+2,14,10,USG-ANT,,,BEL,,Union St Gilloise,Antwerpen,,,,,1
+2,15,1,ATA-JUV,,,ITA,,Atalanta,Juventus,,,,,2
+2,15,2,AVI-LIV,,,PL,,Aston Villa,Liverpool,,,,,X
+2,15,3,BIF-FCK,,,SL,,Brøndby,FCK,,,,,2
+2,15,4,CEL-RAN,,,SKO,,Celtic,Rangers,,,,,1
+2,15,5,FCK-FCM,,,SL,,FCK,FC Midtjylland,,,,,2
+2,15,6,GIR-VIL,,,SPA,,Girona,Villarreal,,,,,2
+2,15,7,KIE-DÜS,,,TYS,,Holstein Kiel,Düsseldorf,,,,,X
+2,15,8,MAU-ARS,,,PL,,Manchester United,Arsenal,,,,,2
+2,15,9,NOW-LEE,,,ENG,,Norwich,Leeds,,,,,X
+2,15,10,WBA-SOU,,,ENG,,West Bromwich,Southampton,,,,,X
+2,16,1,AGF-FCK,,,SL,,AGF,FCK,,,,,1
+2,16,2,AND-CLB,,,BEL,,Anderlecht,Club Brügge,,,,,2
+2,16,3,ATA-LEV,,,EL,,Atalanta,Bayer Leverkusen,,,,,1
+2,16,4,BES-TRA,,,TYR,,Besiktas,Trabzonspor,,,,,1
+2,16,5,BET-RSO,,,SPA,,Betis,Sociedad,,,,,2
+2,16,6,BLG-JUV,,,ITA,,Bologna,Juventus,,,,,X
+2,16,7,BOL-OXF,,,ENG,,Bolton,Oxford United,,,,,2
+2,16,8,FCN-FCM,,,SL,,FC Nordsjælland,FC Midtjylland,,,,,X
+2,16,9,HOF-BAY,,,TYS,,Hoffenheim,Bayern München,,,,,1
+2,16,10,UNI-FRE,,,TYS,,Union Berlin,Freiburg,,,,,1
+2,17,1,AIK-GÖT,,,SVE,,AIK,Göteborg,,,,,1
+2,17,2,BIF-AGF,,,SL,,Brøndby,AGF,,,,,2
+2,17,3,DÜS-BCH,,,TYS,,Düsseldorf,Bochum,,,,,2
+2,17,4,FCK-FCN,,,SL,,FCK,FC Nordsjælland,,,,,X
+2,17,5,FCP-SPO,,,POR,,Porto,Sporting Lissabon,,,,,X
+2,17,6,LEE-SOU,,,ENG,,Leeds,Southampton,,,,,2
+2,17,7,MCI-MAU,,,ENG,,Manchester City,Manchester United,,,,,2
+2,17,8,OLY-FIO,,,ECL,,Olympiakos,Fiorentina,,,,,X
+2,17,9,VFF-OB,,,SL,,Viborg,OB,,,,,1
+2,17,10,WEH-REG,,,TYS,,Wehen,Regensburg,,,,,2
+2,18,1,ATA-FIO,,,ITA,,Atalanta,Fiorentina,,,,,2
+2,18,2,BVB-RMA,,,CL,,Dortmund,Real Madrid,,,,,2
+2,18,3,DAN-SVE,,,INT,,Danmark,Sverige,,,,,1
+2,18,4,DJU-HAM,,,SVE,,Djurgården,Hammarby,,,,,2
+2,18,5,ISH-NÆS,,,DAN,,Ishøj,Næsby,,,,,X
+2,18,6,ITA-TYR,,,INT,,Italien,Tyrkiet,,,,,X
+2,18,7,MIR-AMO,,,SPA,,Mirandes,Amorebieta,,,,,1
+2,18,8,MLI-GHA,,,INT,,Mali,Ghana,,,,,2
+2,18,9,SER-LUG,,,SCH,,Servette,Lugano,,,,,X
+2,18,10,TYS-UKR,,,INT,,Tyskland,Ukraine,,,,,X
+2,19,1,ANG-CME,,,INT,,Angola,Cameroun,,,,,X
+2,19,2,BOH-DER,,,IRL,,Bohemians,Derry City,,,,,2
+2,19,3,DAN-NOR,,,INT,,Danmark,Norge,,,,,1
+2,19,4,GIJ-ESP,,,SPA,,Sporting Gijon,Espanyol,,,,,2
+2,19,5,GNI-HJK,,,FIN,,Gnistan,HJK Helsinki,,,,,2
+2,19,6,IRA-UZB,,,INT,,Iran,Uzbekistan,,,,,X
+2,19,7,JAP-SYR,,,INT,,Japan,Syrien,,,,,1
+2,19,8,OVI-EIB,,,SPA,,Real Oviedo,Eibar,,,,,X
+2,19,9,POR-KRO,,,INT,,Portugal,Kroatien,,,,,2
+2,19,10,UGA-ALG,,,INT,,Uganda,Algeriet,,,,,2
+2,20,1,BEL-SVK,,,INT,,Belgien,Slovakiet,,,,,2
+2,20,2,ITA-ABN,,,INT,,Italien,Albanien,,,,,1
+2,20,3,POR-TJE,,,INT,,Portugal,Tjekkiet,,,,,1
+2,20,4,SLO-DAN,,,INT,,Slovenien,Danmark,,,,,X
+2,20,5,SPA-KRO,,,INT,,Spanien,Kroatien,,,,,1
+2,20,6,SRB-ENG,,,INT,,Serbien,England ,,,,,2
+2,20,7,TYR-GEO,,,INT,,Tyrkiet,Georgien,,,,,1
+2,20,8,TYS-SKO,,,INT,,Tyskland,Skotland,,,,,1
+2,20,9,UNG-SWI,,,INT,,Ungarn,Schweiz,,,,,2
+2,20,10,ØST-FRK,,,INT,,Østrig,Frankrig,,,,,2
+2,21,1,BEL-RUM,,,INT,,Belgien,Rumænien,,,,,1
+2,21,2,DAN-ENG,,,INT,,Danmark,England ,,,,,X
+2,21,3,HOL-FRK,,,INT,,Holland,Frankrig,,,,,X
+2,21,4,KRO-ABN,,,INT,,Kroatien,Albanien,,,,,X
+2,21,5,POL-ØST,,,INT,,Polen,Østrig,,,,,2
+2,21,6,SKO-SWI,,,INT,,Skotland,Schweiz,,,,,X
+2,21,7,SLO-SRB,,,INT,,Slovenien,Serbien,,,,,X
+2,21,8,SPA-ITA,,,INT,,Spanien,Italien,,,,,1
+2,21,9,TYR-POR,,,INT,,Tyrkiet,Portugal,,,,,2
+2,21,10,TYS-UNG,,,INT,,Tyskland,Ungarn,,,,,1
+2,22,1,ABN-SPA,,,INT,,Albanien,Spanien,,,,,2
+2,22,2,DAN-SRB,,,INT,,Danmark,Serbien,,,,,X
+2,22,3,ENG-SLO,,,INT,,England ,Slovenien,,,,,X
+2,22,4,HOL-ØST,,,INT,,Holland,Østrig,,,,,2
+2,22,5,KRO-ITA,,,INT,,Kroatien,Italien,,,,,X
+2,22,6,SKO-UNG,,,INT,,Skotland,Ungarn,,,,,2
+2,22,7,SVK-RUM,,,INT,,Slovakiet,Rumænien,,,,,X
+2,22,8,SWI-TYS,,,INT,,Schweiz,Tyskland,,,,,X
+2,22,9,TJE-TYR,,,INT,,Tjekkiet,Tyrkiet,,,,,2
+2,22,10,UKR-BEL,,,INT,,Ukraine,Belgien,,,,,X
+2,23,1,BRS-CMB,,,INT,,Brasilien,Colombia,,,,,X
+2,23,2,CRC-PRG,,,INT,,Costa Rica,Paraguay,,,,,1
+2,23,3,ENG-SVK,,,INT,,England ,Slovakiet,,,,,X
+2,23,4,FRK-BEL,,,INT,,Frankrig,Belgien,,,,,1
+2,23,5,POR-SLO,,,INT,,Portugal,Slovenien,,,,,X
+2,23,6,RUM-HOL,,,INT,,Rumænien,Holland,,,,,2
+2,23,7,SPA-GEO,,,INT,,Spanien,Georgien,,,,,1
+2,23,8,SWI-ITA,,,INT,,Schweiz,Italien,,,,,1
+2,23,9,TYS-DAN,,,INT,,Tyskland,Danmark,,,,,1
+2,23,10,ØST-TYR,,,INT,,Østrig,Tyrkiet,,,,,2
+2,24,1,BOD-SKB,,,NOR,,Bodø/Glimt,Brann,,,,,1
+2,24,2,CMB-PAN,,,INT,,Colombia,Panama,,,,,1
+2,24,3,ENG-SWI,,,INT,,England ,Schweiz,,,,,X
+2,24,4,GAI-HAM,,,SVE,,GAIS,Hammarby,,,,,X
+2,24,5,HOL-TYR,,,INT,,Holland,Tyrkiet,,,,,1
+2,24,6,NRK-DJU,,,SVE,,Norrköping,Djurgården,,,,,2
+2,24,7,POR-FRK,,,INT,,Portugal,Frankrig,,,,,X
+2,24,8,SPA-TYS,,,INT,,Spanien,Tyskland,,,,,X
+2,24,9,URU-BRS,,,INT,,Uruguay,Brasilien,,,,,X
+2,24,10,VEZ-CAN,,,INT,,Venezuela,Canada,,,,,X
+2,25,1,ARG-CAN,,,INT,,Argentina,Canada,,,,,1
+2,25,2,ELF-PAP,,,EL,,Elfsborg,Paphos,,,,,1
+2,25,3,HOL-ENG,,,INT,,Holland,England ,,,,,2
+2,25,4,KLA-DIF,,,CL,,Klaksvik,Differdange,,,,,1
+2,25,5,LUD-BAT,,,CL,,Ludogorets,Batumi,,,,,1
+2,25,6,SPA-FRK,,,INT,,Spanien,Frankrig,,,,,1
+2,25,7,STJ-LIN,,,ECL,,Stjarnan,Linfield,,,,,1
+2,25,8,URU-CMB,,,INT,,Uruguay,Colombia,,,,,2
+2,25,9,VKN-SHR,,,CL,,Vikingur,Shamrock,,,,,X
+2,25,10,VPS-ZAL,,,ECL,,VPS,Zalgiris,,,,,2
+2,26,1,AGF-FCM,,,SL,,AGF,FC Midtjylland,,,,,X
+2,26,2,ARG-CMB,,,INT,,Argentina,Colombia,,,,,X
+2,26,3,CAN-URU,,,INT,,Canada,Uruguay,,,,,X
+2,26,4,DIF-KLA,,,CL,,Differdange,Klaksvik,,,,,X
+2,26,5,FCN-AAB,,,SL,,FC Nordsjælland,AaB,,,,,1
+2,26,6,HAM-GÖT,,,SVE,,Hammarby,Göteborg,,,,,2
+2,26,7,LSØ-STR,,,NOR,,Lillestrøm,Strømsgodset,,,,,1
+2,26,8,MAR-BOT,,,EL,,Maribor,Botev Plovdiv,,,,,X
+2,26,9,SHR-VKN,,,CL,,Shamrock,Vikingur,,,,,1
+2,26,10,SPA-ENG,,,INT,,Spanien,England ,,,,,1
+2,27,1,CLB-USG,,,BEL,,Club Brügge,Union St Gilloise,,,,,2
+2,27,2,DKI-BEO,,,CL,,Dynamo Kiev,Partizan Beograd,,,,,1
+2,27,3,EFB-OB,,,DAN,,Esbjerg,OB,,,,,2
+2,27,4,FRK-USA,,,INT,,Frankrig,USA,,,,,1
+2,27,5,GAI-AIK,,,SVE,,GAIS,AIK,,,,,1
+2,27,6,GOA-SKB,,,ECL,,Go Ahead Eagles,Brann,,,,,X
+2,27,7,KIL-CER,,,EL,,Kilmarnock,Cercle Brügge,,,,,2
+2,27,8,LUG-FEN,,,CL,,Lugano,Fenerbahce,,,,,2
+2,27,9,MOL-SIF,,,EL,,Molde,Silkeborg,,,,,1
+2,27,10,VFF-BIF,,,SL,,Viborg,Brøndby,,,,,X
+2,28,1,BIF-VB,,,SL,,Brøndby,Vejle,,,,,1
+2,28,2,BLU-PAO,,,CL,,Banja Luka,PAOK,,,,,2
+2,28,3,BRT-CEJ,,,CL,,Slovan Bratislava,Celje,,,,,1
+2,28,4,ELF-DJU,,,SVE,,Elfsborg,Djurgården,,,,,2
+2,28,5,FCK-AGF,,,SL,,FCK,AGF,,,,,1
+2,28,6,FCN-FCM,,,SL,,FC Nordsjælland,FC Midtjylland,,,,,X
+2,28,7,HAL-VÄR,,,SVE,,Halmstad,Värnamo,,,,,1
+2,28,8,RAK-CIA,,,POL,,Rakow,Cracovia,,,,,2
+2,28,9,SIF-MOL,,,EL,,Silkeborg,Molde,,,,,1
+2,28,10,VIK-MOL,,,NOR,,Viking,Molde,,,,,1
+2,29,1,BIF-LEG,,,ECL,,Brøndby,Legia,,,,,2
+2,29,2,FCK-OSR,,,ECL,,FCK,Ostrava,,,,,1
+2,29,3,FCM-FER,,,CL,,FC Midtjylland,Ferencvaros,,,,,1
+2,29,4,PSV-FEY,,,HOL,,PSV,Feyenoord,,,,,1
+2,29,5,S04-BRW,,,TYS,,Schalke 04,Braunschweig,,,,,1
+2,29,6,SIF-GNT,,,ECL,,Silkeborg,Gent,,,,,2
+2,29,7,SIF-VFF,,,SL,,Silkeborg,Viborg,,,,,1
+2,29,8,SLA-USG,,,CL,,Slavia Prag,Union St Gilloise,,,,,1
+2,29,9,SPO-FCP,,,POR,,Sporting Lissabon,Porto,,,,,X
+2,29,10,VB-FCN,,,SL,,Vejle,FC Nordsjælland,,,,,2
+2,30,1,BIF-AGF,,,SL,,Brøndby,AGF,,,,,2
+2,30,2,FER-FCM,,,CL,,Ferencvaros,FC Midtjylland,,,,,X
+2,30,3,HSV-BER,,,TYS,,HSV Hamburg,Hertha Berlin,,,,,X
+2,30,4,LUT-BUR,,,ENG,,Luton,Burnley,,,,,2
+2,30,5,MCI-MAU,,,ENG,,Manchester City,Manchester United,,,,,X
+2,30,6,OSR-FCK,,,ECL,,Ostrava,FCK,,,,,1
+2,30,7,PRM-PAL,,,ITA,,Parma,Palermo,,,,,2
+2,30,8,QPR-WBA,,,ENG,,QPR,West Bromwich,,,,,2
+2,30,9,RMA-ATA,,,SuperCup,,Real Madrid,Atalanta,,,,,1
+2,30,10,WED-PLY,,,ENG,,Sheffield Wednesday,Plymouth,,,,,1
+2,31,1,ACM-TOR,,,ITA,,AC Milan,Torino,,,,,X
+2,31,2,BOD-RØD,,,CL,,Bodø/Glimt,Røde Stjerne,,,,,1
+2,31,3,CHE-MCI,,,PL,,Chelsea,Manchester City,,,,,2
+2,31,4,FCK-KIL,,,ECL,,FCK,Kilmarnock,,,,,1
+2,31,5,FCM-BRT,,,CL,,FC Midtjylland,Slovan Bratislava,,,,,X
+2,31,6,LEV-STU,,,TYS,,Bayer Leverkusen,Stuttgart,,,,,X
+2,31,7,MFF-SPP,,,CL,,Malmö FF,Sparta Prag,,,,,2
+2,31,8,RFC-SJE,,,SL,,Randers,Sønderjyske,,,,,2
+2,31,9,VIL-ATM,,,SPA,,Villarreal,Atletico Madrid,,,,,X
+2,31,10,WHU-AVI,,,PL,,West Ham,Aston Villa,,,,,2
+2,32,1,BAR-BIL,,,SPA,,Barcelona,Athletic Bilbao,,,,,1
+2,32,2,BHA-MAU,,,PL,,Brighton,Manchester United,,,,,1
+2,32,3,BRT-FCM,,,CL,,Slovan Bratislava,FC Midtjylland,,,,,1
+2,32,4,FCN-FCK,,,SL,,FC Nordsjælland,FCK,,,,,1
+2,32,5,GAL-YB,,,CL,,Galatasaray,Young Boys,,,,,2
+2,32,6,KIL-FCK,,,ECL,,Kilmarnock,FCK,,,,,X
+2,32,7,LIV-BRN,,,PL,,Liverpool,Brentford,,,,,1
+2,32,8,MAI-UNI,,,TYS,,Mainz,Union Berlin,,,,,X
+2,32,9,PRM-ACM,,,ITA,,Parma,AC Milan,,,,,1
+2,32,10,VIL-VIG,,,SPA,,Villarreal,Celta Vigo,,,,,1
+2,33,1,ARS-BHA,,,PL,,Arsenal,Brighton,,,,,X
+2,33,2,FCK-BIF,,,SL,,FCK,Brøndby,,,,,1
+2,33,3,JUV-ROM,,,ITA,,Juventus,Roma,,,,,X
+2,33,4,LAZ-ACM,,,ITA,,Lazio,AC Milan,,,,,X
+2,33,5,LEV-RBL,,,TYS,,Bayer Leverkusen,RB Leipzig,,,,,2
+2,33,6,MAU-LIV,,,PL,,Manchester United,Liverpool,,,,,2
+2,33,7,RMA-BET,,,SPA,,Real Madrid,Betis,,,,,1
+2,33,8,SIF-FCM,,,SL,,Silkeborg,FC Midtjylland,,,,,2
+2,33,9,SPO-FCP,,,POR,,Sporting Lissabon,Porto,,,,,1
+2,33,10,VAL-VIL,,,SPA,,Valencia,Villarreal,,,,,X
+2,34,1,DAN-SRB,,,INT,,Danmark,Serbien,,,,,1
+2,34,2,DAN-SWI,,,INT,,Danmark,Schweiz,,,,,1
+2,34,3,FRK-BEL,,,INT,,Frankrig,Belgien,,,,,1
+2,34,4,FRK-ITA,,,INT,,Frankrig,Italien,,,,,2
+2,34,5,HOL-TYS,,,INT,,Holland,Tyskland,,,,,X
+2,34,6,IRL-ENG,,,INT,,Irland,England ,,,,,2
+2,34,7,POR-KRO,,,INT,,Portugal,Kroatien,,,,,1
+2,34,8,SLO-ØST,,,INT,,Slovenien,Østrig,,,,,X
+2,34,9,SWI-SPA,,,INT,,Schweiz,Spanien,,,,,2
+2,34,10,TYS-UNG,,,INT,,Tyskland,Ungarn,,,,,1
+2,35,1,ACM-LIV,,,CL,,AC Milan,Liverpool,,,,,2
+2,35,2,ASM-BAR,,,CL,,Monaco,Barcelona,,,,,1
+2,35,3,ATA-ARS,,,CL,,Atalanta,Arsenal,,,,,X
+2,35,4,ATM-RBL,,,CL,,Atletico Madrid,RB Leipzig,,,,,1
+2,35,5,BET-GET,,,SPA,,Betis,Getafe,,,,,1
+2,35,6,CLB-BVB,,,CL,,Club Brügge,Dortmund,,,,,2
+2,35,7,JUV-PSV,,,CL,,Juventus,PSV,,,,,1
+2,35,8,MCI-INT,,,CL,,Manchester City,Inter,,,,,X
+2,35,9,PSG-GIR,,,CL,,PSG,Girona,,,,,1
+2,35,10,SPO-LIL,,,CL,,Sporting Lissabon,Lille,,,,,1
+2,36,1,AJA-BES,,,EL,,Ajax,Besiktas,,,,,1
+2,36,2,FCK-AAB,,,SL,,FCK,AaB,,,,,1
+2,36,3,FCM-HOF,,,EL,,FC Midtjylland,Hoffenheim,,,,,X
+2,36,4,FRA-GLA,,,TYS,,Frankfurt,Gladbach,,,,,1
+2,36,5,INT-ACM,,,ITA,,Inter,AC Milan,,,,,2
+2,36,6,LEI-EVE,,,PL,,Leicester,Everton,,,,,X
+2,36,7,MCI-ARS,,,PL,,Manchester City,Arsenal,,,,,X
+2,36,8,ROM-BIL,,,EL,,Roma,Athletic Bilbao,,,,,X
+2,36,9,STU-BVB,,,TYS,,Stuttgart,Dortmund,,,,,1
+2,36,10,VAL-OSA,,,SPA,,Valencia,Osasuna,,,,,X
+2,37,1,AAB-SJE,,,SL,,AaB,Sønderjyske,,,,,1
+2,37,2,ARS-PSG,,,CL,,Arsenal,PSG,,,,,1
+2,37,3,ATM-RMA,,,SPA,,Atletico Madrid,Real Madrid,,,,,X
+2,37,4,BAY-LEV,,,TYS,,Bayern München,Bayer Leverkusen,,,,,X
+2,37,5,BOU-SOU,,,PL,,Bournemouth,Southampton,,,,,1
+2,37,6,FCK-JAG,,,ECL,,FCK,Jagiellonia,,,,,2
+2,37,7,MAC-FCM,,,EL,,Maccabi Tel Aviv,FC Midtjylland,,,,,2
+2,37,8,RBL-JUV,,,CL,,RB Leipzig,Juventus,,,,,2
+2,37,9,SLB-ATM,,,CL,,Benfica,Atletico Madrid,,,,,1
+2,37,10,UDI-INT,,,ITA,,Udinese,Inter,,,,,2
+2,38,1,AVI-MAU,,,PL,,Aston Villa,Manchester United,,,,,X
+2,38,2,BIF-FCM,,,SL,,Brøndby,FC Midtjylland,,,,,1
+2,38,3,FIO-ACM,,,ITA,,Fiorentina,AC Milan,,,,,1
+2,38,4,FRA-BAY,,,TYS,,Frankfurt,Bayern München,,,,,X
+2,38,5,HIF-KOL,,,DAN,,Hvidovre,Kolding,,,,,X
+2,38,6,PAU-MAI,,,TYS,,St. Pauli,Mainz,,,,,2
+2,38,7,RMA-VIL,,,SPA,,Real Madrid,Villarreal,,,,,1
+2,38,8,SEV-BET,,,SPA,,Sevilla,Betis,,,,,1
+2,38,9,UDI-LEC,,,ITA,,Udinese,Lecce,,,,,1
+2,38,10,WHU-IPS,,,PL,,West Ham,Ipswich,,,,,1
+2,39,1,BEL-FRK,,,INT,,Belgien,Frankrig,,,,,2
+2,39,2,FIN-ENG,,,INT,,Finland,England ,,,,,2
+2,39,3,ITA-BEL,,,INT,,Italien,Belgien,,,,,X
+2,39,4,NOR-SLO,,,INT,,Norge,Slovenien,,,,,1
+2,39,5,POL-POR,,,INT,,Polen,Portugal,,,,,2
+2,39,6,SPA-DAN,,,INT,,Spanien,Danmark,,,,,1
+2,39,7,SPA-SRB,,,INT,,Spanien,Serbien,,,,,1
+2,39,8,SWI-DAN,,,INT,,Schweiz,Danmark,,,,,X
+2,39,9,TYS-HOL,,,INT,,Tyskland,Holland,,,,,1
+2,39,10,UNG-HOL,,,INT,,Ungarn,Holland,,,,,X
+2,40,1,AGF-BIF,,,SL,,AGF,Brøndby,,,,,1
+2,40,2,BAR-BAY,,,CL,,Barcelona,Bayern München,,,,,1
+2,40,3,BET-FCK,,,ECL,,Betis,FCK,,,,,X
+2,40,4,FCM-USG,,,EL,,FC Midtjylland,Union St Gilloise,,,,,1
+2,40,5,GIR-RSO,,,SPA,,Girona,Sociedad,,,,,2
+2,40,6,HAM-DJU,,,SVE,,Hammarby,Djurgården,,,,,1
+2,40,7,JUV-LAZ,,,ITA,,Juventus,Lazio,,,,,1
+2,40,8,LEV-FRA,,,TYS,,Bayer Leverkusen,Frankfurt,,,,,1
+2,40,9,LIV-CHE,,,PL,,Liverpool,Chelsea,,,,,1
+2,40,10,RMA-BVB,,,CL,,Real Madrid,Dortmund,,,,,1
+2,41,1,ACM-NAP,,,ITA,,AC Milan,Napoli,,,,,2
+2,41,2,ARS-LIV,,,PL,,Arsenal,Liverpool,,,,,X
+2,41,3,ATA-VER,,,ITA,,Atalanta,Verona,,,,,1
+2,41,4,AUG-BVB,,,TYS,,Augsburg,Dortmund,,,,,1
+2,41,5,BIF-FCK,,,SL,,Brøndby,FCK,,,,,X
+2,41,6,BIF-FCM,,,DAN,,Brøndby,FC Midtjylland,,,,,1
+2,41,7,FEY-AJA,,,HOL,,Feyenoord,Ajax,,,,,2
+2,41,8,GAL-BES,,,TYR,,Galatasaray,Besiktas,,,,,1
+2,41,9,OM-PSG,,,FRA,,Marseille,PSG,,,,,2
+2,41,10,RMA-BAR,,,SPA,,Real Madrid,Barcelona,,,,,2
+2,42,1,AJA-PSV,,,HOL,,Ajax,PSV,,,,,1
+2,42,2,BIL-BET,,,SPA,,Athletic Bilbao,Betis,,,,,X
+2,42,3,BVB-RBL,,,TYS,,Dortmund,RB Leipzig,,,,,1
+2,42,4,FCK-ISB,,,ECL,,FCK,Basaksehir,,,,,X
+2,42,5,FCK-SIF,,,SL,,FCK,Silkeborg,,,,,X
+2,42,6,INT-ARS,,,CL,,Inter,Arsenal,,,,,1
+2,42,7,LIV-LEV,,,CL,,Liverpool,Bayer Leverkusen,,,,,1
+2,42,8,MAU-CHE,,,PL,,Manchester United,Chelsea,,,,,X
+2,42,9,NAP-ATA,,,ITA,,Napoli,Atalanta,,,,,2
+2,42,10,STE-FCM,,,EL,,Steaua Bukarest,FC Midtjylland,,,,,1
+2,43,1,AGF-FCK,,,SL,,AGF,FCK,,,,,X
+2,43,2,BHA-MCI,,,PL,,Brighton,Manchester City,,,,,1
+2,43,3,CHE-ARS,,,PL,,Chelsea,Arsenal,,,,,X
+2,43,4,DLC-EIB,,,SPA,,Deportivo La Coruna,Eibar,,,,,1
+2,43,5,HOB-HIL,,,DAN,,Hobro,Hillerød,,,,,X
+2,43,6,INT-NAP,,,ITA,,Inter,Napoli,,,,,X
+2,43,7,RBL-GLA,,,TYS,,RB Leipzig,Gladbach,,,,,X
+2,43,8,RSO-BAR,,,SPA,,Sociedad,Barcelona,,,,,1
+2,43,9,SLB-FCP,,,POR,,Benfica,Porto,,,,,1
+2,43,10,VIL-ALA,,,SPA,,Villarreal,Alaves,,,,,1
+2,44,1,ABN-UKR,,,INT,,Albanien,Ukraine,,,,,2
+2,44,2,BEL-ITA,,,INT,,Belgien,Italien,,,,,2
+2,44,3,DAN-SPA,,,INT,,Danmark,Spanien,,,,,2
+2,44,4,FIN-GRÆ,,,INT,,Finland,Grækenland,,,,,2
+2,44,5,HOL-UNG,,,INT,,Holland,Ungarn,,,,,1
+2,44,6,ITA-FRK,,,INT,,Italien,Frankrig,,,,,2
+2,44,7,POR-POL,,,INT,,Portugal,Polen,,,,,1
+2,44,8,SLO-NOR,,,INT,,Slovenien,Norge,,,,,2
+2,44,9,SRB-DAN,,,INT,,Serbien,Danmark,,,,,X
+2,44,10,SVE-SVK,,,INT,,Sverige,Slovakiet,,,,,1
+2,45,1,ACM-JUV,,,ITA,,AC Milan,Juventus,,,,,X
+2,45,2,BAY-PSG,,,CL,,Bayern München,PSG,,,,,1
+2,45,3,FCM-FRA,,,EL,,FC Midtjylland,Frankfurt,,,,,2
+2,45,4,FCM-SIF,,,SL,,FC Midtjylland,Silkeborg,,,,,1
+2,45,5,LIV-RMA,,,CL,,Liverpool,Real Madrid,,,,,1
+2,45,6,MCI-TOT,,,PL,,Manchester City,Tottenham,,,,,2
+2,45,7,MIN-FCK,,,ECL,,Dinamo Minsk,FCK,,,,,2
+2,45,8,OSA-VIL,,,SPA,,Osasuna,Villarreal,,,,,X
+2,45,9,SPO-ARS,,,CL,,Sporting Lissabon,Arsenal,,,,,2
+2,45,10,WOL-UNI,,,TYS,,Wolfsburg,Union Berlin,,,,,1
+2,46,1,ARS-MAU,,,PL,,Arsenal,Manchester United,,,,,1
+2,46,2,BIL-RMA,,,SPA,,Athletic Bilbao,Real Madrid,,,,,1
+2,46,3,BVB-BAY,,,TYS,,Dortmund,Bayern München,,,,,X
+2,46,4,LAZ-NAP,,,ITA,,Lazio,Napoli,,,,,1
+2,46,5,LEI-WHU,,,PL,,Leicester,West Ham,,,,,1
+2,46,6,LIV-MCI,,,PL,,Liverpool,Manchester City,,,,,1
+2,46,7,OM-ASM,,,FRA,,Marseille,Monaco,,,,,1
+2,46,8,ROM-ATA,,,ITA,,Roma,Atalanta,,,,,2
+2,46,9,VFF-RFC,,,SL,,Viborg,Randers,,,,,2
+2,46,10,VLL-ATM,,,SPA,,Valladolid,Atletico Madrid,,,,,2
+2,47,1,AGF-BIF,,,DAN,,AGF,Brøndby,,,,,1
+2,47,2,ATA-RMA,,,CL,,Atalanta,Real Madrid,,,,,2
+2,47,3,BCH-WER,,,TYS,,Bochum,Werder Bremen,,,,,2
+2,47,4,BRN-NEW,,,PL,,Brentford,Newcastle,,,,,1
+2,47,5,BVB-BAR,,,CL,,Dortmund,Barcelona,,,,,2
+2,47,6,FCK-HEA,,,ECL,,FCK,Hearts,,,,,1
+2,47,7,JUV-MCI,,,CL ,,Juventus,Manchester City,,,,,1
+2,47,8,MOZ-UDI,,,ITA,,Monza,Udinese,,,,,2
+2,47,9,OSA-ALA,,,SPA,,Osasuna,Alaves,,,,,X
+2,47,10,RBL-AVI,,,CL,,RB Leipzig,Aston Villa,,,,,2
+2,48,1,AAB-SIF,,,DAN,,AaB,Silkeborg,,,,,2
+2,48,2,ASM-PSG,,,CL,,Monaco,PSG,,,,,2
+2,48,3,BIF-AGF,,,DAN,,Brøndby,AGF,,,,,1
+2,48,4,GUI-FIO,,,ECL,,Guimaraes,Fiorentina,,,,,X
+2,48,5,JUV-CAG,,,ITA,,Juventus,Cagliari,,,,,1
+2,48,6,MAL-GIR,,,SPA,,Mallorca,Girona,,,,,1
+2,48,7,MCI-MAU,,,PL,,Manchester City,Manchester United,,,,,2
+2,48,8,MOL-MLA,,,ECL,,Molde,Mlada Boleslav,,,,,1
+2,48,9,RAW-FCK,,,ECL,,Rapid Wien,FCK,,,,,1
+2,48,10,RBL-FRA,,,TYS,,RB Leipzig,Frankfurt,,,,,1
+2,49,1,ALM-SEV,,,SPA,,Almeria,Sevilla,,,,,1
+2,49,2,BHA-ARS,,,PL,,Brighton,Arsenal,,,,,X
+2,49,3,FIO-NAP,,,ITA,,Fiorentina,Napoli,,,,,2
+2,49,4,LIV-MAU,,,PL,,Liverpool,Manchester United,,,,,X
+2,49,5,PSG-ASM,,,FRA,,PSG,Monaco,,,,,1
+2,49,6,ROM-LAZ,,,ITA,,Roma,Lazio,,,,,1
+2,49,7,SHU-CAR,,,ENG,,Sheffield United,Cardiff,,,,,2
+2,49,8,TEN-LVT,,,SPA,,Tenerife,Levante,,,,,2
+2,49,9,TOT-LIV,,,ENG,,Tottenham,Liverpool,,,,,1
+2,49,10,WOW-NOT,,,PL,,Wolves,Nottingham Forest,,,,,2
+2,50,1,AND-CLB,,,BEL,,Anderlecht,Club Brügge,,,,,2
+2,50,2,ATA-JUV,,,ITA,,Atalanta,Juventus,,,,,X
+2,50,3,AUG-STU,,,TYS,,Augsburg,Stuttgart,,,,,2
+2,50,4,BLG-ROM,,,ITA,,Bologna,Roma,,,,,X
+2,50,5,COV-WED,,,ENG,,Coventry,Sheffield Wednesday,,,,,X
+2,50,6,IPS-BHA,,,PL,,Ipswich,Brighton,,,,,2
+2,50,7,LEI-CRY,,,PL,,Leicester,Crystal Palace,,,,,2
+2,50,8,PAU-FRA,,,TYS,,St. Pauli,Frankfurt,,,,,2
+2,50,9,RSO-VIL,,,SPA,,Sociedad,Villarreal,,,,,1
+2,50,10,SEV-VAL,,,SPA,,Sevilla,Valencia,,,,,X
+2,51,1,ATM-LEV,,,CL,,Atletico Madrid,Bayer Leverkusen,,,,,1
+2,51,2,CMO-UDI,,,ITA,,Como,Udinese,,,,,1
+2,51,3,EVE-TOT,,,PL,,Everton,Tottenham,,,,,1
+2,51,4,KIE-HOF,,,TYS,,Holstein Kiel,Hoffenheim,,,,,2
+2,51,5,LAS-OSA,,,SPA,,Las Palmas,Osasuna,,,,,X
+2,51,6,LUD-FCM,,,EL,,Ludogorets,FC Midtjylland,,,,,2
+2,51,7,MCI-CHE,,,PL,,Manchester City,Chelsea,,,,,1
+2,51,8,PAU-UNI,,,TYS,,St. Pauli,Union Berlin,,,,,1
+2,51,9,PSG-MCI,,,CL,,PSG,Manchester City,,,,,1
+2,51,10,UDI-ROM,,,ITA,,Udinese,Roma,,,,,2
+3,1,1,ASM-SLB,,,CL,,Monaco,Benfica,,,,,2
+3,1,2,AVI-TOT,,,ENG,,Aston Villa,Tottenham,,,,,1
+3,1,3,BVB-STU,,,TYS,,Dortmund,Stuttgart,,,,,2
+3,1,4,FCK-HEI,,,ECL,,FCK,Heidenheim,,,,,2
+3,1,5,FCM-RSO,,,EL,,FC Midtjylland,Sociedad,,,,,2
+3,1,6,FEY-ACM,,,CL,,Feyenoord,AC Milan,,,,,1
+3,1,7,INT-FIO,,,ITA,,Inter,Fiorentina,,,,,1
+3,1,8,MCI-RMA,,,CL,,Manchester City,Real Madrid,,,,,2
+3,1,9,RMA-ATM,,,SPA,,Real Madrid,Atletico Madrid,,,,,X
+3,1,10,SPO-BVB,,,CL,,Sporting Lissabon,Dortmund,,,,,2
+3,2,1,ACM-FEY,,,CL,,AC Milan,Feyenoord,,,,,X
+3,2,2,ATA-CLB,,,CL,,Atalanta,Club Brügge,,,,,2
+3,2,3,HEI-FCK,,,ECL,,Heidenheim,FCK,,,,,2
+3,2,4,HEI-MAI,,,TYS,,Heidenheim,Mainz,,,,,2
+3,2,5,JUV-INT,,,ITA,,Juventus,Inter,,,,,1
+3,2,6,PSV-JUV,,,CL,,PSV,Juventus,,,,,1
+3,2,7,RFC-FCK,,,SL,,Randers,FCK,,,,,2
+3,2,8,RMA-MCI,,,CL,,Real Madrid,Manchester City,,,,,1
+3,2,9,SOU-BOU,,,PL,,Southampton,Bournemouth,,,,,2
+3,2,10,VIL-VAL,,,SPA,,Villarreal,Valencia,,,,,X
+3,3,1,BHA-BOU,,,PL,,Brighton,Bournemouth,,,,,1
+3,3,2,BVB-UNI,,,TYS,,Dortmund,Union Berlin,,,,,1
+3,3,3,EVE-MAU,,,PL,,Everton,Manchester United,,,,,X
+3,3,4,FCK-FCM,,,SL,,FCK,FC Midtjylland,,,,,1
+3,3,5,GAL-FEN,,,TYR,,Galatasaray,Fenerbahce,,,,,X
+3,3,6,HIF-FCF,,,DAN,,Hvidovre,FC Fredericia,,,,,1
+3,3,7,JUV-EMP,,,ITA,,Juventus,Empoli,,,,,X
+3,3,8,NEW-NOT,,,PL,,Newcastle,Nottingham Forest,,,,,1
+3,3,9,PRM-BLG,,,ITA,,Parma,Bologna,,,,,1
+3,3,10,SEV-MAL,,,SPA,,Sevilla,Mallorca,,,,,X
+3,4,1,ACM-LAZ,,,ITA,,AC Milan,Lazio,,,,,2
+3,4,2,ATM-BIL,,,SPA,,Atletico Madrid,Athletic Bilbao,,,,,1
+3,4,3,BAY-LEV,,,CL,,Bayern München,Bayer Leverkusen,,,,,1
+3,4,4,FCK-CHE,,,ECL,,FCK,Chelsea,,,,,2
+3,4,5,FRA-LEV,,,TYS,,Frankfurt,Bayer Leverkusen,,,,,2
+3,4,6,NOT-IPS,,,ENG,,Nottingham Forest,Ipswich,,,,,X
+3,4,7,PSG-LIV,,,CL,,PSG,Liverpool,,,,,2
+3,4,8,PSV-ARS,,,CL,,PSV,Arsenal,,,,,2
+3,4,9,RMA-ATM,,,CL,,Real Madrid,Atletico Madrid,,,,,1
+3,4,10,SJE-SIF,,,SL,,Sønderjyske,Silkeborg,,,,,2
+3,5,1,ATM-RMA,,,CL,,Atletico Madrid,Real Madrid,,,,,1
+3,5,2,BAR-SLB,,,CL,,Barcelona,Benfica,,,,,1
+3,5,3,BIL-MAL,,,SPA,,Athletic Bilbao,Mallorca,,,,,X
+3,5,4,BRN-AVI,,,PL,,Brentford,Aston Villa,,,,,2
+3,5,5,FRE-RBL,,,TYS,,Freiburg,RB Leipzig,,,,,X
+3,5,6,JUV-ATA,,,ITA,,Juventus,Atalanta,,,,,2
+3,5,7,LIL-BVB,,,CL,,Lille,Dortmund,,,,,2
+3,5,8,LIV-PSG,,,CL,,Liverpool,PSG,,,,,2
+3,5,9,MAU-RSO,,,EL,,Manchester United,Sociedad,,,,,1
+3,5,10,RFC-BIF,,,SL,,Randers,Brøndby,,,,,1
+3,6,1,ARS-CHE,,,PL,,Arsenal,Chelsea,,,,,1
+3,6,2,BIF-SIF,,,SL,,Brøndby,Silkeborg,,,,,X
+3,6,3,CAL-DLC,,,SPA,,Castellon,Deportivo La Coruna,,,,,X
+3,6,4,DAN-POR,,,INT,,Danmark,Portugal,,,,,1
+3,6,5,HOL-SPA,,,INT,,Holland,Spanien,,,,,X
+3,6,6,ITA-TYS,,,INT,,Italien,Tyskland,,,,,2
+3,6,7,KRO-FRK,,,INT,,Kroatien,Frankrig,,,,,1
+3,6,8,RBL-BVB,,,TYS,,RB Leipzig,Dortmund,,,,,1
+3,6,9,RTH-WYC,,,ENG,,Rotherham,Wycombe,,,,,2
+3,6,10,RÖD-FKÖ,,,TYS,,Rödinghausen,Fortuna Köln,,,,,1
+3,7,1,ARG-BRS,,,INT,,Argentina,Brasilien,,,,,1
+3,7,2,FRK-KRO,,,INT,,Frankrig,Kroatien,,,,,1
+3,7,3,ISR-NOR,,,INT,,Israel,Norge,,,,,2
+3,7,4,LEY-STV,,,ENG,,Leyton Orient,Stevenage,,,,,1
+3,7,5,LIT-FIN,,,INT,,Lituaen,Finland,,,,,X
+3,7,6,POR-DAN,,,INT,,Portugal,Danmark,,,,,1
+3,7,7,SKI-AAF,,,DAN,,Skive,Aarhus Fremad,,,,,1
+3,7,8,SPA-HOL,,,INT,,Spanien,Holland,,,,,X
+3,7,9,SRB-ØST,,,INT,,Serbien,Østrig,,,,,1
+3,7,10,TYS-ITA,,,INT,,Tyskland,Italien,,,,,1
+3,8,1,ASM-NIC,,,FRA,,Monaco,NIce,,,,,1
+3,8,2,ATM-BAR,,,SPA,,Atletico Madrid,Barcelona,,,,,2
+3,8,3,BES-GAL,,,TYR,,Besiktas,Galatasaray,,,,,1
+3,8,4,BET-SEV,,,SPA,,Betis,Sevilla,,,,,1
+3,8,5,CHE-TOT,,,PL,,Chelsea,Tottenham,,,,,1
+3,8,6,FCK-RFC,,,SL,,FCK,Randers,,,,,1
+3,8,7,HAN-MAG,,,TYS,,Hannover,Magdeburg,,,,,X
+3,8,8,NAP-ACM,,,ITA,,Napoli,AC Milan,,,,,1
+3,8,9,NOT-MAU,,,PL,,Nottingham Forest,Manchester United,,,,,1
+3,8,10,PSV-AJA,,,HOL,,PSV,Ajax,,,,,2
+3,9,1,ACM-FIO,,,ITA,,AC Milan,Fiorentina,,,,,X
+3,9,2,ARS-RMA,,,CL,,Arsenal,Real Madrid,,,,,1
+3,9,3,BAR-BVB,,,CL,,Barcelona,Dortmund,,,,,1
+3,9,4,BAY-INT,,,CL,,Bayern München,Inter,,,,,2
+3,9,5,BIF-AGF,,,SL,,Brøndby,AGF,,,,,1
+3,9,6,FRE-BVB,,,TYS,,Freiburg,Dortmund,,,,,2
+3,9,7,MAU-MCI,,,PL,,Manchester United,Manchester City,,,,,X
+3,9,8,PSG-AVI,,,CL,,PSG,Aston Villa,,,,,1
+3,9,9,TOT-FRA,,,EL,,Tottenham,Frankfurt,,,,,X
+3,9,10,VIL-BIL,,,SPA,,Villarreal,Athletic Bilbao,,,,,X
+3,10,1,ATA-BLG,,,ITA,,Atalanta,Bologna,,,,,1
+3,10,2,AVI-PSG,,,CL,,Aston Villa,PSG,,,,,1
+3,10,3,BAY-BVB,,,TYS,,Bayern München,Dortmund,,,,,X
+3,10,4,BOU-FUL,,,PL,,Bournemouth,Fulham,,,,,1
+3,10,5,BVB-BAR,,,CL,,Dortmund,Barcelona,,,,,1
+3,10,6,FCK-BIF,,,SL,,FCK,Brøndby,,,,,2
+3,10,7,FCM-FCK,,,SL,,FC Midtjylland,FCK,,,,,1
+3,10,8,INT-BAY,,,CL,,Inter,Bayern München,,,,,X
+3,10,9,RMA-ARS,,,CL,,Real Madrid,Arsenal,,,,,2
+3,10,10,RSO-MAL,,,SPA,,Sociedad,Mallorca,,,,,2
+3,11,1,AAB-SJE,,,SL,,AaB,Sønderjyske,,,,,2
+3,11,2,BIF-RFC,,,SL,,Brøndby,Randers,,,,,1
+3,11,3,BRN-BHA,,,PL,,Brentford,Brighton,,,,,1
+3,11,4,BVB-GLA,,,TYS,,Dortmund,Gladbach,,,,,1
+3,11,5,INT-ACM,,,ITA,,Inter,AC Milan,,,,,2
+3,11,6,LGA-GIR,,,SPA,,Leganes,Girona,,,,,X
+3,11,7,MAI-WOL,,,TYS,,Mainz,Wolfsburg,,,,,X
+3,11,8,MCI-AVI,,,PL,,Manchester City,Aston Villa,,,,,1
+3,11,9,RMA-BIL,,,SPA,,Real Madrid,Athletic Bilbao,,,,,1
+3,11,10,TOT-NOT,,,PL,,Tottenham,Nottingham Forest,,,,,2
+3,12,1,AAB-VB,,,SL,,AaB,Vejle,,,,,2
+3,12,2,AGF-FCK,,,SL,,AGF,FCK,,,,,2
+3,12,3,ARS-PSG,,,CL,,Arsenal,PSG,,,,,2
+3,12,4,BAR-INT,,,CL,,Barcelona,Inter,,,,,X
+3,12,5,BAR-RMA,,,SPA,,Barcelona,Real Madrid,,,,,X
+3,12,6,BET-FIO,,,ECL,,Betis,Fiorentina,,,,,1
+3,12,7,BIL-MAU,,,EL,,Athletic Bilbao,Manchester United,,,,,2
+3,12,8,BOU-MAU,,,PL,,Bournemouth,Manchester United,,,,,X
+3,12,9,DJU-CHE,,,ECL,,Djurgården,Chelsea,,,,,2
+3,12,10,FRA-RBL,,,TYS,,Frankfurt,RB Leipzig,,,,,1
+3,13,1,AVI-FUL,,,PL,,Aston Villa,Fulham,,,,,1
+3,13,2,BIF-FCK,,,SO,,Brøndby,FCK,,,,,2
+3,13,3,BOD-TOT,,,EL,,Bodø/Glimt,Tottenham,,,,,2
+3,13,4,FIO-BET,,,ECL,,Fiorentina,Betis,,,,,X
+3,13,5,GIR-MAL,,,SPA,,Girona,Mallorca,,,,,1
+3,13,6,INT-BAR,,,CL,,Inter,Barcelona,,,,,X
+3,13,7,LEC-NAP,,,ITA,,Lecce,Napoli,,,,,2
+3,13,8,MAI-FRA,,,TYS,,Mainz,Frankfurt,,,,,X
+3,13,9,PSG-ARS,,,CL,,PSG,Arsenal,,,,,1
+3,13,10,SIF-BIF,,,DAN,,Silkeborg,Brøndby,,,,,1
+3,14,1,ACM-BLG,,,ITA,,AC Milan,Bologna,,,,,2
+3,14,2,BAR-RMA,,,SPA,,Barcelona,Real Madrid,,,,,1
+3,14,3,CHA-WYC,,,ENG,,Charlton,Wycombe,,,,,1
+3,14,4,FCK-FCM,,,SL,,FCK,FC Midtjylland,,,,,X
+3,14,5,LAZ-JUV,,,ITA,,Lazio,Juventus,,,,,X
+3,14,6,NEW-CHE,,,PL,,Newcastle,Chelsea,,,,,1
+3,14,7,SLB-SPO,,,POR,,Benfica,Sporting Lissabon,,,,,X
+3,14,8,SUN-COV,,,ENG,,Sunderland,Coventry,,,,,2
+3,14,9,VB-LBK,,,SL,,Vejle,Lyngby,,,,,1
+3,14,10,WER-RBL,,,TYS,,Werder Bremen,RB Leipzig,,,,,X
+3,15,1,ARS-NEW,,,PL,,Arsenal,Newcastle,,,,,1
+3,15,2,BIF-FCM,,,SL,,Brøndby,FC Midtjylland,,,,,2
+3,15,3,CRY-MCI,,,ENG,,Crystal Palace,Manchester City,,,,,1
+3,15,4,INT-LAZ,,,ITA,,Inter,Lazio,,,,,X
+3,15,5,KÖL-KAI,,,TYS,,Köln,Kaiserslautern,,,,,1
+3,15,6,MCI-BOU,,,PL,,Manchester City,Bournemouth,,,,,1
+3,15,7,MFF-AIK,,,SWE,,Malmö FF,AIK,,,,,X
+3,15,8,RFC-FCK,,,SL,,Randers,FCK,,,,,2
+3,15,9,TOT-MAU,,,EL,,Tottenham,Manchester United,,,,,1
+3,15,10,WIM-NTC,,,ENG,,Wimbledon,Notts County,,,,,1
+3,16,1,BET-CHE,,,ECL,,Betis,Chelsea,,,,,2
+3,16,2,BRW-SAA,,,TYS,,Braunschweig,Saarbrücken,,,,,2
+3,16,3,ELV-HEI,,,TYS,,Elversberg,Heidenheim,,,,,2
+3,16,4,FCK-FCM,,,SL,,FCK,FC Midtjylland,,,,,1
+3,16,5,FCK-SIF,,,DAN,,FCK,Silkeborg,,,,,1
+3,16,6,FCM-RFC,,,SL,,FC Midtjylland,Randers,,,,,1
+3,16,7,NOT-CHE,,,PL,,Nottingham Forest,Chelsea,,,,,2
+3,16,8,SHU-SUN,,,ENG,,Sheffield United,Sunderland,,,,,2
+3,16,9,SLB-SPO,,,POR,,Benfica,Sporting Lissabon,,,,,X
+3,16,10,WIM-WLS,,,ENG,,Wimbledon,Walsall,,,,,1
+3,17,1,AAF-MDD,,,DAN,,Aarhus Fremad,Middelfart,,,,,X
+3,17,2,ELF-HAM,,,SVE,,Elfsborg,Hammarby,,,,,2
+3,17,3,KRL-ÖRE,,,SVE,,Karlstad,Örebro Syrianska,,,,,X
+3,17,4,MOL-VIK,,,NOR,,Molde,Viking,,,,,2
+3,17,5,PSG-INT,,,CL,,PSG,Inter,,,,,1
+3,17,6,RFC-SIF,,,SL,,Randers,Silkeborg,,,,,2
+3,17,7,SPA-FRK,,,INT,,Spanien,Frankrig,,,,,1
+3,17,8,SPE-CRE,,,ITA,,Spezia,Cremonese,,,,,2
+3,17,9,TYS-POR,,,INT,,Tyskland,Portugal,,,,,X
+3,17,10,VLU-FR,,,ISL,,Valur,Fram,,,,,1
+3,18,1,CHE-LAF,,,CWC,,Chelsea,LAFC,,,,,1
+3,18,2,FLA-CHE,,,CWC,,Flamengo,Chelsea,,,,,1
+3,18,3,FLU-BVB,,,CWC,,Fluminense,Dortmund,,,,,X
+3,18,4,FRM-ISH,,,DK,,Frem,Ishøj,,,,,X
+3,18,5,IMI-FCP,,,CWC,,Inter Miami,Porto,,,,,1
+3,18,6,MIR-OVI,,,SPA,,Mirandes,Real Oviedo,,,,,1
+3,18,7,PLM-AAH,,,CWC,,Palmeiras,Al Ahly,,,,,1
+3,18,8,PSG-ATM,,,CWC,,PSG,Atletico Madrid,,,,,1
+3,18,9,RIV-URA,,,CWC,,River Plate,Urawa,,,,,1
+3,18,10,RMA-ALH,,,CWC,,Real Madrid,Al Hilal,,,,,X
+3,19,1,ATM-BTF,,,CWC,,Atletico Madrid,Botafogo,,,,,1
+3,19,2,AUC-BOC,,,CWC,,Auckland City,Boca,,,,,X
+3,19,3,DKU-FRU,,,INT,,Danmark - U21,Frankrig - U21,,,,,2
+3,19,4,JUV-MCI,,,CWC,,Juventus,Manchester City,,,,,2
+3,19,5,MAM-BVB,,,CWC,,Mamelodi Sundowns,Dortmund,,,,,2
+3,19,6,MAM-FLU,,,CWC,,Mamelodi Sundowns,Fluminense,,,,,X
+3,19,7,OVI-MIR,,,SPA,,Real Oviedo,Mirandes,,,,,1
+3,19,8,SAL-SMP,,,ITA,,Salernitana,Sampdoria,,,,,1
+3,19,9,SEA-PSG,,,CWC,,Seattle Sounders,PSG,,,,,2
+3,19,10,SLB-BAY,,,CWC,,Benfica,Bayern München,,,,,1
+3,20,1,AFT-BRE,,,ISL,,Afturelding,Breidablik,,,,,X
+3,20,2,ENU-TYU,,,INT,,England - U21,Tyrkiet - U21,,,,,X
+3,20,3,FLA-BAY,,,CWC,,Flamengo,Bayern München,,,,,2
+3,20,4,HJK-JAR,,,FIN,,HJK Helsinki,Jaro,,,,,2
+3,20,5,INT-FLU,,,CWC,,Inter,Fluminense,,,,,2
+3,20,6,PLM-BTF,,,CWC,,Palmeiras,Botafogo,,,,,X
+3,20,7,PSG-IMI,,,CWC,,PSG,Inter Miami,,,,,1
+3,20,8,RMA-JUV,,,CWC,,Real Madrid,Juventus,,,,,1
+3,20,9,ROS-VIK,,,NOR,,Rosenborg,Viking,,,,,X
+3,20,10,SLB-CHE,,,CWC,,Benfica,Chelsea,,,,,X
+3,21,1,I99-MFF,,,CL,,Iberia 1999,Malmö FF,,,,,2
+3,21,2,LJU-KAA,,,CL,,Olimpija Ljubljana,Kairat Almaty,,,,,X
+3,21,3,LRN-BEO,,,EL,,Larnaca,Partizan Beograd,,,,,1
+3,21,4,NRK-BRO,,,SVE,,Norrköping,Brommapojkarna,,,,,2
+3,21,5,PSG-BAY,,,CWC,,PSG,Bayern München,,,,,1
+3,21,6,RMA-BVB,,,CWC,,Real Madrid,Dortmund,,,,,1
+3,21,7,SHB-LIN,,,CL,,Shelbourne,Linfield,,,,,1
+3,21,8,SND-ROS,,,NOR,,Sandefjord,Rosenborg,,,,,1
+3,21,9,TRN-HÄC,,,EL,,Trnava,Häcken,,,,,2
+3,21,10,USA-MEX,,,INT,,USA,Mexico,,,,,2
+3,22,1,AKR-KR,,,,,Akranes,KR,,,,,1
+3,22,2,CHE-PSG,,,,,Chelsea,PSG,,,,,1
+3,22,3,FRS-MOL,,,,,Fredrikstad,Molde,,,,,1
+3,22,4,GÖT-ELF,,,,,Göteborg,Elfsborg,,,,,2
+3,22,5,KAA-LJU,,,,,Kairat Almaty,Olimpija Ljubljana,,,,,1
+3,22,6,KIL-LIV,,,,,Kilmarnock,Liverpool,,,,,1
+3,22,7,KLA-SJK,,,,,Klaksvik,SJK,,,,,1
+3,22,8,LEC-LEG,,,,,Lecce,Legia,,,,,2
+3,22,9,LIN-SHB,,,,,Linfield,Shelbourne,,,,,X
+3,22,10,SKB-VIK,,,,,Brann,Viking,,,,,1
+3,23,1,BIF-SIF,,,SL,,Brøndby,Silkeborg,,,,,1
+3,23,2,DJU-ELF,,,SVE,,Djurgården,Elfsborg,,,,,1
+3,23,3,FCM-HIB,,,EL,,FC Midtjylland,Hibernian,,,,,X
+3,23,4,KIF-AAB,,,DAN,,Kolding IF,AaB,,,,,1
+3,23,5,NRK-VÄR,,,SVE,,Norrköping,Värnamo,,,,,1
+3,23,6,RAN-PAI,,,CL,,Rangers,Panathinaikos,,,,,1
+3,23,7,SIF-AKU,,,ECL,,Silkeborg,KA Akureyri,,,,,X
+3,23,8,SKB-RBZ,,,CL,,Brann,RB Salzburg,,,,,2
+3,23,9,USG-CLB,,,BEL,,Union St Gilloise,Club Brügge,,,,,2
+3,23,10,VB-RFC,,,SL,,Vejle,Randers,,,,,X
+3,24,1,BOD-VÅL,,,NOR,,Bodø/Glimt,Vålerenga,,,,,1
+3,24,2,FCM-SJE,,,SL,,FC Midtjylland,Sønderjyske,,,,,1
+3,24,3,FCN-BIF,,,SL,,FC Nordsjælland,Brøndby,,,,,2
+3,24,4,HIB-FCM,,,EL,,Hibernian,FC Midtjylland,,,,,X
+3,24,5,HIF-HBK,,,DAN,,Hvidovre,HB Køge,,,,,X
+3,24,6,HÄC-AND,,,EL,,Häcken,Anderlecht,,,,,1
+3,24,7,HÄC-DJU,,,SVE,,Häcken,Djurgården,,,,,2
+3,24,8,PAI-RAN,,,CL,,Panathinaikos,Rangers,,,,,X
+3,24,9,SPO-SLB,,,POR,,Sporting Lissabon,Benfica,,,,,2
+3,24,10,YB-SER,,,SCH,,Young Boys,Servette,,,,,1
+3,25,1,AGF-FCM,,,SL,,AGF,FC Midtjylland,,,,,X
+3,25,2,ELV-NÜR,,,TYS,,Elversberg,Nürnberg,,,,,1
+3,25,3,FEY-FEN,,,CL,,Feyenoord,Fenerbahce,,,,,1
+3,25,4,FRS-FCM,,,EL,,Fredrikstad,FC Midtjylland,,,,,2
+3,25,5,HIF-ACH,,,DAN,,Hvidovre,AC Horsens,,,,,X
+3,25,6,MFF-FCK,,,CL,,Malmö FF,FCK,,,,,X
+3,25,7,MOT-RAN,,,SKO,,Motherwell,Rangers,,,,,X
+3,25,8,NIC-SLB,,,CL,,NIce,Benfica,,,,,2
+3,25,9,SIF-JAG,,,ECL,,Silkeborg,Jagiellonia,,,,,2
+3,25,10,VKU-BIF,,,ECL,,Vikingur,Brøndby,,,,,1
+3,26,1,AIK-DJU,,,SVE,,AIK,Djurgården,,,,,X
+3,26,2,CRY-LIV,,,ENG,,Crystal Palace,Liverpool,,,,,X
+3,26,3,FCK-MFF,,,CL,,FCK,Malmö FF,,,,,1
+3,26,4,FEN-FEY,,,CL,,Fenerbahce,Feyenoord,,,,,1
+3,26,5,HAM-ROS,,,ECL,,Hammarby,Rosenborg,,,,,2
+3,26,6,JAG-SIF,,,ECL,,Jagiellonia,Silkeborg,,,,,X
+3,26,7,KAI-S04,,,TYS,,Kaiserslautern,Schalke 04,,,,,1
+3,26,8,OB-RFC,,,SL,,OB,Randers,,,,,1
+3,26,9,PSG-TOT,,,EUR,,PSG,Tottenham,,,,,X
+3,26,10,SOU-WRE,,,ENG,,Southampton,Wrexham,,,,,1
+3,27,1,BAS-FCK,,,CL,,Basel,FCK,,,,,X
+3,27,2,BOD-STG,,,CL,,Bodø/Glimt,Sturm Graz,,,,,1
+3,27,3,FEN-SLB,,,CL,,Fenerbahce,Benfica,,,,,X
+3,27,4,LEE-EVE,,,PL,,Leeds,Everton,,,,,1
+3,27,5,RAN-CLB,,,CL,,Rangers,Club Brügge,,,,,2
+3,27,6,RCS-BIF,,,ECL,,Strasbourg,Brøndby,,,,,X
+3,27,7,RFC-BIF,,,SL,,Randers,Brøndby,,,,,2
+3,27,8,STU-BAY,,,TYS,,Stuttgart,Bayern München,,,,,2
+3,27,9,TWE-PSV,,,HOL,,Twente,PSV,,,,,2
+3,27,10,VAL-RSO,,,SPA,,Valencia,Sociedad,,,,,X
+3,28,1,BET-BIL,,,SPA,,Betis,Athletic Bilbao,,,,,2
+3,28,2,BIF-FCM,,,SL,,Brøndby,FC Midtjylland,,,,,2
+3,28,3,BRC-CAU,,,ENG,,Brackley Town,Carlisle United,,,,,2
+3,28,4,LGA-DLC,,,SPA,,Leganes,Deportivo La Coruna,,,,,X
+3,28,5,LIV-ARS,,,PL,,Liverpool,Arsenal,,,,,1
+3,28,6,MAU-BUR,,,PL,,Manchester United,Burnley,,,,,1
+3,28,7,PIS-ROM,,,ITA,,Pisa,Roma,,,,,2
+3,28,8,SKI-KIF,,,DAN,,Skive,Kolding IF,,,,,2
+3,28,9,SPO-FCP,,,POR,,Sporting Lissabon,Porto,,,,,2
+3,28,10,WOL-MAI,,,TYS,,Wolfsburg,Mainz,,,,,X
+3,29,1,GRÆ-DAN,,,INT,,Grækenland,Danmark,,,,,2
+3,29,2,HOB-LBK,,,DAN,,Hobro,Lyngby,,,,,2
+3,29,3,IRL-UNG,,,INT,,Irland,Ungarn,,,,,X
+3,29,4,MLG-GRN,,,SPA,,Malaga,Granada,,,,,X
+3,29,5,POL-FIN,,,INT,,Polen,Finland,,,,,1
+3,29,6,SRB-ENG,,,INT,,Serbien,England ,,,,,2
+3,29,7,SWI-SLO,,,INT,,Schweiz,Slovenien,,,,,1
+3,29,8,TYR-SPA,,,INT,,Tyrkiet,Spanien,,,,,2
+3,29,9,UNG-POR,,,INT,,Ungarn,Portugal,,,,,2
+3,29,10,VEJ-EFB,,,DAN,,Vejgaard,Esbjerg,,,,,2
+3,30,1,ATM-VIL,,,SPA,,Atletico Madrid,Villarreal,,,,,1
+3,30,2,BAY-CHE,,,CL,,Bayern München,Chelsea,,,,,1
+3,30,3,BIF-FCK,,,SL,,Brøndby,FCK,,,,,1
+3,30,4,FCK-LEV,,,CL,,FCK,Bayer Leverkusen,,,,,X
+3,30,5,GLA-WER,,,TYS,,Gladbach,Werder Bremen,,,,,2
+3,30,6,JUV-BVB,,,CL,,Juventus,Dortmund,,,,,X
+3,30,7,LIV-ATM,,,CL,,Liverpool,Atletico Madrid,,,,,1
+3,30,8,MCI-MAU,,,PL,,Manchester City,Manchester United,,,,,1
+3,30,9,TOT-VIL,,,CL,,Tottenham,Villarreal,,,,,1
+3,30,10,VER-CRE,,,ITA,,Verona,Cremonese,,,,,X
+3,31,1,AVI-BLG,,,EL,,Aston Villa,Bologna,,,,,1
+3,31,2,BET-NOT,,,EL,,Betis,Nottingham Forest,,,,,X
+3,31,3,FCM-STG,,,EL,,FC Midtjylland,Sturm Graz,,,,,1
+3,31,4,FCM-VFF,,,SL,,FC Midtjylland,Viborg,,,,,1
+3,31,5,LAZ-ROM,,,ITA,,Lazio,Roma,,,,,2
+3,31,6,LIV-EVE,,,PL,,Liverpool,Everton,,,,,1
+3,31,7,PSV-AJA,,,HOL,,PSV,Ajax,,,,,X
+3,31,8,RFC-FCN,,,SL,,Randers,FC Nordsjælland,,,,,1
+3,31,9,SEV-VIL,,,SPA,,Sevilla,Villarreal,,,,,2
+3,31,10,STU-VIG,,,EL,,Stuttgart,Celta Vigo,,,,,1
+3,32,1,ACM-NAP,,,ITA,,AC Milan,Napoli,,,,,1
+3,32,2,ATM-RMA,,,SPA,,Atletico Madrid,Real Madrid,,,,,1
+3,32,3,BAR-PSG,,,CL,,Barcelona,PSG,,,,,2
+3,32,4,BOD-TOT,,,CL,,Bodø/Glimt,Tottenham,,,,,X
+3,32,5,CHE-BHA,,,PL,,Chelsea,Brighton,,,,,2
+3,32,6,EVE-WHU,,,PL,,Everton,West Ham,,,,,
+3,32,7,FCN-AGF,,,SL,,FC Nordsjælland,AGF,,,,,2
+3,32,8,NOT-FCM,,,EL,,Nottingham Forest,FC Midtjylland,,,,,2
+3,32,9,OM-AJA,,,CL,,Marseille,Ajax,,,,,1
+3,32,10,QAR-FCK,,,CL,,Qarabag,FCK,,,,,1
+3,33,1,ASM-NIC,,,FRA,,Monaco,NIce,,,,,X
+3,33,2,BLR-DAN,,,INT,,Belarus,Danmark,,,,,2
+3,33,3,BVB-RBL,,,TYS,,Dortmund,RB Leipzig,,,,,X
+3,33,4,CHE-LIV,,,PL,,Chelsea,Liverpool,,,,,1
+3,33,5,FCK-FCM,,,SL,,FCK,FC Midtjylland,,,,,X
+3,33,6,FCP-SLB,,,POR,,Porto,Benfica,,,,,X
+3,33,7,GAL-BES,,,TYR,,Galatasaray,Besiktas,,,,,X
+3,33,8,HIF-LBK,,,DAN,,Hvidovre,Lyngby,,,,,X
+3,33,9,IND-KSA,,,INT,,Indonesien,Saudi-Arabien,,,,,2
+3,33,10,SCU-MOR,,,ENG,,Scunthorpe,Morecambe,,,,,1
+3,34,1,DAN-GRÆ,,,INT,,Danmark,Grækenland,,,,,1
+3,34,2,HUD-BOL,,,ENG,,Huddersfield,Bolton,,,,,2
+3,34,3,IRL-ARM,,,INT,,Irland,Armenien,,,,,1
+3,34,4,LUC-FRV,,,SVE,,Lucksta,Friska Viljor,,,,,2
+3,34,5,RUM-ØST,,,INT,,Rumænien,Østrig,,,,,1
+3,34,6,SRB-ABN,,,INT,,Serbien,Albanien,,,,,2
+3,34,7,SVE-KOS,,,INT,,Sverige,Kosovo,,,,,2
+3,34,8,TYR-GEO,,,INT,,Tyrkiet,Georgien,,,,,1
+3,34,9,UNG-ARM,,,INT,,Ungarn,Armenien,,,,,1
+3,34,10,WAL-BEL,,,INT,,Wales,Belgien,,,,,2
+3,35,1,ATA-ACM,,,ITA,,Atalanta,AC Milan,,,,,X
+3,35,2,BOU-NOT,,,ENG,,Bournemouth,Nottingham Forest,,,,,1
+3,35,3,BVB-KÖL,,,TYS,,Dortmund,Köln,,,,,1
+3,35,4,FCM-SIF,,,DAN,,FC Midtjylland,Silkeborg,,,,,1
+3,35,5,FEY-PSV,,,HOL,,Feyenoord,PSV,,,,,2
+3,35,6,NAP-INT,,,ITA,,Napoli,Inter,,,,,1
+3,35,7,OB-BIF,,,SL,,OB,Brøndby,,,,,2
+3,35,8,RMA-BAR,,,SPA,,Real Madrid,Barcelona,,,,,1
+3,35,9,UNI-BIE,,,TYS,,Union Berlin,Arminia Bielefeld,,,,,1
+3,35,10,VAL-VIL,,,SPA,,Valencia,Villarreal,,,,,2
+3,36,1,BES-FEN,,,TYR,,Besiktas,Fenerbahce,,,,,2
+3,36,2,FCM-AGF,,,SL,,FC Midtjylland,AGF,,,,,X
+3,36,3,FCM-CEL,,,EL,,FC Midtjylland,Celtic,,,,,
+3,36,4,MCI-BVB,,,CL,,Manchester City,Dortmund,,,,,1
+3,36,5,NEW-BIL,,,CL,,Newcastle,Athletic Bilbao,,,,,1
+3,36,6,PRM-BLG,,,ITA,,Parma,Bologna,,,,,2
+3,36,7,PSG-BAY,,,CL,,PSG,Bayern München,,,,,2
+3,36,8,RSO-BIL,,,SPA,,Sociedad,Athletic Bilbao,,,,,1
+3,36,9,TOT-CHE,,,PL,,Tottenham,Chelsea,,,,,2
+3,36,10,TOT-FCK,,,CL,,Tottenham,FCK,,,,,1
+3,37,1,BIF-FCN,,,SL,,Brøndby,FC Nordsjælland,,,,,2
+3,37,2,EFB-MDD,,,DAN,,Esbjerg,Middelfart,,,,,1
+3,37,3,FRK-UKR,,,INT,,Frankrig,Ukraine,,,,,1
+3,37,4,GLA-KÖL,,,TYS,,Gladbach,Köln,,,,,1
+3,37,5,JUV-TOR,,,ITA,,Juventus,Torino,,,,,X
+3,37,6,MCI-LIV,,,PL,,Manchester City,Liverpool,,,,,1
+3,37,7,SVK-NI,,,INT,,Slovakiet,Nordirland,,,,,
+3,37,8,VAL-BET,,,SPA,,Valencia,Betis,,,,,X
+3,37,9,YOR-ROC,,,ENG,,York,Rochdale,,,,,1
+3,37,10,ZAM-OUR,,,SPA,,Zamora,Ourense,,,,,X
+3,38,1,BOS-RUM,,,INT,,Bosnien,Rumænien,,,,,1
+3,38,2,GRÆ-SKO,,,INT,,Grækenland,Skotland,,,,,1
+3,38,3,ITA-NOR,,,INT,,Italien,Norge,,,,,2
+3,38,4,LUT-RTH,,,ENG,,Luton,Rotherham,,,,,X
+3,38,5,NIG-DRC,,,INT,,Nigeria,DR Congo,,,,,X
+3,38,6,SLO-KOS,,,INT,,Slovenien,Kosovo,,,,,2
+3,38,7,SWI-SVE,,,INT,,Schweiz,Sverige,,,,,1
+3,38,8,TYS-SVK,,,INT,,Tyskland,Slovakiet,,,,,1
+3,38,9,UKR-ISL,,,INT,,Ukraine,Island,,,,,1
+3,38,10,UNG-IRL,,,INT,,Ungarn,Irland,,,,,2
+3,39,1,CRC-HON,,,INT,,Costa Rica,Honduras,,,,,X
+3,39,2,HOB-HIF,,,DAN,,Hobro,Hvidovre,,,,,2
+3,39,3,IRK-UAE,,,INT,,Irak,UAE,,,,,1
+3,39,4,JAM-CUR,,,INT,,Jamaica,Curacao,,,,,X
+3,39,5,MAI-HOF,,,TYS,,Mainz,Hoffenheim,,,,,X
+3,39,6,SIF-AGF,,,SL,,Silkeborg,AGF,,,,,2
+3,39,7,SKO-DAN,,,INT,,Skotland,Danmark,,,,,2
+3,39,8,VAL-LVT,,,SPA,,Valencia,Levante,,,,,1
+3,39,9,WAL-NMA,,,INT,,Wales,Nordmakedonien,,,,,1
+3,39,10,ØST-BOS,,,INT,,Østrig,Bosnien,,,,,X
+3,40,1,ARS-BAY,,,,,Arsenal,Bayern München,,,,,1
+3,40,2,ARS-TOT,,,,,Arsenal,Tottenham,,,,,1
+3,40,3,CHE-BAR,,,,,Chelsea,Barcelona,,,,,1
+3,40,4,ESP-SEV,,,,,Espanyol,Sevilla,,,,,1
+3,40,5,FCK-BIF,,,,,FCK,Brøndby,,,,,1
+3,40,6,FCK-KAA,,,,,FCK,Kairat Almaty,,,,,1
+3,40,7,INT-ACM,,,,,Inter,AC Milan,,,,,2
+3,40,8,OM-NEW,,,,,Marseille,Newcastle,,,,,1
+3,40,9,ROM-FCM,,,,,Roma,FC Midtjylland,,,,,
+3,40,10,WOL-LEV,,,,,Wolfsburg,Bayer Leverkusen,,,,,2
+3,41,1,AGF-FCK,,,,,AGF,FCK,,,,,1
+3,41,2,ASM-PSG,,,,,Monaco,PSG,,,,,1
+3,41,3,BAR-ATM,,,,,Barcelona,Atletico Madrid,,,,,1
+3,41,4,BHA-AVI,,,,,Brighton,Aston Villa,,,,,2
+3,41,5,CHE-ARS,,,,,Chelsea,Arsenal,,,,,X
+3,41,6,FCM-FCN,,,,,FC Midtjylland,FC Nordsjælland,,,,,1
+3,41,7,FEN-GAL,,,,,Fenerbahce,Galatasaray,,,,,X
+3,41,8,LEV-BVB,,,,,Bayer Leverkusen,Dortmund,,,,,2
+3,41,9,ROM-NAP,,,,,Roma,Napoli,,,,,2
+3,41,10,SEV-BET,,,,,Sevilla,Betis,,,,,2
+3,42,1,BAY-SPO,,,CL,,Bayern München,Sporting Lissabon,,,,,1
+3,42,2,BET-BAR,,,SPA,,Betis,Barcelona,,,,,2
+3,42,3,FCM-GNK,,,EL,,FC Midtjylland,Genk,,,,,1
+3,42,4,HSV-WER,,,TYS,,HSV Hamburg,Werder Bremen,,,,,1
+3,42,5,INT-LIV,,,CL,,Inter,Liverpool,,,,,2
+3,42,6,LEE-LIV,,,PL,,Leeds,Liverpool,,,,,X
+3,42,7,RMA-MCI,,,CL,,Real Madrid,Manchester City,,,,,2
+3,42,8,TOR-ACM,,,ITA,,Torino,AC Milan,,,,,2
+3,42,9,VFF-FCM,,,SL,,Viborg,FC Midtjylland,,,,,X
+3,42,10,VIL-FCK,,,CL,,Villarreal,FCK,,,,,1
+3,43,1,AJA-FEY,,,HOL,,Ajax,Feyenoord,,,,,1
+3,43,2,ATM-VAL,,,SPA,,Atletico Madrid,Valencia,,,,,1
+3,43,3,AZ-JAG,,,ECL,,AZ Alkmaar,Jagiellonia,,,,,X
+3,43,4,CAR-CHE,,,ENG,,Cardiff,Chelsea,,,,,2
+3,43,5,LAU-FIO,,,ECL,,Lausanne,Fiorentina,,,,,1
+3,43,6,LEV-KÖL,,,TYS,,Bayer Leverkusen,Köln,,,,,1
+3,43,7,MAI-SAM,,,ECL,,Mainz,Samsunspor,,,,,1
+3,43,8,ROM-CMO,,,ITA,,Roma,Como,,,,,1
+3,43,9,SUN-NEW,,,PL,,Sunderland,Newcastle,,,,,1
+3,43,10,YB-GRA,,,SUI,,Young Boys,Grasshoppers,,,,,2
+3,44,1,ARS-CRY,,,PL,,Arsenal,Crystal Palace,,,,,X
+3,44,2,BIL-ESP,,,SPA,,Athletic Bilbao,Espanyol,,,,,2
+3,44,3,FUL-NOT,,,PL,,Fulham,Nottingham Forest,,,,,1
+3,44,4,GEN-ATA,,,ITA,,Genoa,Atalanta,,,,,2
+3,44,5,HSV-FRA,,,TYS,,HSV Hamburg,Frankfurt,,,,,X
+3,44,6,JUV-ROM,,,ITA,,Juventus,Roma,,,,,1
+3,44,7,MAI-PAU,,,TYS,,Mainz,St. Pauli,,,,,X
+3,44,8,NEW-CHE,,,PL,,Newcastle,Chelsea,,,,,X
+3,44,9,RBL-LEV,,,TYS,,RB Leipzig,Bayer Leverkusen,,,,,2
+3,44,10,VIL-BAR,,,SPA,,Villarreal,Barcelona,,,,,2
+3,45,1,ATA-ROM,,,,,Atalanta,Roma,,,,,1
+3,45,2,ATM-RMA,,,,,Atletico Madrid,Real Madrid,,,,,2
+3,45,3,BLG-ATA,,,,,Bologna,Atalanta,,,,,2
+3,45,4,BOU-ARS,,,,,Bournemouth,Arsenal,,,,,2
+3,45,5,ELC-VIL,,,,,Elche,Villarreal,,,,,2
+3,45,6,LAZ-NAP,,,,,Lazio,Napoli,,,,,2
+3,45,7,LEI-WBA,,,,,Leicester,West Bromwich,,,,,1
+3,45,8,MCI-CHE,,,,,Manchester City,Chelsea,,,,,X
+3,45,9,RSO-ATM,,,,,Sociedad,Atletico Madrid,,,,,X
+3,45,10,WHU-NOT,,,,,West Ham,Nottingham Forest,,,,,2
+3,46,1,CHE-ARS,,,,,Chelsea,Arsenal,,,,,2
+3,46,2,CMO-ACM,,,,,Como,AC Milan,,,,,2
+3,46,3,HSV-LEV,,,,,HSV Hamburg,Bayer Leverkusen,,,,,
+3,46,4,INT-NAP,,,,,Inter,Napoli,,,,,X
+3,46,5,LEV-STU,,,,,Bayer Leverkusen,Stuttgart,,,,,2
+3,46,6,LIL-LYO,,,,,Lille,Lyon,,,,,2
+3,46,7,MAU-BHA,,,,,Manchester United,Brighton,,,,,2
+3,46,8,OVI-BET,,,,,Real Oviedo,Betis,,,,,X
+3,46,9,ROM-SAS,,,,,Roma,Sassuolo,,,,,1
+3,46,10,SEV-VIG,,,,,Sevilla,Celta Vigo,,,,,2
+3,47,1,BHA-BOU,,,,,Brighton,Bournemouth,,,,,X
+3,47,2,BLG-FIO,,,,,Bologna,Fiorentina,,,,,2
+3,47,3,FCK-NAP,,,,,FCK,Napoli,,,,,X
+3,47,4,JUV-SLB,,,,,Juventus,Benfica,,,,,2
+3,47,5,MAU-MCI,,,,,Manchester United,Manchester City,,,,,1
+3,47,6,OM-LIV,,,,,Marseille,Liverpool,,,,,2
+3,47,7,RBL-BAY,,,,,RB Leipzig,Bayern München,,,,,2
+3,47,8,RMA-ASM,,,,,Real Madrid,Monaco,,,,,1
+3,47,9,RSO-BAR,,,,,Sociedad,Barcelona,,,,,1
+3,47,10,SKB-FCM,,,,,Brann,FC Midtjylland,,,,,X
+3,48,1,BOU-LIV,,,,,Bournemouth,Liverpool,,,,,1
+3,48,2,BVB-INT,,,,,Dortmund,Inter,,,,,2
+3,48,3,FCM-ZAG,,,,,FC Midtjylland,Dinamo Zagreb,,,,,1
+3,48,4,GIR-GET,,,,,Girona,Getafe,,,,,X
+3,48,5,HEA-CEL,,,,,Hearts,Celtic,,,,,X
+3,48,6,JUV-NAP,,,,,Juventus,Napoli,,,,,1
+3,48,7,NAP-CHE,,,,,Napoli,Chelsea,,,,,2
+3,48,8,OM-LEN,,,,,Marseille,Lens,,,,,1
+3,48,9,PAU-RBL,,,,,St. Pauli,RB Leipzig,,,,,X
+3,48,10,PSG-NEW,,,,,PSG,Newcastle,,,,,X
+3,49,1,ARS-CHE,,,,,Arsenal,Chelsea,,,,,1
+3,49,2,BET-ATM,,,,,Betis,Atletico Madrid,,,,,2
+3,49,3,BIL-RSO,,,,,Athletic Bilbao,Sociedad,,,,,X
+3,49,4,FRA-LEV,,,,,Frankfurt,Bayer Leverkusen,,,,,2
+3,49,5,LIV-NEW,,,,,Liverpool,Newcastle,,,,,1
+3,49,6,MCI-NEW,,,,,Manchester City,Newcastle,,,,,1
+3,49,7,OSA-VIL,,,,,Osasuna,Villarreal,,,,,X
+3,49,8,PSV-FEY,,,,,PSV,Feyenoord,,,,,1
+3,49,9,TOT-MCI,,,,,Tottenham,Manchester City,,,,,X
+3,49,10,UDI-ROM,,,,,Udinese,Roma,,,,,1
+3,50,1,AGF-FCM,,,,,AGF,FC Midtjylland,,,,,
+3,50,2,BAY-RBL,,,,,Bayern München,RB Leipzig,,,,,
+3,50,3,FCM-FCK,,,,,FC Midtjylland,FCK,,,,,1
+3,50,4,FCP-SPO,,,,,Porto,Sporting Lissabon,,,,,X
+3,50,5,FIO-TOR,,,,,Fiorentina,Torino,,,,,X
+3,50,6,GLA-LEV,,,,,Gladbach,Bayer Leverkusen,,,,,X
+3,50,7,LIV-MCI,,,,,Liverpool,Manchester City,,,,,2
+3,50,8,PSG-OM,,,,,PSG,Marseille,,,,,1
+3,50,9,SEV-GIR,,,,,Sevilla,Girona,,,,,X
+3,50,10,WHU-MAU,,,,,West Ham,Manchester United,,,,,X
+3,51,1,BIR-LEE,,,,,Birmingham,Leeds,,,,,X
+3,51,2,BOD-INT,,,,,Bodø/Glimt,Inter,,,,,1
+3,51,3,BVB-ATA,,,,,Dortmund,Atalanta,,,,,1
+3,51,4,CEL-STU,,,,,Celtic,Stuttgart,,,,,
+3,51,5,CLB-ATM,,,,,Club Brügge,Atletico Madrid,,,,,X
+3,51,6,HSV-UNI,,,,,HSV Hamburg,Union Berlin,,,,,1
+3,51,7,NAP-ROM,,,,,Napoli,Roma,,,,,X
+3,51,8,RMA-RSO,,,,,Real Madrid,Sociedad,,,,,1
+3,51,9,SJE-SIF,,,,,Sønderjyske,Silkeborg,,,,,1
+3,51,10,SLB-RMA,,,,,Benfica,Real Madrid,,,,,2
+4,1,1,ACM-INT,,,,,,,,,,,
+4,2,1,ARS-LEV,,,,,,,,,,,
+4,3,1,AGF-BIF,,,,,,,,,,,
+4,4,1,BOS-ITA,,,,,,,,,,,
+4,5,1,ATM-BAR,,,,,,,,,,,
+4,6,1,ARS-SPO,,,,,,,,,,,
+4,7,1,NAP-LAZ,2026-04-18,18:00,Serie A,,Napoli,Lazio,1378188.0,135.0,492.0,487.0,
+4,7,2,ATL-REA,2026-04-18,21:00,Copa del Rey,,Atlético Madrid,Real Sociedad,1529694.0,143.0,530.0,548.0,
+4,7,3,MAN-ARS,2026-04-19,17:30,Premier League,,Manchester City,Arsenal,1379295.0,39.0,50.0,42.0,
+4,7,4,SPO-BEN,2026-04-19,19:00,Liga Portugal,,Sporting CP,Benfica,1396506.0,94.0,228.0,211.0,
+4,7,5,MID-AGF,2026-04-20,19:00,Superligaen,,FC Midtjylland,AGF,1530573.0,119.0,397.0,406.0,
+4,7,6,BRI-CHE,2026-04-21,21:00,Premier League,,Brighton,Chelsea,1379301.0,39.0,51.0,49.0,
+4,7,7,INT-COM,2026-04-21,21:00,Coppa Italia,,Inter Milan,Como,1521548.0,137.0,505.0,895.0,
+4,7,8,BRA-FRE,2026-04-30,21:00,Europa League,Europa League,Braga,Freiburg,1540871.0,3.0,217.0,160.0,
+4,7,9,BAY-BAY,2026-04-22,20:45,DfB Pokal,,Bayer Leverkusen,Bayern München,1526336.0,81.0,168.0,157.0,
+4,7,10,VFB-FRE,2026-04-23,20:45,DfB Pokal,,VfB Stuttgart,Freiburg,1526337.0,81.0,172.0,160.0,
+4,8,1,ALA-MAL,2026-04-25,14:00,La Liga,La Liga,Alaves,Mallorca,,,,,
+4,8,2,HSV-TSG,2026-04-25,18:30,Bundesliga,Bundesliga,HSV Hamburg,TSG Hoffenheim,,,,,
+4,8,3,AGF-MID,2026-04-26,20:00,Superligaen,Superliga,AGF,FC Midtjylland,,,,,
+4,8,4,MIL-JUV,2026-04-26,20:45,Serie A,Serie A,AC Milan,Juventus,,,,,
+4,8,5,MAN-BRE,2026-04-27,21:00,Premier League,Premier League,Manchester Utd,Brentford,,,,,
+4,8,6,PAR-BAY,2026-04-28,21:00,Champions League,Champions League,Paris Saint-Germain,Bayern München,1540841.0,2.0,85.0,157.0,
+4,8,7,ATL-ARS,2026-04-29,21:00,Champions League,Champions League,Atlético Madrid,Arsenal,1540842.0,2.0,530.0,42.0,
+4,8,8,BRA-FRE,2026-04-30,21:00,Europa League,Europa League,Braga,Freiburg,1540871.0,3.0,217.0,160.0,
+4,8,9,NOT-AST,2026-04-30,21:00,Europa League,Europa League,Nottingham,Aston Villa,1540872.0,3.0,65.0,66.0,
+4,8,10,VAL-STR,2026-04-30,21:00,Conference League,Conference League,Vallecano,Strasbourg,1540879.0,848.0,728.0,95.0,
+4,9,1,LEV-RBL,2026-05-02,18:30,Bundesliga,Bundesliga,Bayer Leverkusen,RB Leipzig,,,,,1
+4,9,2,ATA-GEN,2026-05-02,20:45,Serie A,Serie A,Atalanta,Genoa,,,,,X
+4,9,3,MAU-LIV,2026-05-03,16:30,Premier League,Premier League,Manchester United,Liverpool,1379316.0,39.0,33.0,40.0,1
+4,9,4,AGF-SJE,2026-05-03,18:00,Superligaen,Superliga,AGF,Sønderjyske,1530581.0,119.0,406.0,396.0,1
+4,9,5,SEV-RSO,2026-05-04,21:00,La Liga,La Liga,Sevilla,Real Sociedad,1391156.0,140.0,536.0,548.0,1
+4,9,6,ARS-ATM,2026-05-05,21:00,Champions League,Champions League,Arsenal,Atlético Madrid,1540843.0,2.0,42.0,530.0,1
+4,9,7,BAY-MAI,2026-05-06,21:00,Champions League,Champions League,Bayern München,Paris Saint-Germain,,,,,
+4,9,8,AVI-NOT,2026-05-07,21:00,Europa League,Europa League,Aston Villa,Nottingham Forest,,,,,
+4,9,9,FRE-BRA,2026-05-07,21:00,Europa League,Europa League,Freiburg,Braga,,,,,
+4,9,10,STB-VAL,2026-05-07,21:00,Conference League,Conference League,Strasbourg,Rayo Vallecano,,,,,
+4,10,1,STU-LEV,2026-05-09,15:30,Bundesliga,Bundesliga,Stuttgart,Leverkusen,,,,,1
+4,10,2,FUL-BOU,2026-05-09,16:00,Premier League,Premier League,Fulham,Bournemouth,,,,,2
+4,10,3,BIF-AGF,2026-05-10,18:00,Superligaen,Superliga,Brøndby,AGF,,,,,2
+4,10,4,BAR-RMA,2026-05-10,21:00,La Liga,La Liga,Barcelona,Real Madrid,,,,,1
+4,10,5,VAL-GIR,2026-05-11,21:00,La Liga,La Liga,Vallecano,Girona,,,,,X
+4,10,6,SOU-MID,2026-05-12,21:00,Championship,Championship Playoff,Southampton,Middlesbrough,,,,,X
+4,10,7,LAZ-INT,2026-05-13,21:00,Coppa Italia,Coppa Italia,Lazio,Inter,,,,,2
+4,10,8,MJÄ-HAM,2026-05-14,15:00,Svenska Cupen,Svenska Cupen,Mjällby,Hammarby,,,,,1
+4,10,9,USG-AND,2026-05-14,15:00,Europa League,Belgisk Cup,Royale Union SG,Anderlecht,,,,,X
+4,10,10,FCK-FCM,2026-05-14,17:00,Oddset Pokalen,Oddset Pokalen,FC København,FC Midtjylland,,,,,2
+4,11,1,HIL-EfB,2026-05-16,13:00,1. division,1. division,Hillerød,Esbjerg,,,,,X
+4,11,2,CEL-HEA,2026-05-16,13:30,Premier League,Premier League,Celtic,Hearts,,,,,1
+4,11,3,CHE-MCI,2026-05-16,16:00,FA Cup,FA Cup,Chelsea,Manchester City,,,,,2
+4,11,4,SJE-FCN,2026-05-17,18:00,Superligaen,Superliga,SønderjyskE,FC Nordsjælland,,,,,2
+4,11,5,BIL-VIG,2026-05-17,19:00,La Liga,La Liga,Athletic Club Bilbao,Celta Vigo,,,,,X
+4,11,6,ÖRG-GöT,2026-05-18,19:00,Allsvenskan,Allsvenskan,Örgryte,IFK Göteborg,,,,,2
+4,11,7,BOU-MCI,2026-05-19,20:30,Premier League,Premier League,Bournemouth,Manchester City,,,,,X
+4,11,8,FRE-AVI,2026-05-20,21:00,Europa League,Europa League,Freiburg,Aston Villa,,,,,2
+4,11,9,ELF-MJÄ,2026-05-21,19:00,Allsvenskan,Allsvenskan,Elfsborg,Mjällby,,,,,
+4,11,10,LEN-NIC,2026-05-22,21:00,Coupe de France,Coupe de France,Lens,Nice,,,,,
+4,12,1,HUL-MID,2026-05-23,16:30,Championship,Championship,Hull,Middlesbrough,,,,,1
+4,12,2,BAY-STU,2026-05-23,20:00,DfB Pokal,DfB Pokal,Bayern,Stuttgart,,,,,1
+4,12,3,GIR-ELC,2026-05-23,21:00,La Liga,La Liga,Girona,Elche,,,,,X
+4,12,4,TOT-EVE,2026-05-24,17:00,Premier League,Premier League,Tottenham,Everton,,,,,
+4,12,5,CAT-MOZ,2026-05-24,20:00,Serie B,Serie B,Catanzaro,Monza,,,,,
+4,12,6,HIF-EFB,2026-05-25,15:00,1. division,1. division,Hvidovre,Esbjerg,,,,,
+4,12,7,PAD-WLF,2026-05-25,20:30,Bundesliga,Bundesliga,Paderborn,Wolfsburg,,,,,
+4,12,8,FÜR-RWE,2026-05-26,20:30,Bundesliga,2. Bundesliga,Fürth,RW Essen,,,,,
+4,12,9,CRY-VAL,2026-05-27,21:00,Conference League,Conference League,Crystal Palace,Vallecano,,,,,
+4,12,10,LEI-WÜK,2026-05-28,19:00,Regionalliga,Regionalliga,Lokomotive Leipzig,Würzburger Kickers,,,,,
+4,13,1,AIK-SIR,2026-05-30,15:00,Allsvenskan,Allsvenskan,AIK,Sirius,,,,,2
+4,13,2,MOL-SND,2026-05-30,16:00,Europa League,Eliteserien,Molde,Sandefjord,,,,,1
+4,13,3,PSG-ARS,2026-05-30,18:00,Champions League,Champions League,Paris SG,Arsenal,,,,,X
+4,13,4,EFB-LBK,2026-05-31,15:00,1. division,1. division,Esbjerg,Lyngby,,,,,1
+4,13,5,GNT-GNK,2026-05-31,18:30,Conference League,Conference League Playoff,Gent,Genk,,,,,X
+4,13,6,CST-EIB,2026-05-31,18:30,La Liga,La Liga 2,Castellón,Eibar,,,,,1
+4,13,7,WÜK-LEI,2026-06-01,18:30,Regionalliga,Regionalliga,Würzburger Kickers,Lokomotive Leipzig,,,,,1
+4,13,8,BRE-ASC,2026-06-02,21:15,Serie C,Serie C,Brescia,Ascoli,,,,,X
+4,13,9,DAN-DRC,2026-06-03,20:00,Landskamp,Landskamp,Danmark,DR Congo,,,,,X
+4,13,10,LAH-HÄS,2026-06-04,19:00,1. division Syd,1. division Syd,Laholm,Hässleholms IF,,,,,2
+4,14,1,ODD-FRM,2026-06-06,13:00,3. division,3. division,Odder,Frem,,,,,X
+4,14,2,CST-ALM,2026-06-06,21:00,La Liga,La Liga 2,Castellon,Almería,,,,,X
+4,14,3,DAN-UKR,2026-06-07,18:30,Landskamp,Landskamp,Danmark,Ukraine,,,,,ALL
+4,14,4,LAS-MLG,2026-06-07,21:00,La Liga,La Liga 2,Las Palmas,Malaga,,,,,2
+4,14,5,UTS-RO2,2026-06-08,19:30,1. division Syd,1. division Syd,Utsikten,FC Rosengård,,,,,2
+4,14,6,ALM-CST,2026-06-09,21:00,La Liga,La Liga 2,Almería,Castellon,,,,,1
+4,14,7,MLG-LAS,2026-06-10,21:00,La Liga,La Liga 2,Malaga,Las Palmas,,,,,X
+4,14,8,MEX-RSA,2026-06-11,21:00,Landskamp,Landskamp,Mexico,Sydafrika,,,,,1
+4,14,9,SYK-TJE,2026-06-12,04:00,Landskamp,Landskamp,Sydkorea,Tjekkiet,,,,,1
+4,14,10,CAN-BOS,2026-06-12,21:00,Landskamp,Landskamp,Canada,Bosnien,,,,,X
+4,15,1,QAT-SWI,2026-06-13,21:00,Landskamp,Landskamp,Qatar,Schweiz,,,,,X
+4,15,2,MLG-ALM,2026-06-14,21:00,La Liga,La Liga 2,Malaga,Almería,,,,,X
+4,15,3,HOL-JAP,2026-06-14,22:00,Landskamp,Landskamp,Holland,Japan,,,,,X
+4,15,4,SVE-TUN,2026-06-15,04:00,Landskamp,Landskamp,Sverige,Tunesien,,,,,1
+4,15,5,BEL-EGY,2026-06-15,21:00,Landskamp,Landskamp,Belgien,Egypten,,,,,X
+4,15,6,FRK-SEN,2026-06-16,21:00,Landskamp,Landskamp,Frankrig,Senegal,,,,,1
+4,15,7,ENG-KRO,2026-06-17,22:00,Landskamp,Landskamp,England,Kroatien,,,,,
+4,15,8,TJE-RSA,2026-06-18,18:00,Landskamp,Landskamp,Tjekkiet,Sydafrika,,,,,
+4,15,9,SWI-BOS,2026-06-18,21:00,Landskamp,Landskamp,Schweiz,Bosnien,,,,,
+4,15,10,USA-AUS,2026-06-19,21:00,Landskamp,Landskamp,USA,Australien,,,,,
+4,16,1,HOL-SVE,2026-06-20,19:00,Landskamp,Landskamp,Holland,Sverige,,,,,1
+4,16,2,ALM-MLG,2026-06-20,21:00,La Liga,La Liga 2,Almería,Malaga,,,,,2
+4,16,3,BEL-IRA,2026-06-21,21:00,Landskamp,Landskamp,Belgien,Iran,,,,,
+4,16,4,ARG-ØST,2026-06-22,19:00,Landskamp,Landskamp,Argentina,Østrig,,,,,
+4,16,5,POR-UZB,2026-06-23,19:00,Landskamp,Landskamp,Portugal,Uzbekistan,,,,,
+4,16,6,ENG-GHA,2026-06-23,22:00,Landskamp,Landskamp,England,Ghana,,,,,
+4,16,7,BOS-QAT,2026-06-24,21:00,Landskamp,Landskamp,Bosnien,Qatar,,,,,
+4,16,8,SWI-CAN,2026-06-24,21:00,Landskamp,Landskamp,Schweiz,Canada,,,,,
+4,16,9,ECU-TYS,2026-06-25,22:00,Landskamp,Landskamp,Ecuador,Tyskland,,,,,
+4,16,10,NOR-FRK,2026-06-26,21:00,Landskamp,Landskamp,Norge,Frankrig,,,,,
+5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2
+5,1,2,AVI-TOT,,,,,AVI,TOT,,,,,1
+5,1,3,BVB-STU,,,,,BVB,STU,,,,,2
+5,1,4,DZA-HAJ,,,,,DZA,HAJ,,,,,
+5,1,5,FCK-HEI,,,,,FCK,HEI,,,,,2
+5,1,6,FCM-BRØ,,,,,FCM,BRØ,,,,,
+5,1,7,FCM-RSO,,,,,FCM,RSO,,,,,2
+5,1,8,FCM-SPO,,,,,FCM,SPO,,,,,
+5,1,9,FEY-ACM,,,,,FEY,ACM,,,,,1
+5,1,10,FRA-NAP,,,,,FRA,NAP,,,,,
+5,1,11,INT-FIO,,,,,INT,FIO,,,,,1
+5,1,12,LEI-MAC,,,,,LEI,MAC,,,,,
+5,1,13,LIV-RMA,,,,,LIV,RMA,,,,,
+5,1,14,MAU-BAR,,,,,MAU,BAR,,,,,
+5,1,15,MAU-NEW,,,,,MAU,NEW,,,,,
+5,1,16,MCI-RMA,,,,,MCI,RMA,,,,,2
+5,1,17,RMA-ATM,,,,,RMA,ATM,,,,,X
+5,1,18,SPO-BVB,,,,,SPO,BVB,,,,,2
+5,1,19,TOT-CHE,,,,,TOT,CHE,,,,,
+5,2,1,ACM-FEY,,,,,ACM,FEY,,,,,X
+5,2,2,APO-OMO,,,,,APO,OMO,,,,,
+5,2,3,ATA-CLB,,,,,ATA,CLB,,,,,2
+5,2,4,AaB-VIB,,,,,AaB,VIB,,,,,
+5,2,5,CRE-ROM,,,,,CRE,ROM,,,,,
+5,2,6,DUN-ABE,,,,,DUN,ABE,,,,,
+5,2,7,FCK-OB,,,,,FCK,OB,,,,,
+5,2,8,FCK-VEJ,,,,,FCK,VEJ,,,,,
+5,2,9,HEI-FCK,,,,,HEI,FCK,,,,,2
+5,2,10,HEI-MAI,,,,,HEI,MAI,,,,,2
+5,2,11,JUV-INT,,,,,JUV,INT,,,,,1
+5,2,12,LEV-HER,,,,,LEV,HER,,,,,
+5,2,13,LIV-MAU,,,,,LIV,MAU,,,,,
+5,2,14,MAC-NEW,,,,,MAC,NEW,,,,,
+5,2,15,PSV-JUV,,,,,PSV,JUV,,,,,1
+5,2,16,RFC-FCK,,,,,RFC,FCK,,,,,2
+5,2,17,RMA-BAR,,,,,RMA,BAR,,,,,
+5,2,18,RMA-MCI,,,,,RMA,MCI,,,,,1
+5,2,19,SOU-BOU,,,,,SOU,BOU,,,,,2
+5,2,20,VIL-VAL,,,,,VIL,VAL,,,,,X
+5,3,1,BAY-PSG,,,,,BAY,PSG,,,,,
+5,3,2,BEN-CLB,,,,,BEN,CLB,,,,,
+5,3,3,BHA-BOU,,,,,BHA,BOU,,,,,1
+5,3,4,BVB-UNI,,,,,BVB,UNI,,,,,1
+5,3,5,CHE-DOR,,,,,CHE,DOR,,,,,
+5,3,6,EVE-MAU,,,,,EVE,MAU,,,,,X
+5,3,7,FCK-FCM,,,,,FCK,FCM,,,,,1
+5,3,8,FUL-ARS,,,,,FUL,ARS,,,,,
+5,3,9,GAL-FEN,,,,,GAL,FEN,,,,,X
+5,3,10,HIF-FCF,,,,,HIF,FCF,,,,,1
+5,3,11,JUV-EMP,,,,,JUV,EMP,,,,,X
+5,3,12,LEV-FER,,,,,LEV,FER,,,,,
+5,3,13,NAP-ATA,,,,,NAP,ATA,,,,,
+5,3,14,NEW-NOT,,,,,NEW,NOT,,,,,1
+5,3,15,PRM-BLG,,,,,PRM,BLG,,,,,1
+5,3,16,SCH-DOR,,,,,SCH,DOR,,,,,
+5,3,17,SEV-ALM,,,,,SEV,ALM,,,,,
+5,3,18,SEV-MAL,,,,,SEV,MAL,,,,,X
+5,3,19,TOT-ML,,,,,TOT,ML,,,,,
+5,3,20,VIB-FCN,,,,,VIB,FCN,,,,,
+5,4,1,ACM-LAZ,,,,,ACM,LAZ,,,,,2
+5,4,2,AJX-FEY,,,,,AJX,FEY,,,,,
+5,4,3,ATM-BIL,,,,,ATM,BIL,,,,,1
+5,4,4,BAR-RMA,,,,,BAR,RMA,,,,,
+5,4,5,BAY-LEV,,,,,BAY,LEV,,,,,1
+5,4,6,CHE-EVE,,,,,CHE,EVE,,,,,
+5,4,7,FCK-CHE,,,,,FCK,CHE,,,,,2
+5,4,8,FRA-LEV,,,,,FRA,LEV,,,,,2
+5,4,9,MAC-LEI,,,,,MAC,LEI,,,,,
+5,4,10,NAP-FRA,,,,,NAP,FRA,,,,,
+5,4,11,NOT-IPS,,,,,NOT,IPS,,,,,X
+5,4,12,POR-INT,,,,,POR,INT,,,,,
+5,4,13,PSG-LIV,,,,,PSG,LIV,,,,,2
+5,4,14,PSV-ARS,,,,,PSV,ARS,,,,,2
+5,4,15,RMA-ATM,,,,,RMA,ATM,,,,,1
+5,4,16,RMA-LIV,,,,,RMA,LIV,,,,,
+5,4,17,SIF-FCM,,,,,SIF,FCM,,,,,
+5,4,18,SJE-SIF,,,,,SJE,SIF,,,,,2
+5,4,19,STA-MOL,,,,,STA,MOL,,,,,
+5,4,20,VIL-AND,,,,,VIL,AND,,,,,
+5,5,1,ATM-RMA,,,,,ATM,RMA,,,,,1
+5,5,2,BAR-SLB,,,,,BAR,SLB,,,,,1
+5,5,3,BIL-MAL,,,,,BIL,MAL,,,,,X
+5,5,4,BRN-AVI,,,,,BRN,AVI,,,,,2
+5,5,5,DAN-FIN,,,,,DAN,FIN,,,,,
+5,5,6,FRA-HOL,,,,,FRA,HOL,,,,,
+5,5,7,FRE-RBL,,,,,FRE,RBL,,,,,X
+5,5,8,ITA-ENG,,,,,ITA,ENG,,,,,
+5,5,9,JUV-ATA,,,,,JUV,ATA,,,,,2
+5,5,10,KAZ-DAN,,,,,KAZ,DAN,,,,,
+5,5,11,KOL-HIK,,,,,KOL,HIK,,,,,
+5,5,12,KRO-WAL,,,,,KRO,WAL,,,,,
+5,5,13,LIL-BVB,,,,,LIL,BVB,,,,,2
+5,5,14,LIV-PSG,,,,,LIV,PSG,,,,,2
+5,5,15,MAN-GRI,,,,,MAN,GRI,,,,,
+5,5,16,MAU-RSO,,,,,MAU,RSO,,,,,1
+5,5,17,NIR-FIN,,,,,NIR,FIN,,,,,
+5,5,18,RFC-BIF,,,,,RFC,BIF,,,,,1
+5,5,19,SLO-BOS,,,,,SLO,BOS,,,,,
+5,5,20,SPA-NOR,,,,,SPA,NOR,,,,,
+5,6,1,ARS-CHE,,,,,ARS,CHE,,,,,1
+5,6,2,B36-HB,,,,,B36,HB,,,,,
+5,6,3,BAY-DOR,,,,,BAY,DOR,,,,,
+5,6,4,BIF-SIF,,,,,BIF,SIF,,,,,X
+5,6,5,CAL-DLC,,,,,CAL,DLC,,,,,X
+5,6,6,CAR-SWA,,,,,CAR,SWA,,,,,
+5,6,7,CHE-SHW,,,,,CHE,SHW,,,,,
+5,6,8,CRE-ATA,,,,,CRE,ATA,,,,,
+5,6,9,DAN-POR,,,,,DAN,POR,,,,,1
+5,6,10,GIR-ESP,,,,,GIR,ESP,,,,,
+5,6,11,HOL-SPA,,,,,HOL,SPA,,,,,X
+5,6,12,ITA-TYS,,,,,ITA,TYS,,,,,2
+5,6,13,KRO-FRK,,,,,KRO,FRK,,,,,1
+5,6,14,OB-FCM,,,,,OB,FCM,,,,,
+5,6,15,RBL-BVB,,,,,RBL,BVB,,,,,1
+5,6,16,RTH-WYC,,,,,RTH,WYC,,,,,2
+5,6,17,RÖD-FKÖ,,,,,RÖD,FKÖ,,,,,1
+5,6,18,SCH-ISR,,,,,SCH,ISR,,,,,
+5,6,19,SKO-SPA,,,,,SKO,SPA,,,,,
+5,6,20,TYR-KRO,,,,,TYR,KRO,,,,,
+5,7,1,ARG-BRS,,,,,ARG,BRS,,,,,1
+5,7,2,FRK-KRO,,,,,FRK,KRO,,,,,1
+5,7,3,ISR-NOR,,,,,ISR,NOR,,,,,2
+5,7,4,LEY-STV,,,,,LEY,STV,,,,,1
+5,7,5,LIT-FIN,,,,,LIT,FIN,,,,,X
+5,7,6,POR-DAN,,,,,POR,DAN,,,,,1
+5,7,7,SKI-AAF,,,,,SKI,AAF,,,,,1
+5,7,8,SPA-HOL,,,,,SPA,HOL,,,,,X
+5,7,9,SRB-ØST,,,,,SRB,ØST,,,,,1
+5,7,10,TYS-ITA,,,,,TYS,ITA,,,,,1
+5,8,1,ASM-NIC,,,,,ASM,NIC,,,,,1
+5,8,2,ATM-BAR,,,,,ATM,BAR,,,,,2
+5,8,3,BEN-INT,,,,,BEN,INT,,,,,
+5,8,4,BES-GAL,,,,,BES,GAL,,,,,1
+5,8,5,BET-SEV,,,,,BET,SEV,,,,,1
+5,8,6,BIL-SOC,,,,,BIL,SOC,,,,,
+5,8,7,CHE-TOT,,,,,CHE,TOT,,,,,1
+5,8,8,FCK-RFC,,,,,FCK,RFC,,,,,1
+5,8,9,FRA-GLA,,,,,FRA,GLA,,,,,
+5,8,10,HAN-MAG,,,,,HAN,MAG,,,,,X
+5,8,11,HES-DUD,,,,,HES,DUD,,,,,
+5,8,12,MAC-BAY,,,,,MAC,BAY,,,,,
+5,8,13,MAU-SEV,,,,,MAU,SEV,,,,,
+5,8,14,MIL-NAP,,,,,MIL,NAP,,,,,
+5,8,15,NAP-ACM,,,,,NAP,ACM,,,,,1
+5,8,16,NOT-MAU,,,,,NOT,MAU,,,,,1
+5,8,17,PSV-AJA,,,,,PSV,AJA,,,,,2
+5,8,18,RMA-CHE,,,,,RMA,CHE,,,,,
+5,8,19,ROM-UDI,,,,,ROM,UDI,,,,,
+5,8,20,SPA-SLA,,,,,SPA,SLA,,,,,
+5,9,1,ACM-FIO,,,,,ACM,FIO,,,,,X
+5,9,2,ARS-RMA,,,,,ARS,RMA,,,,,1
+5,9,3,BAR-ATM,,,,,BAR,ATM,,,,,
+5,9,4,BAR-BVB,,,,,BAR,BVB,,,,,1
+5,9,5,BAY-INT,,,,,BAY,INT,,,,,2
+5,9,6,BAY-MAC,,,,,BAY,MAC,,,,,
+5,9,7,BIF-AGF,,,,,BIF,AGF,,,,,1
+5,9,8,BRI-MAU,,,,,BRI,MAU,,,,,
+5,9,9,CHE-RMA,,,,,CHE,RMA,,,,,
+5,9,10,FRE-BVB,,,,,FRE,BVB,,,,,2
+5,9,11,INT-BEN,,,,,INT,BEN,,,,,
+5,9,12,MAC-SHU,,,,,MAC,SHU,,,,,
+5,9,13,MAI-BAY,,,,,MAI,BAY,,,,,
+5,9,14,MAU-MCI,,,,,MAU,MCI,,,,,X
+5,9,15,NAP-MIL,,,,,NAP,MIL,,,,,
+5,9,16,PSG-AVI,,,,,PSG,AVI,,,,,1
+5,9,17,PSV-AJX,,,,,PSV,AJX,,,,,
+5,9,18,SEV-MAU,,,,,SEV,MAU,,,,,
+5,9,19,TOT-FRA,,,,,TOT,FRA,,,,,X
+5,9,20,VIL-BIL,,,,,VIL,BIL,,,,,X
+5,10,1,ATA-BLG,,,,,ATA,BLG,,,,,1
+5,10,2,AVI-PSG,,,,,AVI,PSG,,,,,1
+5,10,3,BAY-BVB,,,,,BAY,BVB,,,,,X
+5,10,4,BOU-FUL,,,,,BOU,FUL,,,,,1
+5,10,5,BVB-BAR,,,,,BVB,BAR,,,,,1
+5,10,6,CRP-WHA,,,,,CRP,WHA,,,,,
+5,10,7,ESP-GET,,,,,ESP,GET,,,,,
+5,10,8,FCK-BIF,,,,,FCK,BIF,,,,,2
+5,10,9,FCK-BRØ,,,,,FCK,BRØ,,,,,
+5,10,10,FCM-FCK,,,,,FCM,FCK,,,,,1
+5,10,11,FCN-FCK,,,,,FCN,FCK,,,,,
+5,10,12,FIO-CRE,,,,,FIO,CRE,,,,,
+5,10,13,INT-BAY,,,,,INT,BAY,,,,,X
+5,10,14,INT-JUV,,,,,INT,JUV,,,,,
+5,10,15,LEE-LEI,,,,,LEE,LEI,,,,,
+5,10,16,NAP-SAL,,,,,NAP,SAL,,,,,
+5,10,17,RMA-ARS,,,,,RMA,ARS,,,,,2
+5,10,18,RSO-MAL,,,,,RSO,MAL,,,,,2
+5,10,19,SCH-BRE,,,,,SCH,BRE,,,,,
+5,10,20,SIF-AaB,,,,,SIF,AaB,,,,,
+5,11,1,AAB-SJE,,,,,AAB,SJE,,,,,2
+5,11,2,AGF-VIB,,,,,AGF,VIB,,,,,
+5,11,3,AaB-SIF,,,,,AaB,SIF,,,,,
+5,11,4,BEN-BRA,,,,,BEN,BRA,,,,,
+5,11,5,BIF-RFC,,,,,BIF,RFC,,,,,1
+5,11,6,BRN-BHA,,,,,BRN,BHA,,,,,1
+5,11,7,BVB-GLA,,,,,BVB,GLA,,,,,1
+5,11,8,FRE-LEI,,,,,FRE,LEI,,,,,
+5,11,9,INT-ACM,,,,,INT,ACM,,,,,2
+5,11,10,LGA-GIR,,,,,LGA,GIR,,,,,X
+5,11,11,MAI-WOL,,,,,MAI,WOL,,,,,X
+5,11,12,MCI-AVI,,,,,MCI,AVI,,,,,1
+5,11,13,OLL-MAR,,,,,OLL,MAR,,,,,
+5,11,14,RIV-BOC,,,,,RIV,BOC,,,,,
+5,11,15,RMA-BIL,,,,,RMA,BIL,,,,,1
+5,11,16,RMA-OSA,,,,,RMA,OSA,,,,,
+5,11,17,STU-FRA,,,,,STU,FRA,,,,,
+5,11,18,TOT-NOT,,,,,TOT,NOT,,,,,2
+5,11,19,UDI-NAP,,,,,UDI,NAP,,,,,
+5,11,20,VAL-VIL,,,,,VAL,VIL,,,,,
+5,12,1,AAB-VB,,,,,AAB,VB,,,,,2
+5,12,2,AGF-FCK,,,,,AGF,FCK,,,,,2
+5,12,3,AGF-FCN,,,,,AGF,FCN,,,,,
+5,12,4,ARS-BRI,,,,,ARS,BRI,,,,,
+5,12,5,ARS-PSG,,,,,ARS,PSG,,,,,2
+5,12,6,BAR-INT,,,,,BAR,INT,,,,,X
+5,12,7,BAR-RMA,,,,,BAR,RMA,,,,,X
+5,12,8,BET-FIO,,,,,BET,FIO,,,,,1
+5,12,9,BIL-MAU,,,,,BIL,MAU,,,,,2
+5,12,10,BOL-BAR,,,,,BOL,BAR,,,,,
+5,12,11,BOU-MAU,,,,,BOU,MAU,,,,,X
+5,12,12,DJU-CHE,,,,,DJU,CHE,,,,,2
+5,12,13,DOR-GLA,,,,,DOR,GLA,,,,,
+5,12,14,FRA-RBL,,,,,FRA,RBL,,,,,1
+5,12,15,JUV-SEV,,,,,JUV,SEV,,,,,
+5,12,16,MIL-INT,,,,,MIL,INT,,,,,
+5,12,17,RMA-MAC,,,,,RMA,MAC,,,,,
+5,12,18,ROM-LEV,,,,,ROM,LEV,,,,,
+5,12,19,SPA-SLA,,,,,SPA,SLA,,,,,
+5,12,20,WHA-AZ,,,,,WHA,AZ,,,,,
+5,13,1,AVI-FUL,,,,,AVI,FUL,,,,,1
+5,13,2,AaB-FCK,,,,,AaB,FCK,,,,,
+5,13,3,BIF-FCK,,,,,BIF,FCK,,,,,2
+5,13,4,BOD-TOT,,,,,BOD,TOT,,,,,2
+5,13,5,FCK-AGF,,,,,FCK,AGF,,,,,
+5,13,6,FIO-BET,,,,,FIO,BET,,,,,X
+5,13,7,GIR-MAL,,,,,GIR,MAL,,,,,1
+5,13,8,INT-BAR,,,,,INT,BAR,,,,,X
+5,13,9,INT-MIL,,,,,INT,MIL,,,,,
+5,13,10,KOL-B93,,,,,KOL,B93,,,,,
+5,13,11,LEC-NAP,,,,,LEC,NAP,,,,,2
+5,13,12,LEV-ROM,,,,,LEV,ROM,,,,,
+5,13,13,LIV-AST,,,,,LIV,AST,,,,,
+5,13,14,MAC-RMA,,,,,MAC,RMA,,,,,
+5,13,15,MAI-FRA,,,,,MAI,FRA,,,,,X
+5,13,16,PSG-ARS,,,,,PSG,ARS,,,,,1
+5,13,17,SEV-BET,,,,,SEV,BET,,,,,
+5,13,18,SEV-JUV,,,,,SEV,JUV,,,,,
+5,13,19,SIF-BIF,,,,,SIF,BIF,,,,,1
+5,13,20,SPO-BEN,,,,,SPO,BEN,,,,,
+5,14,1,ACM-BLG,,,,,ACM,BLG,,,,,2
+5,14,2,AEK-PAO,,,,,AEK,PAO,,,,,
+5,14,3,ALM-VAL,,,,,ALM,VAL,,,,,
+5,14,4,BAR-RMA,,,,,BAR,RMA,,,,,1
+5,14,5,BET-GET,,,,,BET,GET,,,,,
+5,14,6,CAR-STO,,,,,CAR,STO,,,,,
+5,14,7,CEL-GIR,,,,,CEL,GIR,,,,,
+5,14,8,CHA-WYC,,,,,CHA,WYC,,,,,1
+5,14,9,COV-LUT,,,,,COV,LUT,,,,,
+5,14,10,FCK-FCM,,,,,FCK,FCM,,,,,X
+5,14,11,FIO-INT,,,,,FIO,INT,,,,,
+5,14,12,JUV-MIL,,,,,JUV,MIL,,,,,
+5,14,13,LAZ-JUV,,,,,LAZ,JUV,,,,,X
+5,14,14,LYN-AaB,,,,,LYN,AaB,,,,,
+5,14,15,MAU-CHE,,,,,MAU,CHE,,,,,
+5,14,16,NEW-CHE,,,,,NEW,CHE,,,,,1
+5,14,17,SLB-SPO,,,,,SLB,SPO,,,,,X
+5,14,18,SUN-COV,,,,,SUN,COV,,,,,2
+5,14,19,VB-LBK,,,,,VB,LBK,,,,,1
+5,14,20,WER-RBL,,,,,WER,RBL,,,,,X
+5,15,1,ARS-NEW,,,,,ARS,NEW,,,,,1
+5,15,2,BIF-FCM,,,,,BIF,FCM,,,,,2
+5,15,3,BRA-POR,,,,,BRA,POR,,,,,
+5,15,4,CRY-MCI,,,,,CRY,MCI,,,,,1
+5,15,5,GNK-ANT,,,,,GNK,ANT,,,,,
+5,15,6,HEE-TWE,,,,,HEE,TWE,,,,,
+5,15,7,HOR-LYN,,,,,HOR,LYN,,,,,
+5,15,8,IKB-ÖST,,,,,IKB,ÖST,,,,,
+5,15,9,INT-LAZ,,,,,INT,LAZ,,,,,X
+5,15,10,KÖL-KAI,,,,,KÖL,KAI,,,,,1
+5,15,11,LEI-FRA,,,,,LEI,FRA,,,,,
+5,15,12,MAC-MAU,,,,,MAC,MAU,,,,,
+5,15,13,MCI-BOU,,,,,MCI,BOU,,,,,1
+5,15,14,MFF-AIK,,,,,MFF,AIK,,,,,X
+5,15,15,RFC-AGF,,,,,RFC,AGF,,,,,
+5,15,16,RFC-FCK,,,,,RFC,FCK,,,,,2
+5,15,17,SEV-ROM,,,,,SEV,ROM,,,,,
+5,15,18,STU-HSV,,,,,STU,HSV,,,,,
+5,15,19,TOT-MAU,,,,,TOT,MAU,,,,,1
+5,15,20,WIM-NTC,,,,,WIM,NTC,,,,,1
+5,16,1,BET-CHE,,,,,BET,CHE,,,,,2
+5,16,2,BRW-SAA,,,,,BRW,SAA,,,,,2
+5,16,3,ELV-HEI,,,,,ELV,HEI,,,,,2
+5,16,4,FCK-FCM,,,,,FCK,FCM,,,,,1
+5,16,5,FCK-SIF,,,,,FCK,SIF,,,,,1
+5,16,6,FCM-RFC,,,,,FCM,RFC,,,,,1
+5,16,7,NOT-CHE,,,,,NOT,CHE,,,,,2
+5,16,8,SHU-SUN,,,,,SHU,SUN,,,,,2
+5,16,9,SLB-SPO,,,,,SLB,SPO,,,,,X
+5,16,10,WIM-WLS,,,,,WIM,WLS,,,,,1
+5,17,1,AAF-MDD,,,,,AAF,MDD,,,,,X
+5,17,2,ELF-HAM,,,,,ELF,HAM,,,,,2
+5,17,3,KRL-ÖRE,,,,,KRL,ÖRE,,,,,X
+5,17,4,MOL-VIK,,,,,MOL,VIK,,,,,2
+5,17,5,PSG-INT,,,,,PSG,INT,,,,,1
+5,17,6,RFC-SIF,,,,,RFC,SIF,,,,,2
+5,17,7,SPA-FRK,,,,,SPA,FRK,,,,,1
+5,17,8,SPE-CRE,,,,,SPE,CRE,,,,,2
+5,17,9,TYS-POR,,,,,TYS,POR,,,,,X
+5,17,10,VLU-FR,,,,,VLU,FR,,,,,1
+5,18,1,CHE-LAF,,,,,CHE,LAF,,,,,1
+5,18,2,FLA-CHE,,,,,FLA,CHE,,,,,1
+5,18,3,FLU-BVB,,,,,FLU,BVB,,,,,X
+5,18,4,FRM-ISH,,,,,FRM,ISH,,,,,X
+5,18,5,IMI-FCP,,,,,IMI,FCP,,,,,1
+5,18,6,MIR-OVI,,,,,MIR,OVI,,,,,1
+5,18,7,PLM-AAH,,,,,PLM,AAH,,,,,1
+5,18,8,PSG-ATM,,,,,PSG,ATM,,,,,1
+5,18,9,RIV-URA,,,,,RIV,URA,,,,,1
+5,18,10,RMA-ALH,,,,,RMA,ALH,,,,,X
+5,19,1,ATM-BTF,,,,,ATM,BTF,,,,,1
+5,19,2,AUC-BOC,,,,,AUC,BOC,,,,,X
+5,19,3,DKU-FRU,,,,,DKU,FRU,,,,,2
+5,19,4,JUV-MCI,,,,,JUV,MCI,,,,,2
+5,19,5,MAM-BVB,,,,,MAM,BVB,,,,,2
+5,19,6,MAM-FLU,,,,,MAM,FLU,,,,,X
+5,19,7,OVI-MIR,,,,,OVI,MIR,,,,,1
+5,19,8,SAL-SMP,,,,,SAL,SMP,,,,,1
+5,19,9,SEA-PSG,,,,,SEA,PSG,,,,,2
+5,19,10,SLB-BAY,,,,,SLB,BAY,,,,,1
+5,20,1,AFT-BRE,,,,,AFT,BRE,,,,,X
+5,20,2,ENU-TYU,,,,,ENU,TYU,,,,,X
+5,20,3,FLA-BAY,,,,,FLA,BAY,,,,,2
+5,20,4,HJK-JAR,,,,,HJK,JAR,,,,,2
+5,20,5,INT-FLU,,,,,INT,FLU,,,,,2
+5,20,6,PLM-BTF,,,,,PLM,BTF,,,,,X
+5,20,7,PSG-IMI,,,,,PSG,IMI,,,,,1
+5,20,8,RMA-JUV,,,,,RMA,JUV,,,,,1
+5,20,9,ROS-VIK,,,,,ROS,VIK,,,,,X
+5,20,10,SLB-CHE,,,,,SLB,CHE,,,,,X
+5,21,1,I99-MFF,,,,,I99,MFF,,,,,2
+5,21,2,LJU-KAA,,,,,LJU,KAA,,,,,X
+5,21,3,LRN-BEO,,,,,LRN,BEO,,,,,1
+5,21,4,NRK-BRO,,,,,NRK,BRO,,,,,2
+5,21,5,PSG-BAY,,,,,PSG,BAY,,,,,1
+5,21,6,RMA-BVB,,,,,RMA,BVB,,,,,1
+5,21,7,SHB-LIN,,,,,SHB,LIN,,,,,1
+5,21,8,SND-ROS,,,,,SND,ROS,,,,,1
+5,21,9,TRN-HÄC,,,,,TRN,HÄC,,,,,2
+5,21,10,USA-MEX,,,,,USA,MEX,,,,,2
+5,22,1,AKR-KR,,,,,AKR,KR,,,,,1
+5,22,2,CHE-PSG,,,,,CHE,PSG,,,,,1
+5,22,3,FRS-MOL,,,,,FRS,MOL,,,,,1
+5,22,4,GÖT-ELF,,,,,GÖT,ELF,,,,,2
+5,22,5,KAA-LJU,,,,,KAA,LJU,,,,,1
+5,22,6,KIL-LIV,,,,,KIL,LIV,,,,,1
+5,22,7,KLA-SJK,,,,,KLA,SJK,,,,,1
+5,22,8,LEC-LEG,,,,,LEC,LEG,,,,,2
+5,22,9,LIN-SHB,,,,,LIN,SHB,,,,,X
+5,22,10,SKB-VIK,,,,,SKB,VIK,,,,,1
+5,23,1,BIF-SIF,,,,,BIF,SIF,,,,,1
+5,23,2,DJU-ELF,,,,,DJU,ELF,,,,,1
+5,23,3,FCM-HIB,,,,,FCM,HIB,,,,,X
+5,23,4,KIF-AAB,,,,,KIF,AAB,,,,,1
+5,23,5,NRK-VÄR,,,,,NRK,VÄR,,,,,1
+5,23,6,RAN-PAI,,,,,RAN,PAI,,,,,1
+5,23,7,SIF-AKU,,,,,SIF,AKU,,,,,X
+5,23,8,SKB-RBZ,,,,,SKB,RBZ,,,,,2
+5,23,9,USG-CLB,,,,,USG,CLB,,,,,2
+5,23,10,VB-RFC,,,,,VB,RFC,,,,,X
+5,24,1,BOD-VÅL,,,,,BOD,VÅL,,,,,1
+5,24,2,FCM-SJE,,,,,FCM,SJE,,,,,1
+5,24,3,FCN-BIF,,,,,FCN,BIF,,,,,2
+5,24,4,HIB-FCM,,,,,HIB,FCM,,,,,X
+5,24,5,HIF-HBK,,,,,HIF,HBK,,,,,X
+5,24,6,HÄC-AND,,,,,HÄC,AND,,,,,1
+5,24,7,HÄC-DJU,,,,,HÄC,DJU,,,,,2
+5,24,8,PAI-RAN,,,,,PAI,RAN,,,,,X
+5,24,9,SPO-SLB,,,,,SPO,SLB,,,,,2
+5,24,10,YB-SER,,,,,YB,SER,,,,,1
+5,25,1,AGF-FCM,,,,,AGF,FCM,,,,,X
+5,25,2,ELV-NÜR,,,,,ELV,NÜR,,,,,1
+5,25,3,FEY-FEN,,,,,FEY,FEN,,,,,1
+5,25,4,FRS-FCM,,,,,FRS,FCM,,,,,2
+5,25,5,HIF-ACH,,,,,HIF,ACH,,,,,X
+5,25,6,MFF-FCK,,,,,MFF,FCK,,,,,X
+5,25,7,MOT-RAN,,,,,MOT,RAN,,,,,X
+5,25,8,NIC-SLB,,,,,NIC,SLB,,,,,2
+5,25,9,SIF-JAG,,,,,SIF,JAG,,,,,2
+5,25,10,VKU-BIF,,,,,VKU,BIF,,,,,1
+5,26,1,AIK-DJU,,,,,AIK,DJU,,,,,X
+5,26,2,CRY-LIV,,,,,CRY,LIV,,,,,X
+5,26,3,FCK-MFF,,,,,FCK,MFF,,,,,1
+5,26,4,FEN-FEY,,,,,FEN,FEY,,,,,1
+5,26,5,HAM-ROS,,,,,HAM,ROS,,,,,2
+5,26,6,JAG-SIF,,,,,JAG,SIF,,,,,X
+5,26,7,KAI-S04,,,,,KAI,S04,,,,,1
+5,26,8,OB-RFC,,,,,OB,RFC,,,,,1
+5,26,9,PSG-TOT,,,,,PSG,TOT,,,,,X
+5,26,10,SOU-WRE,,,,,SOU,WRE,,,,,1
+5,27,1,BAS-FCK,,,,,BAS,FCK,,,,,X
+5,27,2,BOD-STG,,,,,BOD,STG,,,,,1
+5,27,3,FEN-SLB,,,,,FEN,SLB,,,,,X
+5,27,4,LEE-EVE,,,,,LEE,EVE,,,,,1
+5,27,5,RAN-CLB,,,,,RAN,CLB,,,,,2
+5,27,6,RCS-BIF,,,,,RCS,BIF,,,,,X
+5,27,7,RFC-BIF,,,,,RFC,BIF,,,,,2
+5,27,8,STU-BAY,,,,,STU,BAY,,,,,2
+5,27,9,TWE-PSV,,,,,TWE,PSV,,,,,2
+5,27,10,VAL-RSO,,,,,VAL,RSO,,,,,X
+5,28,1,BET-BIL,,,,,BET,BIL,,,,,2
+5,28,2,BIF-FCM,,,,,BIF,FCM,,,,,2
+5,28,3,BRC-CAU,,,,,BRC,CAU,,,,,2
+5,28,4,LGA-DLC,,,,,LGA,DLC,,,,,X
+5,28,5,LIV-ARS,,,,,LIV,ARS,,,,,1
+5,28,6,MAU-BUR,,,,,MAU,BUR,,,,,1
+5,28,7,PIS-ROM,,,,,PIS,ROM,,,,,2
+5,28,8,SKI-KIF,,,,,SKI,KIF,,,,,2
+5,28,9,SPO-FCP,,,,,SPO,FCP,,,,,2
+5,28,10,WOL-MAI,,,,,WOL,MAI,,,,,X
+5,29,1,GRÆ-DAN,,,,,GRÆ,DAN,,,,,2
+5,29,2,HOB-LBK,,,,,HOB,LBK,,,,,2
+5,29,3,IRL-UNG,,,,,IRL,UNG,,,,,X
+5,29,4,MLG-GRN,,,,,MLG,GRN,,,,,X
+5,29,5,POL-FIN,,,,,POL,FIN,,,,,1
+5,29,6,SRB-ENG,,,,,SRB,ENG,,,,,2
+5,29,7,SWI-SLO,,,,,SWI,SLO,,,,,1
+5,29,8,TYR-SPA,,,,,TYR,SPA,,,,,2
+5,29,9,UNG-POR,,,,,UNG,POR,,,,,2
+5,29,10,VEJ-EFB,,,,,VEJ,EFB,,,,,2
+5,30,1,ATM-VIL,,,,,ATM,VIL,,,,,1
+5,30,2,BAY-CHE,,,,,BAY,CHE,,,,,1
+5,30,3,BIF-FCK,,,,,BIF,FCK,,,,,1
+5,30,4,FCK-LEV,,,,,FCK,LEV,,,,,X
+5,30,5,GLA-WER,,,,,GLA,WER,,,,,2
+5,30,6,JUV-BVB,,,,,JUV,BVB,,,,,X
+5,30,7,LIV-ATM,,,,,LIV,ATM,,,,,1
+5,30,8,MCI-MAU,,,,,MCI,MAU,,,,,1
+5,30,9,TOT-VIL,,,,,TOT,VIL,,,,,1
+5,30,10,VER-CRE,,,,,VER,CRE,,,,,X
+5,31,1,AVI-BLG,,,,,AVI,BLG,,,,,1
+5,31,2,BET-NOT,,,,,BET,NOT,,,,,X
+5,31,3,FCM-STG,,,,,FCM,STG,,,,,1
+5,31,4,FCM-VFF,,,,,FCM,VFF,,,,,1
+5,31,5,LAZ-ROM,,,,,LAZ,ROM,,,,,2
+5,31,6,LIV-EVE,,,,,LIV,EVE,,,,,1
+5,31,7,PSV-AJA,,,,,PSV,AJA,,,,,X
+5,31,8,RFC-FCN,,,,,RFC,FCN,,,,,1
+5,31,9,SEV-VIL,,,,,SEV,VIL,,,,,2
+5,31,10,STU-VIG,,,,,STU,VIG,,,,,1
+5,32,1,ACM-NAP,,,,,ACM,NAP,,,,,1
+5,32,2,ATM-RMA,,,,,ATM,RMA,,,,,1
+5,32,3,BAR-PSG,,,,,BAR,PSG,,,,,2
+5,32,4,BOD-TOT,,,,,BOD,TOT,,,,,X
+5,32,5,CHE-BHA,,,,,CHE,BHA,,,,,2
+5,32,6,EVE-WHU,,,,,EVE,WHU,,,,,
+5,32,7,FCN-AGF,,,,,FCN,AGF,,,,,2
+5,32,8,NOT-FCM,,,,,NOT,FCM,,,,,2
+5,32,9,OM-AJA,,,,,OM,AJA,,,,,1
+5,32,10,QAR-FCK,,,,,QAR,FCK,,,,,1
+5,33,1,ASM-NIC,,,,,ASM,NIC,,,,,X
+5,33,2,BLR-DAN,,,,,BLR,DAN,,,,,2
+5,33,3,BVB-RBL,,,,,BVB,RBL,,,,,X
+5,33,4,CHE-LIV,,,,,CHE,LIV,,,,,1
+5,33,5,FCK-FCM,,,,,FCK,FCM,,,,,X
+5,33,6,FCP-SLB,,,,,FCP,SLB,,,,,X
+5,33,7,GAL-BES,,,,,GAL,BES,,,,,X
+5,33,8,HIF-LBK,,,,,HIF,LBK,,,,,X
+5,33,9,IND-KSA,,,,,IND,KSA,,,,,2
+5,33,10,SCU-MOR,,,,,SCU,MOR,,,,,1
+5,34,1,DAN-GRÆ,,,,,DAN,GRÆ,,,,,1
+5,34,2,HUD-BOL,,,,,HUD,BOL,,,,,2
+5,34,3,IRL-ARM,,,,,IRL,ARM,,,,,1
+5,34,4,LUC-FRV,,,,,LUC,FRV,,,,,2
+5,34,5,RUM-ØST,,,,,RUM,ØST,,,,,1
+5,34,6,SRB-ABN,,,,,SRB,ABN,,,,,2
+5,34,7,SVE-KOS,,,,,SVE,KOS,,,,,2
+5,34,8,TYR-GEO,,,,,TYR,GEO,,,,,1
+5,34,9,UNG-ARM,,,,,UNG,ARM,,,,,1
+5,34,10,WAL-BEL,,,,,WAL,BEL,,,,,2
+5,35,1,ATA-ACM,,,,,ATA,ACM,,,,,X
+5,35,2,BOU-NOT,,,,,BOU,NOT,,,,,1
+5,35,3,BVB-KÖL,,,,,BVB,KÖL,,,,,1
+5,35,4,FCM-SIF,,,,,FCM,SIF,,,,,1
+5,35,5,FEY-PSV,,,,,FEY,PSV,,,,,2
+5,35,6,NAP-INT,,,,,NAP,INT,,,,,1
+5,35,7,OB-BIF,,,,,OB,BIF,,,,,2
+5,35,8,RMA-BAR,,,,,RMA,BAR,,,,,1
+5,35,9,UNI-BIE,,,,,UNI,BIE,,,,,1
+5,35,10,VAL-VIL,,,,,VAL,VIL,,,,,2
+5,36,1,BES-FEN,,,,,BES,FEN,,,,,2
+5,36,2,FCM-AGF,,,,,FCM,AGF,,,,,X
+5,36,3,FCM-CEL,,,,,FCM,CEL,,,,,
+5,36,4,MCI-BVB,,,,,MCI,BVB,,,,,1
+5,36,5,NEW-BIL,,,,,NEW,BIL,,,,,1
+5,36,6,PRM-BLG,,,,,PRM,BLG,,,,,2
+5,36,7,PSG-BAY,,,,,PSG,BAY,,,,,2
+5,36,8,RSO-BIL,,,,,RSO,BIL,,,,,1
+5,36,9,TOT-CHE,,,,,TOT,CHE,,,,,2
+5,36,10,TOT-FCK,,,,,TOT,FCK,,,,,1
+5,37,1,BIF-FCN,,,,,BIF,FCN,,,,,2
+5,37,2,EFB-MDD,,,,,EFB,MDD,,,,,1
+5,37,3,FRK-UKR,,,,,FRK,UKR,,,,,1
+5,37,4,GLA-KÖL,,,,,GLA,KÖL,,,,,1
+5,37,5,JUV-TOR,,,,,JUV,TOR,,,,,X
+5,37,6,MCI-LIV,,,,,MCI,LIV,,,,,1
+5,37,7,SVK-NI,,,,,SVK,NI,,,,,
+5,37,8,VAL-BET,,,,,VAL,BET,,,,,X
+5,37,9,YOR-ROC,,,,,YOR,ROC,,,,,1
+5,37,10,ZAM-OUR,,,,,ZAM,OUR,,,,,X
+5,38,1,BOS-RUM,,,,,BOS,RUM,,,,,1
+5,38,2,GRÆ-SKO,,,,,GRÆ,SKO,,,,,1
+5,38,3,ITA-NOR,,,,,ITA,NOR,,,,,2
+5,38,4,LUT-RTH,,,,,LUT,RTH,,,,,X
+5,38,5,NIG-DRC,,,,,NIG,DRC,,,,,X
+5,38,6,SLO-KOS,,,,,SLO,KOS,,,,,2
+5,38,7,SWI-SVE,,,,,SWI,SVE,,,,,1
+5,38,8,TYS-SVK,,,,,TYS,SVK,,,,,1
+5,38,9,UKR-ISL,,,,,UKR,ISL,,,,,1
+5,38,10,UNG-IRL,,,,,UNG,IRL,,,,,2
+5,39,1,CRC-HON,,,,,CRC,HON,,,,,X
+5,39,2,HOB-HIF,,,,,HOB,HIF,,,,,2
+5,39,3,IRK-UAE,,,,,IRK,UAE,,,,,1
+5,39,4,JAM-CUR,,,,,JAM,CUR,,,,,X
+5,39,5,MAI-HOF,,,,,MAI,HOF,,,,,X
+5,39,6,SIF-AGF,,,,,SIF,AGF,,,,,2
+5,39,7,SKO-DAN,,,,,SKO,DAN,,,,,2
+5,39,8,VAL-LVT,,,,,VAL,LVT,,,,,1
+5,39,9,WAL-NMA,,,,,WAL,NMA,,,,,1
+5,39,10,ØST-BOS,,,,,ØST,BOS,,,,,X
+5,40,1,ARS-BAY,,,,,ARS,BAY,,,,,1
+5,40,2,ARS-TOT,,,,,ARS,TOT,,,,,1
+5,40,3,CHE-BAR,,,,,CHE,BAR,,,,,1
+5,40,4,ESP-SEV,,,,,ESP,SEV,,,,,1
+5,40,5,FCK-BIF,,,,,FCK,BIF,,,,,1
+5,40,6,FCK-KAA,,,,,FCK,KAA,,,,,1
+5,40,7,INT-ACM,,,,,INT,ACM,,,,,2
+5,40,8,OM-NEW,,,,,OM,NEW,,,,,1
+5,40,9,ROM-FCM,,,,,ROM,FCM,,,,,
+5,40,10,WOL-LEV,,,,,WOL,LEV,,,,,2
+5,41,1,AGF-FCK,,,,,AGF,FCK,,,,,1
+5,41,2,ASM-PSG,,,,,ASM,PSG,,,,,1
+5,41,3,BAR-ATM,,,,,BAR,ATM,,,,,1
+5,41,4,BHA-AVI,,,,,BHA,AVI,,,,,2
+5,41,5,CHE-ARS,,,,,CHE,ARS,,,,,X
+5,41,6,FCM-FCN,,,,,FCM,FCN,,,,,1
+5,41,7,FEN-GAL,,,,,FEN,GAL,,,,,X
+5,41,8,LEV-BVB,,,,,LEV,BVB,,,,,2
+5,41,9,ROM-NAP,,,,,ROM,NAP,,,,,2
+5,41,10,SEV-BET,,,,,SEV,BET,,,,,2
+5,42,1,BAY-SPO,,,,,BAY,SPO,,,,,1
+5,42,2,BET-BAR,,,,,BET,BAR,,,,,2
+5,42,3,FCM-GNK,,,,,FCM,GNK,,,,,1
+5,42,4,HSV-WER,,,,,HSV,WER,,,,,1
+5,42,5,INT-LIV,,,,,INT,LIV,,,,,2
+5,42,6,LEE-LIV,,,,,LEE,LIV,,,,,X
+5,42,7,RMA-MCI,,,,,RMA,MCI,,,,,2
+5,42,8,TOR-ACM,,,,,TOR,ACM,,,,,2
+5,42,9,VFF-FCM,,,,,VFF,FCM,,,,,X
+5,42,10,VIL-FCK,,,,,VIL,FCK,,,,,1
+5,43,1,AJA-FEY,,,,,AJA,FEY,,,,,1
+5,43,2,ATM-VAL,,,,,ATM,VAL,,,,,1
+5,43,3,AZ-JAG,,,,,AZ,JAG,,,,,X
+5,43,4,CAR-CHE,,,,,CAR,CHE,,,,,2
+5,43,5,LAU-FIO,,,,,LAU,FIO,,,,,1
+5,43,6,LEV-KÖL,,,,,LEV,KÖL,,,,,1
+5,43,7,MAI-SAM,,,,,MAI,SAM,,,,,1
+5,43,8,ROM-CMO,,,,,ROM,CMO,,,,,1
+5,43,9,SUN-NEW,,,,,SUN,NEW,,,,,1
+5,43,10,YB-GRA,,,,,YB,GRA,,,,,2
+5,44,1,ARS-CRY,,,,,ARS,CRY,,,,,X
+5,44,2,BIL-ESP,,,,,BIL,ESP,,,,,2
+5,44,3,FUL-NOT,,,,,FUL,NOT,,,,,1
+5,44,4,GEN-ATA,,,,,GEN,ATA,,,,,2
+5,44,5,HSV-FRA,,,,,HSV,FRA,,,,,X
+5,44,6,JUV-ROM,,,,,JUV,ROM,,,,,1
+5,44,7,MAI-PAU,,,,,MAI,PAU,,,,,X
+5,44,8,NEW-CHE,,,,,NEW,CHE,,,,,X
+5,44,9,RBL-LEV,,,,,RBL,LEV,,,,,2
+5,44,10,VIL-BAR,,,,,VIL,BAR,,,,,2
+5,45,1,ATA-ROM,,,,,ATA,ROM,,,,,1
+5,45,2,ATM-RMA,,,,,ATM,RMA,,,,,2
+5,45,3,BLG-ATA,,,,,BLG,ATA,,,,,2
+5,45,4,BOU-ARS,,,,,BOU,ARS,,,,,2
+5,45,5,ELC-VIL,,,,,ELC,VIL,,,,,2
+5,45,6,LAZ-NAP,,,,,LAZ,NAP,,,,,2
+5,45,7,LEI-WBA,,,,,LEI,WBA,,,,,1
+5,45,8,MCI-CHE,,,,,MCI,CHE,,,,,X
+5,45,9,RSO-ATM,,,,,RSO,ATM,,,,,X
+5,45,10,WHU-NOT,,,,,WHU,NOT,,,,,2
+5,46,1,CHE-ARS,,,,,CHE,ARS,,,,,2
+5,46,2,CMO-ACM,,,,,CMO,ACM,,,,,2
+5,46,3,HSV-LEV,,,,,HSV,LEV,,,,,
+5,46,4,INT-NAP,,,,,INT,NAP,,,,,X
+5,46,5,LEV-STU,,,,,LEV,STU,,,,,2
+5,46,6,LIL-LYO,,,,,LIL,LYO,,,,,2
+5,46,7,MAU-BHA,,,,,MAU,BHA,,,,,2
+5,46,8,OVI-BET,,,,,OVI,BET,,,,,X
+5,46,9,ROM-SAS,,,,,ROM,SAS,,,,,1
+5,46,10,SEV-VIG,,,,,SEV,VIG,,,,,2
+5,47,1,BHA-BOU,,,,,BHA,BOU,,,,,X
+5,47,2,BLG-FIO,,,,,BLG,FIO,,,,,2
+5,47,3,FCK-NAP,,,,,FCK,NAP,,,,,X
+5,47,4,JUV-SLB,,,,,JUV,SLB,,,,,2
+5,47,5,MAU-MCI,,,,,MAU,MCI,,,,,1
+5,47,6,OM-LIV,,,,,OM,LIV,,,,,2
+5,47,7,RBL-BAY,,,,,RBL,BAY,,,,,2
+5,47,8,RMA-ASM,,,,,RMA,ASM,,,,,1
+5,47,9,RSO-BAR,,,,,RSO,BAR,,,,,1
+5,47,10,SKB-FCM,,,,,SKB,FCM,,,,,X
+5,48,1,BOU-LIV,,,,,BOU,LIV,,,,,1
+5,48,2,BVB-INT,,,,,BVB,INT,,,,,2
+5,48,3,FCM-ZAG,,,,,FCM,ZAG,,,,,1
+5,48,4,GIR-GET,,,,,GIR,GET,,,,,X
+5,48,5,HEA-CEL,,,,,HEA,CEL,,,,,X
+5,48,6,JUV-NAP,,,,,JUV,NAP,,,,,1
+5,48,7,NAP-CHE,,,,,NAP,CHE,,,,,2
+5,48,8,OM-LEN,,,,,OM,LEN,,,,,1
+5,48,9,PAU-RBL,,,,,PAU,RBL,,,,,X
+5,48,10,PSG-NEW,,,,,PSG,NEW,,,,,X
+5,49,1,ARS-CHE,,,,,ARS,CHE,,,,,1
+5,49,2,BET-ATM,,,,,BET,ATM,,,,,2
+5,49,3,BIL-RSO,,,,,BIL,RSO,,,,,X
+5,49,4,FRA-LEV,,,,,FRA,LEV,,,,,2
+5,49,5,LIV-NEW,,,,,LIV,NEW,,,,,1
+5,49,6,MCI-NEW,,,,,MCI,NEW,,,,,1
+5,49,7,OSA-VIL,,,,,OSA,VIL,,,,,X
+5,49,8,PSV-FEY,,,,,PSV,FEY,,,,,1
+5,49,9,TOT-MCI,,,,,TOT,MCI,,,,,X
+5,49,10,UDI-ROM,,,,,UDI,ROM,,,,,1
+5,50,1,AGF-FCM,,,,,AGF,FCM,,,,,
+5,50,2,BAY-RBL,,,,,BAY,RBL,,,,,
+5,50,3,FCM-FCK,,,,,FCM,FCK,,,,,1
+5,50,4,FCP-SPO,,,,,FCP,SPO,,,,,X
+5,50,5,FIO-TOR,,,,,FIO,TOR,,,,,X
+5,50,6,GLA-LEV,,,,,GLA,LEV,,,,,X
+5,50,7,LIV-MCI,,,,,LIV,MCI,,,,,2
+5,50,8,PSG-OM,,,,,PSG,OM,,,,,1
+5,50,9,SEV-GIR,,,,,SEV,GIR,,,,,X
+5,50,10,WHU-MAU,,,,,WHU,MAU,,,,,X
+5,51,1,BIR-LEE,,,,,BIR,LEE,,,,,X
+5,51,2,BOD-INT,,,,,BOD,INT,,,,,1
+5,51,3,BVB-ATA,,,,,BVB,ATA,,,,,1
+5,51,4,CEL-STU,,,,,CEL,STU,,,,,
+5,51,5,CLB-ATM,,,,,CLB,ATM,,,,,X
+5,51,6,HSV-UNI,,,,,HSV,UNI,,,,,1
+5,51,7,NAP-ROM,,,,,NAP,ROM,,,,,X
+5,51,8,RMA-RSO,,,,,RMA,RSO,,,,,1
+5,51,9,SJE-SIF,,,,,SJE,SIF,,,,,1
+5,51,10,SLB-RMA,,,,,SLB,RMA,,,,,2

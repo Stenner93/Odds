@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oddsklub Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#111827;--sf:#1a2235;--card:#1f2937;--bdr:#374151;--grn:#22c55e;--gld:#f59e0b;--red:#ef4444;--blu:#3b82f6;--pur:#a78bfa;--txt:#f9fafb;--mut:#9ca3af;--rad:12px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;font-size:14px;line-height:1.5;min-height:100vh}
+header{background:var(--card);border-bottom:1px solid var(--bdr);padding:0 24px;display:flex;align-items:center;gap:16px;height:58px;position:sticky;top:0;z-index:100}
+.logo{font-weight:800;font-size:20px;letter-spacing:-0.3px;color:var(--txt);white-space:nowrap;flex-shrink:0}.logo span{color:var(--grn)}
+nav{display:flex;gap:2px;flex:1}
+nav button{background:transparent;border:none;color:var(--mut);font-family:inherit;font-weight:500;font-size:12px;letter-spacing:0.02em;padding:6px 11px;border-radius:7px;cursor:pointer;transition:all .15s}
+nav button:hover{color:var(--txt);background:rgba(255,255,255,.05)}nav button.active{color:var(--grn);background:rgba(34,197,94,.1);font-weight:600}
+main{max-width:1440px;margin:0 auto;padding:22px 20px}
+.page{display:none}.page.active{display:block}
+.ph{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--bdr);flex-wrap:wrap}
+.ph h2{font-weight:800;font-size:17px;letter-spacing:-0.2px}
+.pill{background:rgba(34,197,94,.12);color:var(--grn);border:1px solid rgba(34,197,94,.25);border-radius:99px;padding:2px 10px;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.cs2{grid-column:span 2}.cs3{grid-column:span 3}.mb{margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--bdr);border-radius:var(--rad);padding:16px;position:relative;overflow:hidden}
+.ct{font-weight:700;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:12px}
+.sc{background:var(--card);border:1px solid var(--bdr);border-radius:var(--rad);padding:16px 20px;position:relative;overflow:hidden}
+.sc-accent{position:absolute;top:0;left:0;right:0;height:3px}
+.sl{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin-bottom:5px}
+.sv{font-weight:900;font-size:36px;line-height:1}
+.ss{font-size:11px;color:var(--mut);margin-top:2px}
+.sb-wrap{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.sb-lbl{font-weight:600;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut)}
+.sb{background:var(--card);border:1px solid var(--bdr);color:var(--mut);border-radius:7px;padding:4px 11px;font-size:11px;font-weight:500;cursor:pointer;transition:all .15s;font-family:inherit}
+.sb:hover{border-color:var(--grn);color:var(--txt)}.sb.active{background:rgba(34,197,94,.1);border-color:var(--grn);color:var(--grn);font-weight:600}
+table.st{width:100%;border-collapse:collapse}
+table.st th{font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);text-align:left;padding:8px 10px;border-bottom:1px solid var(--bdr);background:rgba(0,0,0,.15)}
+table.st td{padding:10px 10px;border-bottom:1px solid rgba(55,65,81,.5);font-size:13px}
+table.st tr:last-child td{border-bottom:none}table.st tr:hover td{background:rgba(255,255,255,.02)}
+.rank{font-weight:900;font-size:14px;color:var(--mut);display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,.05);border:1px solid var(--bdr)}
+.r1{background:linear-gradient(135deg,#d97706,#f59e0b);color:#0d1117;border-color:#f59e0b}
+.r2{background:linear-gradient(135deg,#475569,#64748b);color:#f1f5f9;border-color:#64748b}
+.r3{background:linear-gradient(135deg,#92400e,#b45309);color:#fef3c7;border-color:#b45309}
+.pts{font-weight:700;font-size:18px;color:var(--grn)}
+.bw{width:90px;background:var(--bdr);border-radius:99px;height:5px;display:inline-block;vertical-align:middle}
+.bf{height:5px;border-radius:99px;background:var(--grn)}
+.cw{position:relative;height:290px}.cw-sm{position:relative;height:210px}.cw-xs{position:relative;height:160px}
+.hm-wrap{overflow-x:auto}
+table.hm{border-collapse:collapse;font-size:11px}
+table.hm th{font-weight:600;font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);padding:4px 4px;text-align:center}
+table.hm td{padding:3px 4px;text-align:center;border-radius:4px;min-width:26px;height:26px;font-weight:600;font-size:10px}
+table.hm .pn{text-align:left;white-space:nowrap;padding-right:8px;font-weight:400;color:var(--txt);background:transparent!important;font-size:12px}
+.hm0{background:rgba(55,65,81,.5);color:rgba(156,163,175,.5)}
+.hml{background:rgba(34,197,94,.12);color:#86efac}.hmm{background:rgba(34,197,94,.3);color:#bbf7d0}
+.hmh{background:rgba(34,197,94,.55);color:#dcfce7}.hmt{background:var(--grn);color:#111827}.hmn{background:transparent;color:rgba(55,65,81,.6);font-size:8px}
+.bet-row{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.bp{width:120px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bb{flex:1;display:flex;height:15px;border-radius:4px;overflow:hidden}
+.b1{background:var(--blu)}.bx{background:#4b5563}.b2{background:var(--red)}
+.bpct{font-size:10px;color:var(--mut);display:flex;gap:5px;min-width:100px;justify-content:flex-end}
+select.ps{background:var(--card);border:1px solid var(--bdr);color:var(--txt);border-radius:8px;padding:7px 10px;font-size:12px;font-family:inherit;cursor:pointer;outline:none;transition:border-color .15s}
+select.ps:focus{border-color:var(--grn)}
+.pstat{margin-bottom:9px}
+.psl{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);margin-bottom:2px}
+.psv{font-weight:700;font-size:18px}
+.tag{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:600;letter-spacing:.03em}
+.tg{background:rgba(34,197,94,.12);color:var(--grn)}.tb{background:rgba(59,130,246,.15);color:var(--blu)}
+.tr{background:rgba(239,68,68,.12);color:var(--red)}.to{background:rgba(245,158,11,.12);color:var(--gld)}
+.follows-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;padding:8px 10px;background:rgba(0,0,0,.2);border-radius:8px;border:1px solid var(--bdr)}
+.fr-name{width:130px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fr-bar-wrap{flex:1;background:var(--bdr);border-radius:99px;height:7px}
+.fr-bar{height:7px;border-radius:99px;background:var(--grn)}
+.fr-val{font-size:11px;font-weight:600;min-width:36px;text-align:right}
+.combo-box{background:rgba(0,0,0,.2);border:1px solid var(--bdr);border-radius:10px;padding:14px;margin-bottom:12px}
+.combo-row{display:flex;gap:12px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+.combo-stat{text-align:center;flex:1;min-width:100px}
+.combo-val{font-weight:900;font-size:28px}
+.combo-lbl{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.07em}
+.info-box{background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.18);border-radius:8px;padding:12px;font-size:12px;line-height:1.7;margin-bottom:12px}
+.step{display:flex;gap:10px;margin-bottom:10px}
+.step-nr{width:24px;height:24px;border-radius:50%;background:var(--grn);color:#111827;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-text{font-size:13px;line-height:1.6}
+code{background:rgba(0,0,0,.3);padding:2px 6px;border-radius:4px;font-size:11px;border:1px solid var(--bdr)}
+.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.li{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--mut)}
+.ld{width:9px;height:9px;border-radius:50%}
+.odds-row{display:grid;grid-template-columns:2fr 1.2fr 1.2fr 1.2fr 1fr 48px 48px 48px 48px 48px 48px;gap:6px;align-items:center;padding:9px 0;border-bottom:1px solid rgba(55,65,81,.4);font-size:12px}
+.odds-row:last-child{border-bottom:none}
+.odds-hdr{color:var(--mut);font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase}
+.overlap-cell{display:flex;align-items:center;justify-content:center;border-radius:5px;font-size:11px;font-weight:600;height:28px;min-width:28px}
+/* Odds cards — kamp-kortlayout */
+.oc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:10px}
+.oc{background:var(--sf);border:1px solid var(--bdr);border-radius:10px;overflow:hidden}
+.oc-head{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;background:rgba(0,0,0,.15);border-bottom:1px solid var(--bdr);gap:6px}
+.oc-teams{font-weight:700;font-size:13px;flex:1;min-width:0}
+.oc-league{font-size:10px;color:var(--mut);font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.oc-res{font-size:12px;font-weight:700;padding:2px 8px;border-radius:5px;background:rgba(255,255,255,.07);white-space:nowrap;flex-shrink:0}
+.oc-body{padding:10px 12px}
+.oc-ptable{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px}
+.oc-ptable th{font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);padding:2px 4px;text-align:center;width:22%}
+.oc-ptable th.src-lbl{text-align:left;width:34%;color:var(--mut)}
+.oc-ptable td{padding:4px 4px;text-align:center;font-weight:700;font-size:13px;border-radius:4px}
+.oc-ptable td.src-lbl{text-align:left;font-size:10px;font-weight:500;color:var(--mut);padding-right:6px}
+.oc-ptable tr:hover td{background:rgba(255,255,255,.03)}
+.oc-best1{color:var(--blu)}.oc-bestX{color:#90a4ae}.oc-best2{color:var(--red)}
+.oc-top{font-size:12px;font-weight:700}
+.oc-odds{font-size:9px;color:var(--mut);display:block;font-weight:400}
+.oc-recs{display:flex;gap:5px;flex-wrap:wrap;align-items:center;padding-top:7px;border-top:1px solid rgba(55,65,81,.3)}
+.oc-rec{display:flex;flex-direction:column;align-items:center;gap:1px;min-width:34px}
+.oc-rec-lbl{font-size:8px;color:var(--mut);letter-spacing:.04em;text-transform:uppercase}
+.oc-rec-val{font-size:13px;font-weight:700}
+/* ── Design D match cards ─────────────────────────────────────────────── */
+#match-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.mcard{background:var(--sf);border:1px solid var(--bdr);border-radius:10px;overflow:hidden}
+.mc-top{display:grid;grid-template-columns:200px 1fr}
+.mc-teams-col{padding:11px 14px;border-right:1px solid var(--bdr);display:flex;flex-direction:column;justify-content:center}
+.mc-name{font-size:13px;font-weight:700;line-height:1.35}
+.mc-league{font-size:10px;color:var(--mut);margin-top:3px}
+.mc-res-dot{font-size:11px;font-weight:700;display:inline-block;padding:2px 7px;border-radius:4px}
+.mc-matrix{padding:10px 14px}
+.mc-ptbl{border-collapse:collapse;width:100%}
+.mc-ptbl th{font-size:9px;font-weight:700;color:var(--mut);text-align:center;padding:2px 8px;letter-spacing:.05em}
+.mc-ptbl td{font-size:14px;font-weight:700;text-align:center;padding:4px 8px;border-radius:4px}
+.mc-src{font-size:10px;font-weight:700;text-align:left;padding-right:10px;white-space:nowrap}
+.mc-src-o{color:var(--blu)}.mc-src-e{color:#90a4ae}.mc-src-n{color:#6ee7b7}
+.mc-recs-strip{display:flex;border-top:1px solid var(--bdr);background:rgba(0,0,0,.12)}
+.mc-rec{flex:1;display:flex;flex-direction:column;align-items:center;padding:7px 4px;gap:3px;border-right:1px solid rgba(55,65,81,.5)}
+.mc-rec:last-child{border-right:none}
+.mc-rec-lbl{font-size:8px;color:var(--mut);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.mc-rec-val{font-size:14px;font-weight:700}
+.mc-elo-row{display:flex;align-items:center;gap:4px;margin-top:5px;font-size:11px;font-weight:600;color:var(--txt)}
+.mc-elo-lbl{font-size:9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;min-width:26px;opacity:.7}
+.mc-elo-sep{color:var(--mut);font-weight:400}
+.mc-elo-delta{font-size:9px;font-weight:700;margin-left:2px}
+.mc-banner{display:flex;align-items:center;gap:10px;padding:7px 14px;border-bottom-width:1px;border-bottom-style:solid}
+.mc-banner-lbl{font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.mc-banner-val{font-size:20px;font-weight:900;line-height:1}
+.mc-banner-bar{flex:1;height:5px;background:rgba(255,255,255,.07);border-radius:99px;overflow:hidden;display:flex}
+@media(max-width:700px){#match-cards{grid-template-columns:1fr}}
+@media(max-width:580px){.mc-top{grid-template-columns:1fr}.mc-teams-col{border-right:none;border-bottom:1px solid var(--bdr)}.mc-rec-lbl{display:none}.mc-rec{padding:6px 2px}.mc-rec-val{font-size:13px}}
+@media(max-width:800px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}.cs2,.cs3{grid-column:span 1}nav button{font-size:10px;padding:5px 8px}.odds-row{grid-template-columns:1fr 1fr 1fr}.oc-grid{grid-template-columns:1fr}}
+.odds-val{font-weight:700;font-size:15px;text-align:center}
+.fav{display:inline-block;padding:2px 9px;border-radius:5px;font-size:12px;font-weight:700}
+.fav1{background:rgba(59,130,246,.15);color:var(--blu)}.favX{background:rgba(156,163,175,.15);color:#94a3b8}.fav2{background:rgba(239,68,68,.15);color:var(--red)}
+@media(max-width:800px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}.cs2,.cs3{grid-column:span 1}nav button{font-size:10px;padding:5px 8px}.odds-row{grid-template-columns:1fr 1fr 1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Odds<span>klub</span></div>
+  <nav>
+    <button class="active" onclick="showPage('stilling',this)">Stilling</button>
+    <button onclick="showPage('runder',this)">Runder</button>
+    <button onclick="showPage('næste',this)">Næste runde</button>
+    <button onclick="showPage('h2h-matchup',this)">H2H runde</button>
+    <button onclick="showPage('gæt',this)">Gæt-profil</button>
+    <button onclick="showPage('historik',this)">Historik</button>
+    <button onclick="showPage('eval',this)">Predictor-eval</button>
+    <button onclick="showPage('guide',this)">Workflow</button>
+  </nav>
+  <div id="last-updated" style="font-size:10px;color:var(--mut);white-space:nowrap;flex-shrink:0"></div>
+</header>
+<main>
+
+<!-- STILLING -->
+<div class="page active" id="page-stilling">
+  <div class="ph mb"><h2>Stilling</h2>
+    <div class="sb-wrap"><span class="sb-lbl">Sæson</span>
+      <div id="season-btns"></div>
+    </div>
+  </div>
+  <div class="g5 mb" id="stat-cards"></div>
+  <div class="g2 mb">
+    <div class="card"><div class="ct">H2H-stilling — sæson <span class="cur-s"></span></div>
+      <table class="st"><thead><tr><th>#</th><th>Spiller</th><th>H2H pt</th><th>Rigtige gæt</th><th style="text-align:right">Nøjagtighed</th></tr></thead>
+      <tbody id="standings-body"></tbody></table>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="card" id="my-h2h-card" style="display:none"></div>
+      <div class="card"><div class="ct" id="cum-title">Kumulative rigtige gæt over tid</div><div class="cw"><canvas id="chart-cum"></canvas></div></div>
+    </div>
+    <div class="card" id="h2h-charts-card"><div class="ct">Rigtige gæt vs H2H-point</div><div class="cw" style="height:280px"><canvas id="chart-h2h-scatter"></canvas></div></div>
+    <div class="card" id="h2h-cum-card"><div class="ct">Kumulative H2H-point over tid</div><div class="cw"><canvas id="chart-h2h-cum"></canvas></div></div>
+  </div>
+  <div class="card mb">
+    <div class="ct">Rigtige gæt pr. runde — sæson <span class="cur-s"></span></div>
+    <div class="hm-wrap"><table class="hm" id="heatmap-stilling"></table></div>
+  </div>
+</div>
+
+<!-- RUNDER -->
+<div class="page" id="page-runder">
+  <div class="ph"><h2>Runder</h2><div class="pill" id="runder-pill">Sæson</div></div>
+  <div class="card mb"><div class="ct">Heatmap — rigtige gæt per runde</div>
+    <div class="hm-wrap"><table class="hm" id="heatmap-table"></table></div>
+  </div>
+  <div class="g2 mb">
+    <div class="card"><div class="ct">Snit rigtige pr. runde</div><div class="cw"><canvas id="chart-rnd-bar"></canvas></div></div>
+    <div class="card"><div class="ct">Total rigtige gæt pr. spiller</div><div class="cw"><canvas id="chart-rnd-total"></canvas></div></div>
+  </div>
+  <div class="card">
+    <div class="ct">Glidende 5-runders nøjagtighed per spiller</div>
+    <div class="cw" style="height:240px"><canvas id="chart-rolling-acc"></canvas></div>
+    <div class="legend" id="rolling-legend" style="margin-top:8px"></div>
+  </div>
+</div>
+
+<!-- NÆSTE RUNDE -->
+<div class="page" id="page-næste">
+  <div class="ph"><h2>Næste runde</h2><div class="pill">Predictors + modstander</div></div>
+  <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
+    <span class="sb-lbl">Din modstander:</span>
+    <select class="ps" id="opp-select" onchange="updateOppProfile()">
+      <option value="">— vælg —</option>
+    </select>
+  </div>
+  <div class="card mb">
+    <div class="ct">Modstander — gæt-tendenser</div>
+    <div id="opp-profile"><div style="color:var(--mut);font-size:13px">Vælg en modstander ovenfor</div></div>
+  </div>
+  <div class="card mb">
+    <div class="ct">Odds, ELO &amp; N20 — aktuel runde</div>
+    <div id="match-cards"></div>
+  </div>
+</div>
+
+<!-- GÆT-PROFIL -->
+<div class="page" id="page-h2h-matchup">
+  <div class="ph"><h2>H2H — Aktuel runde</h2><div class="pill">Runde <span class="cur-r"></span></div></div>
+  <div id="h2h-matchup-container"><p style="color:var(--mut);padding:20px">Klik for at indlæse...</p></div>
+</div>
+<div class="page" id="page-gæt">
+  <div class="ph"><h2>Gæt-profiler</h2></div>
+  <div class="g2 mb">
+    <div class="card"><div class="ct">1 / X / 2 fordeling — alle sæsoner</div>
+      <div id="bet-bars"></div>
+      <div class="legend"><div class="li"><div class="ld" style="background:var(--blu)"></div>Hjemme (1)</div>
+        <div class="li"><div class="ld" style="background:#546e7a"></div>Uafgjort (X)</div>
+        <div class="li"><div class="ld" style="background:var(--red)"></div>Ude (2)</div></div>
+    </div>
+    <div class="card"><div class="ct">X-andel vs. nøjagtighed</div>
+      <div class="cw"><canvas id="chart-scatter"></canvas></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ct">Følger bookies favorit — % af gæt der matcher bookies favorit</div>
+    <div id="follows-bars"></div>
+    <div class="legend" style="margin-top:8px">
+      <div class="li"><div class="ld" style="background:var(--grn)"></div>Bookies-favorit følge-rate</div>
+    </div>
+  </div>
+  <div class="g2 mb" style="margin-top:16px">
+    <div class="card">
+      <div class="ct">Konsensus-analyse — nøjagtighed ved enighed</div>
+      <div id="consensus-bars" style="margin-bottom:10px"></div>
+      <div style="font-size:11px;color:var(--mut)">Viser nøjagtighed (% korrekte) når x% af spillerne gætter det samme</div>
+    </div>
+    <div class="card">
+      <div class="ct">Lucky vs. Good — forventet vs. faktiske rigtige</div>
+      <div class="cw-sm"><canvas id="chart-lucky-good"></canvas></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="ct">Bet-overlap matrix — hvor enige er spillerne? (aktuel sæson)</div>
+    <div id="bet-overlap-wrap" class="hm-wrap"></div>
+  </div>
+</div>
+
+<!-- HISTORIK -->
+<div class="page" id="page-historik">
+  <div class="ph"><h2>Historik</h2></div>
+  <div class="g2 mb">
+    <div class="card"><div class="ct">Rigtige gæt per sæson — alle spillere</div><div class="cw"><canvas id="chart-hist-bar"></canvas></div></div>
+    <div class="card"><div class="ct">Upset rate per liga — %  kampe favorit taber</div><div class="cw"><canvas id="chart-upset-rate"></canvas></div></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="ct">Spiller-profil</div>
+      <select class="ps mb" id="player-select" style="max-width:260px;display:block" onchange="updateProfile()"></select>
+      <div id="player-profile"></div>
+    </div>
+    <div class="card"><div class="ct">Sæson-udvikling (rigtige gæt)</div><div class="cw"><canvas id="chart-profile-radar"></canvas></div></div>
+  </div>
+</div>
+
+<!-- EVAL -->
+<div class="page" id="page-eval">
+  <div class="ph"><h2>Predictor-evaluering</h2><div class="pill">Sæson 1–3 historik</div></div>
+  <div class="g5 mb" id="eval-stat-cards"></div>
+  <div class="combo-box mb">
+    <div class="ct">Kombinations-analyse: Bookies + ELO enige vs. uenige</div>
+    <div class="combo-row" id="combo-stats"></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="ct">Nøjagtighed pr. turnering</div><div class="cw"><canvas id="chart-eval-bar"></canvas></div></div>
+    <div class="card"><div class="ct">Detailtabel</div><div id="eval-table-wrap" style="max-height:270px;overflow-y:auto"></div></div>
+  </div>
+</div>
+
+<!-- WORKFLOW -->
+<div class="page" id="page-guide">
+  <div class="ph"><h2>Workflow-guide</h2></div>
+  <div class="g2">
+    <div class="card">
+      <div class="ct">Tilføj 10 nye kampe (ny runde)</div>
+      <div class="step"><div class="step-nr">1</div><div class="step-text">Åbn notebooken i <strong>Google Colab</strong>. Kør celle <code>00</code> (opsætning, skal køres hver session).</div></div>
+      <div class="step"><div class="step-nr">2</div><div class="step-text">Sæt <code>CURRENT_ROUND</code> i celle <code>01-A</code> til det nye rundenummer.</div></div>
+      <div class="step"><div class="step-nr">3</div><div class="step-text">Kopier kampene fra Cognito Forms og indsæt i <code>raw_match_input</code> i celle <code>01-C</code>.</div></div>
+      <div class="step"><div class="step-nr">4</div><div class="step-text">Kør celle <code>01-D</code>. Henter fixture_id via football-data.org → OpenLigaDB → API-Sports.</div></div>
+      <div class="step"><div class="step-nr">5</div><div class="step-text">Kør celle <code>02</code> for odds fra The Odds API + ELO/Opta rankings.</div></div>
+      <div class="step"><div class="step-nr">6</div><div class="step-text">Kør celle <code>08</code> for at opdatere dashboardet og pushe til GitHub Pages.</div></div>
+    </div>
+    <div class="card">
+      <div class="ct">Tilføj spillernes gæt + resultater</div>
+      <div class="step"><div class="step-nr">1</div><div class="step-text">Opdater Excel-filen og kør celle <code>03-B</code> med <code>KILDE='excel'</code> — eller indsæt Rod-tabellen i <code>RAW_PASTE</code> og kør med <code>KILDE='paste'</code>.</div></div>
+      <div class="step"><div class="step-nr">2</div><div class="step-text">Kør celle <code>04-A</code> for at hente resultater automatisk (football-data.org / OpenLigaDB / API-Sports).</div></div>
+      <div class="step"><div class="step-nr">3</div><div class="step-text">Kør celle <code>05-B</code> for at beregne rigtige gæt, H2H-dueller og stilling.</div></div>
+      <div class="step"><div class="step-nr">4</div><div class="step-text">Kør celle <code>08</code> igen — siden opdateres automatisk på GitHub Pages inden for ~60 sekunder.</div></div>
+    </div>
+    <div class="card">
+      <div class="ct" style="color:var(--grn)">☁ H2H-systemet</div>
+      <div class="info-box">
+        <strong style="color:var(--txt)">Hver runde møder du én modstander.</strong><br>
+        Den der gætter flest rigtige vinder og får <strong style="color:var(--grn)">3 H2H-point</strong>.<br>
+        Uafgjort → <strong style="color:var(--gld)">1 point</strong> til begge. Tab → <strong style="color:var(--red)">0 point</strong>.<br><br>
+        <strong style="color:var(--txt)">Stillingen</strong> er baseret på akkumulerede H2H-point.<br>
+        <strong style="color:var(--txt)">Rigtige gæt</strong> bruges som tiebreaker og vises separat.
+      </div>
+    </div>
+    <div class="card">
+      <div class="ct" style="color:var(--grn)">☁ Alt i skyen</div>
+      <div class="info-box">
+        <strong>Google Colab + Google Drive</strong> giver adgang fra alle enheder.<br>
+        CSV-filer gemmes i <code>fodboldquiz/data/</code>.<br>
+        Dashboard hostes gratis på <strong>GitHub Pages</strong>.
+      </div>
+      <div style="padding:10px;background:var(--sf);border-radius:6px;font-size:12px">
+        <div style="color:var(--grn);font-weight:600;margin-bottom:6px">GitHub Pages setup (én gang):</div>
+        1. Opret repo på github.com (public)<br>
+        2. Settings → Pages → Source: main branch<br>
+        3. Sæt <code>GITHUB_TOKEN</code>, <code>GITHUB_USER</code>, <code>GITHUB_REPO</code> i celle 08<br>
+        4. Kør celle 08 — siden er live automatisk<br><br>
+        <span style="color:var(--grn)">🔑 Nøgler du skal have:</span><br>
+        · <strong>football-data.org</strong> (gratis, 30 sek)<br>
+        · <strong>The Odds API</strong> (gratis, 500 req/md)<br>
+        · <strong>GitHub token</strong> (gratis, scope: repo)
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+<script>
+const DATA = __DATA_PLACEHOLDER__;
+
+function shortName(p){const parts=p.trim().split(' ');if(parts.length===1)return p;return parts[0][0]+'. '+parts[parts.length-1];}
+
+const charts={};
+let curSeason=DATA.current_season||Math.max(...(DATA.seasons||[4]));
+// Predictor eval sort state — persists across renderEval calls
+if(typeof window.sortEvalCol==='undefined'){window.sortEvalCol='n';window.sortEvalDir=-1;}
+window.sortEvalTable=function(col){
+  if(window.sortEvalCol===col){window.sortEvalDir*=-1;}
+  else{window.sortEvalCol=col;window.sortEvalDir=-1;}
+  renderEval();
+};
+const PAL=['#00e676','#448aff','#ffd740','#ff5252','#e040fb','#40c4ff','#69f0ae','#ffab40','#ea80fc','#80d8ff','#b9f6ca','#ffe57f','#ff9e80','#ccff90','#a7ffeb','#84ffff','#18ffff','#64ffda','#ff80ab','#b0bec5'];
+const CDEF={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#1e2330',borderColor:'#2a3040',borderWidth:1,titleColor:'#7a8299',bodyColor:'#e8eaf0'}},scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'}},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'}}}};
+function mk(id,type,data,opts={}){if(charts[id])charts[id].destroy();const el=document.getElementById(id);if(!el)return;return charts[id]=new Chart(el,{type,data,options:{...CDEF,...opts}});}
+function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));document.getElementById('page-'+id).classList.add('active');if(btn)btn.classList.add('active');if(id==='h2h-matchup')renderH2HMatchup();({stilling:renderStilling,runder:renderRunder,næste:renderNæste,gæt:renderGæt,historik:renderHistorik,eval:renderEval,guide:()=>{}})[id]?.();}
+function setSeason(s,btn){curSeason=s;document.querySelectorAll('.sb').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');renderStilling();}
+
+// Season buttons — dynamic, only show seasons with data
+function renderH2HMatchup(){
+  document.querySelectorAll('.cur-r').forEach(el=>el.textContent=DATA.current_round||'');
+  let matchups=(DATA.cur_matchups||[]).slice();
+  const bets=DATA.cur_bets||{};
+  const results=DATA.cur_results||{};
+  const matchCodes=DATA.cur_match_codes||[];
+
+  if(!matchups.length){
+    document.getElementById('h2h-matchup-container').innerHTML=
+      '<p style="color:var(--mut);padding:20px">Ingen H2H-matchups for aktuel runde</p>';
+    return;
+  }
+
+  // Fix 1: Anders Stenner altid øverst
+  const ME='Anders Stenner';
+  const myIdx=matchups.findIndex(mu=>mu.p1===ME||mu.p2===ME);
+  if(myIdx>0){
+    const [myMu]=matchups.splice(myIdx,1);
+    // Ensure ME is p1
+    if(myMu.p2===ME){
+      [myMu.p1,myMu.p2]=[myMu.p2,myMu.p1];
+      [myMu.correct_a,myMu.correct_b]=[myMu.correct_b,myMu.correct_a];
+      [myMu.h2h_pts_a,myMu.h2h_pts_b]=[myMu.h2h_pts_b,myMu.h2h_pts_a];
+      [myMu.prob_a,myMu.prob_b]=[myMu.prob_b,myMu.prob_a];
+    }
+    matchups.unshift(myMu);
+  } else if(myIdx===0 && matchups[0].p2===ME){
+    const mu=matchups[0];
+    [mu.p1,mu.p2]=[mu.p2,mu.p1];
+    [mu.correct_a,mu.correct_b]=[mu.correct_b,mu.correct_a];
+    [mu.h2h_pts_a,mu.h2h_pts_b]=[mu.h2h_pts_b,mu.h2h_pts_a];
+    [mu.prob_a,mu.prob_b]=[mu.prob_b,mu.prob_a];
+  }
+
+  function betBadge(b){
+    if(!b)return'<span style="color:var(--bdr)">&mdash;</span>';
+    const bg={'1':'#1a3a5a','X':'#3a3a1a','2':'#3a1a1a'}[b]||'#2a3040';
+    const fg={'1':'#7eb3f5','X':'#d4c060','2':'#f07070'}[b]||'#aaa';
+    return `<span style="display:inline-block;width:22px;height:19px;line-height:19px;text-align:center;border-radius:3px;font-weight:700;font-size:11px;background:${bg};color:${fg}">${b}</span>`;
+  }
+
+  let out='';
+  for(const mu of matchups){
+    const {p1,p2}=mu;
+    const bets1=bets[p1]||{};
+    const bets2=bets[p2]||{};
+    const correct1=mu.correct_a??null;
+    const correct2=mu.correct_b??null;
+    const pts1=mu.h2h_pts_a??null;
+    const pts2=mu.h2h_pts_b??null;
+
+    // Fix 3: correct canChange logic
+    // Count unplayed games with DIFFERENT bets — only these can change the outcome
+    let diffUnplayed=0;
+    let sameUnplayed=0;
+    let rows='';
+    for(const m of matchCodes){
+      const mc=m.mc;
+      const label=m.label||mc;
+      const b1=bets1[mc]||null;
+      const b2=bets2[mc]||null;
+      const result=results[mc]||null;
+      const played=!!result;
+      const different=b1&&b2&&b1!==b2;
+      if(!played){
+        if(different) diffUnplayed++;
+        else sameUnplayed++;
+      }
+      const rowStyle=different&&!played?'background:rgba(255,152,0,0.08);':played?'opacity:0.55;':'';
+      const resBadge=result
+        ?`<span style="display:inline-block;width:20px;height:19px;line-height:19px;text-align:center;background:#2a3040;border-radius:3px;font-size:11px;font-weight:700">${result}</span>`
+        :'<span style="color:var(--bdr);font-size:10px">&mdash;</span>';
+      const diffMark=different&&!played?'<span style="color:#ff9800;font-size:13px;font-weight:700">!</span>':'<span style="color:var(--bdr)">&middot;</span>';
+      rows+=`<tr style="${rowStyle}">
+        <td style="padding:6px 10px;width:20px">${diffMark}</td>
+        <td style="padding:6px 10px;font-size:12px">${label}</td>
+        <td style="padding:6px 10px;text-align:center">${resBadge}</td>
+        <td style="padding:6px 10px;text-align:center">${betBadge(b1)}</td>
+        <td style="padding:6px 10px;text-align:center">${betBadge(b2)}</td>
+      </tr>`;
+    }
+
+    // canChange: trailing player needs MORE different-bet wins than the gap
+    // If correct_a/correct_b not available yet, fall back to diffUnplayed>0
+    let canChange=false;
+    if(correct1!==null&&correct2!==null){
+      const gap=Math.abs(correct1-correct2);
+      // Max the trailing player can gain = diffUnplayed (each worth 1 correct)
+      canChange = diffUnplayed>0 && diffUnplayed>=gap;
+    } else {
+      // No score data yet — optimistic: any different bet could matter
+      canChange = diffUnplayed>0;
+    }
+
+    let verdict,verdictBg;
+    if(!canChange){
+      if(correct1!==null&&correct2!==null){
+        const gap=correct1-correct2;
+        if(gap>0){verdict=`${p1.split(' ').pop()} vinder \u2713`;verdictBg='#1a3a1a;color:#4caf50';}
+        else if(gap<0){verdict=`${p2.split(' ').pop()} vinder \u2713`;verdictBg='#1a3a1a;color:#4caf50';}
+        else{verdict='Uafgjort \u2014 afgjort \u2713';verdictBg='#1a2a3a;color:#7eb3f5';}
+      }else{verdict='Alle g\u00e6t ens \u2014 afgjort \u2713';verdictBg='#1a2a3a;color:#7eb3f5';}
+    }else{
+      verdict=`Kan \u00e6ndre sig \u25b2 (${diffUnplayed} afg. kamp${diffUnplayed>1?'e':''} m. forskel)`;
+      verdictBg='#3a2a0a;color:#ff9800';
+    }
+
+    const sh=p=>p.split(' ').pop();
+    out+=`<div style="background:#1e2330;border:1px solid #2a3040;border-radius:10px;margin-bottom:14px;overflow:hidden">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:11px 16px;background:#252b3b;border-bottom:1px solid #2a3040">
+        <div style="font-size:14px;font-weight:700"><span style="color:#7eb3f5">${p1}</span><span style="color:var(--mut);font-size:11px;margin:0 8px">vs</span><span style="color:#f0a070">${p2}</span></div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <span style="font-size:15px;font-weight:700"><span style="color:#7eb3f5">${correct1??'&mdash;'}</span><span style="color:var(--mut);margin:0 5px">&ndash;</span><span style="color:#f0a070">${correct2??'&mdash;'}</span></span>
+          <span style="font-size:11px;color:var(--mut)">(${pts1??'&mdash;'}&ndash;${pts2??'&mdash;'} H2H pt)</span>
+          <span style="font-size:11px;font-weight:600;padding:3px 8px;border-radius:4px;background:${verdictBg}">${verdict}</span>${(mu.prob_a!==null&&mu.prob_b!==null&&canChange)?`<span style="font-size:11px;color:var(--mut);margin-left:6px;display:inline-flex;align-items:center;gap:3px"><span style="color:#7eb3f5;font-weight:600">${mu.prob_a}%</span><span style="color:var(--mut)">·</span><span style="color:#aaa">${mu.prob_draw??0}%</span><span style="color:var(--mut)">·</span><span style="color:#f0a070;font-weight:600">${mu.prob_b}%</span></span>`:''}
+        </div>
+      </div>
+      <table style="width:100%;border-collapse:collapse">
+        <thead><tr style="background:#1a2030">
+          <th style="padding:7px 10px;width:20px"></th>
+          <th style="padding:7px 10px;font-size:10px;color:var(--mut);text-align:left;text-transform:uppercase;letter-spacing:1px">Kamp</th>
+          <th style="padding:7px 10px;font-size:10px;color:var(--mut);text-align:center;text-transform:uppercase;letter-spacing:1px">Res.</th>
+          <th style="padding:7px 10px;font-size:10px;color:#7eb3f5;text-align:center;text-transform:uppercase;letter-spacing:1px">${sh(p1)}</th>
+          <th style="padding:7px 10px;font-size:10px;color:#f0a070;text-align:center;text-transform:uppercase;letter-spacing:1px">${sh(p2)}</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>`;
+  }
+  document.getElementById('h2h-matchup-container').innerHTML=out;
+}
+
+function buildSeasonBtns(){
+  const wrap=document.getElementById('season-btns');
+  if(!wrap)return;
+  const seasons=(DATA.seasons||[]).slice().sort((a,b)=>b-a);
+  const cs=DATA.current_season||Math.max(...seasons);
+  wrap.innerHTML=`<button class="sb" onclick="setSeason('total',this)">Total</button>`+seasons.map(s=>`<button class="sb${s===cs?' active':''}" onclick="setSeason(${s},this)">${s}${s===DATA.current_season?' (nu)':''}</button>`).join('');
+}
+
+function renderHeatmap(tableId, hmData, players, rounds){
+  const tbl=document.getElementById(tableId);if(!tbl)return;
+  let html='<tr><th class="pn">Spiller</th>'+rounds.map(r=>`<th>R${r}</th>`).join('')+'<th>Σ</th></tr>';
+  players.forEach(player=>{
+    const pd=hmData[player]||{};let t=0;
+    let row=`<tr><td class="hm pn">${player}</td>`;
+    rounds.forEach(r=>{
+      const c=pd[r]||pd[String(r)];
+      if(!c||c.answered===0){row+=`<td class="hmn">·</td>`;}
+      else{const p=c.pts||c.rigtige||0;t+=p;const cls=p===0?'hm0':p<=3?'hml':p<=6?'hmm':p<=8?'hmh':'hmt';row+=`<td class="${cls}">${p}</td>`;}
+    });
+    row+=`<td style="font-weight:700;color:var(--grn)">${t}</td></tr>`;html+=row;
+  });
+  tbl.innerHTML=html;
+}
+
+function renderStilling(){
+  if(curSeason==='total'){renderTotal();return;}
+  const titleEl=document.getElementById('cum-title');if(titleEl)titleEl.textContent='Kumulative rigtige gæt over tid';
+  document.querySelectorAll('.cur-s').forEach(el=>el.textContent=curSeason);
+  const h2hStandings=DATA.h2h_standings?.[curSeason]||DATA.h2h_standings?.[String(curSeason)]||[];
+  const rigtigeList=[...(DATA.standings_by_season?.[curSeason]||DATA.standings_by_season?.[String(curSeason)]||[])];
+  const rigtigeMap={};rigtigeList.forEach(r=>rigtigeMap[r.player]=r);
+  const ppr=DATA.pts_per_round?.[curSeason]||DATA.pts_per_round?.[String(curSeason)]||{rounds:[],data:{}};
+  const seasonPlayers=rigtigeList.map(r=>r.player);
+  const hasH2H=h2hStandings.length>0;
+
+  // Stat cards
+  const sc=document.getElementById('stat-cards');
+  const topH2H=h2hStandings[0];
+  const topRigtige=[...rigtigeList].sort((a,b)=>b.points-a.points)[0];
+  const roundsLeft=51-(ppr.rounds?.length||0);
+  sc.innerHTML=[
+    ['Spillere',seasonPlayers.length||'—','aktive sæson '+curSeason],
+    ['H2H-leader',topH2H?.h2h_pts!=null?topH2H.h2h_pts:'—',(topH2H?.player||'').split(' ').pop()+' H2H pt'],
+    ['Flest rigtige',topRigtige?.points||'—',(topRigtige?.player||'').split(' ').pop()],
+    ['Runder spillet',ppr.rounds?.length||'—','af 51 i sæsonen'],
+    ['Runder tilbage',roundsLeft>=0?roundsLeft:'—','tilbage i sæsonen'],
+  ].map(([lbl,val,sub],i)=>`<div class="sc"><div class="sc-accent" style="background:${PAL[i]}"></div><div class="sl">${lbl}</div><div class="sv" style="color:${PAL[i]}">${val}</div><div class="ss">${sub}</div></div>`).join('');
+
+  // H2H standings table — only season participants
+  const tbody=document.getElementById('standings-body');
+  const mergedRows=seasonPlayers.map(p=>{
+    const h2h=h2hStandings.find(r=>r.player===p)||{h2h_pts:null};
+    const rig=rigtigeMap[p]||{points:0,answered:0};
+    return{player:p,h2h_pts:h2h.h2h_pts,points:rig.points||0,answered:rig.answered||0};
+  }).sort((a,b)=>hasH2H?(b.h2h_pts-a.h2h_pts||b.points-a.points):(b.points-a.points));
+  const maxH2H=Math.max(...mergedRows.map(r=>r.h2h_pts||0),1);
+  tbody.innerHTML=mergedRows.map((row,i)=>{
+    const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';
+    const pct=row.answered>0?(row.points/row.answered*100).toFixed(1):'—';
+    const bw=Math.round((row.h2h_pts||0)/maxH2H*100);
+    const pctBar=row.answered>0?Math.round(row.points/row.answered*100):0;
+    const h2hDisp=row.h2h_pts!=null?`<span class="pts">${row.h2h_pts}</span>`:`<span style="color:var(--mut)">—</span>`;
+    return`<tr><td><span class="rank ${rc}">${i+1}</span></td><td>${row.player}</td><td>${h2hDisp}</td><td>${row.points}</td><td style="text-align:right"><div style="display:flex;align-items:center;gap:5px;justify-content:flex-end"><div class="bw"><div class="bf" style="width:${pctBar}%"></div></div><span style="font-size:11px;color:var(--mut)">${pct}%</span></div></td></tr>`;
+  }).join('');
+
+  // Kumulative rigtige gæt pr. runde (enkelt sæson)
+  // H2H charts
+  renderH2HCharts(curSeason);
+
+  const titleEl2=document.getElementById('cum-title');if(titleEl2)titleEl2.textContent='Kumulative rigtige gæt — Sæson '+curSeason;
+  const rounds=ppr.rounds||[];
+  const cumPlayers=seasonPlayers.filter(p=>ppr.data?.[p]);
+  mk('chart-cum','line',{labels:rounds.map(r=>'R'+r),datasets:cumPlayers.map((p,i)=>({label:shortName(p),data:ppr.data[p],borderColor:PAL[i%PAL.length],backgroundColor:'transparent',borderWidth:2,pointRadius:1,pointHoverRadius:5,tension:.3}))},{plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,backgroundColor:'#1e2330',borderColor:'#2a3040',borderWidth:1,titleColor:'#7a8299',bodyColor:'#e8eaf0'}},scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299',maxTicksLimit:10}},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'}}}});
+
+  // Heatmap in stilling tab
+  const hmData=DATA.heatmap_s4||DATA['heatmap_s'+curSeason]||{};
+  const hmPlayers=seasonPlayers.filter(p=>hmData[p]);
+  const hmRounds=[...new Set(Object.values(hmData).flatMap(p=>Object.keys(p).map(Number)))].sort((a,b)=>a-b);
+  renderHeatmap('heatmap-stilling', hmData, hmPlayers, hmRounds);
+
+  // Mini H2H-widget for Anders Stenner
+  (function(){
+    const ME='Anders Stenner';
+    const allMu=DATA.cur_matchups||[];
+    let myMu=allMu.find(mu=>mu.p1===ME||mu.p2===ME)||null;
+    const card=document.getElementById('my-h2h-card');
+    if(!myMu||!card){if(card)card.style.display='none';return;}
+    card.style.display='';
+    let pa=myMu.p1,pb=myMu.p2,ca=myMu.correct_a,cb=myMu.correct_b;
+    let ptsA=myMu.h2h_pts_a,ptsB=myMu.h2h_pts_b;
+    if(pb===ME){[pa,pb]=[pb,pa];[ca,cb]=[cb,ca];[ptsA,ptsB]=[ptsB,ptsA];}
+    let probA=myMu.prob_a??null,probB=myMu.prob_b??null;
+    if(myMu.p2===ME){[probA,probB]=[probB,probA];}
+    const b1All=(DATA.cur_bets||{})[pa]||{};
+    const b2All=(DATA.cur_bets||{})[pb]||{};
+    const res=DATA.cur_results||{};
+    const mcs=DATA.cur_match_codes||[];
+    let diffUnplayed=0;
+    mcs.forEach(m=>{const b1=b1All[m.mc],b2=b2All[m.mc];if(b1&&b2&&b1!==b2&&!res[m.mc])diffUnplayed++;});
+    const gap=(ca!=null&&cb!=null)?Math.abs(ca-cb):null;
+    const canChange=gap!=null?(diffUnplayed>0&&diffUnplayed>=gap):(diffUnplayed>0);
+    let badge,badgeBg;
+    if(!canChange&&ca!=null&&cb!=null){
+      if(ca>cb){badge=pa.split(' ').pop()+' forer ✓';badgeBg='#1a3a1a;color:#4caf50';}
+      else if(cb>ca){badge=pb.split(' ').pop()+' forer ✓';badgeBg='#1a3a1a;color:#4caf50';}
+      else{badge='Uafgjort ✓';badgeBg='#1a2a3a;color:#7eb3f5';}
+    }else{badge='Kan aendre sig ▲ ('+diffUnplayed+' kamp'+(diffUnplayed!==1?'e':'')+' m. forskel)';badgeBg='#3a2a0a;color:#ff9800';}
+    const BC={'1':'#7eb3f5','X':'#d4c060','2':'#f07070'};
+    const BG={'1':'#1a3a5a','X':'#3a3a1a','2':'#3a1a1a'};
+    const bb=b=>b?('<span style="display:inline-block;width:20px;height:17px;line-height:17px;text-align:center;border-radius:3px;font-weight:700;font-size:11px;background:'+(BG[b]||'#2a3040')+';color:'+(BC[b]||'#aaa')+'">'+b+'</span>'):'<span style="color:var(--bdr)">—</span>';
+    let rows='';
+    mcs.forEach(m=>{
+      const b1=b1All[m.mc],b2=b2All[m.mc],r=res[m.mc];
+      const diff=b1&&b2&&b1!==b2;
+      const sty=r?'opacity:0.5;':(diff?'background:rgba(255,152,0,0.08);':'');
+      const mk=diff&&!r?'<span style="color:#ff9800;font-size:11px;font-weight:700">!</span>':'<span style="color:var(--bdr)">·</span>';
+      const rb=r?('<span style="display:inline-block;width:18px;height:17px;line-height:17px;text-align:center;background:#2a3040;border-radius:3px;font-size:10px;font-weight:700">'+r+'</span>'):'<span style="color:var(--bdr);font-size:9px">—</span>';
+      rows+='<tr style="'+sty+'"><td style="width:14px;padding:3px 6px">'+mk+'</td><td style="font-size:11px;padding:3px 6px">'+(m.label||m.mc)+'</td><td style="text-align:center;padding:3px 4px">'+rb+'</td><td style="text-align:center;padding:3px 4px">'+bb(b1)+'</td><td style="text-align:center;padding:3px 4px">'+bb(b2)+'</td></tr>';
+    });
+    const sh=p=>p.split(' ').pop();
+    card.innerHTML='<div class="ct" style="margin-bottom:10px">Mit H2H-opgor — runde <span class="cur-r">'+( DATA.current_round||'')+'</span></div>'
+      +'<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#252b3b;border-radius:7px;margin-bottom:10px">'
+      +'<div style="font-size:13px;font-weight:700"><span style="color:#7eb3f5">'+sh(pa)+'</span><span style="color:var(--mut);font-size:10px;margin:0 6px">vs</span><span style="color:#f0a070">'+sh(pb)+'</span></div>'
+      +'<div style="display:flex;gap:8px;align-items:center">'
+      +'<span style="font-size:14px;font-weight:700"><span style="color:#7eb3f5">'+(ca!=null?ca:'—')+'</span><span style="color:var(--mut);margin:0 4px">–</span><span style="color:#f0a070">'+(cb!=null?cb:'—')+'</span></span>'
+      +'<span style="font-size:10px;color:var(--mut)">('+(ptsA!=null?ptsA:'—')+'–'+(ptsB!=null?ptsB:'—')+' pt)</span>'
+      +'<span style="font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;background:'+badgeBg+'">'+badge+'</span>'
+      +(probA!==null&&probB!==null&&canChange?'<span style="font-size:10px;color:var(--mut);margin-left:4px">(<span style="color:#7eb3f5;font-weight:600">'+probA+'%</span><span style="color:var(--mut)"> · </span><span style="color:#f0a070;font-weight:600">'+probB+'%</span>)</span>':'')
+      +'</div></div>'
+      +'<table style="width:100%;border-collapse:collapse">'
+      +'<thead><tr style="background:#1a2030"><th style="width:14px"></th>'
+      +'<th style="font-size:9px;color:var(--mut);text-align:left;padding:4px 6px;text-transform:uppercase;letter-spacing:1px">Kamp</th>'
+      +'<th style="font-size:9px;color:var(--mut);text-align:center;padding:4px">Res.</th>'
+      +'<th style="font-size:9px;color:#7eb3f5;text-align:center;padding:4px">'+sh(pa)+'</th>'
+      +'<th style="font-size:9px;color:#f0a070;text-align:center;padding:4px">'+sh(pb)+'</th>'
+      +'</tr></thead><tbody>'+rows+'</tbody></table>';
+  })();
+}
+
+function renderRunder(){
+  const cs=DATA.current_season||4;
+  document.getElementById('runder-pill').textContent='Sæson '+cs;
+  const hmData=DATA.heatmap_s4||DATA['heatmap_s'+cs]||{};
+  const players=DATA.active_players?.filter(p=>hmData[p])||[];
+  const rounds=[...new Set(Object.values(hmData).flatMap(p=>Object.keys(p).map(Number)))].sort((a,b)=>a-b);
+  renderHeatmap('heatmap-table', hmData, players, rounds);
+
+  const totals=players.map(player=>{
+    const pd=hmData[player]||{};
+    let t=0;rounds.forEach(r=>{const c=pd[r]||pd[String(r)];if(c)t+=c.pts||c.rigtige||0;});
+    return{player,total:t};
+  });
+  const avg=rounds.map(r=>{
+    const vals=players.map(p=>{const c=(hmData[p]||{})[r]||(hmData[p]||{})[String(r)];return c?.pts||c?.rigtige||0;});
+    return vals.length?+(vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(2):0;
+  });
+  mk('chart-rnd-bar','bar',{labels:rounds.map(r=>'R'+r),datasets:[{label:'Snit',data:avg,backgroundColor:'rgba(0,230,118,.4)',borderColor:'rgba(0,230,118,.8)',borderWidth:1,borderRadius:3}]},{plugins:{legend:{display:false}},scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'}},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'},beginAtZero:true}}});
+  const sorted=totals.sort((a,b)=>b.total-a.total);
+  mk('chart-rnd-total','bar',{labels:sorted.map(d=>shortName(d.player)),datasets:[{label:'Rigtige',data:sorted.map(d=>d.total),backgroundColor:sorted.map((_,i)=>PAL[i%PAL.length]+'aa'),borderColor:sorted.map((_,i)=>PAL[i%PAL.length]),borderWidth:1,borderRadius:3}]},{plugins:{legend:{display:false}},scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299',maxRotation:45}},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'},beginAtZero:true}}});
+
+  // Rolling accuracy chart
+  const rollData=DATA.rolling_accuracy?.[cs]||DATA.rolling_accuracy?.[String(cs)]||null;
+  if(rollData&&rollData.rounds&&rollData.data){
+    const rollPlayers=players.filter(p=>rollData.data[p]);
+    const datasets=rollPlayers.map((p,i)=>({
+      label:shortName(p),data:rollData.data[p],
+      borderColor:PAL[i%PAL.length],backgroundColor:'transparent',
+      borderWidth:2,pointRadius:2,pointHoverRadius:5,tension:.35,spanGaps:true
+    }));
+    mk('chart-rolling-acc','line',{labels:rollData.rounds.map(r=>'R'+r),datasets},{
+      plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,backgroundColor:'#1e2330',borderColor:'#2a3040',borderWidth:1,titleColor:'#7a8299',bodyColor:'#e8eaf0'}},
+      scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'}},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299',callback:v=>v+'%'},min:0,max:100}}
+    });
+    document.getElementById('rolling-legend').innerHTML=rollPlayers.map((p,i)=>`<div class="li"><div class="ld" style="background:${PAL[i%PAL.length]}"></div>${shortName(p)}</div>`).join('');
+  }
+}
+
+function renderNæste(){
+  const sel=document.getElementById('opp-select');
+  if(sel.options.length<=1)(DATA.active_players||[]).forEach(p=>{const o=document.createElement('option');o.value=p;o.textContent=p;sel.appendChild(o);});
+  // Default til Anders
+  if(!sel.value){
+    const a=Array.from(sel.options).find(o=>o.value==='Anders');
+    if(a) sel.value='Anders';
+  }
+  updateOppProfile();
+
+  const odds=DATA.current_odds||[];
+  const matchCardsEl=document.getElementById('match-cards');
+  if(!odds.length){
+    matchCardsEl.innerHTML='<div style="color:var(--mut);font-size:12px;line-height:1.8">Odds-data vises her når du har kørt celle 02 og celle 08.<br>Tjek at odds.csv er genereret i Drive.</div>';
+    return;
+  }
+
+  // Prob cell: highlight highest in row
+  const pCell=(val,arr,col)=>{
+    if(val==null) return`<td style="color:var(--mut);text-align:center;font-size:12px">—</td>`;
+    const isTop=val===Math.max(...arr.filter(v=>v!=null));
+    return`<td style="text-align:center;font-size:14px;font-weight:700;color:${col};padding:4px 8px;border-radius:4px${isTop?';background:rgba(255,255,255,.06)':''}">${val}%</td>`;
+  };
+
+  // Rec strip cell
+  const recCell=(lbl,val,lblCol)=>{
+    let v=(!val||val==='None'||val==='nan'||val==='NaN')?'—':String(val);
+    // Normaliser float-lagrede anbefalinger: '2.0' → '2', '1.0' → '1'
+    if(v==='1.0')v='1'; else if(v==='2.0')v='2'; else if(v==='0.0')v='—';
+    const col=v==='1'?'var(--blu)':v==='X'?'#90a4ae':v==='2'?'var(--red)':'rgba(55,65,81,.8)';
+    const lc=lblCol?`color:${lblCol}`:'';
+    return`<div class="mc-rec"><span class="mc-rec-lbl" style="${lc}">${lbl}</span><span class="mc-rec-val" style="color:${col}">${v}</span></div>`;
+  };
+
+  const matchList=odds.filter(m=>m.home_team&&m.home_team.trim()&&m.home_team!=='nan');
+  let html='';
+
+  matchList.forEach(m=>{
+    const o1=parseFloat(m.odds_1),ox=parseFloat(m.odds_x),o2=parseFloat(m.odds_2);
+    let bp1=null,bpx=null,bp2=null;
+    if(!isNaN(o1)&&!isNaN(ox)&&!isNaN(o2)){const t=1/o1+1/ox+1/o2;bp1=+(1/o1/t*100).toFixed(0);bpx=+(1/ox/t*100).toFixed(0);bp2=+(1/o2/t*100).toFixed(0);}
+    const ep1=m.elo_prob_1!=null?+m.elo_prob_1:null;
+    const epx=m.elo_prob_x!=null?+m.elo_prob_x:null;
+    const ep2=m.elo_prob_2!=null?+m.elo_prob_2:null;
+    const np1=m.n20_prob_1!=null?+(+m.n20_prob_1).toFixed(0):null;
+    const npx=m.n20_prob_x!=null?+(+m.n20_prob_x).toFixed(0):null;
+    const np2=m.n20_prob_2!=null?+(+m.n20_prob_2).toFixed(0):null;
+    const pp1=m.poisson_p1!=null?+(+m.poisson_p1).toFixed(0):null;
+    const ppx=m.poisson_px!=null?+(+m.poisson_px).toFixed(0):null;
+    const pp2=m.poisson_p2!=null?+(+m.poisson_p2).toFixed(0):null;
+    const mp1=m.odds_mc_p1!=null?+(+m.odds_mc_p1).toFixed(0):null;
+    const mpx=m.odds_mc_px!=null?+(+m.odds_mc_px).toFixed(0):null;
+    const mp2=m.odds_mc_p2!=null?+(+m.odds_mc_p2).toFixed(0):null;
+    const ep1mc=m.ensemble_p1!=null?+(+m.ensemble_p1).toFixed(0):null;
+    const epxmc=m.ensemble_px!=null?+(+m.ensemble_px).toFixed(0):null;
+    const ep2mc=m.ensemble_p2!=null?+(+m.ensemble_p2).toFixed(0):null;
+    const mcUnc=m.odds_mc_unc!=null?+m.odds_mc_unc:null;
+    const hasB=bp1!=null,hasE=ep1!=null,hasN=np1!=null;
+    const hasP=pp1!=null,hasM=mp1!=null,hasEns=ep1mc!=null;
+    const rowB=[bp1,bpx,bp2],rowE=[ep1,epx,ep2],rowN=[np1,npx,np2];
+    const rowP=[pp1,ppx,pp2],rowM=[mp1,mpx,mp2],rowEns=[ep1mc,epxmc,ep2mc];
+    const res=m.result||null;
+    const resBg=res?'background:rgba(34,197,94,.12);color:var(--grn)':'background:rgba(255,255,255,.05);color:var(--mut)';
+    // ── Ensemble banner ──────────────────────────────────────────────────────
+    const _ensRec=m.rec_ensemble&&m.rec_ensemble!=='None'&&m.rec_ensemble!=='nan'?m.rec_ensemble:null;
+    const _ensCol=_ensRec==='1'?'var(--blu)':_ensRec==='X'?'#90a4ae':_ensRec==='2'?'var(--red)':'#fbbf24';
+    const _ensBg=_ensRec==='1'?'rgba(59,130,246,.07)':_ensRec==='X'?'rgba(144,164,174,.07)':_ensRec==='2'?'rgba(239,68,68,.07)':'rgba(251,191,36,.07)';
+    const _ensBdr=_ensRec==='1'?'rgba(59,130,246,.18)':_ensRec==='X'?'rgba(144,164,174,.18)':_ensRec==='2'?'rgba(239,68,68,.18)':'rgba(251,191,36,.18)';
+    const _ensBanner=_ensRec?`
+      <div class="mc-banner" style="background:${_ensBg};border-bottom-color:${_ensBdr}">
+        <div style="min-width:32px">
+          <div class="mc-banner-lbl" style="color:${_ensCol}"">Ensemble</div>
+          <div class="mc-banner-val" style="color:${_ensCol}">${_ensRec}</div>
+        </div>
+        <div style="flex:1">
+          <div style="display:flex;justify-content:space-between;margin-bottom:3px">
+            <span style="font-size:8px;color:var(--mut)">Afstemning</span>
+            <span style="font-size:8px;color:${_ensCol};opacity:.8">${ep1mc??0}% · ${epxmc??0}% · ${ep2mc??0}%</span>
+          </div>
+          <div class="mc-banner-bar">
+            <div style="width:${ep1mc??0}%;background:var(--blu)"></div>
+            <div style="width:${epxmc??0}%;background:#4b5563"></div>
+            <div style="width:${ep2mc??0}%;background:var(--red)"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:2px;font-size:8px">
+            <span style="color:var(--blu)">1: ${ep1mc??0}%</span>
+            <span style="color:var(--mut)">X: ${epxmc??0}%</span>
+            <span style="color:var(--red)">2: ${ep2mc??0}%</span>
+          </div>
+        </div>
+        ${mcUnc?`<div style="font-size:9px;color:var(--mut);white-space:nowrap;padding-left:4px">MC ±${mcUnc}%</div>`:''}
+      </div>`:'';
+    html+=`<div class="mcard">
+      ${_ensBanner}
+      <div class="mc-top">
+        <div class="mc-teams-col">
+          <div class="mc-name">${m.home_team} <span style="color:var(--mut);font-weight:400;font-size:11px">vs</span> ${m.away_team}</div>
+          <div class="mc-league">${m.league||''}</div>
+          ${(m.elo_home||m.elo_away)?`<div class="mc-elo-row">
+            <span class="mc-elo-lbl">ELO</span>
+            <span>${m.elo_home||'—'}${m.elo_delta_home!=null?`<span class="mc-elo-delta" style="color:${m.elo_delta_home>0?'var(--grn)':'var(--red)'}">${m.elo_delta_home>0?'+':''}${m.elo_delta_home}</span>`:''}</span>
+            <span class="mc-elo-sep">/</span>
+            <span>${m.elo_away||'—'}${m.elo_delta_away!=null?`<span class="mc-elo-delta" style="color:${m.elo_delta_away>0?'var(--grn)':'var(--red)'}">${m.elo_delta_away>0?'+':''}${m.elo_delta_away}</span>`:''}</span>
+          </div>`:''}
+          ${(m.n20_elo_home||m.n20_elo_away)?`<div class="mc-elo-row">
+            <span class="mc-elo-lbl mc-src-n">N20</span>
+            <span>${m.n20_elo_home||'—'}</span>
+            <span class="mc-elo-sep">/</span>
+            <span>${m.n20_elo_away||'—'}</span>
+          </div>`:''}
+          <div style="margin-top:6px"><span class="mc-res-dot" style="${resBg}">${res||'—'}</span></div>
+        </div>
+        <div class="mc-matrix">
+          <table class="mc-ptbl">
+            <thead><tr><th></th><th style="color:var(--blu)">1</th><th style="color:#90a4ae">X</th><th style="color:var(--red)">2</th></tr></thead>
+            <tbody>
+              ${hasB?`<tr><td class="mc-src mc-src-o">Odds${mcUnc?`<span style="font-size:8px;color:var(--mut);display:block;font-weight:400">±${mcUnc}%</span>`:''}</td>${pCell(bp1,rowB,'var(--blu)')}${pCell(bpx,rowB,'#90a4ae')}${pCell(bp2,rowB,'var(--red)')}</tr>`:''}
+              ${hasE?`<tr><td class="mc-src mc-src-e">ELO</td>${pCell(ep1,rowE,'var(--blu)')}${pCell(epx,rowE,'#90a4ae')}${pCell(ep2,rowE,'var(--red)')}</tr>`:''}
+              ${hasN?`<tr><td class="mc-src mc-src-n">N20</td>${pCell(np1,rowN,'var(--blu)')}${pCell(npx,rowN,'#90a4ae')}${pCell(np2,rowN,'var(--red)')}</tr>`:''}
+              ${hasP?`<tr><td class="mc-src" style="color:#a78bfa">Pois</td>${pCell(pp1,rowP,'var(--blu)')}${pCell(ppx,rowP,'#90a4ae')}${pCell(pp2,rowP,'var(--red)')}</tr>`:''}
+              ${!hasB&&!hasE&&!hasN&&!hasP?`<tr><td colspan="4" style="color:var(--mut);font-size:11px;padding:8px 0">Ingen sandsynlighedsdata</td></tr>`:''}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="mc-recs-strip">
+        ${recCell('N20',m.n20_rec,'#6ee7b7')}
+        ${recCell('Pois',m.rec_poisson,'#a78bfa')}
+        ${recCell('OdsMC',m.rec_odds_mc,'#34d399')}
+        ${recCell('Bzz',m.rec_bzz)}
+      </div>
+    </div>`;
+  });
+  matchCardsEl.innerHTML=html||'<div style="color:var(--mut);font-size:12px">Ingen kampdata</div>';
+}
+
+function updateOppProfile(){
+  const opp=document.getElementById('opp-select').value;
+  const ps=opp?DATA.player_stats?.[opp]:null;
+  const el=document.getElementById('opp-profile');
+  if(!ps){el.innerHTML='<div style="color:var(--mut);font-size:13px">Vælg en modstander ovenfor</div>';return;}
+  const d=DATA.bet_dist?.[opp]||{};const t=d.total||1;
+  const p1=Math.round((d['1']||0)/t*100),px=Math.round((d['X']||0)/t*100),p2=Math.round((d['2']||0)/t*100);
+  const styleLbl=p1>55?'<span class="tag tb">Hjemme-bias</span>':px>30?'<span class="tag to">X-elsker</span>':p2>35?'<span class="tag tr">Ude-bias</span>':'<span class="tag tg">Balanceret</span>';
+  const seasons=(DATA.seasons||[1,2,3,4]).sort((a,b)=>a-b);
+  el.innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:12px">
+      <div class="pstat"><div class="psl">Total rigtige gæt</div><div class="psv" style="color:var(--grn)">${ps.total_pts||0}</div></div>
+      <div class="pstat"><div class="psl">Nøjagtighed</div><div class="psv">${ps.accuracy||0}%</div></div>
+      <div class="pstat"><div class="psl">Gæt-stil</div><div style="margin-top:3px">${styleLbl}</div></div>
+    </div>
+    <div style="margin-bottom:10px">
+      <div class="psl" style="margin-bottom:5px">Fordeling 1 / X / 2</div>
+      <div style="display:flex;height:14px;border-radius:3px;overflow:hidden;margin-bottom:4px">
+        <div class="b1" style="width:${p1}%"></div><div class="bx" style="width:${px}%"></div><div class="b2" style="width:${p2}%"></div>
+      </div>
+      <div style="display:flex;gap:12px;font-size:11px">
+        <span style="color:var(--blu)">${p1}% hjemme</span><span style="color:#90a4ae">${px}% X</span><span style="color:var(--red)">${p2}% ude</span>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div class="pstat"><div class="psl">Følger bookies</div><div class="psv">${ps.follows_bookies_pct||0}%</div></div>
+      <div class="pstat"><div class="psl">Følger ELO</div><div class="psv">${ps.follows_elo_pct||0}%</div></div>
+    </div>
+    <div style="margin-top:10px;padding:8px;background:var(--sf);border-radius:6px;font-size:12px">
+      <div style="color:var(--mut);margin-bottom:4px">Rigtige gæt per sæson:</div>
+      ${seasons.map(s=>`<span style="color:var(--txt)">S${s}: <strong style="color:var(--grn)">${ps.season_pts?.[s]||ps.season_pts?.[String(s)]||0}</strong></span>`).join(' · ')}
+    </div>`;
+}
+
+function renderGæt(){
+  const bd=DATA.bet_dist||{};
+  // Tilføj total hvis ikke sat (ældre format)
+  Object.keys(bd).forEach(p=>{if(!bd[p].total)bd[p].total=(bd[p]['1']||0)+(bd[p]['X']||0)+(bd[p]['2']||0);});
+  const players=(DATA.active_players||[]).filter(p=>bd[p]&&bd[p].total>0).sort((a,b)=>(bd[b]['1']||0)/bd[b].total-(bd[a]['1']||0)/bd[a].total);
+  document.getElementById('bet-bars').innerHTML=players.map(p=>{
+    const d=bd[p];const p1=((d['1']||0)/d.total*100).toFixed(0),px=((d['X']||0)/d.total*100).toFixed(0),p2=((d['2']||0)/d.total*100).toFixed(0);
+    return`<div class="bet-row"><div class="bp" title="${p}">${shortName(p)}</div><div class="bb"><div class="b1" style="width:${p1}%"></div><div class="bx" style="width:${px}%"></div><div class="b2" style="width:${p2}%"></div></div><div class="bpct"><span style="color:var(--blu)">${p1}%</span><span>${px}%</span><span style="color:var(--red)">${p2}%</span></div></div>`;
+  }).join('');
+  const scatterData=players.map((p,i)=>{
+    const d=bd[p];if(!d||d.total===0)return null;
+    const xRate=(d['X']||0)/d.total*100;
+    let tp=0,ta=0;
+    Object.values(DATA.standings_by_season||{}).forEach(st=>{const r=st.find(x=>x.player===p);if(r){tp+=r.points||0;ta+=r.answered||0;}});
+    return{x:xRate,y:ta>0?tp/ta*100:0,label:p,r:7};
+  }).filter(Boolean);
+  mk('chart-scatter','bubble',{datasets:[{data:scatterData,backgroundColor:PAL.map(c=>c+'88'),borderColor:PAL,borderWidth:1}]},{plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`${ctx.raw.label}: X=${ctx.raw.x.toFixed(1)}%, nøj=${ctx.raw.y.toFixed(1)}%`},backgroundColor:'#1e2330',borderColor:'#2a3040',borderWidth:1,titleColor:'#7a8299',bodyColor:'#e8eaf0'}},scales:{x:{title:{display:true,text:'X-andel (%)',color:'#7a8299'},grid:{color:'#2a3040'},ticks:{color:'#7a8299'}},y:{title:{display:true,text:'Nøjagtighed (%)',color:'#7a8299'},grid:{color:'#2a3040'},ticks:{color:'#7a8299'}}}});
+  const fbData=(DATA.active_players||[]).filter(p=>DATA.player_stats?.[p]).map(p=>({player:p,pct:DATA.player_stats[p].follows_bookies_pct||0})).sort((a,b)=>b.pct-a.pct);
+  document.getElementById('follows-bars').innerHTML=fbData.map(d=>`<div class="follows-row"><div class="fr-name" title="${d.player}">${shortName(d.player)}</div><div class="fr-bar-wrap"><div class="fr-bar" style="width:${d.pct}%;background:${d.pct>55?'var(--grn)':d.pct>45?'var(--blu)':'var(--mut)'}"></div></div><div class="fr-val" style="color:${d.pct>55?'var(--grn)':d.pct>45?'var(--blu)':'var(--mut)'}">${d.pct}%</div></div>`).join('');
+
+  // Konsensus-analyse
+  const cons=DATA.consensus||{};
+  const consSummary=cons.summary||[];
+  if(consSummary.length){
+    document.getElementById('consensus-bars').innerHTML=consSummary.map(b=>{
+      const barW=Math.min(b.acc,100);
+      const col=b.acc>=50?'var(--grn)':b.acc>=40?'var(--gld)':'var(--red)';
+      return`<div style="margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px">
+          <span style="color:var(--mut)">${b.label} enige</span>
+          <span style="color:${col};font-weight:700">${b.acc}% korrekte (n=${b.n})</span>
+        </div>
+        <div style="background:var(--bdr);border-radius:4px;height:8px"><div style="width:${barW}%;height:8px;border-radius:4px;background:${col}"></div></div>
+      </div>`;
+    }).join('');
+  }else{
+    document.getElementById('consensus-bars').innerHTML='<div style="color:var(--mut);font-size:12px">Ingen konsensus-data endnu</div>';
+  }
+
+  // Lucky vs. Good scatter
+  const lg=DATA.lucky_good||[];
+  if(lg.length){
+    const scD=lg.map((d,i)=>({x:d.expected,y:d.actual,label:shortName(d.player),diff:d.diff,n:d.n,r:7}));
+    const maxVal=Math.max(...lg.map(d=>Math.max(d.expected,d.actual)),10);
+    const _lgMin=Math.max(0,Math.floor(Math.min(...lg.map(d=>Math.min(d.expected,d.actual)))-1));
+    mk('chart-lucky-good','scatter',{datasets:[
+      {data:scD,backgroundColor:scD.map((_,i)=>PAL[i%PAL.length]+'cc'),borderColor:scD.map((_,i)=>PAL[i%PAL.length]),borderWidth:1,pointRadius:8,pointHoverRadius:10},
+      {data:[{x:_lgMin,y:_lgMin},{x:maxVal+2,y:maxVal+2}],borderColor:'rgba(255,255,255,.15)',borderWidth:1,pointRadius:0,type:'line',borderDash:[4,4]}
+    ]},{
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{if(ctx.datasetIndex===1)return'';const d=ctx.raw;return[`${d.label}`,`Forventet: ${d.expected.toFixed(1)}  Faktisk: ${d.y}`,`Diff: ${d.diff>0?'+':''}${d.diff.toFixed(1)} (n=${d.n})`];}},backgroundColor:'#1e2330',borderColor:'#2a3040',borderWidth:1,titleColor:'#7a8299',bodyColor:'#e8eaf0'}},
+      scales:{x:{title:{display:true,text:'Forventet rigtige',color:'#7a8299'},grid:{color:'#2a3040'},ticks:{color:'#7a8299'},min:_lgMin},
+              y:{title:{display:true,text:'Faktiske rigtige',color:'#7a8299'},grid:{color:'#2a3040'},ticks:{color:'#7a8299'},min:_lgMin}}
+    });
+  }
+
+  // Bet overlap matrix
+  const ov=DATA.bet_overlap||{};
+  const ovPlayers=Object.keys(ov);
+  if(ovPlayers.length){
+    let tbl='<table class="hm"><tr><th class="pn"></th>'+ovPlayers.map(p=>`<th style="padding:4px 4px;font-size:9px;max-width:40px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${p}">${shortName(p)}</th>`).join('')+'</tr>';
+    ovPlayers.forEach(p1=>{
+      tbl+=`<tr><td class="hm pn">${shortName(p1)}</td>`;
+      ovPlayers.forEach(p2=>{
+        const v=ov[p1]?.[p2];
+        if(v==null){tbl+='<td class="hmn">·</td>';return;}
+        if(p1===p2){tbl+='<td style="background:var(--bdr);color:var(--txt);font-weight:700;border-radius:4px;text-align:center;padding:3px;font-size:11px">—</td>';return;}
+        const cls=v>=80?'hmt':v>=65?'hmh':v>=50?'hmm':v>=35?'hml':'hm0';
+        tbl+=`<td class="${cls}">${v}%</td>`;
+      });
+      tbl+='</tr>';
+    });
+    tbl+='</table>';
+    document.getElementById('bet-overlap-wrap').innerHTML=tbl;
+  }else{
+    document.getElementById('bet-overlap-wrap').innerHTML='<div style="color:var(--mut);font-size:12px;padding:8px">Ingen overlap-data endnu (kræver resultater i aktuel sæson)</div>';
+  }
+}
+
+function renderHistorik(){
+  const hc=DATA.hist_compare||{};const players=(DATA.active_players||[]).filter(p=>hc[p]);
+  const seasons=(DATA.seasons||[1,2,3,4]).sort((a,b)=>a-b);
+  const sC=['#00e676','#448aff','#ffd740','#ff5252','#e040fb'];
+  mk('chart-hist-bar','bar',{labels:players.map(p=>shortName(p)),datasets:seasons.map((s,i)=>({label:`Sæson ${s}`,data:players.map(p=>hc[p]?.[s]||hc[p]?.[String(s)]||0),backgroundColor:sC[i%sC.length]+'88',borderColor:sC[i%sC.length],borderWidth:1,borderRadius:2}))},{plugins:{legend:{display:true,labels:{color:'#7a8299',font:{size:10}}}},scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299',font:{size:9}}},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'},beginAtZero:true}}});
+
+  // Upset rate per liga
+  const ur=DATA.upset_rate||{};
+  const urLeagues=Object.entries(ur).sort((a,b)=>b[1].rate-a[1].rate).slice(0,12);
+  if(urLeagues.length){
+    mk('chart-upset-rate','bar',{
+      labels:urLeagues.map(([l])=>l),
+      datasets:[{
+        label:'Upset rate %',
+        data:urLeagues.map(([,v])=>v.rate),
+        backgroundColor:urLeagues.map(([,v])=>v.rate>40?'rgba(239,68,68,.6)':v.rate>33?'rgba(245,158,11,.6)':'rgba(34,197,94,.6)'),
+        borderColor:urLeagues.map(([,v])=>v.rate>40?'#ef4444':v.rate>33?'#f59e0b':'#22c55e'),
+        borderWidth:1,borderRadius:3
+      }]
+    },{
+      indexAxis:'y',
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>{const [,v]=urLeagues[ctx.dataIndex];return`Upset: ${v.rate}% (${v.upsets}/${v.total})`;}}},backgroundColor:'#1e2330',borderColor:'#2a3040',borderWidth:1},
+      scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299',callback:v=>v+'%'},min:0,max:65},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299',font:{size:9}}}}
+    });
+  }
+  const sel=document.getElementById('player-select');
+  if(sel.options.length===0)players.forEach(p=>{const o=document.createElement('option');o.value=p;o.textContent=p;sel.appendChild(o);});
+  updateProfile();
+}
+
+function updateProfile(){
+  const p=document.getElementById('player-select').value;if(!p)return;
+  const hc=DATA.hist_compare?.[p]||{};const bd=DATA.bet_dist?.[p]||{'1':0,'X':0,'2':0,total:1};const ps=DATA.player_stats?.[p]||{};
+  const seasons=(DATA.seasons||[1,2,3,4]).sort((a,b)=>a-b);
+  const total=seasons.reduce((s,v)=>s+(hc[v]||hc[String(v)]||0),0);
+  const bestS=seasons.reduce((b,s)=>(hc[s]||0)>(hc[b]||0)?s:b,seasons[0]);
+  const t=bd.total||1;const p1=Math.round((bd['1']||0)/t*100),px=Math.round((bd['X']||0)/t*100),p2=Math.round((bd['2']||0)/t*100);
+  const styleLbl=p1>55?'<span class="tag tb">Hjemme-bias</span>':px>30?'<span class="tag to">X-elsker</span>':p2>35?'<span class="tag tr">Ude-bias</span>':'<span class="tag tg">Balanceret</span>';
+  document.getElementById('player-profile').innerHTML=`
+    <div class="pstat"><div class="psl">Total rigtige gæt</div><div class="psv" style="color:var(--grn)">${total}</div></div>
+    <div class="pstat"><div class="psl">Bedste sæson</div><div class="psv">Sæson ${bestS}: ${hc[bestS]||0} rigtige</div></div>
+    <div class="pstat"><div class="psl">Gæt-stil</div><div style="margin-top:3px">${styleLbl}</div></div>
+    <div class="pstat"><div class="psl">1 / X / 2</div><div style="font-size:13px;margin-top:2px"><span style="color:var(--blu)">${p1}%</span> · <span style="color:#90a4ae">${px}%</span> · <span style="color:var(--red)">${p2}%</span></div></div>
+    <div class="pstat"><div class="psl">Nøjagtighed</div><div class="psv">${ps.accuracy||0}%</div></div>
+    <div class="pstat"><div class="psl">Følger bookies / ELO</div><div style="font-size:13px;margin-top:2px"><span style="color:var(--grn)">${ps.follows_bookies_pct||0}%</span> · <span style="color:var(--blu)">${ps.follows_elo_pct||0}%</span></div></div>`;
+  mk('chart-profile-radar','radar',{labels:seasons.map(s=>'Sæson '+s),datasets:[{label:shortName(p),data:seasons.map(s=>hc[s]||hc[String(s)]||0),borderColor:'#00e676',backgroundColor:'rgba(0,230,118,.1)',pointBackgroundColor:'#00e676',borderWidth:2}]},{plugins:{legend:{display:false}},scales:{r:{grid:{color:'#2a3040'},angleLines:{color:'#2a3040'},ticks:{color:'#7a8299',backdropColor:'transparent',font:{size:9}},pointLabels:{color:'#7a8299',font:{size:10}}}}});
+}
+
+function renderEval(){
+  const ov=DATA.eval_overall||{};const ebt=DATA.eval_by_type||{};const cs=DATA.combo_stats||{};
+  const totalN=(ov.n_elo||ov.n||0);
+  document.getElementById('eval-stat-cards').innerHTML=[
+    ['ELO nøjagtighed',ov.ELO?ov.ELO+'%':'—','%','var(--grn)'],
+    ['Bookies nøjagtighed',ov.Bookies?ov.Bookies+'%':'—','','var(--blu)'],
+    ['B+E Enige',ov['B+E Enige']?ov['B+E Enige']+'%':'—','','var(--gld)'],
+    ['Derby (ELO)',DATA.derby_accuracy?.ELO?DATA.derby_accuracy.ELO+'%':'—','','var(--red)'],
+    ['Kampe analyseret',totalN||'—','historiske kampe','var(--mut)'],
+  ].map(([lbl,val,,col])=>`<div class="sc"><div class="sc-accent" style="background:${col}"></div><div class="sl">${lbl}</div><div class="sv" style="color:${col};font-size:${String(val).length>5?'24px':'36px'}">${val}</div></div>`).join('');
+  document.getElementById('combo-stats').innerHTML=`
+    <div class="combo-stat"><div class="combo-val" style="color:var(--gld)">${cs.agree_acc!=null?cs.agree_acc+'%':'—'}</div><div class="combo-lbl">B+E Enige (${cs.agree_n||0} kampe)</div></div>
+    <div style="font-size:24px;color:var(--bdr);align-self:center">vs</div>
+    <div class="combo-stat"><div class="combo-val" style="color:var(--blu)">${cs.disagree_bookies_acc!=null?cs.disagree_bookies_acc+'%':'—'}</div><div class="combo-lbl">Bookies uenig</div></div>
+    <div class="combo-stat"><div class="combo-val" style="color:var(--grn)">${cs.disagree_elo_acc!=null?cs.disagree_elo_acc+'%':'—'}</div><div class="combo-lbl">ELO uenig (${cs.disagree_n||0} kampe)</div></div>`;
+  const types=Object.keys(ebt).sort();
+  if(!types.length){document.getElementById('chart-eval-bar');document.getElementById('eval-table-wrap').innerHTML='<div style="color:var(--mut);font-size:12px;padding:10px">Ingen eval-data. Kør celle 07 (historisk import) og derefter celle 08.</div>';return;}
+  const pC={'ELO':'#00e676aa','Bookies':'#448affaa','B+E Enige':'#ffd740aa'};
+  const pB={'ELO':'#00e676','Bookies':'#448aff','B+E Enige':'#ffd740'};
+
+  // Top 15 turneringer (flest kampe) til graf og tabel
+  let evalRows=types.map(t=>({name:t,...(ebt[t]||{})}));
+  evalRows.sort((a,b)=>Math.max(b['ELO']?.n||0,b['Bookies']?.n||0)-Math.max(a['ELO']?.n||0,a['Bookies']?.n||0));
+  evalRows=evalRows.slice(0,15);
+  const top15Labels=evalRows.map(r=>r.name);
+
+  // Graf med kun top-15
+  mk('chart-eval-bar','bar',{labels:top15Labels,datasets:['ELO','Bookies','B+E Enige'].map(pred=>({label:pred,data:top15Labels.map(t=>ebt[t]?.[pred]?.acc??null),backgroundColor:pC[pred],borderColor:pB[pred],borderWidth:1,borderRadius:3,spanGaps:false}))},{plugins:{legend:{display:true,labels:{color:'#7a8299',font:{size:10}}}},scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299',maxRotation:45,font:{size:9}}},y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'},min:30,max:70,title:{display:true,text:'Nøjagtighed %',color:'#7a8299'}}}});
+
+  // Tabelsortering
+  const _sc=window.sortEvalCol||'ELO',_sd=window.sortEvalDir||-1;
+  evalRows.sort((a,b)=>{
+    let va,vb;
+    if(_sc==='name'){va=a.name;vb=b.name;return _sd*(va<vb?-1:va>vb?1:0);}
+    if(_sc==='n'){va=a['ELO']?.n||0;vb=b['ELO']?.n||0;}
+    else{va=a[_sc]?.acc||0;vb=b[_sc]?.acc||0;}
+    return _sd*(va-vb);
+  });
+
+  // Tabel
+  let thtml='<table class="st" style="font-size:11px"><thead><tr>'+
+    ['Turnering','ELO','Bookies','B+E Enige','N'].map((h,i)=>`<th style="cursor:pointer;text-align:${i>0?'right':'left'}" onclick="sortEval('${['name','ELO','Bookies','B+E Enige','n'][i]}')">${h}</th>`).join('')+
+    '</tr></thead><tbody>';
+  evalRows.forEach(({name:t,...row})=>{
+    function cell(pred){const d=row[pred];if(!d)return'<td style="text-align:right">—</td>';const c=d.acc>=50?'var(--grn)':d.acc>=45?'var(--txt)':'var(--mut)';return`<td style="text-align:right;color:${c};font-weight:${d.acc>=50?700:400}">${d.acc}%</td>`;}
+    thtml+=`<tr><td>${t}</td>${cell('ELO')}${cell('Bookies')}${cell('B+E Enige')}<td style="text-align:right;color:var(--mut)">${row['ELO']?.n||'—'}</td></tr>`;
+  });
+  thtml+='</tbody></table>';document.getElementById('eval-table-wrap').innerHTML=thtml;
+}
+
+
+function renderH2HCharts(season){
+  const h2hCard=document.getElementById('h2h-charts-card');
+  const cumCard=document.getElementById('h2h-cum-card');
+  // Hent H2H-data for denne sæson
+  const isTotal=(season==='total');
+  const seasonsToUse=isTotal?['3','4']:[String(season)];
+  const hasH2H=seasonsToUse.some(s=>(DATA.h2h_standings?.[s]||[]).length>0);
+  if(!hasH2H){
+    if(h2hCard)h2hCard.style.display='none';
+    if(cumCard)cumCard.style.display='none';
+    return;
+  }
+  if(h2hCard)h2hCard.style.display='';
+  if(cumCard)cumCard.style.display='';
+
+  // ── Scatter: rigtige gæt (x) vs H2H-point (y) ──────────────────────
+  const HIDE_PLAYERS=new Set(['Ualmindeligt inaktiv']);
+  const scatterDatasets=[];
+  seasonsToUse.forEach(s=>{
+    const h2hData=(DATA.h2h_standings?.[s]||[]).filter(h=>!HIDE_PLAYERS.has(h.player));
+    const rigtige=DATA.standings_by_season?.[s]||[];
+    h2hData.forEach((h,i)=>{
+      const r=rigtige.find(x=>x.player===h.player)||{points:0};
+      scatterDatasets.push({
+        label:shortName(h.player)+(isTotal?' S'+s:''),
+        data:[{x:r.points,y:h.h2h_pts}],
+        backgroundColor:PAL[i%PAL.length],
+        pointRadius:8,pointHoverRadius:10
+      });
+    });
+  });
+  mk('chart-h2h-scatter','scatter',{datasets:scatterDatasets},{
+    plugins:{legend:{display:false},
+             tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.x} rigtige, ${ctx.parsed.y} H2H pt`}}},
+    scales:{
+      x:{title:{display:true,text:'Rigtige gæt',color:'#7a8299'},grid:{color:'#2a3040'},ticks:{color:'#7a8299'}},
+      y:{title:{display:true,text:'H2H-point',color:'#7a8299'},grid:{color:'#2a3040'},ticks:{color:'#7a8299'}}
+    }
+  });
+
+  // ── Kumulativ H2H pr. runde ─────────────────────────────────────────
+  const cumDatasets=[];
+  const allLabels=[];
+  const playerCum={};
+  seasonsToUse.forEach(s=>{
+    const ppr=DATA.pts_per_round?.[s]||DATA.pts_per_round?.[parseInt(s)]||{rounds:[],data:{}};
+    const rounds=ppr.rounds||[];
+    const h2bR=DATA.h2h_by_round?.[s]||DATA.h2h_by_round?.[parseInt(s)]||{};
+    rounds.forEach(r=>allLabels.push(isTotal?`S${s} R${r}`:`R${r}`));
+    const players=(DATA.h2h_standings?.[s]||[]).map(h=>h.player).filter(p=>!HIDE_PLAYERS.has(p));
+    players.forEach((p,i)=>{
+      if(!playerCum[p]){playerCum[p]={cum:0,data:[],color:PAL[i%PAL.length]};}
+      rounds.forEach(r=>{
+        playerCum[p].cum+=(h2bR[String(r)]?.[p]||0);
+        playerCum[p].data.push(playerCum[p].cum);
+      });
+    });
+  });
+  // Build datasets - pad shorter series with nulls for total mode
+  Object.keys(playerCum).forEach((p,i)=>{
+    const d=playerCum[p].data;
+    // Pad with nulls at start if player joined later (e.g. S4-only in total)
+    const padded=allLabels.length>d.length
+      ?[...Array(allLabels.length-d.length).fill(null),...d]
+      :d;
+    cumDatasets.push({label:shortName(p),data:padded,
+      borderColor:playerCum[p].color,backgroundColor:'transparent',
+      borderWidth:2,pointRadius:1,tension:.3,spanGaps:true});
+  });
+  if(cumDatasets.length){
+    mk('chart-h2h-cum','line',{labels:allLabels,datasets:cumDatasets},{
+      plugins:{legend:{display:cumDatasets.length>1,position:'right',
+               labels:{color:'#7a8299',font:{size:9},boxWidth:10}},
+               tooltip:{mode:'index',intersect:false,backgroundColor:'#1e2330',
+               borderColor:'#2a3040',borderWidth:1,titleColor:'#7a8299',bodyColor:'#e8eaf0'}},
+      scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299',maxTicksLimit:12}},
+              y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'}}}
+    });
+  }
+}
+
+function renderTotal(){
+  // H2H charts for total
+  renderH2HCharts('total');
+
+  const titleEl=document.getElementById('cum-title');
+  if(titleEl)titleEl.textContent='Nøjagtighed % pr. sæson';
+  document.querySelectorAll('.cur-s').forEach(el=>el.textContent='Total');
+  const seasons=(DATA.seasons||[]).sort((a,b)=>a-b);
+  const allPlayers=DATA.active_players||[];
+  // Pct accuracy per player per season
+  const datasets=allPlayers.map((p,i)=>{
+    const data=seasons.map(s=>{
+      const st=(DATA.standings_by_season?.[s]||DATA.standings_by_season?.[String(s)]||[]).find(r=>r.player===p);
+      if(!st||!st.answered)return null;
+      return +((st.points/st.answered)*100).toFixed(1);
+    });
+    if(data.every(v=>v===null))return null;
+    return{label:shortName(p),data,borderColor:PAL[i%PAL.length],backgroundColor:'transparent',borderWidth:2,pointRadius:4,pointHoverRadius:6,tension:.3,spanGaps:true};
+  }).filter(Boolean);
+  mk('chart-cum','line',{labels:seasons.map(s=>'Sæson '+s),datasets},{
+    plugins:{legend:{display:true,position:'right',labels:{color:'#7a8299',font:{size:9},boxWidth:10}},
+             tooltip:{mode:'index',intersect:false,backgroundColor:'#1e2330',borderColor:'#2a3040',borderWidth:1,titleColor:'#7a8299',bodyColor:'#e8eaf0'}},
+    scales:{x:{grid:{color:'#2a3040'},ticks:{color:'#7a8299'}},
+            y:{grid:{color:'#2a3040'},ticks:{color:'#7a8299',callback:v=>v+'%'},
+               title:{display:true,text:'Nøjagtighed %',color:'#7a8299'},min:0,max:60}}
+  });
+  // Total standings
+  const totals=allPlayers.map(p=>{
+    let pts=0,ans=0;
+    seasons.forEach(s=>{const st=(DATA.standings_by_season?.[s]||DATA.standings_by_season?.[String(s)]||[]).find(r=>r.player===p);if(st){pts+=st.points||0;ans+=st.answered||0;}});
+    return{player:p,points:pts,answered:ans,pct:ans>0?+((pts/ans)*100).toFixed(1):0};
+  }).filter(r=>r.answered>0).sort((a,b)=>b.pct-a.pct||b.points-a.points);
+  const maxPts=Math.max(...totals.map(r=>r.points),1);
+  document.getElementById('standings-body').innerHTML=totals.map((row,i)=>{
+    const rc=i===0?'r1':i===1?'r2':i===2?'r3':'';
+    const bw=Math.round(row.points/maxPts*100);
+    return`<tr><td><span class="rank ${rc}">${i+1}</span></td><td>${row.player}</td><td><span style="color:var(--mut)">—</span></td><td>${row.points}</td><td style="text-align:right"><div style="display:flex;align-items:center;gap:5px;justify-content:flex-end"><div class="bw"><div class="bf" style="width:${row.pct}%"></div></div><span style="font-size:11px;color:var(--grn)">${row.pct}%</span></div></td></tr>`;
+  }).join('');
+  const topPct=totals[0];
+  const topPts=[...totals].sort((a,b)=>b.points-a.points)[0];
+  document.getElementById('stat-cards').innerHTML=[
+    ['Spillere',totals.length,'aktive totalt'],
+    ['Sæsoner',seasons.length,'afviklet'],
+    ['Top nøjagtighed',topPct?topPct.pct+'%':'—',(topPct?.player||'').split(' ').pop()],
+    ['Flest rigtige gæt',topPts?.points||'—',(topPts?.player||'').split(' ').pop()],
+    ['Total kampe',seasons.length*51*10,'mulige ('+seasons.length+'×51×10)'],
+  ].map(([lbl,val,sub],i)=>`<div class="sc"><div class="sc-accent" style="background:${PAL[i]}"></div><div class="sl">${lbl}</div><div class="sv" style="color:${PAL[i]}">${val}</div><div class="ss">${sub}</div></div>`).join('');
+  document.getElementById('heatmap-stilling').innerHTML='';
+}
+
+buildSeasonBtns();
+renderStilling();
+document.querySelectorAll('.cur-r').forEach(el=>el.textContent=DATA.current_round||'');
+if(DATA.generated_at){const el=document.getElementById('last-updated');if(el)el.textContent='Opdateret '+DATA.generated_at;}
+</script>
+</body>
+</html>

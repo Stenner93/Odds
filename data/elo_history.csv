@@ -1,0 +1,2156 @@
+season,round,player,elo
+1,1,Atletico Madrid,1848.0
+1,1,Barcelona,1861.0
+1,1,Brøndby,1485.0
+1,1,Chelsea,1780.0
+1,1,Dinamo Zagreb,1593.0
+1,1,FC Midtjylland,1569.0
+1,1,Frankfurt,1719.0
+1,1,Hajduk Split,1506.0
+1,1,Liverpool,1946.0
+1,1,Manchester City,2083.0
+1,1,Manchester United,1865.0
+1,1,Napoli,1811.0
+1,1,Newcastle,1884.0
+1,1,RB Leipzig,1817.0
+1,1,Real Madrid,1917.0
+1,1,Sporting Lissabon,1752.0
+1,1,Tottenham,1829.0
+1,2,APOEL Nicosia,1436.0
+1,2,Aberdeen,1348.0
+1,2,Barcelona,1861.0
+1,2,Bayer Leverkusen,1756.0
+1,2,Cremonese,1525.0
+1,2,Dundee Utd,1208.0
+1,2,FCK,1626.0
+1,2,Hertha Berlin,1539.0
+1,2,Liverpool,1946.0
+1,2,Manchester City,2083.0
+1,2,Manchester United,1865.0
+1,2,Newcastle,1884.0
+1,2,OB,1434.0
+1,2,Omonia,1431.0
+1,2,Real Madrid,1917.0
+1,2,Roma,1783.0
+1,2,Vejle,1310.0
+1,2,Viborg,1464.0
+1,3,AC Milan,1829.0
+1,3,Almeria,1601.0
+1,3,Arsenal,1921.0
+1,3,Atalanta,1768.0
+1,3,Bayer Leverkusen,1756.0
+1,3,Bayern München,1940.0
+1,3,Benfica,1794.0
+1,3,Chelsea,1780.0
+1,3,Club Brügge,1638.0
+1,3,Dortmund,1843.0
+1,3,FC Nordsjælland,1547.0
+1,3,Ferencvaros,1386.0
+1,3,Fulham,1732.0
+1,3,Napoli,1908.0
+1,3,PSG,1796.0
+1,3,Schalke 04,1570.0
+1,3,Sevilla,1755.0
+1,3,Tottenham,1829.0
+1,3,Viborg,1464.0
+1,4,Ajax,1744.0
+1,4,Anderlecht,1569.0
+1,4,Barcelona,1861.0
+1,4,Chelsea,1780.0
+1,4,Everton,1691.0
+1,4,FC Midtjylland,1569.0
+1,4,Feyenoord,1745.0
+1,4,Frankfurt,1719.0
+1,4,Inter,1885.0
+1,4,Liverpool,1946.0
+1,4,Manchester City,2083.0
+1,4,Molde,1562.0
+1,4,Napoli,1908.0
+1,4,Porto,1826.0
+1,4,RB Leipzig,1817.0
+1,4,Real Madrid,1917.0
+1,4,Silkeborg,1421.0
+1,4,Stabæk,1261.0
+1,4,Villarreal,1767.0
+1,5,Bosnien,1532.0
+1,5,Danmark,1871.0
+1,5,England ,2031.0
+1,5,Finland,1628.0
+1,5,Frankrig,2124.0
+1,5,Holland,1967.0
+1,5,Italien,1940.0
+1,5,Kazakhstan,1485.0
+1,5,Kroatien,1948.0
+1,5,Nordirland,1451.0
+1,5,Norge,1745.0
+1,5,Slovenien,1712.0
+1,5,Spanien,2028.0
+1,5,Wales,1706.0
+1,6,Atalanta,1768.0
+1,6,B36,1068.0
+1,6,Bayern München,1940.0
+1,6,Cardiff,1449.0
+1,6,Chelsea,1780.0
+1,6,Cremonese,1525.0
+1,6,Dortmund,1843.0
+1,6,Espanyol,1618.0
+1,6,FC Midtjylland,1569.0
+1,6,Girona,1682.0
+1,6,HB Thorshavn,1044.0
+1,6,Israel,1626.0
+1,6,Kroatien,1948.0
+1,6,OB,1434.0
+1,6,Schweiz,1845.0
+1,6,Sheffield Wednesday,1404.0
+1,6,Skotland,1814.0
+1,6,Spanien,2028.0
+1,6,Swansea,1536.0
+1,6,Tyrkiet,1747.0
+1,7,AGF,1471.0
+1,7,Atletico Madrid,1848.0
+1,7,Barcelona,1861.0
+1,7,Bayern München,1940.0
+1,7,Celtic,1644.0
+1,7,Chelsea,1780.0
+1,7,FCK,1626.0
+1,7,Frankfurt,1719.0
+1,7,Freiburg,1739.0
+1,7,Inter,1885.0
+1,7,Juventus,1806.0
+1,7,Lazio,1767.0
+1,7,Liverpool,1946.0
+1,7,Rangers,1654.0
+1,7,Real Madrid,1917.0
+1,7,Union Berlin,1747.0
+1,7,Valencia,1678.0
+1,7,Vejle,1310.0
+1,7,Viborg,1464.0
+1,8,AC Milan,1829.0
+1,8,Athletic Bilbao,1704.0
+1,8,Bayern München,1940.0
+1,8,Benfica,1794.0
+1,8,Chelsea,1780.0
+1,8,Dudelange,1085.0
+1,8,Frankfurt,1719.0
+1,8,Gladbach,1683.0
+1,8,Hesperange,1079.0
+1,8,Inter,1885.0
+1,8,Manchester City,2083.0
+1,8,Manchester United,1865.0
+1,8,Napoli,1908.0
+1,8,Real Madrid,1917.0
+1,8,Roma,1783.0
+1,8,Sevilla,1755.0
+1,8,Slavia Prag,1620.0
+1,8,Sociedad,1777.0
+1,8,Spanien,2028.0
+1,8,Udinese,1642.0
+1,9,AC Milan,1829.0
+1,9,Ajax,1744.0
+1,9,Atletico Madrid,1848.0
+1,9,Barcelona,1861.0
+1,9,Bayern München,1940.0
+1,9,Benfica,1794.0
+1,9,Brighton,1843.0
+1,9,Chelsea,1780.0
+1,9,Inter,1885.0
+1,9,Mainz,1673.0
+1,9,Manchester City,2083.0
+1,9,Manchester United,1865.0
+1,9,Napoli,1908.0
+1,9,PSV,1768.0
+1,9,Real Madrid,1917.0
+1,9,Sevilla,1755.0
+1,9,Sheffield United,1631.0
+1,10,Brøndby,1485.0
+1,10,Cremonese,1525.0
+1,10,Crystal Palace,1763.0
+1,10,Espanyol,1618.0
+1,10,FC Nordsjælland,1547.0
+1,10,FCK,1626.0
+1,10,Fiorentina,1758.0
+1,10,Getafe,1644.0
+1,10,Inter,1885.0
+1,10,Juventus,1806.0
+1,10,Leeds,1636.0
+1,10,Leicester,1733.0
+1,10,Napoli,1908.0
+1,10,Salernitana,1615.0
+1,10,Schalke 04,1570.0
+1,10,Silkeborg,1421.0
+1,10,Werder Bremen,1597.0
+1,10,West Ham,1787.0
+1,11,AGF,1471.0
+1,11,Benfica,1794.0
+1,11,Braga,1664.0
+1,11,Frankfurt,1719.0
+1,11,Freiburg,1739.0
+1,11,Maribor,1357.0
+1,11,Napoli,1908.0
+1,11,Olimpija Ljubljana,1343.0
+1,11,Osasuna,1670.0
+1,11,RB Leipzig,1817.0
+1,11,Real Madrid,1917.0
+1,11,Silkeborg,1421.0
+1,11,Stuttgart,1641.0
+1,11,Udinese,1642.0
+1,11,Valencia,1678.0
+1,11,Viborg,1464.0
+1,11,Villarreal,1767.0
+1,12,AC Milan,1829.0
+1,12,AGF,1471.0
+1,12,AZ Alkmaar,1671.0
+1,12,Arsenal,1921.0
+1,12,Bayer Leverkusen,1756.0
+1,12,Brighton,1843.0
+1,12,Dortmund,1843.0
+1,12,FC Nordsjælland,1547.0
+1,12,Gladbach,1683.0
+1,12,Inter,1885.0
+1,12,Juventus,1806.0
+1,12,Manchester City,2083.0
+1,12,Real Madrid,1917.0
+1,12,Roma,1783.0
+1,12,Sevilla,1755.0
+1,12,Slavia Prag,1620.0
+1,12,Spanien,2028.0
+1,12,West Ham,1787.0
+1,13,AC Milan,1829.0
+1,13,AGF,1471.0
+1,13,Aston Villa,1825.0
+1,13,Bayer Leverkusen,1756.0
+1,13,Benfica,1794.0
+1,13,Betis,1750.0
+1,13,FCK,1626.0
+1,13,Inter,1885.0
+1,13,Juventus,1806.0
+1,13,Liverpool,1946.0
+1,13,Manchester City,2083.0
+1,13,Real Madrid,1917.0
+1,13,Roma,1783.0
+1,13,Sevilla,1755.0
+1,13,Sporting Lissabon,1752.0
+1,14,AC Milan,1829.0
+1,14,AEK Athen,1568.0
+1,14,Almeria,1601.0
+1,14,Betis,1750.0
+1,14,Cardiff,1449.0
+1,14,Celta Vigo,1651.0
+1,14,Chelsea,1780.0
+1,14,Coventry,1578.0
+1,14,Fiorentina,1758.0
+1,14,Getafe,1644.0
+1,14,Girona,1682.0
+1,14,Inter,1885.0
+1,14,Juventus,1806.0
+1,14,Luton,1602.0
+1,14,Lyngby,1351.0
+1,14,Manchester United,1865.0
+1,14,PAOK,1532.0
+1,14,Stoke,1499.0
+1,14,Valladolid,1606.0
+1,15,AGF,1471.0
+1,15,Antwerpen,1623.0
+1,15,Braga,1664.0
+1,15,Frankfurt,1719.0
+1,15,Genk,1599.0
+1,15,HSV Hamburg,1596.0
+1,15,Heerenveen,1494.0
+1,15,Lyngby,1351.0
+1,15,Manchester City,2083.0
+1,15,Manchester United,1865.0
+1,15,Porto,1826.0
+1,15,RB Leipzig,1817.0
+1,15,Randers,1405.0
+1,15,Roma,1783.0
+1,15,Sevilla,1755.0
+1,15,Stuttgart,1641.0
+1,15,Twente,1665.0
+1,16,Alaves,1593.0
+1,16,Albacete,1506.0
+1,16,Bari,1494.0
+1,16,Cagliari,1572.0
+1,16,Eibar,1550.0
+1,16,Fiorentina,1758.0
+1,16,Inter,1885.0
+1,16,Levante,1617.0
+1,16,Manchester City,2083.0
+1,16,West Ham,1787.0
+1,17,Alaves,1593.0
+1,17,Belgien,1983.0
+1,17,Danmark,1871.0
+1,17,Finland,1628.0
+1,17,Holland,1967.0
+1,17,Italien,1940.0
+1,17,Kroatien,1948.0
+1,17,Levante,1617.0
+1,17,Nordirland,1451.0
+1,17,Norge,1745.0
+1,17,Skotland,1814.0
+1,17,Slovenien,1712.0
+1,17,Spanien,2028.0
+1,17,Østrig,1813.0
+1,18,Brann,1355.0
+1,18,Honduras,1491.0
+1,18,Island,1492.0
+1,18,Mexico,1840.0
+1,18,Portugal,2032.0
+1,18,RFS,1225.0
+1,18,Rosenborg,1410.0
+1,18,Sarpsborg,1345.0
+1,18,St. Patricks,1167.0
+1,18,Sverige,1739.0
+1,18,Valmiera,1151.0
+1,18,Viking,1454.0
+1,18,Østrig,1813.0
+1,19,AIK,1350.0
+1,19,Bayer Leverkusen,1756.0
+1,19,Bodø/Glimt,1563.0
+1,19,Brommapojkarna,1231.0
+1,19,Flora Tallinn,1131.0
+1,19,Göteborg,1304.0
+1,19,HJK Helsinki,1277.0
+1,19,Haka,1203.0
+1,19,Halmstad,1228.0
+1,19,Honduras,1491.0
+1,19,Molde,1562.0
+1,19,Qatar,1508.0
+1,19,Trinidad,1402.0
+1,19,USA,1806.0
+1,20,Breidablik,1214.0
+1,20,Djurgården,1434.0
+1,20,El Salvador,1407.0
+1,20,Elfsborg,1476.0
+1,20,Haugesund,1320.0
+1,20,KA Akureyri,1228.0
+1,20,Kalmar,1313.0
+1,20,Lillestrøm,1391.0
+1,20,Panama,1719.0
+1,20,Rosenborg,1410.0
+1,20,Viking,1454.0
+1,20,Värnamo,1269.0
+1,20,Zalgiris,1226.0
+1,21,Derry City,1194.0
+1,21,Dinamo Zagreb,1593.0
+1,21,Dudelange,1085.0
+1,21,Elfsborg,1476.0
+1,21,Farul Constanta,1412.0
+1,21,Ferencvaros,1386.0
+1,21,Göteborg,1304.0
+1,21,HB Thorshavn,1044.0
+1,21,HJK Helsinki,1277.0
+1,21,Hajduk Split,1506.0
+1,21,Klaksvik,1151.0
+1,21,Larne,1056.0
+1,21,Lokomotiv Plovdiv,1290.0
+1,21,Molde,1562.0
+1,21,Sheriff Tiraspol,1494.0
+1,21,St. Patricks,1167.0
+1,21,Vålerenga,1337.0
+1,22,Antwerpen,1623.0
+1,22,Breidablik,1214.0
+1,22,Brøndby,1485.0
+1,22,Dila Gori,1194.0
+1,22,FCK,1626.0
+1,22,Göteborg,1304.0
+1,22,HJK Helsinki,1277.0
+1,22,Halmstad,1228.0
+1,22,Häcken,1477.0
+1,22,Larne,1056.0
+1,22,Lyngby,1351.0
+1,22,Mechelen,1447.0
+1,22,Shakhtar Donetsk,1601.0
+1,22,Silkeborg,1421.0
+1,22,The New Saints,1079.0
+1,23,AGF,1471.0
+1,23,Austria Wien,1451.0
+1,23,Breidablik,1214.0
+1,23,Brøndby,1485.0
+1,23,Club Brügge,1638.0
+1,23,FC Midtjylland,1569.0
+1,23,FCK,1626.0
+1,23,Genk,1599.0
+1,23,Hammarby,1407.0
+1,23,Häcken,1477.0
+1,23,Klaksvik,1151.0
+1,23,OB,1434.0
+1,23,Servette,1479.0
+1,23,Silkeborg,1421.0
+1,23,St. Pauli,1556.0
+1,23,Sturm Graz,1579.0
+1,23,Twente,1665.0
+1,24,AGF,1471.0
+1,24,Arsenal,1921.0
+1,24,Beitar Jerusalem,1315.0
+1,24,Coventry,1578.0
+1,24,FCK,1626.0
+1,24,Genk,1599.0
+1,24,HJK Helsinki,1277.0
+1,24,Hammarby,1407.0
+1,24,Hvidovre,1324.0
+1,24,Kaiserslautern,1406.0
+1,24,Leicester,1733.0
+1,24,Ludogorets,1501.0
+1,24,Manchester City,2083.0
+1,24,Molde,1562.0
+1,24,Olimpija Ljubljana,1343.0
+1,24,PAOK,1532.0
+1,24,Randers,1405.0
+1,24,Schalke 04,1570.0
+1,24,Servette,1479.0
+1,24,Twente,1665.0
+1,25,AIK,1350.0
+1,25,Athletic Bilbao,1704.0
+1,25,Bayern München,1940.0
+1,25,Brommapojkarna,1231.0
+1,25,Chelsea,1780.0
+1,25,FC Midtjylland,1569.0
+1,25,FC Nordsjælland,1547.0
+1,25,FCK,1626.0
+1,25,Liverpool,1946.0
+1,25,Marseille,1697.0
+1,25,Omonia,1431.0
+1,25,PSV,1768.0
+1,25,Panama,1719.0
+1,25,RB Leipzig,1817.0
+1,25,Real Madrid,1917.0
+1,25,Spanien,2028.0
+1,25,Steaua Bukarest,1454.0
+1,25,Sturm Graz,1579.0
+1,26,AGF,1471.0
+1,26,Brøndby,1485.0
+1,26,Dortmund,1843.0
+1,26,FC Midtjylland,1569.0
+1,26,FC Nordsjælland,1547.0
+1,26,FCK,1626.0
+1,26,Feyenoord,1745.0
+1,26,Köln,1661.0
+1,26,Manchester City,2083.0
+1,26,Manchester United,1865.0
+1,26,Marseille,1697.0
+1,26,OB,1434.0
+1,26,Omonia,1431.0
+1,26,Panama,1719.0
+1,26,Sevilla,1755.0
+1,26,Spanien,2028.0
+1,26,Sparta Rotterdam,1564.0
+1,26,Steaua Bukarest,1454.0
+1,26,Tottenham,1829.0
+1,27,Braga,1664.0
+1,27,Club Brügge,1638.0
+1,27,FC Midtjylland,1569.0
+1,27,FC Nordsjælland,1547.0
+1,27,FCK,1626.0
+1,27,Fenerbahce,1655.0
+1,27,Galatasaray,1668.0
+1,27,Legia,1499.0
+1,27,Maccabi Haifa,1610.0
+1,27,Molde,1562.0
+1,27,Osasuna,1670.0
+1,27,PSV,1768.0
+1,27,Panama,1719.0
+1,27,Partizan Beograd,1446.0
+1,27,Rakow,1557.0
+1,27,Randers,1405.0
+1,27,Rangers,1654.0
+1,27,Twente,1665.0
+1,27,Viborg,1464.0
+1,27,Young Boys,1603.0
+1,28,AC Milan,1829.0
+1,28,AEK Athen,1568.0
+1,28,Antwerpen,1623.0
+1,28,Braga,1664.0
+1,28,FC Midtjylland,1569.0
+1,28,FC Nordsjælland,1547.0
+1,28,FCK,1626.0
+1,28,Frankfurt,1719.0
+1,28,Girona,1682.0
+1,28,Liverpool,1946.0
+1,28,Maccabi Haifa,1610.0
+1,28,Mainz,1673.0
+1,28,Newcastle,1884.0
+1,28,PSV,1768.0
+1,28,Panama,1719.0
+1,28,Rakow,1557.0
+1,28,Rangers,1654.0
+1,28,Sevilla,1755.0
+1,28,Torino,1692.0
+1,28,Young Boys,1603.0
+1,29,AZ Alkmaar,1671.0
+1,29,Aberdeen,1348.0
+1,29,Barcelona,1861.0
+1,29,Brann,1355.0
+1,29,Celtic,1644.0
+1,29,Dinamo Zagreb,1593.0
+1,29,FC Midtjylland,1569.0
+1,29,FC Nordsjælland,1547.0
+1,29,Freiburg,1739.0
+1,29,Häcken,1477.0
+1,29,Klaksvik,1151.0
+1,29,Lazio,1767.0
+1,29,Legia,1499.0
+1,29,Lyngby,1351.0
+1,29,Napoli,1908.0
+1,29,Osasuna,1670.0
+1,29,Rangers,1654.0
+1,29,Sheriff Tiraspol,1494.0
+1,29,Spanien,2028.0
+1,29,Stuttgart,1641.0
+1,30,Danmark,1871.0
+1,30,England ,2031.0
+1,30,Finland,1628.0
+1,30,Grækenland,1710.0
+1,30,Holland,1967.0
+1,30,Irland,1617.0
+1,30,Real Oviedo,1527.0
+1,30,Servette,1479.0
+1,30,Sporting Gijon,1472.0
+1,30,Ukraine,1844.0
+1,30,Ungarn,1842.0
+1,30,Vejle,1310.0
+1,31,AC Milan,1829.0
+1,31,Cardiff,1449.0
+1,31,Darmstadt,1549.0
+1,31,FC Nordsjælland,1547.0
+1,31,FCK,1626.0
+1,31,Georgien,1637.0
+1,31,Gladbach,1683.0
+1,31,Inter,1885.0
+1,31,Italien,1940.0
+1,31,Norge,1745.0
+1,31,Real Madrid,1917.0
+1,31,Sociedad,1777.0
+1,31,Sverige,1739.0
+1,31,Swansea,1536.0
+1,31,The New Saints,1079.0
+1,31,Ukraine,1844.0
+1,31,Østrig,1813.0
+1,32,AC Milan,1829.0
+1,32,Arsenal,1921.0
+1,32,Atletico Madrid,1848.0
+1,32,Bayern München,1940.0
+1,32,Brøndby,1485.0
+1,32,FC Nordsjælland,1547.0
+1,32,FCK,1626.0
+1,32,Fenerbahce,1655.0
+1,32,Galatasaray,1668.0
+1,32,Gladbach,1683.0
+1,32,Juventus,1806.0
+1,32,Lazio,1767.0
+1,32,Manchester United,1865.0
+1,32,Newcastle,1884.0
+1,32,RB Leipzig,1817.0
+1,32,Real Madrid,1917.0
+1,32,Sassuolo,1640.0
+1,32,Tottenham,1829.0
+1,33,AC Milan,1829.0
+1,33,Aston Villa,1825.0
+1,33,Athletic Bilbao,1704.0
+1,33,Bayern München,1940.0
+1,33,Betis,1750.0
+1,33,Bodø/Glimt,1563.0
+1,33,Brighton,1843.0
+1,33,FC Midtjylland,1569.0
+1,33,FCK,1626.0
+1,33,Grasshoppers,1392.0
+1,33,Lazio,1767.0
+1,33,Lille,1701.0
+1,33,Napoli,1908.0
+1,33,RB Leipzig,1817.0
+1,33,Reims,1598.0
+1,33,Sociedad,1777.0
+1,33,Udinese,1642.0
+1,33,Vålerenga,1337.0
+1,33,Zürich,1492.0
+1,34,AC Milan,1829.0
+1,34,Alaves,1593.0
+1,34,Atalanta,1768.0
+1,34,Augsburg,1587.0
+1,34,Barcelona,1861.0
+1,34,Bayern München,1940.0
+1,34,Brighton,1843.0
+1,34,Brøndby,1485.0
+1,34,Dortmund,1843.0
+1,34,FCK,1626.0
+1,34,Freiburg,1739.0
+1,34,Hvidovre,1324.0
+1,34,Juventus,1806.0
+1,34,Marseille,1697.0
+1,34,Nantes,1513.0
+1,34,Napoli,1908.0
+1,34,Osasuna,1670.0
+1,34,Porto,1826.0
+1,34,Real Madrid,1917.0
+1,34,Rennes,1711.0
+1,35,AGF,1471.0
+1,35,Basel,1437.0
+1,35,Cypern,1316.0
+1,35,FCK,1626.0
+1,35,Frankrig,2124.0
+1,35,Holland,1967.0
+1,35,Kroatien,1948.0
+1,35,Las Palmas,1572.0
+1,35,Middlesbrough,1554.0
+1,35,Norge,1745.0
+1,35,Sochaux,1396.0
+1,35,Sunderland,1524.0
+1,35,Tyrkiet,1747.0
+1,35,Villarreal,1767.0
+1,35,Young Boys,1603.0
+1,36,Belgien,1983.0
+1,36,Bosnien,1532.0
+1,36,Danmark,1871.0
+1,36,Dortmund,1843.0
+1,36,England ,2031.0
+1,36,Finland,1628.0
+1,36,Italien,1940.0
+1,36,Kazakhstan,1485.0
+1,36,Montenegro,1547.0
+1,36,Norge,1745.0
+1,36,Portugal,2032.0
+1,36,Servette,1479.0
+1,36,Slovenien,1712.0
+1,36,Spanien,2028.0
+1,36,Sverige,1739.0
+1,36,Werder Bremen,1597.0
+1,36,Zrinjski Mostar,1262.0
+1,37,AC Milan,1829.0
+1,37,AGF,1471.0
+1,37,Arsenal,1921.0
+1,37,Athletic Bilbao,1704.0
+1,37,Augsburg,1587.0
+1,37,Barcelona,1861.0
+1,37,Bayer Leverkusen,1756.0
+1,37,Besiktas,1637.0
+1,37,Chelsea,1780.0
+1,37,FC Nordsjælland,1547.0
+1,37,FCK,1626.0
+1,37,Galatasaray,1668.0
+1,37,Heidenheim,1563.0
+1,37,Juventus,1806.0
+1,37,Lyngby,1351.0
+1,37,Napoli,1908.0
+1,37,Vejle,1310.0
+1,37,Verona,1618.0
+1,37,Viborg,1464.0
+1,37,Wolfsburg,1714.0
+1,38,AC Milan,1829.0
+1,38,Arsenal,1921.0
+1,38,Barcelona,1861.0
+1,38,Brøndby,1485.0
+1,38,FC Nordsjælland,1547.0
+1,38,FCK,1626.0
+1,38,Feyenoord,1745.0
+1,38,Hoffenheim,1631.0
+1,38,Inter,1885.0
+1,38,Lazio,1767.0
+1,38,Manchester City,2083.0
+1,38,Manchester United,1865.0
+1,38,PSG,1796.0
+1,38,Real Madrid,1917.0
+1,38,Roma,1783.0
+1,38,Sevilla,1755.0
+1,38,Stuttgart,1641.0
+1,38,Trnava,1391.0
+1,39,Ajax,1744.0
+1,39,Athletic Bilbao,1704.0
+1,39,Bayern München,1940.0
+1,39,Cagliari,1572.0
+1,39,Chelsea,1780.0
+1,39,Dortmund,1843.0
+1,39,FC Midtjylland,1569.0
+1,39,FCK,1626.0
+1,39,Hertha Berlin,1539.0
+1,39,Mainz,1673.0
+1,39,Napoli,1908.0
+1,39,Salernitana,1615.0
+1,39,Tenerife,1542.0
+1,39,Tottenham,1829.0
+1,39,Udinese,1642.0
+1,39,Villarreal,1767.0
+1,39,Volendam,1379.0
+1,40,AEK Athen,1568.0
+1,40,AZ Alkmaar,1671.0
+1,40,Ajax,1744.0
+1,40,Arsenal,1921.0
+1,40,Aston Villa,1825.0
+1,40,Brighton,1843.0
+1,40,Dortmund,1843.0
+1,40,FCK,1626.0
+1,40,Feyenoord,1745.0
+1,40,Klaksvik,1151.0
+1,40,Lazio,1767.0
+1,40,Lens,1744.0
+1,40,Manchester United,1865.0
+1,40,Marseille,1697.0
+1,40,Newcastle,1884.0
+1,40,Olimpija Ljubljana,1343.0
+1,40,Olympiakos,1577.0
+1,40,PSV,1768.0
+1,40,Sevilla,1755.0
+1,40,West Ham,1787.0
+1,41,AC Milan,1829.0
+1,41,Betis,1750.0
+1,41,Bochum,1595.0
+1,41,Bologna,1700.0
+1,41,Brøndby,1485.0
+1,41,Crystal Palace,1763.0
+1,41,Elfsborg,1476.0
+1,41,Everton,1691.0
+1,41,FCK,1626.0
+1,41,Fiorentina,1758.0
+1,41,HSV Hamburg,1596.0
+1,41,Holstein Kiel,1467.0
+1,41,Köln,1661.0
+1,41,Lazio,1767.0
+1,41,Lecce,1591.0
+1,41,Malmö FF,1438.0
+1,41,Roma,1783.0
+1,41,Sevilla,1755.0
+1,42,Armenien,1463.0
+1,42,Burnley,1722.0
+1,42,Danmark,1871.0
+1,42,Holland,1967.0
+1,42,Irland,1617.0
+1,42,Island,1492.0
+1,42,Israel,1626.0
+1,42,Kroatien,1948.0
+1,42,Letland,1352.0
+1,42,Polen,1712.0
+1,42,Rumænien,1631.0
+1,42,Slovakiet,1632.0
+1,42,Slovenien,1712.0
+1,42,Tjekkiet,1750.0
+1,42,Wales,1706.0
+1,43,Albacete,1506.0
+1,43,Cartagena,1473.0
+1,43,Danmark,1871.0
+1,43,Frankrig,2124.0
+1,43,Grækenland,1710.0
+1,43,Nordirland,1451.0
+1,43,Norge,1745.0
+1,43,Rumænien,1631.0
+1,43,Schweiz,1845.0
+1,43,Skotland,1814.0
+1,43,Tyrkiet,1747.0
+1,43,Wales,1706.0
+1,43,Zrinjski Mostar,1262.0
+1,44,AC Milan,1829.0
+1,44,Barcelona,1861.0
+1,44,Bochum,1595.0
+1,44,Brøndby,1485.0
+1,44,Dortmund,1843.0
+1,44,FCK,1626.0
+1,44,Fiorentina,1758.0
+1,44,Gladbach,1683.0
+1,44,Heidenheim,1563.0
+1,44,Hoffenheim,1631.0
+1,44,Inter,1885.0
+1,44,Juventus,1806.0
+1,44,Lazio,1767.0
+1,44,Lyngby,1351.0
+1,44,Mainz,1673.0
+1,44,OB,1434.0
+1,44,Randers,1405.0
+1,44,Rayo Vallecano,1637.0
+1,44,Salernitana,1615.0
+1,44,Viborg,1464.0
+1,45,AC Milan,1829.0
+1,45,Atletico Madrid,1848.0
+1,45,Bayern München,1940.0
+1,45,Cagliari,1572.0
+1,45,Dortmund,1843.0
+1,45,FC Nordsjælland,1547.0
+1,45,FCK,1626.0
+1,45,Fenerbahce,1655.0
+1,45,Feyenoord,1745.0
+1,45,Galatasaray,1668.0
+1,45,Lazio,1767.0
+1,45,Manchester United,1865.0
+1,45,Newcastle,1884.0
+1,45,Osasuna,1670.0
+1,45,Sociedad,1777.0
+1,45,Stuttgart,1641.0
+1,45,Werder Bremen,1597.0
+1,46,Atletico Madrid,1848.0
+1,46,Barcelona,1861.0
+1,46,Bayer Leverkusen,1756.0
+1,46,Brentford,1835.0
+1,46,Brighton,1843.0
+1,46,Brøndby,1485.0
+1,46,Dortmund,1843.0
+1,46,Feyenoord,1745.0
+1,46,Frankfurt,1719.0
+1,46,Genoa,1587.0
+1,46,Hvidovre,1324.0
+1,46,Lazio,1767.0
+1,46,Lyon,1664.0
+1,46,Marseille,1697.0
+1,46,PSV,1768.0
+1,46,Roma,1783.0
+1,46,Sassuolo,1640.0
+1,46,Tottenham,1829.0
+1,46,West Ham,1787.0
+1,47,AC Milan,1829.0
+1,47,Atalanta,1768.0
+1,47,Bayer Leverkusen,1756.0
+1,47,Besiktas,1637.0
+1,47,Dortmund,1843.0
+1,47,FC Santa Coloma,898.0
+1,47,Fenerbahce,1655.0
+1,47,Fiorentina,1758.0
+1,47,Köln,1661.0
+1,47,Lazio,1767.0
+1,47,Mainz,1673.0
+1,47,Newcastle,1884.0
+1,47,RB Leipzig,1817.0
+1,47,Roma,1783.0
+1,47,Sociedad,1777.0
+1,47,Stuttgart,1641.0
+1,47,Tottenham,1829.0
+1,47,Verona,1618.0
+1,47,Villarreal,1767.0
+1,48,AC Milan,1829.0
+1,48,Bari,1494.0
+1,48,Betis,1750.0
+1,48,FC Nordsjælland,1547.0
+1,48,FCK,1626.0
+1,48,Galatasaray,1668.0
+1,48,Genoa,1587.0
+1,48,Juventus,1806.0
+1,48,Leeds,1636.0
+1,48,Ludogorets,1501.0
+1,48,Newcastle,1884.0
+1,48,Porto,1826.0
+1,48,Rangers,1654.0
+1,48,Shakhtar Donetsk,1601.0
+1,48,Spezia,1536.0
+1,48,Sunderland,1524.0
+1,49,Athletic Bilbao,1704.0
+1,49,Atletico Madrid,1848.0
+1,49,Bayer Leverkusen,1756.0
+1,49,Bayern München,1940.0
+1,49,Bochum,1595.0
+1,49,Dinamo Zagreb,1593.0
+1,49,Empoli,1616.0
+1,49,Frankfurt,1719.0
+1,49,Hajduk Split,1506.0
+1,49,Inter,1885.0
+1,49,Lazio,1767.0
+1,49,Liverpool,1946.0
+1,49,Manchester United,1865.0
+1,49,St Gallen,1480.0
+1,49,Stuttgart,1641.0
+1,49,Torino,1692.0
+1,49,Union Berlin,1747.0
+1,49,Zürich,1492.0
+1,50,APOEL Nicosia,1438.0
+1,50,Bournemouth,1711.0
+1,50,Fenerbahce,1683.0
+1,50,Freiburg,1739.0
+1,50,Frosinone,1588.0
+1,50,Galatasaray,1685.0
+1,50,Heidenheim,1563.0
+1,50,Mallorca,1642.0
+1,50,Napoli,1811.0
+1,50,Nottingham Forest,1669.0
+1,50,Omonia,1437.0
+1,50,Osasuna,1670.0
+1,50,RB Leipzig,1817.0
+1,50,Roma,1761.0
+1,50,Sparta Rotterdam,1564.0
+1,50,Werder Bremen,1597.0
+1,51,Aberdeen,1356.0
+1,51,Arsenal,1910.0
+1,51,Aston Villa,1851.0
+1,51,Braga,1660.0
+1,51,Burnley,1647.0
+1,51,Casa Pia,1418.0
+1,51,Chelsea,1782.0
+1,51,Club Brügge,1690.0
+1,51,Fulham,1712.0
+1,51,Juventus,1852.0
+1,51,Leeds,1644.0
+1,51,Luton,1607.0
+1,51,Manchester United,1787.0
+1,51,Motherwell,1286.0
+1,51,Roma,1761.0
+1,51,Union St Gilloise,1705.0
+1,51,West Bromwich,1561.0
+1,52,AC Milan,1839.0
+1,52,Atletico Madrid,1861.0
+1,52,Barcelona,1863.0
+1,52,Cagliari,1574.0
+1,52,Crusaders,1086.0
+1,52,Espanyol,1595.0
+1,52,Frosinone,1582.0
+1,52,Getafe,1677.0
+1,52,Girona,1787.0
+1,52,Kayserispor,1414.0
+1,52,Las Palmas,1638.0
+1,52,Lazio,1772.0
+1,52,Lens,1747.0
+1,52,Linfield,1119.0
+1,52,Monaco,1699.0
+1,52,Monza,1665.0
+1,52,PSG,1881.0
+1,52,Sivasspor,1421.0
+1,52,Toulouse,1603.0
+1,52,Udinese,1646.0
+1,53,AC Milan,1839.0
+1,53,Atletico Madrid,1861.0
+1,53,Benfica,1789.0
+1,53,Bologna,1718.0
+1,53,Braga,1660.0
+1,53,Cagliari,1574.0
+1,53,Chelsea,1782.0
+1,53,Fiorentina,1748.0
+1,53,Gladbach,1675.0
+1,53,Manchester City,2045.0
+1,53,Middlesbrough,1538.0
+1,53,Newcastle,1794.0
+1,53,Real Madrid,1968.0
+1,53,Roma,1761.0
+1,53,Samsunspor,1336.0
+1,53,Stuttgart,1712.0
+1,53,Trabzonspor,1535.0
+1,54,Athletic Bilbao,1780.0
+1,54,Augsburg,1602.0
+1,54,Barcelona,1863.0
+1,54,Bayer Leverkusen,1860.0
+1,54,Betis,1732.0
+1,54,Cardiff,1462.0
+1,54,Feyenoord,1727.0
+1,54,Fiorentina,1748.0
+1,54,Gladbach,1675.0
+1,54,Go Ahead Eagles,1434.0
+1,54,Juventus,1852.0
+1,54,Napoli,1811.0
+1,54,Nijmegen,1468.0
+1,54,RB Leipzig,1833.0
+1,54,Sassuolo,1631.0
+1,54,Valencia,1704.0
+1,54,Vitesse,1397.0
+1,55,Aberdeen,1356.0
+1,55,Barcelona,1863.0
+1,55,Bayern München,1964.0
+1,55,Celta Vigo,1638.0
+1,55,Fiorentina,1748.0
+1,55,Girona,1787.0
+1,55,Inter,1940.0
+1,55,Köln,1612.0
+1,55,Lazio,1772.0
+1,55,Napoli,1811.0
+1,55,Rizespor,1378.0
+1,55,St Johnstone,1251.0
+1,55,Trabzonspor,1535.0
+1,55,Union Berlin,1653.0
+1,55,Villarreal,1692.0
+1,55,Wolfsburg,1675.0
+1,56,Almeria,1555.0
+1,56,Aston Villa,1851.0
+1,56,Atletico Madrid,1861.0
+1,56,Barcelona,1863.0
+1,56,Getafe,1677.0
+1,56,Inter,1940.0
+1,56,Juventus,1852.0
+1,56,Mainz,1635.0
+1,56,Napoli,1811.0
+1,56,Newcastle,1794.0
+1,56,Osasuna,1653.0
+1,56,Real Madrid,1968.0
+1,56,Valencia,1704.0
+1,56,Valladolid,1571.0
+1,56,Verona,1590.0
+1,56,Werder Bremen,1615.0
+1,57,AC Milan,1839.0
+1,57,Alaves,1609.0
+1,57,Bayer Leverkusen,1860.0
+1,57,Bayern München,1964.0
+1,57,Birmingham,1421.0
+1,57,Empoli,1573.0
+1,57,Gil Vicente,1428.0
+1,57,Girona,1787.0
+1,57,Guimaraes,1548.0
+1,57,Mainz,1635.0
+1,57,Napoli,1811.0
+1,57,Real Madrid,1968.0
+1,57,Salernitana,1568.0
+1,57,Sheffield Wednesday,1391.0
+1,57,Union Berlin,1653.0
+1,57,Villarreal,1692.0
+1,58,Bayern München,1964.0
+1,58,Benfica,1789.0
+1,58,Betis,1732.0
+1,58,Dinamo Zagreb,1533.0
+1,58,FCK,1648.0
+1,58,Feyenoord,1727.0
+1,58,Galatasaray,1685.0
+1,58,Lazio,1772.0
+1,58,Manchester City,2045.0
+1,58,Marseille,1736.0
+1,58,PSG,1881.0
+1,58,RB Leipzig,1833.0
+1,58,Real Madrid,1968.0
+1,58,Roma,1761.0
+1,58,Shakhtar Donetsk,1617.0
+1,58,Sociedad,1814.0
+1,58,Sparta Prag,1663.0
+1,58,Sporting Lissabon,1768.0
+1,58,Toulouse,1603.0
+1,58,Young Boys,1619.0
+1,59,Barcelona,1863.0
+1,59,Bologna,1718.0
+1,59,Brøndby,1565.0
+1,59,Celta Vigo,1638.0
+1,59,Chelsea,1782.0
+1,59,Dortmund,1845.0
+1,59,FC Midtjylland,1625.0
+1,59,FCK,1648.0
+1,59,Genoa,1624.0
+1,59,Lazio,1772.0
+1,59,Mallorca,1642.0
+1,59,Manchester City,2045.0
+1,59,Napoli,1811.0
+1,59,Rayo Vallecano,1655.0
+1,59,Real Madrid,1968.0
+1,59,Silkeborg,1479.0
+1,59,Sociedad,1814.0
+1,59,Wolfsburg,1675.0
+1,60,Ajax,1653.0
+1,60,Arsenal,1910.0
+1,60,Atletico Madrid,1861.0
+1,60,Barcelona,1863.0
+1,60,Benfica,1789.0
+1,60,Bodø/Glimt,1603.0
+1,60,Dortmund,1845.0
+1,60,Feyenoord,1727.0
+1,60,Freiburg,1716.0
+1,60,Galatasaray,1685.0
+1,60,Gent,1651.0
+1,60,Inter,1940.0
+1,60,Lens,1747.0
+1,60,Maccabi Haifa,1588.0
+1,60,Napoli,1811.0
+1,60,PSV,1819.0
+1,60,Portugal,2032.0
+1,60,Roma,1761.0
+1,60,Sparta Prag,1663.0
+1,60,Toulouse,1603.0
+2,1,Ajax,1625.0
+2,1,Aston Villa,1794.0
+2,1,Athletic Bilbao,1769.0
+2,1,Barcelona,1896.0
+2,1,Bayern München,1925.0
+2,1,FC Nordsjælland,1568.0
+2,1,FCK,1616.0
+2,1,Lazio,1787.0
+2,1,Liverpool,1925.0
+2,1,Manchester City,2050.0
+2,1,Manchester United,1756.0
+2,1,Monza,1650.0
+2,1,PSG,1906.0
+2,1,RB Leipzig,1850.0
+2,1,Real Madrid,1997.0
+2,1,Roma,1798.0
+2,1,Silkeborg,1458.0
+2,1,Sociedad,1738.0
+2,1,Sparta Prag,1728.0
+2,2,Ajax,1625.0
+2,2,Arsenal,1964.0
+2,2,Aston Villa,1794.0
+2,2,Atletico Madrid,1853.0
+2,2,Barcelona,1896.0
+2,2,Bologna,1765.0
+2,2,Dortmund,1872.0
+2,2,FC Midtjylland,1617.0
+2,2,Frankfurt,1724.0
+2,2,Girona,1765.0
+2,2,Hoffenheim,1660.0
+2,2,Inter,1955.0
+2,2,Liverpool,1925.0
+2,2,Manchester City,2050.0
+2,2,Napoli,1790.0
+2,2,Osasuna,1669.0
+2,2,PSV,1795.0
+2,2,Porto,1792.0
+2,2,Randers,1444.0
+2,3,Alaves,1647.0
+2,3,Athletic Bilbao,1769.0
+2,3,Atletico Madrid,1853.0
+2,3,Barcelona,1896.0
+2,3,Chelsea,1842.0
+2,3,Hoffenheim,1660.0
+2,3,Inter,1955.0
+2,3,Leicester,1640.0
+2,3,Liverpool,1925.0
+2,3,Lyngby,1357.0
+2,3,Manchester United,1756.0
+2,3,Napoli,1790.0
+2,3,Stuttgart,1814.0
+2,3,Viborg,1436.0
+2,4,Bosnien,1491.0
+2,4,Colombia,2061.0
+2,4,Estland,1357.0
+2,4,Finland,1607.0
+2,4,Georgien,1754.0
+2,4,Gibraltar,1056.0
+2,4,Grækenland,1781.0
+2,4,Island,1574.0
+2,4,Israel,1557.0
+2,4,Kazakhstan,1457.0
+2,4,Lituaen,1324.0
+2,4,Luxembourg,1462.0
+2,4,Norge,1746.0
+2,4,Polen,1748.0
+2,4,Portugal,1975.0
+2,4,Spanien,2157.0
+2,4,Sverige,1703.0
+2,4,Tjekkiet,1723.0
+2,4,Ukraine,1767.0
+2,4,Wales,1701.0
+2,5,Albacete,1476.0
+2,5,Canada,1770.0
+2,5,Costa Rica,1662.0
+2,5,Danmark,1863.0
+2,5,Ferencvaros,1485.0
+2,5,Georgien,1754.0
+2,5,Grækenland,1781.0
+2,5,Honduras,1506.0
+2,5,Island,1574.0
+2,5,Polen,1748.0
+2,5,Schweiz,1855.0
+2,5,Trinidad,1383.0
+2,5,Ukraine,1767.0
+2,5,Wales,1701.0
+2,6,AC Milan,1827.0
+2,6,AGF,1521.0
+2,6,Arsenal,1964.0
+2,6,Athletic Bilbao,1769.0
+2,6,Bayern München,1925.0
+2,6,Brentford,1714.0
+2,6,Brøndby,1537.0
+2,6,Dortmund,1872.0
+2,6,FC Nordsjælland,1568.0
+2,6,FCK,1616.0
+2,6,Fiorentina,1747.0
+2,6,Juventus,1843.0
+2,6,Lazio,1787.0
+2,6,Manchester City,2050.0
+2,6,Manchester United,1756.0
+2,6,Real Madrid,1997.0
+2,6,Silkeborg,1458.0
+2,7,Atalanta,1853.0
+2,7,Bayer Leverkusen,1940.0
+2,7,Brentford,1714.0
+2,7,Brighton,1732.0
+2,7,Chelsea,1842.0
+2,7,Düsseldorf,1629.0
+2,7,Fiorentina,1747.0
+2,7,Frankfurt,1724.0
+2,7,Granada,1517.0
+2,7,Juventus,1843.0
+2,7,Kaiserslautern,1441.0
+2,7,Lazio,1787.0
+2,7,Lyngby,1357.0
+2,7,Manchester United,1756.0
+2,7,Tottenham,1814.0
+2,7,Valencia,1647.0
+2,7,Werder Bremen,1686.0
+2,7,West Ham,1723.0
+2,8,AGF,1521.0
+2,8,Arsenal,1964.0
+2,8,Atalanta,1853.0
+2,8,Athletic Bilbao,1769.0
+2,8,Atletico Madrid,1853.0
+2,8,Barcelona,1896.0
+2,8,Bayern München,1925.0
+2,8,Brøndby,1537.0
+2,8,Dortmund,1872.0
+2,8,FC Nordsjælland,1568.0
+2,8,Lazio,1787.0
+2,8,Liverpool,1925.0
+2,8,Mallorca,1672.0
+2,8,Manchester City,2050.0
+2,8,Manchester United,1756.0
+2,8,PSG,1906.0
+2,8,Real Madrid,1997.0
+2,8,Roma,1798.0
+2,8,Silkeborg,1458.0
+2,9,Arsenal,1964.0
+2,9,Aston Villa,1794.0
+2,9,Atletico Madrid,1853.0
+2,9,Chelsea,1842.0
+2,9,Dortmund,1872.0
+2,9,Empoli,1667.0
+2,9,Everton,1681.0
+2,9,FC Midtjylland,1617.0
+2,9,FCK,1616.0
+2,9,Frankfurt,1724.0
+2,9,Girona,1765.0
+2,9,Gladbach,1656.0
+2,9,Lecce,1610.0
+2,9,Newcastle,1810.0
+2,9,Osasuna,1669.0
+2,9,Roma,1798.0
+2,9,Stuttgart,1814.0
+2,9,Tottenham,1814.0
+2,9,Udinese,1676.0
+2,9,Valencia,1647.0
+2,10,AC Milan,1827.0
+2,10,Arsenal,1964.0
+2,10,Aston Villa,1794.0
+2,10,Atalanta,1853.0
+2,10,Atletico Madrid,1853.0
+2,10,Barcelona,1896.0
+2,10,Bayer Leverkusen,1940.0
+2,10,Bayern München,1925.0
+2,10,Club Brügge,1677.0
+2,10,Dortmund,1872.0
+2,10,Fenerbahce,1704.0
+2,10,Lille,1760.0
+2,10,Liverpool,1925.0
+2,10,Manchester City,2050.0
+2,10,Olympiakos,1642.0
+2,10,PAOK,1602.0
+2,10,PSG,1906.0
+2,10,Real Madrid,1997.0
+2,10,Roma,1798.0
+2,10,West Ham,1723.0
+2,11,AC Milan,1827.0
+2,11,Atalanta,1853.0
+2,11,Barcelona,1896.0
+2,11,Bochum,1579.0
+2,11,Brighton,1732.0
+2,11,Brøndby,1537.0
+2,11,Chelsea,1842.0
+2,11,Coventry,1472.0
+2,11,FC Midtjylland,1617.0
+2,11,Feyenoord,1726.0
+2,11,Fiorentina,1747.0
+2,11,Hoffenheim,1660.0
+2,11,Inter,1955.0
+2,11,Juventus,1843.0
+2,11,Lazio,1787.0
+2,11,Manchester City,2050.0
+2,11,Manchester United,1756.0
+2,11,Nijmegen,1498.0
+2,11,Real Madrid,1997.0
+2,12,Aston Villa,1794.0
+2,12,Atalanta,1853.0
+2,12,Bayer Leverkusen,1940.0
+2,12,Bayern München,1925.0
+2,12,Betis,1710.0
+2,12,Club Brügge,1677.0
+2,12,Djurgården,1437.0
+2,12,Dortmund,1872.0
+2,12,FC Midtjylland,1617.0
+2,12,Fiorentina,1747.0
+2,12,Liverpool,1925.0
+2,12,Malmö FF,1526.0
+2,12,Marseille,1757.0
+2,12,Olympiakos,1642.0
+2,12,PSG,1906.0
+2,12,Real Madrid,1997.0
+2,12,Roma,1798.0
+2,12,Sevilla,1669.0
+2,12,Silkeborg,1458.0
+2,12,West Ham,1723.0
+2,13,Arsenal,1964.0
+2,13,Barcelona,1896.0
+2,13,Bayern München,1925.0
+2,13,Bochum,1579.0
+2,13,Bournemouth,1701.0
+2,13,Brøndby,1537.0
+2,13,Burnley,1624.0
+2,13,FC Midtjylland,1617.0
+2,13,Girona,1765.0
+2,13,Juventus,1843.0
+2,13,Liverpool,1925.0
+2,13,Napoli,1790.0
+2,13,Newcastle,1810.0
+2,13,Roma,1798.0
+2,13,Stuttgart,1814.0
+2,13,Tottenham,1814.0
+2,13,Udinese,1676.0
+2,13,Union Berlin,1658.0
+2,13,Vejle,1312.0
+2,14,AGF,1521.0
+2,14,Antwerpen,1590.0
+2,14,Aston Villa,1794.0
+2,14,Atalanta,1853.0
+2,14,Bayer Leverkusen,1940.0
+2,14,Bayern München,1925.0
+2,14,Club Brügge,1677.0
+2,14,Dortmund,1872.0
+2,14,Fiorentina,1747.0
+2,14,Marseille,1757.0
+2,14,Olympiakos,1642.0
+2,14,PSG,1906.0
+2,14,Real Madrid,1997.0
+2,14,Roma,1798.0
+2,14,Silkeborg,1458.0
+2,14,Union St Gilloise,1636.0
+2,15,Arsenal,1964.0
+2,15,Aston Villa,1794.0
+2,15,Atalanta,1853.0
+2,15,Brøndby,1537.0
+2,15,Celtic,1670.0
+2,15,Düsseldorf,1629.0
+2,15,FC Midtjylland,1617.0
+2,15,FCK,1616.0
+2,15,Girona,1765.0
+2,15,Holstein Kiel,1553.0
+2,15,Juventus,1843.0
+2,15,Leeds,1619.0
+2,15,Liverpool,1925.0
+2,15,Manchester United,1756.0
+2,15,Norwich,1519.0
+2,15,Rangers,1608.0
+2,15,Southampton,1572.0
+2,15,Villarreal,1759.0
+2,15,West Bromwich,1553.0
+2,16,AGF,1521.0
+2,16,Anderlecht,1617.0
+2,16,Atalanta,1853.0
+2,16,Bayer Leverkusen,1940.0
+2,16,Bayern München,1925.0
+2,16,Besiktas,1525.0
+2,16,Betis,1710.0
+2,16,Bologna,1765.0
+2,16,Club Brügge,1677.0
+2,16,FC Midtjylland,1617.0
+2,16,FC Nordsjælland,1568.0
+2,16,FCK,1616.0
+2,16,Freiburg,1689.0
+2,16,Hoffenheim,1660.0
+2,16,Juventus,1843.0
+2,16,Sociedad,1738.0
+2,16,Trabzonspor,1491.0
+2,16,Union Berlin,1658.0
+2,17,AGF,1521.0
+2,17,AIK,1410.0
+2,17,Bochum,1579.0
+2,17,Brøndby,1537.0
+2,17,Düsseldorf,1629.0
+2,17,FC Nordsjælland,1568.0
+2,17,FCK,1616.0
+2,17,Fiorentina,1747.0
+2,17,Göteborg,1322.0
+2,17,Leeds,1619.0
+2,17,Manchester City,2050.0
+2,17,Manchester United,1756.0
+2,17,Olympiakos,1642.0
+2,17,Porto,1792.0
+2,17,Regensburg,1358.0
+2,17,Southampton,1572.0
+2,17,Sporting Lissabon,1849.0
+2,17,Viborg,1436.0
+2,18,Atalanta,1853.0
+2,18,Danmark,1863.0
+2,18,Djurgården,1437.0
+2,18,Dortmund,1872.0
+2,18,Fiorentina,1747.0
+2,18,Ghana,1502.0
+2,18,Hammarby,1452.0
+2,18,Italien,1943.0
+2,18,Lugano,1474.0
+2,18,Mali,1594.0
+2,18,Mirandes,1480.0
+2,18,Real Madrid,1997.0
+2,18,Servette,1474.0
+2,18,Sverige,1703.0
+2,18,Tyrkiet,1812.0
+2,18,Tyskland,1957.0
+2,18,Ukraine,1767.0
+2,19,Algeriet,1671.0
+2,19,Angola,1585.0
+2,19,Cameroun,1580.0
+2,19,Danmark,1863.0
+2,19,Derry City,1201.0
+2,19,Eibar,1575.0
+2,19,Espanyol,1599.0
+2,19,HJK Helsinki,1242.0
+2,19,Iran,1819.0
+2,19,Japan,1873.0
+2,19,Kroatien,1912.0
+2,19,Norge,1746.0
+2,19,Portugal,1975.0
+2,19,Real Oviedo,1554.0
+2,19,Sporting Gijon,1511.0
+2,19,Syrien,1438.0
+2,19,Uganda,1393.0
+2,19,Uzbekistan,1690.0
+2,20,Albanien,1638.0
+2,20,Belgien,1923.0
+2,20,Danmark,1863.0
+2,20,England ,1996.0
+2,20,Frankrig,2015.0
+2,20,Georgien,1754.0
+2,20,Italien,1943.0
+2,20,Kroatien,1912.0
+2,20,Portugal,1975.0
+2,20,Schweiz,1855.0
+2,20,Serbien,1784.0
+2,20,Skotland,1705.0
+2,20,Slovakiet,1702.0
+2,20,Slovenien,1777.0
+2,20,Spanien,2157.0
+2,20,Tjekkiet,1723.0
+2,20,Tyrkiet,1812.0
+2,20,Tyskland,1957.0
+2,20,Ungarn,1767.0
+2,20,Østrig,1853.0
+2,21,Albanien,1638.0
+2,21,Belgien,1923.0
+2,21,Danmark,1863.0
+2,21,England ,1996.0
+2,21,Frankrig,2015.0
+2,21,Holland,1960.0
+2,21,Italien,1943.0
+2,21,Kroatien,1912.0
+2,21,Polen,1748.0
+2,21,Portugal,1975.0
+2,21,Rumænien,1713.0
+2,21,Schweiz,1855.0
+2,21,Serbien,1784.0
+2,21,Skotland,1705.0
+2,21,Slovenien,1777.0
+2,21,Spanien,2157.0
+2,21,Tyrkiet,1812.0
+2,21,Tyskland,1957.0
+2,21,Ungarn,1767.0
+2,21,Østrig,1853.0
+2,22,Albanien,1638.0
+2,22,Belgien,1923.0
+2,22,Danmark,1863.0
+2,22,England ,1996.0
+2,22,Holland,1960.0
+2,22,Italien,1943.0
+2,22,Kroatien,1912.0
+2,22,Rumænien,1713.0
+2,22,Schweiz,1855.0
+2,22,Serbien,1784.0
+2,22,Skotland,1705.0
+2,22,Slovakiet,1702.0
+2,22,Slovenien,1777.0
+2,22,Spanien,2157.0
+2,22,Tjekkiet,1723.0
+2,22,Tyrkiet,1812.0
+2,22,Tyskland,1957.0
+2,22,Ukraine,1767.0
+2,22,Ungarn,1767.0
+2,22,Østrig,1853.0
+2,23,Belgien,1923.0
+2,23,Brasilien,1997.0
+2,23,Colombia,2061.0
+2,23,Costa Rica,1662.0
+2,23,Danmark,1863.0
+2,23,England ,1996.0
+2,23,Frankrig,2015.0
+2,23,Georgien,1754.0
+2,23,Holland,1960.0
+2,23,Italien,1943.0
+2,23,Paraguay,1710.0
+2,23,Portugal,1975.0
+2,23,Rumænien,1713.0
+2,23,Schweiz,1855.0
+2,23,Slovakiet,1702.0
+2,23,Slovenien,1777.0
+2,23,Spanien,2157.0
+2,23,Tyrkiet,1812.0
+2,23,Tyskland,1957.0
+2,23,Østrig,1853.0
+2,24,Bodø/Glimt,1607.0
+2,24,Brann,1488.0
+2,24,Brasilien,1997.0
+2,24,Canada,1770.0
+2,24,Colombia,2061.0
+2,24,Djurgården,1437.0
+2,24,England ,1996.0
+2,24,Frankrig,2015.0
+2,24,GAIS,1291.0
+2,24,Hammarby,1452.0
+2,24,Holland,1960.0
+2,24,Norrköping,1310.0
+2,24,Panama,1731.0
+2,24,Portugal,1975.0
+2,24,Schweiz,1855.0
+2,24,Spanien,2157.0
+2,24,Tyrkiet,1812.0
+2,24,Tyskland,1957.0
+2,24,Uruguay,1956.0
+2,24,Venezuela,1771.0
+2,25,Argentina,2149.0
+2,25,Batumi,1147.0
+2,25,Canada,1770.0
+2,25,Colombia,2061.0
+2,25,Differdange,1065.0
+2,25,Elfsborg,1502.0
+2,25,England ,1996.0
+2,25,Frankrig,2015.0
+2,25,Holland,1960.0
+2,25,Klaksvik,1160.0
+2,25,Linfield,1101.0
+2,25,Ludogorets,1502.0
+2,25,Paphos,1448.0
+2,25,Shamrock,1228.0
+2,25,Spanien,2157.0
+2,25,Stjarnan,1149.0
+2,25,Uruguay,1956.0
+2,25,Vikingur,1215.0
+2,25,Zalgiris,1206.0
+2,26,AGF,1521.0
+2,26,AaB,1351.0
+2,26,Argentina,2149.0
+2,26,Botev Plovdiv,1236.0
+2,26,Canada,1770.0
+2,26,Colombia,2061.0
+2,26,Differdange,1065.0
+2,26,England ,1996.0
+2,26,FC Midtjylland,1617.0
+2,26,FC Nordsjælland,1568.0
+2,26,Göteborg,1322.0
+2,26,Hammarby,1452.0
+2,26,Klaksvik,1160.0
+2,26,Lillestrøm,1306.0
+2,26,Maribor,1386.0
+2,26,Shamrock,1228.0
+2,26,Spanien,2157.0
+2,26,Strømsgodset,1352.0
+2,26,Uruguay,1956.0
+2,26,Vikingur,1215.0
+2,27,AIK,1410.0
+2,27,Brann,1488.0
+2,27,Brøndby,1537.0
+2,27,Cercle Brügge,1515.0
+2,27,Club Brügge,1677.0
+2,27,Dynamo Kiev,1542.0
+2,27,Fenerbahce,1704.0
+2,27,Frankrig,2015.0
+2,27,GAIS,1291.0
+2,27,Go Ahead Eagles,1453.0
+2,27,Kilmarnock,1323.0
+2,27,Lugano,1474.0
+2,27,Molde,1552.0
+2,27,Partizan Beograd,1328.0
+2,27,Silkeborg,1458.0
+2,27,USA,1727.0
+2,27,Union St Gilloise,1636.0
+2,27,Viborg,1436.0
+2,28,AGF,1521.0
+2,28,Banja Luka,1200.0
+2,28,Brøndby,1537.0
+2,28,Celje,1350.0
+2,28,Cracovia,1409.0
+2,28,Djurgården,1437.0
+2,28,Elfsborg,1502.0
+2,28,FC Midtjylland,1617.0
+2,28,FC Nordsjælland,1568.0
+2,28,FCK,1616.0
+2,28,Halmstad,1241.0
+2,28,Molde,1552.0
+2,28,PAOK,1602.0
+2,28,Rakow,1481.0
+2,28,Silkeborg,1458.0
+2,28,Slovan Bratislava,1439.0
+2,28,Vejle,1312.0
+2,28,Viking,1465.0
+2,28,Värnamo,1307.0
+2,29,Braunschweig,1383.0
+2,29,Brøndby,1537.0
+2,29,FC Midtjylland,1617.0
+2,29,FC Nordsjælland,1568.0
+2,29,FCK,1616.0
+2,29,Ferencvaros,1485.0
+2,29,Feyenoord,1726.0
+2,29,Gent,1629.0
+2,29,Legia,1478.0
+2,29,Ostrava,1488.0
+2,29,PSV,1795.0
+2,29,Porto,1792.0
+2,29,Schalke 04,1479.0
+2,29,Silkeborg,1458.0
+2,29,Slavia Prag,1770.0
+2,29,Sporting Lissabon,1849.0
+2,29,Union St Gilloise,1636.0
+2,29,Vejle,1312.0
+2,29,Viborg,1436.0
+2,30,AGF,1521.0
+2,30,Atalanta,1853.0
+2,30,Brøndby,1537.0
+2,30,Burnley,1624.0
+2,30,FC Midtjylland,1617.0
+2,30,FCK,1616.0
+2,30,Ferencvaros,1485.0
+2,30,HSV Hamburg,1579.0
+2,30,Hertha Berlin,1511.0
+2,30,Luton,1526.0
+2,30,Manchester City,2050.0
+2,30,Manchester United,1756.0
+2,30,Ostrava,1488.0
+2,30,Palermo,1481.0
+2,30,Parma,1568.0
+2,30,Plymouth,1418.0
+2,30,QPR,1446.0
+2,30,Real Madrid,1997.0
+2,30,Sheffield Wednesday,1436.0
+2,30,West Bromwich,1553.0
+2,31,AC Milan,1827.0
+2,31,Aston Villa,1794.0
+2,31,Atletico Madrid,1853.0
+2,31,Bayer Leverkusen,1940.0
+2,31,Bodø/Glimt,1607.0
+2,31,Chelsea,1842.0
+2,31,FC Midtjylland,1617.0
+2,31,FCK,1616.0
+2,31,Kilmarnock,1323.0
+2,31,Malmö FF,1526.0
+2,31,Manchester City,2050.0
+2,31,Randers,1444.0
+2,31,Røde Stjerne,1569.0
+2,31,Slovan Bratislava,1439.0
+2,31,Sparta Prag,1728.0
+2,31,Stuttgart,1814.0
+2,31,Torino,1747.0
+2,31,Villarreal,1759.0
+2,31,West Ham,1723.0
+2,32,AC Milan,1827.0
+2,32,Athletic Bilbao,1769.0
+2,32,Barcelona,1896.0
+2,32,Brentford,1714.0
+2,32,Brighton,1732.0
+2,32,Celta Vigo,1656.0
+2,32,FC Midtjylland,1617.0
+2,32,FC Nordsjælland,1568.0
+2,32,FCK,1616.0
+2,32,Galatasaray,1715.0
+2,32,Kilmarnock,1323.0
+2,32,Liverpool,1925.0
+2,32,Mainz,1682.0
+2,32,Manchester United,1756.0
+2,32,Parma,1568.0
+2,32,Slovan Bratislava,1439.0
+2,32,Union Berlin,1658.0
+2,32,Villarreal,1759.0
+2,32,Young Boys,1535.0
+2,33,AC Milan,1827.0
+2,33,Arsenal,1964.0
+2,33,Bayer Leverkusen,1940.0
+2,33,Betis,1710.0
+2,33,Brighton,1732.0
+2,33,Brøndby,1537.0
+2,33,FC Midtjylland,1617.0
+2,33,FCK,1616.0
+2,33,Juventus,1843.0
+2,33,Lazio,1787.0
+2,33,Liverpool,1925.0
+2,33,Manchester United,1756.0
+2,33,Porto,1792.0
+2,33,RB Leipzig,1850.0
+2,33,Real Madrid,1997.0
+2,33,Roma,1798.0
+2,33,Silkeborg,1458.0
+2,33,Sporting Lissabon,1849.0
+2,33,Valencia,1647.0
+2,33,Villarreal,1759.0
+2,34,Belgien,1923.0
+2,34,Danmark,1863.0
+2,34,England ,1996.0
+2,34,Frankrig,2015.0
+2,34,Holland,1960.0
+2,34,Irland,1582.0
+2,34,Italien,1943.0
+2,34,Kroatien,1912.0
+2,34,Portugal,1975.0
+2,34,Schweiz,1855.0
+2,34,Serbien,1784.0
+2,34,Slovenien,1777.0
+2,34,Spanien,2157.0
+2,34,Tyskland,1957.0
+2,34,Ungarn,1767.0
+2,34,Østrig,1853.0
+2,35,AC Milan,1827.0
+2,35,Arsenal,1964.0
+2,35,Atalanta,1853.0
+2,35,Atletico Madrid,1853.0
+2,35,Barcelona,1896.0
+2,35,Betis,1710.0
+2,35,Club Brügge,1677.0
+2,35,Dortmund,1872.0
+2,35,Getafe,1628.0
+2,35,Girona,1765.0
+2,35,Inter,1955.0
+2,35,Juventus,1843.0
+2,35,Lille,1760.0
+2,35,Liverpool,1925.0
+2,35,Manchester City,2050.0
+2,35,Monaco,1798.0
+2,35,PSG,1906.0
+2,35,PSV,1795.0
+2,35,RB Leipzig,1850.0
+2,35,Sporting Lissabon,1849.0
+2,36,AC Milan,1827.0
+2,36,AaB,1351.0
+2,36,Ajax,1625.0
+2,36,Arsenal,1964.0
+2,36,Athletic Bilbao,1769.0
+2,36,Besiktas,1525.0
+2,36,Dortmund,1872.0
+2,36,Everton,1681.0
+2,36,FC Midtjylland,1617.0
+2,36,FCK,1616.0
+2,36,Frankfurt,1724.0
+2,36,Gladbach,1656.0
+2,36,Hoffenheim,1660.0
+2,36,Inter,1955.0
+2,36,Leicester,1640.0
+2,36,Manchester City,2050.0
+2,36,Osasuna,1669.0
+2,36,Roma,1798.0
+2,36,Stuttgart,1814.0
+2,36,Valencia,1647.0
+2,37,AaB,1351.0
+2,37,Arsenal,1964.0
+2,37,Atletico Madrid,1853.0
+2,37,Bayer Leverkusen,1940.0
+2,37,Bayern München,1925.0
+2,37,Benfica,1774.0
+2,37,Bournemouth,1701.0
+2,37,FC Midtjylland,1617.0
+2,37,FCK,1616.0
+2,37,Inter,1955.0
+2,37,Jagiellonia,1438.0
+2,37,Juventus,1843.0
+2,37,Maccabi Tel Aviv,1582.0
+2,37,PSG,1906.0
+2,37,RB Leipzig,1850.0
+2,37,Real Madrid,1997.0
+2,37,Southampton,1572.0
+2,37,Udinese,1676.0
+2,38,AC Milan,1827.0
+2,38,Aston Villa,1794.0
+2,38,Bayern München,1925.0
+2,38,Betis,1710.0
+2,38,Brøndby,1537.0
+2,38,FC Midtjylland,1617.0
+2,38,Fiorentina,1747.0
+2,38,Frankfurt,1724.0
+2,38,Ipswich,1582.0
+2,38,Lecce,1610.0
+2,38,Mainz,1682.0
+2,38,Manchester United,1756.0
+2,38,Real Madrid,1997.0
+2,38,Sevilla,1669.0
+2,38,St. Pauli,1605.0
+2,38,Udinese,1676.0
+2,38,Villarreal,1759.0
+2,38,West Ham,1723.0
+2,39,Belgien,1923.0
+2,39,Danmark,1863.0
+2,39,England ,1996.0
+2,39,Finland,1607.0
+2,39,Frankrig,2015.0
+2,39,Holland,1960.0
+2,39,Italien,1943.0
+2,39,Norge,1746.0
+2,39,Polen,1748.0
+2,39,Portugal,1975.0
+2,39,Schweiz,1855.0
+2,39,Serbien,1784.0
+2,39,Slovenien,1777.0
+2,39,Spanien,2157.0
+2,39,Tyskland,1957.0
+2,39,Ungarn,1767.0
+2,40,AGF,1521.0
+2,40,Barcelona,1896.0
+2,40,Bayer Leverkusen,1940.0
+2,40,Bayern München,1925.0
+2,40,Betis,1710.0
+2,40,Brøndby,1537.0
+2,40,Chelsea,1842.0
+2,40,Djurgården,1437.0
+2,40,Dortmund,1872.0
+2,40,FC Midtjylland,1617.0
+2,40,FCK,1616.0
+2,40,Frankfurt,1724.0
+2,40,Girona,1765.0
+2,40,Hammarby,1452.0
+2,40,Juventus,1843.0
+2,40,Lazio,1787.0
+2,40,Liverpool,1925.0
+2,40,Real Madrid,1997.0
+2,40,Sociedad,1738.0
+2,40,Union St Gilloise,1636.0
+2,41,AC Milan,1827.0
+2,41,Ajax,1625.0
+2,41,Arsenal,1964.0
+2,41,Atalanta,1853.0
+2,41,Augsburg,1614.0
+2,41,Barcelona,1896.0
+2,41,Besiktas,1525.0
+2,41,Brøndby,1537.0
+2,41,Dortmund,1872.0
+2,41,FC Midtjylland,1617.0
+2,41,FCK,1616.0
+2,41,Feyenoord,1726.0
+2,41,Galatasaray,1715.0
+2,41,Liverpool,1925.0
+2,41,Marseille,1757.0
+2,41,Napoli,1790.0
+2,41,PSG,1906.0
+2,41,Real Madrid,1997.0
+2,41,Verona,1640.0
+2,42,Ajax,1625.0
+2,42,Arsenal,1964.0
+2,42,Atalanta,1853.0
+2,42,Athletic Bilbao,1769.0
+2,42,Basaksehir,1530.0
+2,42,Bayer Leverkusen,1940.0
+2,42,Betis,1710.0
+2,42,Chelsea,1842.0
+2,42,Dortmund,1872.0
+2,42,FC Midtjylland,1617.0
+2,42,FCK,1616.0
+2,42,Inter,1955.0
+2,42,Liverpool,1925.0
+2,42,Manchester United,1756.0
+2,42,Napoli,1790.0
+2,42,PSV,1795.0
+2,42,RB Leipzig,1850.0
+2,42,Silkeborg,1458.0
+2,42,Steaua Bukarest,1433.0
+2,43,AGF,1521.0
+2,43,Alaves,1647.0
+2,43,Arsenal,1964.0
+2,43,Barcelona,1896.0
+2,43,Benfica,1774.0
+2,43,Brighton,1732.0
+2,43,Chelsea,1842.0
+2,43,Deportivo La Coruna,1422.0
+2,43,Eibar,1575.0
+2,43,FCK,1616.0
+2,43,Gladbach,1656.0
+2,43,Inter,1955.0
+2,43,Manchester City,2050.0
+2,43,Napoli,1790.0
+2,43,Porto,1792.0
+2,43,RB Leipzig,1850.0
+2,43,Sociedad,1738.0
+2,43,Villarreal,1759.0
+2,44,Albanien,1638.0
+2,44,Belgien,1923.0
+2,44,Danmark,1863.0
+2,44,Finland,1607.0
+2,44,Frankrig,2015.0
+2,44,Grækenland,1781.0
+2,44,Holland,1960.0
+2,44,Italien,1943.0
+2,44,Norge,1746.0
+2,44,Polen,1748.0
+2,44,Portugal,1975.0
+2,44,Serbien,1784.0
+2,44,Slovakiet,1702.0
+2,44,Slovenien,1777.0
+2,44,Spanien,2157.0
+2,44,Sverige,1703.0
+2,44,Ukraine,1767.0
+2,44,Ungarn,1767.0
+2,45,AC Milan,1827.0
+2,45,Arsenal,1964.0
+2,45,Bayern München,1925.0
+2,45,Dinamo Minsk,1241.0
+2,45,FC Midtjylland,1617.0
+2,45,FCK,1616.0
+2,45,Frankfurt,1724.0
+2,45,Juventus,1843.0
+2,45,Liverpool,1925.0
+2,45,Manchester City,2050.0
+2,45,Osasuna,1669.0
+2,45,PSG,1906.0
+2,45,Real Madrid,1997.0
+2,45,Silkeborg,1458.0
+2,45,Sporting Lissabon,1849.0
+2,45,Tottenham,1814.0
+2,45,Union Berlin,1658.0
+2,45,Villarreal,1759.0
+2,45,Wolfsburg,1656.0
+2,46,Arsenal,1964.0
+2,46,Atalanta,1853.0
+2,46,Athletic Bilbao,1769.0
+2,46,Atletico Madrid,1853.0
+2,46,Bayern München,1925.0
+2,46,Dortmund,1872.0
+2,46,Lazio,1787.0
+2,46,Leicester,1640.0
+2,46,Liverpool,1925.0
+2,46,Manchester City,2050.0
+2,46,Manchester United,1756.0
+2,46,Marseille,1757.0
+2,46,Monaco,1798.0
+2,46,Napoli,1790.0
+2,46,Randers,1444.0
+2,46,Real Madrid,1997.0
+2,46,Roma,1798.0
+2,46,Valladolid,1576.0
+2,46,Viborg,1436.0
+2,46,West Ham,1723.0
+2,47,AGF,1521.0
+2,47,Alaves,1647.0
+2,47,Aston Villa,1794.0
+2,47,Atalanta,1853.0
+2,47,Barcelona,1896.0
+2,47,Bochum,1579.0
+2,47,Brentford,1714.0
+2,47,Brøndby,1537.0
+2,47,Dortmund,1872.0
+2,47,FCK,1616.0
+2,47,Hearts,1368.0
+2,47,Juventus,1843.0
+2,47,Manchester City,2050.0
+2,47,Monza,1650.0
+2,47,Newcastle,1810.0
+2,47,Osasuna,1669.0
+2,47,RB Leipzig,1850.0
+2,47,Real Madrid,1997.0
+2,47,Udinese,1676.0
+2,47,Werder Bremen,1686.0
+2,48,AGF,1521.0
+2,48,AaB,1351.0
+2,48,Brøndby,1537.0
+2,48,Cagliari,1589.0
+2,48,FCK,1616.0
+2,48,Fiorentina,1747.0
+2,48,Frankfurt,1724.0
+2,48,Girona,1765.0
+2,48,Guimaraes,1601.0
+2,48,Juventus,1843.0
+2,48,Mallorca,1672.0
+2,48,Manchester City,2050.0
+2,48,Manchester United,1756.0
+2,48,Mlada Boleslav,1467.0
+2,48,Molde,1552.0
+2,48,Monaco,1798.0
+2,48,PSG,1906.0
+2,48,RB Leipzig,1850.0
+2,48,Rapid Wien,1500.0
+2,48,Silkeborg,1458.0
+2,49,Almeria,1525.0
+2,49,Arsenal,1964.0
+2,49,Brighton,1732.0
+2,49,Cardiff,1368.0
+2,49,Fiorentina,1747.0
+2,49,Lazio,1787.0
+2,49,Levante,1576.0
+2,49,Liverpool,1925.0
+2,49,Manchester United,1756.0
+2,49,Monaco,1798.0
+2,49,Napoli,1790.0
+2,49,Nottingham Forest,1668.0
+2,49,PSG,1906.0
+2,49,Roma,1798.0
+2,49,Sevilla,1669.0
+2,49,Sheffield United,1546.0
+2,49,Tenerife,1466.0
+2,49,Tottenham,1814.0
+2,49,Wolves,1654.0
+2,50,Anderlecht,1617.0
+2,50,Atalanta,1853.0
+2,50,Augsburg,1614.0
+2,50,Bologna,1765.0
+2,50,Brighton,1732.0
+2,50,Club Brügge,1677.0
+2,50,Coventry,1472.0
+2,50,Crystal Palace,1731.0
+2,50,Frankfurt,1724.0
+2,50,Ipswich,1582.0
+2,50,Juventus,1843.0
+2,50,Leicester,1640.0
+2,50,Roma,1798.0
+2,50,Sevilla,1669.0
+2,50,Sheffield Wednesday,1436.0
+2,50,Sociedad,1738.0
+2,50,St. Pauli,1605.0
+2,50,Stuttgart,1814.0
+2,50,Valencia,1647.0
+2,50,Villarreal,1759.0
+2,51,Atletico Madrid,1853.0
+2,51,Bayer Leverkusen,1940.0
+2,51,Chelsea,1842.0
+2,51,Como,1568.0
+2,51,Everton,1681.0
+2,51,FC Midtjylland,1617.0
+2,51,Hoffenheim,1660.0
+2,51,Holstein Kiel,1553.0
+2,51,Las Palmas,1571.0
+2,51,Ludogorets,1502.0
+2,51,Manchester City,2050.0
+2,51,Osasuna,1669.0
+2,51,PSG,1906.0
+2,51,Roma,1798.0
+2,51,St. Pauli,1605.0
+2,51,Tottenham,1814.0
+2,51,Udinese,1676.0
+2,51,Union Berlin,1658.0
+3,1,AC Milan,1839.0
+3,1,Aston Villa,1795.0
+3,1,Atletico Madrid,1861.0
+3,1,Benfica,1789.0
+3,1,Dortmund,1845.0
+3,1,FC Midtjylland,1580.0
+3,1,FCK,1587.0
+3,1,Feyenoord,1739.0
+3,1,Fiorentina,1748.0
+3,1,Heidenheim,1597.0
+3,1,Inter,1969.0
+3,1,Manchester City,1936.0
+3,1,Monaco,1758.0
+3,1,Real Madrid,1968.0
+3,1,Sociedad,1814.0
+3,1,Sporting Lissabon,1817.0
+3,1,Stuttgart,1712.0
+3,1,Tottenham,1837.0
+3,2,AC Milan,1821.0
+3,2,Atalanta,1902.0
+3,2,Bournemouth,1711.0
+3,2,Club Brügge,1690.0
+3,2,FCK,1648.0
+3,2,Feyenoord,1727.0
+3,2,Heidenheim,1536.0
+3,2,Inter,1940.0
+3,2,Juventus,1852.0
+3,2,Mainz,1635.0
+3,2,Manchester City,2045.0
+3,2,PSV,1799.0
+3,2,Randers,1480.0
+3,2,Real Madrid,1945.0
+3,2,Southampton,1559.0
+3,2,Valencia,1704.0
+3,2,Villarreal,1755.0
+3,3,Bologna,1718.0
+3,3,Bournemouth,1711.0
+3,3,Brighton,1751.0
+3,3,Dortmund,1753.0
+3,3,Empoli,1573.0
+3,3,Everton,1728.0
+3,3,FC Midtjylland,1625.0
+3,3,FCK,1587.0
+3,3,Fenerbahce,1683.0
+3,3,Galatasaray,1704.0
+3,3,Juventus,1843.0
+3,3,Mallorca,1642.0
+3,3,Manchester United,1787.0
+3,3,Newcastle,1828.0
+3,3,Nottingham Forest,1669.0
+3,3,Parma,1568.0
+3,3,Sevilla,1655.0
+3,3,Union Berlin,1653.0
+3,4,AC Milan,1821.0
+3,4,Arsenal,1910.0
+3,4,Athletic Bilbao,1780.0
+3,4,Atletico Madrid,1861.0
+3,4,Bayer Leverkusen,1860.0
+3,4,Bayern München,1893.0
+3,4,Chelsea,1782.0
+3,4,FCK,1587.0
+3,4,Frankfurt,1723.0
+3,4,Ipswich,1540.0
+3,4,Lazio,1772.0
+3,4,Liverpool,1943.0
+3,4,Nottingham Forest,1790.0
+3,4,PSG,1927.0
+3,4,PSV,1799.0
+3,4,Real Madrid,1945.0
+3,4,Silkeborg,1479.0
+3,5,Aston Villa,1851.0
+3,5,Atalanta,1775.0
+3,5,Athletic Bilbao,1793.0
+3,5,Atletico Madrid,1869.0
+3,5,Barcelona,1903.0
+3,5,Benfica,1789.0
+3,5,Brentford,1740.0
+3,5,Brøndby,1565.0
+3,5,Dortmund,1845.0
+3,5,Freiburg,1654.0
+3,5,Juventus,1843.0
+3,5,Lille,1789.0
+3,5,Liverpool,2003.0
+3,5,Mallorca,1642.0
+3,5,Manchester United,1759.0
+3,5,PSG,1881.0
+3,5,RB Leipzig,1833.0
+3,5,Randers,1480.0
+3,5,Real Madrid,1968.0
+3,5,Sociedad,1814.0
+3,6,Arsenal,2001.0
+3,6,Brøndby,1554.0
+3,6,Castellon,1427.0
+3,6,Chelsea,1782.0
+3,6,Danmark,1857.0
+3,6,Dortmund,1845.0
+3,6,Frankrig,2124.0
+3,6,Holland,1939.0
+3,6,Italien,1930.0
+3,6,Kroatien,1887.0
+3,6,Portugal,2032.0
+3,6,RB Leipzig,1738.0
+3,6,Silkeborg,1479.0
+3,6,Spanien,2028.0
+3,6,Tyskland,1917.0
+3,7,Argentina,2107.0
+3,7,Brasilien,2054.0
+3,7,Danmark,1871.0
+3,7,Finland,1628.0
+3,7,Frankrig,2056.0
+3,7,Holland,1967.0
+3,7,Israel,1601.0
+3,7,Italien,1940.0
+3,7,Kroatien,1948.0
+3,7,Lituaen,1284.0
+3,7,Norge,1745.0
+3,7,Portugal,1993.0
+3,7,Serbien,1810.0
+3,7,Spanien,2178.0
+3,7,Tyskland,1972.0
+3,7,Østrig,1813.0
+3,8,AC Milan,1839.0
+3,8,Ajax,1653.0
+3,8,Atletico Madrid,1869.0
+3,8,Barcelona,1863.0
+3,8,Besiktas,1500.0
+3,8,Betis,1658.0
+3,8,Chelsea,1861.0
+3,8,FCK,1587.0
+3,8,Galatasaray,1685.0
+3,8,Hannover,1474.0
+3,8,Magdeburg,143.0
+3,8,Manchester United,1787.0
+3,8,Monaco,1758.0
+3,8,NIce,1712.0
+3,8,Napoli,1856.0
+3,8,Nottingham Forest,1790.0
+3,8,PSV,1799.0
+3,8,Randers,1431.0
+3,8,Sevilla,1669.0
+3,8,Tottenham,1837.0
+3,9,AC Milan,1821.0
+3,9,AGF,1531.0
+3,9,Arsenal,2001.0
+3,9,Aston Villa,1851.0
+3,9,Athletic Bilbao,1780.0
+3,9,Barcelona,1903.0
+3,9,Bayern München,1893.0
+3,9,Brøndby,1554.0
+3,9,Dortmund,1845.0
+3,9,Fiorentina,1748.0
+3,9,Frankfurt,1719.0
+3,9,Freiburg,1654.0
+3,9,Inter,1940.0
+3,9,Manchester City,2045.0
+3,9,Manchester United,1759.0
+3,9,PSG,1927.0
+3,9,Real Madrid,1968.0
+3,9,Tottenham,1787.0
+3,9,Villarreal,1755.0
+3,10,Mallorca,1642.0
+3,10,Sociedad,1705.0
