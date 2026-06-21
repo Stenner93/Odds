@@ -17,6 +17,9 @@ on:
       - 'data/**.json'
       - 'data/dashboard_template.html'
 
+permissions:
+  contents: write
+
 jobs:
   byg-dashboard:
     runs-on: ubuntu-latest
