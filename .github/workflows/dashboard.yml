@@ -1,20 +1,36 @@
 name: Opdater dashboard
 
 on:
-  # Manuel knap på GitHub (Actions-fanen)
   workflow_dispatch:
     inputs:
-      besked:
-        description: 'Valgfri kommentar (vises i commit-besked)'
-        required: false
-        default: 'manuel opdatering'
+      hent_kampe:
+        description: 'Hent kampe fra Cognito Forms?'
+        type: boolean
+        default: false
+      hent_odds:
+        description: 'Hent odds? (bruger API-kald ~10/runde)'
+        type: boolean
+        default: false
+      hent_resultater:
+        description: 'Hent resultater automatisk?'
+        type: boolean
+        default: true
+      beregn_stilling:
+        description: 'Beregn point og stilling?'
+        type: boolean
+        default: true
+      opdater_dashboard:
+        description: 'Generer og publicer dashboard?'
+        type: boolean
+        default: true
 
-  # Automatisk når datafiler ændres på main
   push:
     branches: [main]
     paths:
       - 'data/**.csv'
       - 'data/**.json'
+      - 'data/kupon_input.txt'
+      - 'data/h2h_order.txt'
       - 'data/dashboard_template.html'
 
 permissions:
@@ -38,15 +54,36 @@ jobs:
       - name: Installer pakker
         run: pip install -r requirements.txt
 
-      - name: Generer dashboard
+      - name: 01 — Hent kampe fra Cognito
+        if: github.event.inputs.hent_kampe == 'true'
+        run: python scripts/01_kampe.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 02 — Hent odds og model-forudsigelser
+        if: github.event.inputs.hent_odds == 'true'
+        run: python scripts/02_odds.py
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          BZZOIRO_TOKEN: ${{ secrets.BZZOIRO_TOKEN }}
+
+      - name: 04 — Hent kampresultater
+        if: github.event.inputs.hent_resultater == 'true' || github.event_name == 'push'
+        run: python scripts/04_results.py
+
+      - name: 05 — Beregn point og stilling
+        if: github.event.inputs.beregn_stilling == 'true' || github.event_name == 'push'
+        run: python scripts/05_standings.py
+
+      - name: 08 — Generer dashboard
+        if: github.event.inputs.opdater_dashboard == 'true' || github.event_name == 'push'
         run: python scripts/08_dashboard.py
 
-      - name: Commit og push index.html
+      - name: Commit og push ændringer
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html
+          git add data/ index.html
           git diff --cached --quiet && echo "Ingen ændringer" && exit 0
-          BESKED="${{ github.event.inputs.besked || 'auto-opdatering' }}"
-          git commit -m "Auto: dashboard $BESKED [skip ci]"
+          git commit -m "Auto: pipeline kørt [skip ci]"
           git push

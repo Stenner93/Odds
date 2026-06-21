@@ -1,0 +1,10 @@
+# Indsæt kuponsteksten fra Cognito Forms her.
+# Kopier ALT tekst fra formularen og erstat denne fil.
+# Bruges kun hvis Cognito-auto-hentning er slået fra eller fejler.
+#
+# Eksempel-format:
+# NÆSTE KUPON
+# Kupon nr. 17
+# Runde nr. 17 - afdeling nr. 1
+# Sidste frist: 26. juni kl. 23.45
+# ...
