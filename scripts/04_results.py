@@ -3,18 +3,39 @@
 04_results.py — Henter kampresultater fra TheSportsDB og skriver til weekly_matches.csv.
 Kilde: thesportsdb.com (gratis API-nøgle '123')
 """
-import os, sys, time
+import os, sys, time, json
 import pandas as pd
 import requests
+from unidecode import unidecode
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from config import (
-    CURRENT_SEASON, MATCHES_CSV, SPORTSDB_API_KEY,
+    CURRENT_SEASON, MATCHES_CSV, SPORTSDB_API_KEY, DATA_DIR,
     get_current_round
 )
 
 CURRENT_ROUND   = get_current_round()
 SPORTSDB_BASE   = f'https://www.thesportsdb.com/api/v1/json/{SPORTSDB_API_KEY}'
+
+# Byg dansk→engelsk navneopslag fra hold_mapping.json
+_HOLD_MAP_PATH = os.path.join(DATA_DIR, 'hold_mapping.json')
+_DAN_TO_ENG: dict = {}
+if os.path.exists(_HOLD_MAP_PATH):
+    try:
+        with open(_HOLD_MAP_PATH, encoding='utf-8') as _f:
+            for _e in json.load(_f):
+                n, en = _e.get('name',''), _e.get('elo_name','')
+                if n and en and n not in _DAN_TO_ENG:
+                    _DAN_TO_ENG[n] = en
+    except Exception:
+        pass
+
+def _to_english(name: str) -> str:
+    if name in _DAN_TO_ENG:
+        return _DAN_TO_ENG[name]
+    # Prøv uden accenter (f.eks. "Almería" → "Almeria")
+    plain = unidecode(name)
+    return _DAN_TO_ENG.get(plain, name)
 
 def _sdb_fetch(endpoint):
     url = f'{SPORTSDB_BASE}/{endpoint}'
@@ -36,7 +57,17 @@ def _score_to_1x2(home_score, away_score):
         return None
 
 def _sportsdb_result(home, away, date_str):
-    for h, a, swapped in [(home, away, False), (away, home, True)]:
+    home_en, away_en = _to_english(home), _to_english(away)
+    # Prøv med engelske navne (for landshold), derefter originale navne (for klubhold)
+    name_pairs = [(home_en, away_en, False), (away_en, home_en, True)]
+    if (home_en, away_en) != (home, away):
+        name_pairs += [(home, away, False), (away, home, True)]
+    seen = set()
+    for h, a, swapped in name_pairs:
+        key = (h, a)
+        if key in seen:
+            continue
+        seen.add(key)
         event_title = f"{h.replace(' ','_')}_vs_{a.replace(' ','_')}"
         endpoint    = f'searchevents.php?e={event_title}&d={date_str}'
         data = _sdb_fetch(endpoint)
