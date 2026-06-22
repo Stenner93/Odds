@@ -11,7 +11,7 @@ on:
         description: 'Hent odds? (bruger API-kald ~10/runde)'
         type: boolean
         default: false
-      indlæs_gaet:
+      indlaes_gaet:
         description: 'Parser gæt fra gaet_input.txt?'
         type: boolean
         default: false
@@ -79,7 +79,7 @@ jobs:
           BZZOIRO_TOKEN: ${{ secrets.BZZOIRO_TOKEN }}
 
       - name: 03 — Indlæs spillernes gæt
-        if: github.event.inputs.indlæs_gaet == 'true' || (github.event_name == 'push' && contains(github.event.head_commit.modified, 'data/gaet_input.txt'))
+        if: github.event.inputs.indlaes_gaet == 'true' || (github.event_name == 'push' && contains(github.event.head_commit.modified, 'data/gaet_input.txt'))
         run: python scripts/03_bets.py
 
       - name: 04 — Hent kampresultater
