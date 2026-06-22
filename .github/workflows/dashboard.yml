@@ -1,6 +1,11 @@
 name: Opdater dashboard
 
 on:
+  schedule:
+    # 6:30 dansk tid (CET = UTC+1) — kører dagligt
+    # Sommerhalvår (CEST = UTC+2): kører 7:30 dansk tid
+    - cron: '30 5 * * *'
+
   workflow_dispatch:
     inputs:
       hent_kampe:
@@ -14,7 +19,7 @@ on:
       indlaes_gaet:
         description: 'Parser gæt fra gaet_input.txt?'
         type: boolean
-        default: false
+        default: true
       hent_resultater:
         description: 'Hent resultater automatisk?'
         type: boolean
@@ -83,19 +88,31 @@ jobs:
           BZZOIRO_TOKEN: ${{ secrets.BZZOIRO_TOKEN }}
 
       - name: 03 — Indlæs spillernes gæt
-        if: github.event.inputs.indlaes_gaet == 'true' || (github.event_name == 'push' && contains(github.event.head_commit.modified, 'data/gaet_input.txt'))
+        if: >
+          github.event_name == 'schedule' ||
+          github.event.inputs.indlaes_gaet == 'true' ||
+          (github.event_name == 'push' && contains(github.event.head_commit.modified, 'data/gaet_input.txt'))
         run: python scripts/03_bets.py
 
       - name: 04 — Hent kampresultater
-        if: github.event.inputs.hent_resultater == 'true' || github.event_name == 'push'
+        if: >
+          github.event_name == 'schedule' ||
+          github.event.inputs.hent_resultater == 'true' ||
+          github.event_name == 'push'
         run: python scripts/04_results.py
 
       - name: 05 — Beregn point og stilling
-        if: github.event.inputs.beregn_stilling == 'true' || github.event_name == 'push'
+        if: >
+          github.event_name == 'schedule' ||
+          github.event.inputs.beregn_stilling == 'true' ||
+          github.event_name == 'push'
         run: python scripts/05_standings.py
 
       - name: 08 — Generer dashboard
-        if: github.event.inputs.opdater_dashboard == 'true' || github.event_name == 'push'
+        if: >
+          github.event_name == 'schedule' ||
+          github.event.inputs.opdater_dashboard == 'true' ||
+          github.event_name == 'push'
         run: python scripts/08_dashboard.py
 
       - name: Commit og push ændringer
