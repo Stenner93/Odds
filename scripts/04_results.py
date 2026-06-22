@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
-04_results.py — Henter kampresultater fra TheSportsDB og skriver til weekly_matches.csv.
-Kilde: thesportsdb.com (gratis API-nøgle '123')
+04_results.py — Henter kampresultater fra TheSportsDB og numbertwenty.io.
+Kilde 1: thesportsdb.com (gratis nøgle '123') — søger på engelske holdnavne
+Kilde 2: numbertwenty.io predict_grouped (Status=FT) — fuzzy match på holdnavne
 """
 import os, sys, time, json
 import pandas as pd
 import requests
+from rapidfuzz import process, fuzz
 from unidecode import unidecode
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -33,9 +35,22 @@ if os.path.exists(_HOLD_MAP_PATH):
 def _to_english(name: str) -> str:
     if name in _DAN_TO_ENG:
         return _DAN_TO_ENG[name]
-    # Prøv uden accenter (f.eks. "Almería" → "Almeria")
     plain = unidecode(name)
     return _DAN_TO_ENG.get(plain, name)
+
+def _norm(s: str) -> str:
+    return unidecode(str(s)).lower().strip().replace(' ','').replace('-','').replace('.','')
+
+def _score_to_1x2(home_score, away_score):
+    try:
+        h, a = int(home_score), int(away_score)
+        if h > a:  return '1'
+        if h == a: return 'X'
+        return '2'
+    except (TypeError, ValueError):
+        return None
+
+# ── Kilde 1: TheSportsDB ─────────────────────────────────────────────────
 
 def _sdb_fetch(endpoint):
     url = f'{SPORTSDB_BASE}/{endpoint}'
@@ -47,18 +62,8 @@ def _sdb_fetch(endpoint):
         print(f'  ⚠ SportsDB fejl: {e}')
         return None
 
-def _score_to_1x2(home_score, away_score):
-    try:
-        h, a = int(home_score), int(away_score)
-        if h > a:  return '1'
-        if h == a: return 'X'
-        return '2'
-    except (TypeError, ValueError):
-        return None
-
 def _sportsdb_result(home, away, date_str):
     home_en, away_en = _to_english(home), _to_english(away)
-    # Prøv med engelske navne (for landshold), derefter originale navne (for klubhold)
     name_pairs = [(home_en, away_en, False), (away_en, home_en, True)]
     if (home_en, away_en) != (home, away):
         name_pairs += [(home, away, False), (away, home, True)]
@@ -69,8 +74,7 @@ def _sportsdb_result(home, away, date_str):
             continue
         seen.add(key)
         event_title = f"{h.replace(' ','_')}_vs_{a.replace(' ','_')}"
-        endpoint    = f'searchevents.php?e={event_title}&d={date_str}'
-        data = _sdb_fetch(endpoint)
+        data = _sdb_fetch(f'searchevents.php?e={event_title}&d={date_str}')
         time.sleep(0.3)
         if not data or not data.get('event'):
             continue
@@ -83,6 +87,61 @@ def _sportsdb_result(home, away, date_str):
                 if swapped:
                     result = {'1': '2', '2': '1', 'X': 'X'}[result]
                 return result
+    return None
+
+# ── Kilde 2: numbertwenty.io ──────────────────────────────────────────────
+
+_n20_cache: dict = {}
+
+def _n20_fetch(date_str: str) -> list:
+    if date_str in _n20_cache:
+        return _n20_cache[date_str]
+    try:
+        r = requests.get(
+            f'https://numbertwenty.io/predict_grouped?date={date_str}&tz_offset=0',
+            timeout=20, headers={'User-Agent': 'Mozilla/5.0'})
+        if r.status_code != 200:
+            _n20_cache[date_str] = []
+            return []
+        raw = r.json()
+        items = raw if isinstance(raw, list) else raw.get('matches', [])
+        finished = []
+        for item in items:
+            status = str(item.get('Status') or item.get('status') or '').upper()
+            if status not in ('FT', 'PEN', 'AET'):
+                continue
+            if item.get('Is_Future') or item.get('is_future'):
+                continue
+            gf = next((item[k] for k in ['GF','gf','HomeGoals'] if k in item and item[k] is not None), None)
+            ga = next((item[k] for k in ['GA','ga','AwayGoals'] if k in item and item[k] is not None), None)
+            res = _score_to_1x2(gf, ga)
+            if not res:
+                continue
+            team = str(item.get('Team') or item.get('home_team') or '').strip()
+            opp  = str(item.get('Opponent') or item.get('away_team') or '').strip()
+            if team:
+                finished.append({'home': team, 'away': opp, 'result': res})
+        _n20_cache[date_str] = finished
+        return finished
+    except Exception as e:
+        print(f'  ⚠ N20 fejl ({date_str}): {e}')
+        _n20_cache[date_str] = []
+        return []
+
+def _n20_result(home, away, date_str: str):
+    matches = _n20_fetch(date_str)
+    if not matches:
+        return None
+    home_en, away_en = _to_english(home), _to_english(away)
+    nh, na = _norm(home_en), _norm(away_en)
+    all_homes = [_norm(m['home']) for m in matches]
+    best = process.extractOne(nh, all_homes, scorer=fuzz.token_sort_ratio)
+    if not best or best[1] < 75:
+        return None
+    candidates = [m for m in matches if _norm(m['home']) == all_homes[best[2]]]
+    for m in candidates:
+        if fuzz.token_sort_ratio(na, _norm(m['away'])) >= 75:
+            return m['result']
     return None
 
 # ── Hoved-loop ────────────────────────────────────────────────────────────
@@ -102,7 +161,6 @@ if df_rnd.empty:
     print('⚠ Ingen kampe for denne runde — kør 01_kampe.py først')
     sys.exit(0)
 
-print('Henter resultater fra TheSportsDB...')
 auto_results = {}
 for _, row in df_rnd.sort_values('match_no').iterrows():
     mn   = int(row['match_no'])
@@ -117,9 +175,14 @@ for _, row in df_rnd.sort_values('match_no').iterrows():
         continue
 
     result = _sportsdb_result(home, away, date)
+    source = 'SportsDB'
+    if not result:
+        result = _n20_result(home, away, date)
+        source = 'N20'
+
     if result:
         auto_results[mn] = result
-        print(f'  ✅ #{mn:>2}: {home} vs {away} — {result}')
+        print(f'  ✅ #{mn:>2}: {home} vs {away} — {result} ({source})')
     else:
         auto_results[mn] = None
         print(f'  ❌ #{mn:>2}: {home} vs {away} — ikke afsluttet endnu')
@@ -147,3 +210,4 @@ else:
 found   = sum(1 for v in auto_results.values() if v)
 missing = sum(1 for v in auto_results.values() if not v)
 print(f'📊 {found} fundet, {missing} mangler')
+

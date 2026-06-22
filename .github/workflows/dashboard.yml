@@ -71,6 +71,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: 06 — Opdater hold_mapping.json med nye hold
+        if: github.event.inputs.hent_kampe == 'true'
+        run: python scripts/06_mapping_update.py
+
       - name: 02 — Hent odds og model-forudsigelser
         if: github.event.inputs.hent_odds == 'true'
         run: python scripts/02_odds.py
