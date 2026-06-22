@@ -20,6 +20,47 @@ from config import CURRENT_SEASON, MATCHES_CSV, DATA_DIR, get_current_round
 HOLD_MAP_PATH = os.path.join(DATA_DIR, 'hold_mapping.json')
 CURRENT_ROUND = get_current_round()
 
+# Dansk → engelsk for de mest almindelige landshold-navne.
+# Bruges som elo_name på nye entries, så TheSportsDB kan finde dem.
+# Tilføj nye lande her hvis nødvendigt.
+_DAN_TO_ENG_LAND: dict[str, str] = {
+    'Albanien': 'Albania', 'Algeriet': 'Algeria', 'Angola': 'Angola',
+    'Argentina': 'Argentina', 'Armenien': 'Armenia', 'Australien': 'Australia',
+    'Belgien': 'Belgium', 'Bolivia': 'Bolivia', 'Bosnien': 'Bosnia and Herzegovina',
+    'Brasilien': 'Brazil', 'Bulgarien': 'Bulgaria', 'Canada': 'Canada',
+    'Chile': 'Chile', 'Colombia': 'Colombia', 'Costa Rica': 'Costa Rica',
+    'Cypern': 'Cyprus', 'Danmark': 'Denmark', 'Ecuador': 'Ecuador',
+    'Egypten': 'Egypt', 'El Salvador': 'El Salvador', 'England': 'England',
+    'Estland': 'Estonia', 'Finland': 'Finland', 'Frankrig': 'France',
+    'Georgien': 'Georgia', 'Ghana': 'Ghana', 'Gibraltar': 'Gibraltar',
+    'Grækenland': 'Greece', 'Holland': 'Netherlands', 'Honduras': 'Honduras',
+    'Ungarn': 'Hungary', 'Irland': 'Ireland', 'Island': 'Iceland',
+    'Israel': 'Israel', 'Italien': 'Italy', 'Elfenbenskysten': 'Ivory Coast',
+    'Jamaica': 'Jamaica', 'Japan': 'Japan', 'Jordan': 'Jordan',
+    'Kazakhstan': 'Kazakhstan', 'Kenya': 'Kenya', 'Kroatien': 'Croatia',
+    'Letland': 'Latvia', 'Litauen': 'Lithuania', 'Lituaen': 'Lithuania',
+    'Luxembourg': 'Luxembourg', 'Mali': 'Mali', 'Mexico': 'Mexico',
+    'Moldova': 'Moldova', 'Montenegro': 'Montenegro', 'Marokko': 'Morocco',
+    'Mozambique': 'Mozambique', 'New Zealand': 'New Zealand', 'Nicaragua': 'Nicaragua',
+    'Nigeria': 'Nigeria', 'Nordirland': 'Northern Ireland',
+    'Nordmakedonien': 'North Macedonia', 'Norge': 'Norway',
+    'Panama': 'Panama', 'Paraguay': 'Paraguay', 'Peru': 'Peru',
+    'Polen': 'Poland', 'Portugal': 'Portugal', 'Qatar': 'Qatar',
+    'Rumænien': 'Romania', 'Rusland': 'Russia', 'San Marino': 'San Marino',
+    'Saudi Arabien': 'Saudi Arabia', 'Senegal': 'Senegal',
+    'Serbien': 'Serbia', 'Skotland': 'Scotland', 'Slovakiet': 'Slovakia',
+    'Slovenien': 'Slovenia', 'Spanien': 'Spain', 'Sverige': 'Sweden',
+    'Schweiz': 'Switzerland', 'Sydafrika': 'South Africa', 'Sydkorea': 'South Korea',
+    'Tjekkiet': 'Czech Republic', 'Tunesien': 'Tunisia', 'Tyrkiet': 'Turkey',
+    'Tyskland': 'Germany', 'USA': 'USA', 'Ukraine': 'Ukraine',
+    'Uruguay': 'Uruguay', 'Uzbekistan': 'Uzbekistan', 'Venezuela': 'Venezuela',
+    'Wales': 'Wales', 'Østrig': 'Austria',
+    # Afkortede/alternative stavemåder
+    'Bosnien-Hercegovina': 'Bosnia and Herzegovina',
+    'Nordmakedonien': 'North Macedonia', 'Makedonien': 'North Macedonia',
+    'Elfenbenskysten': 'Ivory Coast', 'Côte d\'Ivoire': 'Ivory Coast',
+}
+
 # ── Indlæs hold_mapping.json ──────────────────────────────────────────────
 with open(HOLD_MAP_PATH, encoding='utf-8') as f:
     mapping: list = json.load(f)
@@ -111,19 +152,21 @@ for team in sorted(teams):
             f'— tjek om det er samme hold (abbr: {existing["abbr"]})'
         )
         abbr = _make_abbr(team)
+        elo  = _DAN_TO_ENG_LAND.get(team, unidecode(team))
         new_entries.append({
             'abbr': abbr, 'type': 'INT', 'land': 'INT',
-            'name': team, 'elo_name': team,
+            'name': team, 'elo_name': elo,
         })
-        print(f'  ➕ NYT    "{team}" → abbr: {abbr} (mulig dublet med "{existing["name"]}")')
+        print(f'  ➕ NYT    "{team}" → abbr: {abbr}, elo_name: {elo!r} (mulig dublet med "{existing["name"]}")')
 
     else:
         abbr = _make_abbr(team)
+        elo  = _DAN_TO_ENG_LAND.get(team, unidecode(team))
         new_entries.append({
             'abbr': abbr, 'type': 'INT', 'land': 'INT',
-            'name': team, 'elo_name': team,
+            'name': team, 'elo_name': elo,
         })
-        print(f'  ➕ NYT    "{team}" → abbr: {abbr}')
+        print(f'  ➕ NYT    "{team}" → abbr: {abbr}, elo_name: {elo!r}')
 
     # Opdater lokal opslag så næste hold kan matche mod det nye
     _idx[n] = len(mapping) + len(new_entries) - 1
