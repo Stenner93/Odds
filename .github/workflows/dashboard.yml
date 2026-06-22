@@ -11,6 +11,10 @@ on:
         description: 'Hent odds? (bruger API-kald ~10/runde)'
         type: boolean
         default: false
+      indlæs_gaet:
+        description: 'Parser gæt fra gaet_input.txt?'
+        type: boolean
+        default: false
       hent_resultater:
         description: 'Hent resultater automatisk?'
         type: boolean
@@ -30,6 +34,7 @@ on:
       - 'data/**.csv'
       - 'data/**.json'
       - 'data/kupon_input.txt'
+      - 'data/gaet_input.txt'
       - 'data/h2h_order.txt'
       - 'data/dashboard_template.html'
 
@@ -72,6 +77,10 @@ jobs:
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
           BZZOIRO_TOKEN: ${{ secrets.BZZOIRO_TOKEN }}
+
+      - name: 03 — Indlæs spillernes gæt
+        if: github.event.inputs.indlæs_gaet == 'true' || (github.event_name == 'push' && contains(github.event.head_commit.modified, 'data/gaet_input.txt'))
+        run: python scripts/03_bets.py
 
       - name: 04 — Hent kampresultater
         if: github.event.inputs.hent_resultater == 'true' || github.event_name == 'push'
