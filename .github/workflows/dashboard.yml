@@ -54,6 +54,12 @@ jobs:
       - name: Installer pakker
         run: pip install -r requirements.txt
 
+      - name: Installer Playwright (kun ved Cognito-scraping)
+        if: github.event.inputs.hent_kampe == 'true'
+        run: |
+          pip install playwright
+          playwright install chromium --with-deps
+
       - name: 01 — Hent kampe fra Cognito
         if: github.event.inputs.hent_kampe == 'true'
         run: python scripts/01_kampe.py
