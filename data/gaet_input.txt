@@ -1,10 +1,25 @@
 # Indsæt spillernes gæt her — kopieret direkte fra Excel (tab-separeret).
 #
 # Format (første linje er rundeheader, resten er spillerens gæt):
-#   16. runde		HOL-SVE	ALM-MAL	BEL-IRN	...
-#   0	Inga Wamsler	1	9	1	1	...
-#   0	Dennis Sveistrup	1	9	1	1	...
-#   ...
+#16. runde		HOL-SVE	ALM-MAL	BEL-IRN	ARG-ØST	POR-UZB	ENG-GHA	BOS-QAT	SCH-CAN	ECU-TYS	NOR-FRA
+1	Inga Wamsler	1	9	1	1	1	1	1	9	2	2
+1	Dennis Sveistrup	1	9	1	1	1	1	1	1	2	2
+1	Nicolai Frederiksen	1	9	1	1	1	1	1	1	2	2
+0	Benjamin Jakobsen	9	1	1	1	9	1	2	9	2	2
+1	Rasmus Jensen	1	1	1	1	1	1	1	9	2	2
+0	Tanja Wamsler	9	9	1	1	1	1	1	9	2	9
+1	Ricky Frederiksen	1	1	9	1	1	1	1	9	2	2
+1	Søren Jakobsen	1	1	1	1	1	1	1	9	2	2
+1	Kasper Noer	1	1	1	1	1	1	1	2	2	2
+0	Jørgen Frederiksen	9	9	1	1	1	1	9	9	2	1
+0	Ualmindeligt inaktiv	0	0	0	0	0	0	0	0	0	0
+1	Lars Huus	1	1	1	1	1	1	1	9	2	9
+0	Morten Wamsler	9	1	1	1	1	1	1	1	2	9
+0	Ole Albrechtsen	9	9	1	1	1	1	1	1	2	2
+1	Noah Wamsler	1	1	1	1	1	1	1	1	2	2
+0	Curt Christensen	2	1	1	1	1	1	1	9	2	9
+1	Anders Stenner	1	9	1	1	1	1	1	1	2	2
+0	Kasper Søndergaard	9	1	1	1	1	1	9	9	2	2  
 #
 # Holdforkortelserne i headeren IGNORERES — kun kamprækkefølgen bruges.
 # Værdier: 1=hjemmehold, 9=uafgjort(X), 2=udehold, 0=intet gæt
