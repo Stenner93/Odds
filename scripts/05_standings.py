@@ -120,10 +120,12 @@ print(f'✓ h2h.csv: {updated_rounds} runder opdateret, {len(rounds_no_pairings)
 # ── Stilling ──────────────────────────────────────────────────────────────
 df_h2h_s_updated = df_h2h[df_h2h['season'] == CURRENT_SEASON]
 
-# Nullstil point for ufærdige runder (vises ikke i stilling)
+# Nullstil point KUN for runder der hverken er færdige ELLER har eksisterende point fra Colab.
+# Runder med udfyldte h2h_pts (fra Colab) bevares selvom weekly_matches ikke er komplet.
 df_h2h_s_updated = df_h2h_s_updated.copy()
 mask_incomplete = ~df_h2h_s_updated['round'].isin(complete_rounds)
-df_h2h_s_updated.loc[mask_incomplete, ['h2h_pts_a', 'h2h_pts_b']] = 0
+mask_no_pts     = df_h2h_s_updated['h2h_pts_a'].isna()
+df_h2h_s_updated.loc[mask_incomplete & mask_no_pts, ['h2h_pts_a', 'h2h_pts_b']] = 0
 
 ra = df_h2h_s_updated[['player_a', 'correct_a', 'h2h_pts_a']].rename(
     columns={'player_a': 'player', 'correct_a': 'correct', 'h2h_pts_a': 'h2h_pts'})

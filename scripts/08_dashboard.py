@@ -81,8 +81,121 @@ if not _cell_src:
 _cutoff = '\nif not GITHUB_TOKEN:'
 _cell_to_run = _cell_src.split(_cutoff)[0]
 
+# Pre-beregn h2h.csv korrekte gæt til supplement (Colab-data er mere komplet end weekly_matches)
+_h2h_correct: dict = {}       # {season: {player: total_correct}}
+_h2h_round_correct: dict = {} # {season: {round: {player: correct}}}
+import pandas as _pd_supp
+_H2H_CSV_PATH = os.path.join(DATA_DIR, 'h2h.csv')
+if os.path.exists(_H2H_CSV_PATH):
+    try:
+        _df_supp = _pd_supp.read_csv(_H2H_CSV_PATH)
+        _df_supp['season'] = _df_supp['season'].astype(int)
+        _df_supp['round']  = _df_supp['round'].astype(int)
+        for _, _hr in _df_supp.iterrows():
+            _s = int(_hr['season'])
+            _r = int(_hr['round'])
+            _h2h_correct.setdefault(_s, {})
+            _h2h_round_correct.setdefault(_s, {}).setdefault(_r, {})
+            if _pd_supp.notna(_hr.get('correct_a')):
+                _pa = _hr['player_a']
+                _ca = int(_hr['correct_a'])
+                _h2h_correct[_s][_pa] = _h2h_correct[_s].get(_pa, 0) + _ca
+                _h2h_round_correct[_s][_r][_pa] = _ca
+            if _pd_supp.notna(_hr.get('correct_b')):
+                _pb = _hr['player_b']
+                _cb = int(_hr['correct_b'])
+                _h2h_correct[_s][_pb] = _h2h_correct[_s].get(_pb, 0) + _cb
+                _h2h_round_correct[_s][_r][_pb] = _cb
+        print(f'✓ h2h supplement: {sum(len(v) for v in _h2h_correct.values())} spillere på tværs af sæsoner')
+    except Exception as _e:
+        print(f'⚠ h2h supplement fejl: {_e}')
+
+# Supplement-kode indsættes i notebook-cellen ved de rette markører.
+# Bruger max(h2h, predictions) per runde → sikrer at heatmap, pts_per_round
+# og standings alle er konsistente og inkluderer Colab-data for R1-14.
+
+_SUPP_COMBINED = """
+# Supplement pts_per_round + standings_by_season:
+# brug max(h2h.csv, predictions) per runde — Colab-data dækker R1-14, predictions R9-16.
+if '_h2h_round_correct' in dir():
+    for _szn in list(pts_per_round.keys()):
+        _s_int = int(str(_szn))
+        _rnd_map = _h2h_round_correct.get(_s_int, {})
+        if not _rnd_map:
+            continue
+        _rounds_list = pts_per_round[_szn]['rounds']
+        for _p in list(pts_per_round[_szn]['data'].keys()):
+            _old = pts_per_round[_szn]['data'][_p]
+            _new = []
+            _running = 0
+            _prev = 0
+            for _i, _r in enumerate(_rounds_list):
+                _h = _rnd_map.get(_r, {}).get(_p)
+                _old_incr = _old[_i] - _prev
+                _running += max(_h, _old_incr) if _h is not None else _old_incr
+                _new.append(int(_running))
+                _prev = _old[_i]
+            pts_per_round[_szn]['data'][_p] = _new
+    # standings_by_season total = slutsum fra pts_per_round (garanterer konsistens)
+    for _szn in list(standings_by_season.keys()):
+        for _rec in standings_by_season[_szn]:
+            _p = _rec['player']
+            _series = pts_per_round[_szn]['data'].get(_p)
+            if _series:
+                _total = _series[-1]
+                if _total > _rec.get('points', 0):
+                    _rec['points'] = _total
+"""
+
+_SUPP_HEATMAP = """
+# Supplement heatmap_s4: brug max(h2h.csv, predictions) per runde
+if '_h2h_round_correct' in dir():
+    _h2h_s4_rnd = _h2h_round_correct.get(CURRENT_SEASON, {})
+    for _p in list(heatmap_s4.keys()):
+        for _r, _rmap in _h2h_s4_rnd.items():
+            if _p in _rmap:
+                _r_str = str(int(_r))
+                if _r_str in heatmap_s4[_p]:
+                    if _rmap[_p] > heatmap_s4[_p][_r_str].get('pts', 0):
+                        heatmap_s4[_p][_r_str]['pts'] = _rmap[_p]
+"""
+
+_SUPP_HIST_COMPARE = """
+# Supplement hist_compare: brug pts_per_round slutsum per spiller per sæson
+if '_h2h_round_correct' in dir():
+    for _szn in list(pts_per_round.keys()):
+        _s_str = str(_szn)
+        for _p, _series in pts_per_round[_szn]['data'].items():
+            if _series and _p in hist_compare:
+                _total = _series[-1]
+                if _total > int(hist_compare[_p].get(_s_str, 0)):
+                    hist_compare[_p][_s_str] = _total
+"""
+
+# Fix: pandas >= 2.0 tillader ikke at sætte int i bool-kolonne — konvertér til int
+_cell_to_run = _cell_to_run.replace(
+    "all_merged.loc[_all_mask & all_merged['bet'].notna(), 'correct'] = 1\n",
+    "all_merged['correct'] = all_merged['correct'].astype(int)\n"
+    "all_merged.loc[_all_mask & all_merged['bet'].notna(), 'correct'] = 1\n"
+).replace(
+    "all_merged.loc[_all_mask & all_merged['bet'].isna(),  'correct'] = 0",
+    "all_merged.loc[_all_mask & all_merged['bet'].isna(),  'correct'] = 0"
+)
+
+# Indsæt supplement-kode ved de rigtige markører
+_MARKERS = [
+    ('# ── Active players',          _SUPP_COMBINED),
+    ('# ── Historisk sammenligning', _SUPP_HEATMAP),
+    ('# ── Player stats',            _SUPP_HIST_COMPARE),
+]
+for _marker, _code in _MARKERS:
+    if _marker in _cell_to_run:
+        _cell_to_run = _cell_to_run.replace(_marker, _code + '\n' + _marker, 1)
+
 # Kør i et namespace der har adgang til alle globale variabler
 _ns = {k: v for k, v in globals().items()}
+_ns['_h2h_correct']       = _h2h_correct
+_ns['_h2h_round_correct'] = _h2h_round_correct
 exec(_cell_to_run, _ns)  # html-variablen sættes her
 
 # ── Skriv index.html til repo-roden ──────────────────────────────────────
