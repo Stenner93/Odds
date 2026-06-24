@@ -1699,8 +1699,8 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,16,2,ALM-MLG,2026-06-20,21:00,La Liga,La Liga 2,Almería,Malaga,,,,,2
 4,16,3,BEL-IRA,2026-06-21,21:00,Landskamp,Landskamp,Belgien,Iran,,,,,X
 4,16,4,ARG-ØST,2026-06-22,19:00,Landskamp,Landskamp,Argentina,Østrig,,,,,1
-4,16,5,POR-UZB,2026-06-23,19:00,Landskamp,Landskamp,Portugal,Uzbekistan,,,,,
-4,16,6,ENG-GHA,2026-06-23,22:00,Landskamp,Landskamp,England,Ghana,,,,,
+4,16,5,POR-UZB,2026-06-23,19:00,Landskamp,Landskamp,Portugal,Uzbekistan,,,,,1
+4,16,6,ENG-GHA,2026-06-23,22:00,Landskamp,Landskamp,England,Ghana,,,,,X
 4,16,7,BOS-QAT,2026-06-24,21:00,Landskamp,Landskamp,Bosnien,Qatar,,,,,
 4,16,8,SWI-CAN,2026-06-24,21:00,Landskamp,Landskamp,Schweiz,Canada,,,,,
 4,16,9,ECU-TYS,2026-06-25,22:00,Landskamp,Landskamp,Ecuador,Tyskland,,,,,
