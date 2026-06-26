@@ -173,11 +173,11 @@ TEAM_ALIASES = {
     'Varbergs BOIS':      ['Varbergs BOIS','Varberg','Varbergs BoIS'],
     'Östers IF':          ['Östers IF','Osters IF','Öster'],
     'HJK Helsinki':       ['HJK Helsinki','HJK','Helsingin Jalkapalloklubi'],
-    'KuPS':               ['KuPS','Kuopion Palloseura','FC KuPS'],
-    'Strømsgodset':       ['Strømsgodset','Stroemsgodset','IK Strømsgodset','Strøm'],
-    'Odds BK':            ['Odds BK','Odds','SK Odd'],
-    'Levadia Tallinn':    ['Levadia Tallinn','FCI Levadia','Levadia'],
-    'Flora Tallinn':      ['Flora Tallinn','FC Flora','Flora'],
+    'KuPS':               ['KuPS','Kuopion Palloseura','FC KuPS','KuPS Kuopio','Kuopio'],
+    'Strømsgodset':       ['Strømsgodset','Stroemsgodset','IK Strømsgodset','Stromsgodset'],
+    'Odds BK':            ['Odds BK','Odds','SK Odd','Odd Grenland','Odd'],
+    'Levadia Tallinn':    ['Levadia Tallinn','FCI Levadia','Levadia','FC Levadia','FCI Levadia Tallinn'],
+    'Flora Tallinn':      ['Flora Tallinn','FC Flora','Flora','FC Flora Tallinn'],
 }
 
 _V2C = {}
