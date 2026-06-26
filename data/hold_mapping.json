@@ -3955,6 +3955,13 @@
     "elo_name": "Swansea"
   },
   {
+    "abbr": "SY1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Sydafrika",
+    "elo_name": "South Africa"
+  },
+  {
     "abbr": "SYD",
     "type": "AUS",
     "land": "AUS",
