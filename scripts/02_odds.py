@@ -390,17 +390,15 @@ if df_rnd.empty:
     sys.exit(1)
 
 _odds_ok = set()
+_df_ex = pd.DataFrame()
 if os.path.exists(ODDS_CSV) and not FORCE_REFRESH_ODDS:
     _df_ex = pd.read_csv(ODDS_CSV)
     _df_ex = _df_ex[(_df_ex['season'] == CURRENT_SEASON) & (_df_ex['round'] == CURRENT_ROUND)]
     for _, _r in _df_ex.iterrows():
-        has_odds    = pd.notna(_r.get('odds_1')) and pd.notna(_r.get('odds_x')) and pd.notna(_r.get('odds_2'))
-        has_ranking = pd.notna(_r.get('elo_home')) or pd.notna(_r.get('opta_home'))
-        is_national = str(_r.get('league', '')) == 'Landskamp'
-        if has_odds and (has_ranking or is_national):
+        if pd.notna(_r.get('odds_1')) and pd.notna(_r.get('odds_x')) and pd.notna(_r.get('odds_2')):
             _odds_ok.add(_r['match_code'])
 if _odds_ok:
-    print(f'  (springer {len(_odds_ok)} kamp(e) over — odds+ranking OK)')
+    print(f'  (springer {len(_odds_ok)} kamp(e) over — odds OK)')
 
 rows = []
 for _, m in df_rnd.iterrows():
@@ -409,7 +407,33 @@ for _, m in df_rnd.iterrows():
     print(f"  [{int(m['match_no']):2}] {home} vs {away}...", end=' ', flush=True)
     mc = m.get('match_code', '')
     if mc in _odds_ok:
-        print('(spring over)'); continue
+        # Tjek om ranking mangler — i så fald hentes ELO/Opta (ingen odds-API-kald)
+        _ex_r = _df_ex[_df_ex['match_code'] == mc].iloc[0] if not _df_ex[_df_ex['match_code'] == mc].empty else None
+        _has_ranking = _ex_r is not None and (pd.notna(_ex_r.get('elo_home')) or pd.notna(_ex_r.get('opta_home')))
+        if _has_ranking:
+            print('(spring over)'); continue
+        eh = _rank(home, elo_df, 'Elo'); ea = _rank(away, elo_df, 'Elo')
+        oh = _rank(home, opta_df, 'rating'); oa = _rank(away, opta_df, 'rating')
+        eh = int(eh) if eh is not None else None
+        ea = int(ea) if ea is not None else None
+        if eh is None and ea is None and oh is None and oa is None:
+            print('(spring over — ingen ranking)'); continue
+        rows.append({
+            'season': CURRENT_SEASON, 'round': CURRENT_ROUND,
+            'match_no': int(m['match_no']), 'match_code': mc,
+            'date': str(m.get('date', '')), 'league': canonical_league,
+            'home_team': home, 'away_team': away,
+            'odds_1': None, 'odds_x': None, 'odds_2': None,
+            'prob_1': None, 'prob_2': None,
+            'elo_home': eh, 'elo_away': ea,
+            'elo_diff': (eh-ea) if (eh and ea) else None,
+            'opta_home': round(oh, 1) if oh else None,
+            'opta_away': round(oa, 1) if oa else None,
+            'opta_diff': round(oh-oa, 1) if (oh and oa) else None,
+            'favourit': None, 'rec_regel': None, 'rec_lr': None, 'rec_bzz': None,
+        })
+        print(f"(ELO: {eh or '–'}/{ea or '–'}, Opta: {'✓' if oh else '–'})")
+        continue
     o1, ox, o2, p1, p2 = _get_match_odds(home, away, canonical_league)
     eh = _rank(home, elo_df, 'Elo')
     ea = _rank(away, elo_df, 'Elo')
