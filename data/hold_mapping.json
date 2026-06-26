@@ -1,10 +1,38 @@
 [
   {
+    "abbr": "16D",
+    "type": "INT",
+    "land": "INT",
+    "name": "16. delsfinale",
+    "elo_name": "16. delsfinale"
+  },
+  {
     "abbr": "18M",
     "type": "TYS",
     "land": "TYS",
     "name": "1860 München",
     "elo_name": "1860 München"
+  },
+  {
+    "abbr": "AAB",
+    "type": "DAN",
+    "land": "DAN",
+    "name": "AaB",
+    "elo_name": "Aalborg"
+  },
+  {
+    "abbr": "AAB",
+    "type": "SL",
+    "land": "DAN",
+    "name": "AaB",
+    "elo_name": "AaB"
+  },
+  {
+    "abbr": "AAF",
+    "type": "DAN",
+    "land": "DAN",
+    "name": "Aarhus Fremad",
+    "elo_name": "Aarhus Fremad"
   },
   {
     "abbr": "AB",
@@ -70,6 +98,20 @@
     "elo_name": "AEK"
   },
   {
+    "abbr": "ATO",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "AFC Totton",
+    "elo_name": "AFC Totton"
+  },
+  {
+    "abbr": "AFT",
+    "type": "ISL",
+    "land": "ISL",
+    "name": "Afturelding",
+    "elo_name": "Afturelding"
+  },
+  {
     "abbr": "AGF",
     "type": "ECL",
     "land": "DAN",
@@ -96,6 +138,27 @@
     "land": "HOL",
     "name": "Ajax",
     "elo_name": "Ajax"
+  },
+  {
+    "abbr": "AKR",
+    "type": "ISL",
+    "land": "ISL",
+    "name": "Akranes",
+    "elo_name": "Akranes"
+  },
+  {
+    "abbr": "AAH",
+    "type": "SAU",
+    "land": "SAU",
+    "name": "Al Ahly",
+    "elo_name": "Al Ahly"
+  },
+  {
+    "abbr": "ALH",
+    "type": "SAU",
+    "land": "SAU",
+    "name": "Al Hilal",
+    "elo_name": "Al Hilal"
   },
   {
     "abbr": "ALA",
@@ -182,6 +245,13 @@
     "elo_name": "Armenia"
   },
   {
+    "abbr": "BIE",
+    "type": "TYS",
+    "land": "TYS",
+    "name": "Arminia Bielefeld",
+    "elo_name": "Bielefeld"
+  },
+  {
     "abbr": "ARS",
     "type": "ENG",
     "land": "ENG",
@@ -229,6 +299,13 @@
     "land": "SPA",
     "name": "Atletico Madrid",
     "elo_name": "Atletico"
+  },
+  {
+    "abbr": "AUC",
+    "type": "NZ",
+    "land": "NZ",
+    "name": "Auckland City",
+    "elo_name": "Auckland City"
   },
   {
     "abbr": "AUG",
@@ -315,6 +392,13 @@
     "elo_name": "Barnsley"
   },
   {
+    "abbr": "ISB",
+    "type": "TYR",
+    "land": "TYR",
+    "name": "Basaksehir",
+    "elo_name": "Bueyueksehir"
+  },
+  {
     "abbr": "BAS",
     "type": "SCH",
     "land": "SCH",
@@ -355,6 +439,13 @@
     "land": "ENG",
     "name": "Beitar Jerusalem",
     "elo_name": "Beitar"
+  },
+  {
+    "abbr": "BLR",
+    "type": "INT",
+    "land": "INT",
+    "name": "Belarus",
+    "elo_name": "Belarus"
   },
   {
     "abbr": "BEL",
@@ -434,6 +525,13 @@
     "elo_name": "Bohemians"
   },
   {
+    "abbr": "BLI",
+    "type": "INT",
+    "land": "INT",
+    "name": "Bolivia",
+    "elo_name": "Bolivia"
+  },
+  {
     "abbr": "BLG",
     "type": "ITA",
     "land": "ITA",
@@ -455,6 +553,13 @@
     "elo_name": "Bosnia and Herzegovina"
   },
   {
+    "abbr": "BTF",
+    "type": "BRA",
+    "land": "BRA",
+    "name": "Botafogo",
+    "elo_name": "Botafogo"
+  },
+  {
     "abbr": "BOT",
     "type": "EL",
     "land": "EL",
@@ -474,6 +579,13 @@
     "land": "DAN",
     "name": "Brabrand",
     "elo_name": "Brabrand"
+  },
+  {
+    "abbr": "BRC",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Brackley Town",
+    "elo_name": "Brackley Town"
   },
   {
     "abbr": "BRD",
@@ -581,6 +693,13 @@
     "elo_name": "Brondby"
   },
   {
+    "abbr": "BRØ",
+    "type": "DAN",
+    "land": "DAN",
+    "name": "Brønshøj",
+    "elo_name": "Brønshøj"
+  },
+  {
     "abbr": "BUR",
     "type": "ENG",
     "land": "ENG",
@@ -610,6 +729,13 @@
   },
   {
     "abbr": "CAM",
+    "type": "HOL",
+    "land": "HOL",
+    "name": "Cambuur",
+    "elo_name": "Cambuur"
+  },
+  {
+    "abbr": "CUU",
     "type": "HOL",
     "land": "HOL",
     "name": "Cambuur",
@@ -672,6 +798,13 @@
     "elo_name": "Casa Pia"
   },
   {
+    "abbr": "CST",
+    "type": "SPA",
+    "land": "SPA",
+    "name": "Castellon",
+    "elo_name": "Castellon"
+  },
+  {
     "abbr": "CEJ",
     "type": "SLO",
     "land": "CL",
@@ -712,6 +845,13 @@
     "land": "FRA",
     "name": "Chateareaux",
     "elo_name": "Chateareaux"
+  },
+  {
+    "abbr": "CHL",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Chelmsford",
+    "elo_name": "Chelmsford"
   },
   {
     "abbr": "CHE",
@@ -768,6 +908,13 @@
     "land": "INT",
     "name": "Columbia",
     "elo_name": "Colombia"
+  },
+  {
+    "abbr": "CMO",
+    "type": "ITA",
+    "land": "ITA",
+    "name": "Como",
+    "elo_name": "Como"
   },
   {
     "abbr": "COM",
@@ -840,6 +987,20 @@
     "elo_name": "Crystal Palace"
   },
   {
+    "abbr": "CLE",
+    "type": "SPA",
+    "land": "SPA",
+    "name": "Cultural Leonesa",
+    "elo_name": "Cultural Leonesa"
+  },
+  {
+    "abbr": "CUR",
+    "type": "INT",
+    "land": "INT",
+    "name": "Curacao",
+    "elo_name": "Curaçao"
+  },
+  {
     "abbr": "CYP",
     "type": "INT",
     "land": "INT",
@@ -854,6 +1015,13 @@
     "elo_name": "Denmark"
   },
   {
+    "abbr": "DKU",
+    "type": "INT",
+    "land": "INT",
+    "name": "Danmark - U21",
+    "elo_name": "Danmark - U21"
+  },
+  {
     "abbr": "DAR",
     "type": "TYS",
     "land": "TYS",
@@ -866,6 +1034,13 @@
     "land": "LET",
     "name": "Daugavpils",
     "elo_name": "Daugavpils"
+  },
+  {
+    "abbr": "DLC",
+    "type": "SPA",
+    "land": "SPA",
+    "name": "Deportivo La Coruna",
+    "elo_name": "Depor"
   },
   {
     "abbr": "DER",
@@ -887,6 +1062,13 @@
     "land": "GEO",
     "name": "Dila Gori",
     "elo_name": "Dila Gori"
+  },
+  {
+    "abbr": "MIN",
+    "type": "ECL",
+    "land": "BLR",
+    "name": "Dinamo Minsk",
+    "elo_name": "Dinamo Minsk"
   },
   {
     "abbr": "DIN",
@@ -915,6 +1097,13 @@
     "land": "TYS",
     "name": "Dortmund",
     "elo_name": "Dortmund"
+  },
+  {
+    "abbr": "DRC",
+    "type": "INT",
+    "land": "INT",
+    "name": "DR Congo",
+    "elo_name": "Dem. Rep. of Congo"
   },
   {
     "abbr": "DUD",
@@ -952,18 +1141,18 @@
     "elo_name": "Dundee"
   },
   {
-    "abbr": "DKI",
-    "type": "UKR",
-    "land": "CL",
-    "name": "Dynamo Kiev",
-    "elo_name": "Dynamo Kyiv"
-  },
-  {
     "abbr": "DÜS",
     "type": "TYS",
     "land": "TYS",
     "name": "Düsseldorf",
     "elo_name": "Duesseldorf"
+  },
+  {
+    "abbr": "DKI",
+    "type": "UKR",
+    "land": "CL",
+    "name": "Dynamo Kiev",
+    "elo_name": "Dynamo Kyiv"
   },
   {
     "abbr": "EIB",
@@ -987,11 +1176,32 @@
     "elo_name": "El Salvador"
   },
   {
+    "abbr": "ELC",
+    "type": "SPA",
+    "land": "SPA",
+    "name": "Elche",
+    "elo_name": "Elche"
+  },
+  {
     "abbr": "ELF",
     "type": "SVE",
     "land": "SVE",
     "name": "Elfsborg",
     "elo_name": "Elfsborg"
+  },
+  {
+    "abbr": "ELV",
+    "type": "TYS",
+    "land": "TYS",
+    "name": "Elversberg",
+    "elo_name": "Elversberg"
+  },
+  {
+    "abbr": "EMM",
+    "type": "HOL",
+    "land": "HOL",
+    "name": "Embuur",
+    "elo_name": "Embuur"
   },
   {
     "abbr": "EMP",
@@ -1232,6 +1442,13 @@
     "elo_name": "Fiorentina"
   },
   {
+    "abbr": "FLA",
+    "type": "BRA",
+    "land": "Bra",
+    "name": "Flamengo",
+    "elo_name": "Flamengo"
+  },
+  {
     "abbr": "FLE",
     "type": "ENG",
     "land": "ENG",
@@ -1251,6 +1468,20 @@
     "land": "BRA",
     "name": "Fluminense",
     "elo_name": "Fluminense"
+  },
+  {
+    "abbr": "FKÖ",
+    "type": "TYS",
+    "land": "TYS",
+    "name": "Fortuna Köln",
+    "elo_name": "Fortuna Köln"
+  },
+  {
+    "abbr": "FR",
+    "type": "ISL",
+    "land": "ISL",
+    "name": "Fram",
+    "elo_name": "Fram"
   },
   {
     "abbr": "FRA",
@@ -1281,6 +1512,13 @@
     "elo_name": "Frankrig - U21"
   },
   {
+    "abbr": "FRS",
+    "type": "NOR",
+    "land": "NOR",
+    "name": "Fredrikstad",
+    "elo_name": "Fredrikstad"
+  },
+  {
     "abbr": "FRE",
     "type": "TYS",
     "land": "TYS",
@@ -1293,6 +1531,13 @@
     "land": "DAN",
     "name": "Frem",
     "elo_name": "Frem"
+  },
+  {
+    "abbr": "FRV",
+    "type": "SVE",
+    "land": "SVE",
+    "name": "Friska Viljor",
+    "elo_name": "Friska Viljor"
   },
   {
     "abbr": "FRO",
@@ -1428,6 +1673,20 @@
     "elo_name": "Go Ahead Eagles"
   },
   {
+    "abbr": "GÖT",
+    "type": "SVE",
+    "land": "SVE",
+    "name": "Göteborg",
+    "elo_name": "Goeteborg"
+  },
+  {
+    "abbr": "GRÆ",
+    "type": "INT",
+    "land": "INT",
+    "name": "Grækenland",
+    "elo_name": "Greece"
+  },
+  {
     "abbr": "GRN",
     "type": "SPA",
     "land": "SPA",
@@ -1449,13 +1708,6 @@
     "elo_name": "Grimsby"
   },
   {
-    "abbr": "GRÆ",
-    "type": "INT",
-    "land": "INT",
-    "name": "Grækenland",
-    "elo_name": "Greece"
-  },
-  {
     "abbr": "GUA",
     "type": "SPA",
     "land": "SPA",
@@ -1470,11 +1722,11 @@
     "elo_name": "Guimaraes"
   },
   {
-    "abbr": "GÖT",
-    "type": "SVE",
+    "abbr": "HÄC",
+    "type": "CL",
     "land": "SVE",
-    "name": "Göteborg",
-    "elo_name": "Goeteborg"
+    "name": "Häcken",
+    "elo_name": "Haecken"
   },
   {
     "abbr": "HAF",
@@ -1512,6 +1764,20 @@
     "elo_name": "Hammarby"
   },
   {
+    "abbr": "HAN",
+    "type": "TYS",
+    "land": "TYS",
+    "name": "Hannover",
+    "elo_name": "Hannover"
+  },
+  {
+    "abbr": "HÄS",
+    "type": "SWE",
+    "land": "SWE",
+    "name": "Hässleholm",
+    "elo_name": "Hässleholm"
+  },
+  {
     "abbr": "HAU",
     "type": "NOR",
     "land": "NOR",
@@ -1538,6 +1804,13 @@
     "land": "FÆR",
     "name": "HB Thorshavn",
     "elo_name": "HB Torshavn"
+  },
+  {
+    "abbr": "HEA",
+    "type": "ECL",
+    "land": "SKO",
+    "name": "Hearts",
+    "elo_name": "Hearts"
   },
   {
     "abbr": "HEE",
@@ -1582,11 +1855,25 @@
     "elo_name": "Swift Hesperange"
   },
   {
+    "abbr": "HIB",
+    "type": "SKO",
+    "land": "SKO",
+    "name": "Hibernian",
+    "elo_name": "Hibernian"
+  },
+  {
     "abbr": "HIK",
     "type": "DAN",
     "land": "DAN",
     "name": "HIK",
     "elo_name": "HIK"
+  },
+  {
+    "abbr": "HIL",
+    "type": "DAN",
+    "land": "DAN",
+    "name": "Hillerød",
+    "elo_name": "Hillerød"
   },
   {
     "abbr": "HJK",
@@ -1601,6 +1888,13 @@
     "land": "FIN",
     "name": "HJK Helsinki",
     "elo_name": "HJK Helsinki"
+  },
+  {
+    "abbr": "HOB",
+    "type": "DAN",
+    "land": "DAN",
+    "name": "Hobro",
+    "elo_name": "Hobro"
   },
   {
     "abbr": "HOF",
@@ -1645,11 +1939,25 @@
     "elo_name": "Honka Espoo"
   },
   {
+    "abbr": "HØR",
+    "type": "DAN",
+    "land": "DAN",
+    "name": "Hørsholm",
+    "elo_name": "Hørsholm"
+  },
+  {
     "abbr": "HSV",
     "type": "TYS",
     "land": "TYS",
     "name": "HSV Hamburg",
     "elo_name": "Hamburg"
+  },
+  {
+    "abbr": "HUD",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Huddersfield",
+    "elo_name": "Huddersfield"
   },
   {
     "abbr": "HIF",
@@ -1659,11 +1967,18 @@
     "elo_name": "Hvidovre"
   },
   {
-    "abbr": "HÄC",
-    "type": "CL",
-    "land": "SVE",
-    "name": "Häcken",
-    "elo_name": "Haecken"
+    "abbr": "I99",
+    "type": "GEO",
+    "land": "GEO",
+    "name": "Iberia 1999",
+    "elo_name": "Iberia 1999"
+  },
+  {
+    "abbr": "IND",
+    "type": "INT",
+    "land": "INT",
+    "name": "Indonesien",
+    "elo_name": "Indonesia"
   },
   {
     "abbr": "INT",
@@ -1678,6 +1993,27 @@
     "land": "ITA",
     "name": "Inter",
     "elo_name": "Inter"
+  },
+  {
+    "abbr": "IMI",
+    "type": "USA",
+    "land": "USA",
+    "name": "Inter Miami",
+    "elo_name": "Inter Miami"
+  },
+  {
+    "abbr": "IPS",
+    "type": "PL",
+    "land": "PL",
+    "name": "Ipswich",
+    "elo_name": "Ipswich"
+  },
+  {
+    "abbr": "IRK",
+    "type": "INT",
+    "land": "INT",
+    "name": "Irak",
+    "elo_name": "Iraq"
   },
   {
     "abbr": "IRA",
@@ -1729,11 +2065,32 @@
     "elo_name": "Italien - U21"
   },
   {
+    "abbr": "JAG",
+    "type": "ECL",
+    "land": "POL",
+    "name": "Jagiellonia",
+    "elo_name": "Jagiellonia"
+  },
+  {
+    "abbr": "JAM",
+    "type": "INT",
+    "land": "INT",
+    "name": "Jamaica",
+    "elo_name": "Jamaica"
+  },
+  {
     "abbr": "JAP",
     "type": "INT",
     "land": "INT",
     "name": "Japan",
     "elo_name": "Japan"
+  },
+  {
+    "abbr": "JAR",
+    "type": "FIN",
+    "land": "FIN",
+    "name": "Jaro",
+    "elo_name": "Jaro"
   },
   {
     "abbr": "JUV",
@@ -1757,6 +2114,13 @@
     "elo_name": "Akureyri"
   },
   {
+    "abbr": "KAA",
+    "type": "KAZ",
+    "land": "KAZ",
+    "name": "Kairat Almaty",
+    "elo_name": "Kairat Almaty"
+  },
+  {
     "abbr": "KAI",
     "type": "TYS",
     "land": "TYS",
@@ -1769,6 +2133,13 @@
     "land": "SVE",
     "name": "Kalmar",
     "elo_name": "Kalmar"
+  },
+  {
+    "abbr": "KRL",
+    "type": "SVE",
+    "land": "SVE",
+    "name": "Karlstad",
+    "elo_name": "Karlstad"
   },
   {
     "abbr": "KAY",
@@ -1813,6 +2184,27 @@
     "elo_name": "Kolding IF"
   },
   {
+    "abbr": "KÖL",
+    "type": "TYS",
+    "land": "TYS",
+    "name": "Köln",
+    "elo_name": "Koeln"
+  },
+  {
+    "abbr": "KOS",
+    "type": "INT",
+    "land": "INT",
+    "name": "Kosovo",
+    "elo_name": "Kosovo"
+  },
+  {
+    "abbr": "KR",
+    "type": "ISL",
+    "land": "ISL",
+    "name": "KR",
+    "elo_name": "KR"
+  },
+  {
     "abbr": "KRO",
     "type": "INT",
     "land": "INT",
@@ -1827,11 +2219,11 @@
     "elo_name": "Kroatien - U21"
   },
   {
-    "abbr": "KÖL",
-    "type": "TYS",
-    "land": "TYS",
-    "name": "Köln",
-    "elo_name": "Koeln"
+    "abbr": "KUP",
+    "type": "INT",
+    "land": "INT",
+    "name": "KuPS",
+    "elo_name": "KuPS"
   },
   {
     "abbr": "LAG",
@@ -1848,6 +2240,20 @@
     "elo_name": "LAFC"
   },
   {
+    "abbr": "LAH",
+    "type": "SWE",
+    "land": "SWE",
+    "name": "Laholm",
+    "elo_name": "Laholm"
+  },
+  {
+    "abbr": "LRN",
+    "type": "CYP",
+    "land": "CYP",
+    "name": "Larnaca",
+    "elo_name": "Larnaca"
+  },
+  {
     "abbr": "LAR",
     "type": "CL",
     "land": "NI",
@@ -1860,6 +2266,13 @@
     "land": "SPA",
     "name": "Las Palmas",
     "elo_name": "Las Palmas"
+  },
+  {
+    "abbr": "LAU",
+    "type": "SUI",
+    "land": "SUI",
+    "name": "Lausanne",
+    "elo_name": "Lausanne"
   },
   {
     "abbr": "LAZ",
@@ -1881,6 +2294,13 @@
     "land": "ENG",
     "name": "Leeds",
     "elo_name": "Leeds"
+  },
+  {
+    "abbr": "LGA",
+    "type": "SPA",
+    "land": "SPA",
+    "name": "Leganes",
+    "elo_name": "Leganes"
   },
   {
     "abbr": "LEG",
@@ -1946,6 +2366,13 @@
     "elo_name": "Leverkusen"
   },
   {
+    "abbr": "LEY",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Leyton Orient",
+    "elo_name": "Leyton Orient"
+  },
+  {
     "abbr": "LIL",
     "type": "FRA",
     "land": "FRA",
@@ -1993,6 +2420,20 @@
     "land": "BUL",
     "name": "Lokomotiv Plovdiv",
     "elo_name": "Lok Plovdiv"
+  },
+  {
+    "abbr": "LEI",
+    "type": "TYS",
+    "land": "TYS",
+    "name": "Lokomotive Leipizig",
+    "elo_name": "Lokomotive Leipizig"
+  },
+  {
+    "abbr": "LUC",
+    "type": "SVE",
+    "land": "SVE",
+    "name": "Lucksta",
+    "elo_name": "Lucksta"
   },
   {
     "abbr": "LUD",
@@ -2044,11 +2485,32 @@
     "elo_name": "Maccabi Haifa"
   },
   {
+    "abbr": "MAC",
+    "type": "EL",
+    "land": "ISR",
+    "name": "Maccabi Tel Aviv",
+    "elo_name": "M Tel Aviv"
+  },
+  {
+    "abbr": "MAG",
+    "type": "TYS",
+    "land": "TYS",
+    "name": "Magdeburg",
+    "elo_name": "Magdeburg"
+  },
+  {
     "abbr": "MAI",
     "type": "TYS",
     "land": "TYS",
     "name": "Mainz",
     "elo_name": "Mainz"
+  },
+  {
+    "abbr": "MLG",
+    "type": "SPA",
+    "land": "SPA",
+    "name": "Malaga",
+    "elo_name": "Malaga"
   },
   {
     "abbr": "MLI",
@@ -2191,6 +2653,13 @@
     "elo_name": "Mexico"
   },
   {
+    "abbr": "MDD",
+    "type": "DAN",
+    "land": "DAN",
+    "name": "Middelfart",
+    "elo_name": "Middelfart"
+  },
+  {
     "abbr": "MID",
     "type": "ENG",
     "land": "ENG",
@@ -2203,6 +2672,20 @@
     "land": "SPA",
     "name": "Mirandes",
     "elo_name": "Mirandes"
+  },
+  {
+    "abbr": "MJÄ",
+    "type": "SWE",
+    "land": "SWE",
+    "name": "Mjällby",
+    "elo_name": "Mjällby"
+  },
+  {
+    "abbr": "MLA",
+    "type": "ECL",
+    "land": "TJE",
+    "name": "Mlada Boleslav",
+    "elo_name": "Mlada Boleslav"
   },
   {
     "abbr": "MOL",
@@ -2240,11 +2723,25 @@
     "elo_name": "Monza"
   },
   {
+    "abbr": "MOR",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Morecambe",
+    "elo_name": "Morecambe"
+  },
+  {
     "abbr": "MOT",
     "type": "SKO",
     "land": "SKO",
     "name": "Motherwell",
     "elo_name": "Motherwell"
+  },
+  {
+    "abbr": "NÆS",
+    "type": "DAN",
+    "land": "DAN",
+    "name": "Næsby",
+    "elo_name": "Næsby"
   },
   {
     "abbr": "NAN",
@@ -2289,6 +2786,13 @@
     "elo_name": "Nice"
   },
   {
+    "abbr": "NIG",
+    "type": "INT",
+    "land": "INT",
+    "name": "Nigeria",
+    "elo_name": "Nigeria"
+  },
+  {
     "abbr": "NIJ",
     "type": "HOL",
     "land": "HOL",
@@ -2308,6 +2812,13 @@
     "land": "INT",
     "name": "Nordirland",
     "elo_name": "Northern Ireland"
+  },
+  {
+    "abbr": "NMA",
+    "type": "INT",
+    "land": "INT",
+    "name": "Nordmakedonien",
+    "elo_name": "North Macedonia"
   },
   {
     "abbr": "NOR",
@@ -2352,18 +2863,18 @@
     "elo_name": "Notts County"
   },
   {
+    "abbr": "NÜR",
+    "type": "TYS",
+    "land": "TYS",
+    "name": "Nürnberg",
+    "elo_name": "Nuernberg"
+  },
+  {
     "abbr": "NYK",
     "type": "DAN",
     "land": "DAN",
     "name": "Nykøbing FC",
     "elo_name": "Nykøbing FC"
-  },
-  {
-    "abbr": "NÆS",
-    "type": "DAN",
-    "land": "DAN",
-    "name": "Næsby",
-    "elo_name": "Næsby"
   },
   {
     "abbr": "OB",
@@ -2378,6 +2889,13 @@
     "land": "DAN",
     "name": "OB",
     "elo_name": "Odense"
+  },
+  {
+    "abbr": "ODD",
+    "type": "INT",
+    "land": "INT",
+    "name": "Odds BK",
+    "elo_name": "Odds BK"
   },
   {
     "abbr": "OLD",
@@ -2422,6 +2940,20 @@
     "elo_name": "Omonia"
   },
   {
+    "abbr": "ÖRE",
+    "type": "SVE",
+    "land": "SVE",
+    "name": "Örebro Syrianska",
+    "elo_name": "Örebro Syrianska"
+  },
+  {
+    "abbr": "ÖRG",
+    "type": "SWE",
+    "land": "SWE",
+    "name": "Ôrgryte",
+    "elo_name": "Ôrgryte"
+  },
+  {
     "abbr": "OSA",
     "type": "ECL",
     "land": "SPA",
@@ -2436,6 +2968,20 @@
     "elo_name": "Osasuna"
   },
   {
+    "abbr": "OS1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Östers IF",
+    "elo_name": "Osters IF"
+  },
+  {
+    "abbr": "OST",
+    "type": "SVE",
+    "land": "SVE",
+    "name": "Östersunds",
+    "elo_name": "Östersunds"
+  },
+  {
     "abbr": "OSR",
     "type": "TJE",
     "land": "ECL",
@@ -2443,11 +2989,39 @@
     "elo_name": "Banik Ostrava"
   },
   {
+    "abbr": "ØST",
+    "type": "INT",
+    "land": "INT",
+    "name": "Østrig",
+    "elo_name": "Austria"
+  },
+  {
+    "abbr": "OUR",
+    "type": "SPA",
+    "land": "SPA",
+    "name": "Ourense",
+    "elo_name": "Ourense"
+  },
+  {
     "abbr": "OXF",
     "type": "ENG",
     "land": "ENG",
     "name": "Oxford United",
     "elo_name": "Oxford United"
+  },
+  {
+    "abbr": "PAL",
+    "type": "ITA",
+    "land": "ITA",
+    "name": "Palermo",
+    "elo_name": "Palermo"
+  },
+  {
+    "abbr": "PLM",
+    "type": "BRA",
+    "land": "Bra",
+    "name": "Palmeiras",
+    "elo_name": "Palmeiras"
   },
   {
     "abbr": "PAN",
@@ -2459,6 +3033,13 @@
   {
     "abbr": "PAN",
     "type": "CL",
+    "land": "GRÆ",
+    "name": "Panathinaikos",
+    "elo_name": "Panathinaikos"
+  },
+  {
+    "abbr": "PAI",
+    "type": "GRÆ",
     "land": "GRÆ",
     "name": "Panathinaikos",
     "elo_name": "Panathinaikos"
@@ -2492,6 +3073,13 @@
     "elo_name": "Paraguay"
   },
   {
+    "abbr": "PRM",
+    "type": "ITA",
+    "land": "ITA",
+    "name": "Parma",
+    "elo_name": "Parma"
+  },
+  {
     "abbr": "PAR",
     "type": "SKO",
     "land": "SKO",
@@ -2506,11 +3094,32 @@
     "elo_name": "Partizan"
   },
   {
+    "abbr": "PER",
+    "type": "INT",
+    "land": "INT",
+    "name": "Peru",
+    "elo_name": "Peru"
+  },
+  {
     "abbr": "PET",
     "type": "ENG",
     "land": "ENG",
     "name": "Peterborough",
     "elo_name": "Peterborough"
+  },
+  {
+    "abbr": "PIS",
+    "type": "ITA",
+    "land": "ITA",
+    "name": "Pisa",
+    "elo_name": "Pisa"
+  },
+  {
+    "abbr": "PLY",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Plymouth",
+    "elo_name": "Plymouth"
   },
   {
     "abbr": "POL",
@@ -2576,11 +3185,25 @@
     "elo_name": "PSV"
   },
   {
+    "abbr": "QAR",
+    "type": "AZE",
+    "land": "AZR",
+    "name": "Qarabag",
+    "elo_name": "Karabakh Agdam"
+  },
+  {
     "abbr": "QAT",
     "type": "INT",
     "land": "INT",
     "name": "Qatar",
     "elo_name": "Qatar"
+  },
+  {
+    "abbr": "QPR",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "QPR",
+    "elo_name": "QPR"
   },
   {
     "abbr": "RAK",
@@ -2611,6 +3234,13 @@
     "elo_name": "Rangers"
   },
   {
+    "abbr": "RAW",
+    "type": "ECL",
+    "land": "ØST",
+    "name": "Rapid Wien",
+    "elo_name": "Rapid Wien"
+  },
+  {
     "abbr": "RVA",
     "type": "SPA",
     "land": "SPA",
@@ -2623,6 +3253,13 @@
     "land": "TYS",
     "name": "RB Leipzig",
     "elo_name": "RB Leipzig"
+  },
+  {
+    "abbr": "RBZ",
+    "type": "ØST",
+    "land": "ØST",
+    "name": "RB Salzburg",
+    "elo_name": "Salzburg"
   },
   {
     "abbr": "RMA",
@@ -2695,11 +3332,32 @@
     "elo_name": "Rizespor"
   },
   {
+    "abbr": "ROC",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Rochdale",
+    "elo_name": "Rochdale"
+  },
+  {
     "abbr": "ROD",
     "type": "HOL",
     "land": "HOL",
     "name": "Roda",
     "elo_name": "Roda"
+  },
+  {
+    "abbr": "RØD",
+    "type": "CL",
+    "land": "SRB",
+    "name": "Røde Stjerne",
+    "elo_name": "Crvena Zvezda"
+  },
+  {
+    "abbr": "RÖD",
+    "type": "TYS",
+    "land": "TYS",
+    "name": "Rödinghausen",
+    "elo_name": "Rödinghausen"
   },
   {
     "abbr": "ROM",
@@ -2730,11 +3388,32 @@
     "elo_name": "Rot Weiss Essen"
   },
   {
+    "abbr": "RTH",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Rotherham",
+    "elo_name": "Rotherham"
+  },
+  {
     "abbr": "RUM",
     "type": "INT",
     "land": "INT",
     "name": "Rumænien",
     "elo_name": "Romania"
+  },
+  {
+    "abbr": "RWE",
+    "type": "TYS",
+    "land": "TYS",
+    "name": "RW Essen",
+    "elo_name": "RW Essen"
+  },
+  {
+    "abbr": "SAA",
+    "type": "TYS",
+    "land": "TYS",
+    "name": "Saarbrücken",
+    "elo_name": "Saarbrücken"
   },
   {
     "abbr": "SAL",
@@ -2744,11 +3423,25 @@
     "elo_name": "Salernitana"
   },
   {
+    "abbr": "SMP",
+    "type": "ITA",
+    "land": "ITA",
+    "name": "Sampdoria",
+    "elo_name": "Sampdoria"
+  },
+  {
     "abbr": "SAM",
     "type": "TYR",
     "land": "TYR",
     "name": "Samsunspor",
     "elo_name": "Samsunspor"
+  },
+  {
+    "abbr": "SND",
+    "type": "NOR",
+    "land": "NOR",
+    "name": "Sandefjord",
+    "elo_name": "Sandefjord"
   },
   {
     "abbr": "SAN",
@@ -2779,6 +3472,13 @@
     "elo_name": "Sassuolo"
   },
   {
+    "abbr": "KSA",
+    "type": "INT",
+    "land": "INT",
+    "name": "Saudi-Arabien",
+    "elo_name": "Saudi-Arabia"
+  },
+  {
     "abbr": "S04",
     "type": "TYS",
     "land": "TYS",
@@ -2805,6 +3505,20 @@
     "land": "INT",
     "name": "Schweiz",
     "elo_name": "Switzerland"
+  },
+  {
+    "abbr": "SCU",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Scunthorpe",
+    "elo_name": "Scunthorpe"
+  },
+  {
+    "abbr": "SEA",
+    "type": "USA",
+    "land": "USA",
+    "name": "Seattle Sounders",
+    "elo_name": "Seattle Sounders"
   },
   {
     "abbr": "SRB",
@@ -2926,6 +3640,20 @@
     "elo_name": "Sivasspor"
   },
   {
+    "abbr": "SJK",
+    "type": "FIN",
+    "land": "FIN",
+    "name": "SJK",
+    "elo_name": "SJK"
+  },
+  {
+    "abbr": "SKI",
+    "type": "DAN",
+    "land": "DAN",
+    "name": "Skive",
+    "elo_name": "Skive"
+  },
+  {
     "abbr": "SKO",
     "type": "INT",
     "land": "INT",
@@ -2980,6 +3708,13 @@
     "land": "SPA",
     "name": "Sociedad",
     "elo_name": "Sociedad"
+  },
+  {
+    "abbr": "SJE",
+    "type": "DAN",
+    "land": "DAN",
+    "name": "Sønderjyske",
+    "elo_name": "Sønderjyske"
   },
   {
     "abbr": "SOU",
@@ -3115,6 +3850,13 @@
     "elo_name": "Stevenage"
   },
   {
+    "abbr": "STV",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Stevenage",
+    "elo_name": "Stevenage"
+  },
+  {
     "abbr": "STJ",
     "type": "ISL",
     "land": "ISL",
@@ -3127,6 +3869,20 @@
     "land": "ENG",
     "name": "Stoke",
     "elo_name": "Stoke"
+  },
+  {
+    "abbr": "RCS",
+    "type": "FRA",
+    "land": "FRA",
+    "name": "Strasbourg",
+    "elo_name": "Strasbourg"
+  },
+  {
+    "abbr": "STB",
+    "type": "FRA",
+    "land": "FRA",
+    "name": "Strasbourg",
+    "elo_name": "Strasbourg"
   },
   {
     "abbr": "STR",
@@ -3211,20 +3967,6 @@
     "land": "INT",
     "name": "Syrien",
     "elo_name": "Syria"
-  },
-  {
-    "abbr": "SJE",
-    "type": "DAN",
-    "land": "DAN",
-    "name": "Sønderjyske",
-    "elo_name": "Sønderjyske"
-  },
-  {
-    "abbr": "SAA",
-    "type": "TYS",
-    "land": "TYS",
-    "name": "Saarbrücken",
-    "elo_name": "Saarbrücken"
   },
   {
     "abbr": "TEN",
@@ -3346,6 +4088,20 @@
     "elo_name": "Germany"
   },
   {
+    "abbr": "TSU",
+    "type": "INT",
+    "land": "INT",
+    "name": "Tyskland - U21",
+    "elo_name": "Tyskland - U21"
+  },
+  {
+    "abbr": "UAE",
+    "type": "INT",
+    "land": "INT",
+    "name": "UAE",
+    "elo_name": "United Arab Emirates"
+  },
+  {
     "abbr": "UDI",
     "type": "ITA",
     "land": "ITA",
@@ -3437,6 +4193,13 @@
     "elo_name": "Valencia"
   },
   {
+    "abbr": "VÅL",
+    "type": "NOR",
+    "land": "NOR",
+    "name": "Vålerenga",
+    "elo_name": "Valerenga"
+  },
+  {
     "abbr": "VLL",
     "type": "SPA",
     "land": "SPA",
@@ -3451,11 +4214,46 @@
     "elo_name": "Valmieras"
   },
   {
+    "abbr": "VLU",
+    "type": "ISL",
+    "land": "ISL",
+    "name": "Valur",
+    "elo_name": "Valur"
+  },
+  {
     "abbr": "VAN",
     "type": "DAN",
     "land": "DAN",
     "name": "Vanløse",
     "elo_name": "Vanløse"
+  },
+  {
+    "abbr": "VAB",
+    "type": "INT",
+    "land": "INT",
+    "name": "Varbergs BOIS",
+    "elo_name": "Varbergs BOIS"
+  },
+  {
+    "abbr": "VAR",
+    "type": "SVE",
+    "land": "SVE",
+    "name": "Värnamo",
+    "elo_name": "Varnamo"
+  },
+  {
+    "abbr": "VÄR",
+    "type": "SVE",
+    "land": "SVE",
+    "name": "Värnamo",
+    "elo_name": "Varnamo"
+  },
+  {
+    "abbr": "VEJ",
+    "type": "DAN",
+    "land": "DAN",
+    "name": "Vejgaard",
+    "elo_name": "Vejgaard"
   },
   {
     "abbr": "VB",
@@ -3507,6 +4305,13 @@
     "elo_name": "Vikingur"
   },
   {
+    "abbr": "VKU",
+    "type": "ISL",
+    "land": "ISL",
+    "name": "Vikingur",
+    "elo_name": "Vikingur"
+  },
+  {
     "abbr": "VIL",
     "type": "SPA",
     "land": "SPA",
@@ -3526,6 +4331,13 @@
     "land": "HOL",
     "name": "Vitesse",
     "elo_name": "Vitesse"
+  },
+  {
+    "abbr": "VM1",
+    "type": "INT",
+    "land": "INT",
+    "name": "VM",
+    "elo_name": "VM"
   },
   {
     "abbr": "VOL",
@@ -3549,32 +4361,18 @@
     "elo_name": "VSK Aarhus"
   },
   {
-    "abbr": "VAR",
-    "type": "SVE",
-    "land": "SVE",
-    "name": "Värnamo",
-    "elo_name": "Varnamo"
-  },
-  {
-    "abbr": "VÄR",
-    "type": "SVE",
-    "land": "SVE",
-    "name": "Värnamo",
-    "elo_name": "Varnamo"
-  },
-  {
-    "abbr": "VÅL",
-    "type": "NOR",
-    "land": "NOR",
-    "name": "Vålerenga",
-    "elo_name": "Valerenga"
-  },
-  {
     "abbr": "WAL",
     "type": "INT",
     "land": "INT",
     "name": "Wales",
     "elo_name": "Wales"
+  },
+  {
+    "abbr": "WLS",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Walsall",
+    "elo_name": "Walsall"
   },
   {
     "abbr": "WFC",
@@ -3619,6 +4417,20 @@
     "elo_name": "West Ham"
   },
   {
+    "abbr": "WIG",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Wigan",
+    "elo_name": "Wigan"
+  },
+  {
+    "abbr": "WIM",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Wimbledon",
+    "elo_name": "Wimbledon"
+  },
+  {
     "abbr": "WLF",
     "type": "TYS",
     "land": "TYS",
@@ -3633,6 +4445,41 @@
     "elo_name": "Wolfsburg"
   },
   {
+    "abbr": "WOW",
+    "type": "PL",
+    "land": "PL",
+    "name": "Wolves",
+    "elo_name": "Wolves"
+  },
+  {
+    "abbr": "WRE",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Wrexham",
+    "elo_name": "Wrexham"
+  },
+  {
+    "abbr": "WÜK",
+    "type": "TYS",
+    "land": "TYS",
+    "name": "Würzburger Kickers",
+    "elo_name": "Würzburger Kickers"
+  },
+  {
+    "abbr": "WYC",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "Wycombe",
+    "elo_name": "Wycombe"
+  },
+  {
+    "abbr": "YOR",
+    "type": "ENG",
+    "land": "ENG",
+    "name": "York",
+    "elo_name": "York"
+  },
+  {
     "abbr": "YB",
     "type": "CL",
     "land": "SCH",
@@ -3645,6 +4492,13 @@
     "land": "LIT",
     "name": "Zalgiris",
     "elo_name": "Zalgiris Vilnius"
+  },
+  {
+    "abbr": "ZAM",
+    "type": "SPA",
+    "land": "SPA",
+    "name": "Zamora",
+    "elo_name": "Zamora"
   },
   {
     "abbr": "ZES",
@@ -3666,817 +4520,5 @@
     "land": "SCH",
     "name": "Zürich",
     "elo_name": "Zuerich"
-  },
-  {
-    "abbr": "OST",
-    "type": "SVE",
-    "land": "SVE",
-    "name": "Östersunds",
-    "elo_name": "Östersunds"
-  },
-  {
-    "abbr": "ØST",
-    "type": "INT",
-    "land": "INT",
-    "name": "Østrig",
-    "elo_name": "Austria"
-  },
-  {
-    "abbr": "AAB",
-    "type": "DAN",
-    "land": "DAN",
-    "name": "AaB",
-    "elo_name": "Aalborg"
-  },
-  {
-    "abbr": "AAB",
-    "type": "SL",
-    "land": "DAN",
-    "name": "AaB",
-    "elo_name": "AaB"
-  },
-  {
-    "abbr": "AAF",
-    "type": "DAN",
-    "land": "DAN",
-    "name": "Aarhus Fremad",
-    "elo_name": "Aarhus Fremad"
-  },
-  {
-    "abbr": "QPR",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "QPR",
-    "elo_name": "QPR"
-  },
-  {
-    "abbr": "PLY",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Plymouth",
-    "elo_name": "Plymouth"
-  },
-  {
-    "abbr": "PRM",
-    "type": "ITA",
-    "land": "ITA",
-    "name": "Parma",
-    "elo_name": "Parma"
-  },
-  {
-    "abbr": "PAL",
-    "type": "ITA",
-    "land": "ITA",
-    "name": "Palermo",
-    "elo_name": "Palermo"
-  },
-  {
-    "abbr": "RØD",
-    "type": "CL",
-    "land": "SRB",
-    "name": "Røde Stjerne",
-    "elo_name": "Crvena Zvezda"
-  },
-  {
-    "abbr": "MAC",
-    "type": "EL",
-    "land": "ISR",
-    "name": "Maccabi Tel Aviv",
-    "elo_name": "M Tel Aviv"
-  },
-  {
-    "abbr": "JAG",
-    "type": "ECL",
-    "land": "POL",
-    "name": "Jagiellonia",
-    "elo_name": "Jagiellonia"
-  },
-  {
-    "abbr": "IPS",
-    "type": "PL",
-    "land": "PL",
-    "name": "Ipswich",
-    "elo_name": "Ipswich"
-  },
-  {
-    "abbr": "ISB",
-    "type": "TYR",
-    "land": "TYR",
-    "name": "Basaksehir",
-    "elo_name": "Bueyueksehir"
-  },
-  {
-    "abbr": "DLC",
-    "type": "SPA",
-    "land": "SPA",
-    "name": "Deportivo La Coruna",
-    "elo_name": "Depor"
-  },
-  {
-    "abbr": "HOB",
-    "type": "DAN",
-    "land": "DAN",
-    "name": "Hobro",
-    "elo_name": "Hobro"
-  },
-  {
-    "abbr": "HIL",
-    "type": "DAN",
-    "land": "DAN",
-    "name": "Hillerød",
-    "elo_name": "Hillerød"
-  },
-  {
-    "abbr": "MIN",
-    "type": "ECL",
-    "land": "BLR",
-    "name": "Dinamo Minsk",
-    "elo_name": "Dinamo Minsk"
-  },
-  {
-    "abbr": "HEA",
-    "type": "ECL",
-    "land": "SKO",
-    "name": "Hearts",
-    "elo_name": "Hearts"
-  },
-  {
-    "abbr": "RAW",
-    "type": "ECL",
-    "land": "ØST",
-    "name": "Rapid Wien",
-    "elo_name": "Rapid Wien"
-  },
-  {
-    "abbr": "MLA",
-    "type": "ECL",
-    "land": "TJE",
-    "name": "Mlada Boleslav",
-    "elo_name": "Mlada Boleslav"
-  },
-  {
-    "abbr": "WOW",
-    "type": "PL",
-    "land": "PL",
-    "name": "Wolves",
-    "elo_name": "Wolves"
-  },
-  {
-    "abbr": "CMO",
-    "type": "ITA",
-    "land": "ITA",
-    "name": "Como",
-    "elo_name": "Como"
-  },
-  {
-    "abbr": "RTH",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Rotherham",
-    "elo_name": "Rotherham"
-  },
-  {
-    "abbr": "WYC",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Wycombe",
-    "elo_name": "Wycombe"
-  },
-  {
-    "abbr": "RÖD",
-    "type": "TYS",
-    "land": "TYS",
-    "name": "Rödinghausen",
-    "elo_name": "Rödinghausen"
-  },
-  {
-    "abbr": "FKÖ",
-    "type": "TYS",
-    "land": "TYS",
-    "name": "Fortuna Köln",
-    "elo_name": "Fortuna Köln"
-  },
-  {
-    "abbr": "LEY",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Leyton Orient",
-    "elo_name": "Leyton Orient"
-  },
-  {
-    "abbr": "STV",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Stevenage",
-    "elo_name": "Stevenage"
-  },
-  {
-    "abbr": "SKI",
-    "type": "DAN",
-    "land": "DAN",
-    "name": "Skive",
-    "elo_name": "Skive"
-  },
-  {
-    "abbr": "HAN",
-    "type": "TYS",
-    "land": "TYS",
-    "name": "Hannover",
-    "elo_name": "Hannover"
-  },
-  {
-    "abbr": "MAG",
-    "type": "TYS",
-    "land": "TYS",
-    "name": "Magdeburg",
-    "elo_name": "Magdeburg"
-  },
-  {
-    "abbr": "LGA",
-    "type": "SPA",
-    "land": "SPA",
-    "name": "Leganes",
-    "elo_name": "Leganes"
-  },
-  {
-    "abbr": "WIM",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Wimbledon",
-    "elo_name": "Wimbledon"
-  },
-  {
-    "abbr": "WLS",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Walsall",
-    "elo_name": "Walsall"
-  },
-  {
-    "abbr": "ELV",
-    "type": "TYS",
-    "land": "TYS",
-    "name": "Elversberg",
-    "elo_name": "Elversberg"
-  },
-  {
-    "abbr": "MDD",
-    "type": "DAN",
-    "land": "DAN",
-    "name": "Middelfart",
-    "elo_name": "Middelfart"
-  },
-  {
-    "abbr": "FR",
-    "type": "ISL",
-    "land": "ISL",
-    "name": "Fram",
-    "elo_name": "Fram"
-  },
-  {
-    "abbr": "VLU",
-    "type": "ISL",
-    "land": "ISL",
-    "name": "Valur",
-    "elo_name": "Valur"
-  },
-  {
-    "abbr": "KRL",
-    "type": "SVE",
-    "land": "SVE",
-    "name": "Karlstad",
-    "elo_name": "Karlstad"
-  },
-  {
-    "abbr": "ÖRE",
-    "type": "SVE",
-    "land": "SVE",
-    "name": "Örebro Syrianska",
-    "elo_name": "Örebro Syrianska"
-  },
-  {
-    "abbr": "IMI",
-    "type": "USA",
-    "land": "USA",
-    "name": "Inter Miami",
-    "elo_name": "Inter Miami"
-  },
-  {
-    "abbr": "FLA",
-    "type": "BRA",
-    "land": "Bra",
-    "name": "Flamengo",
-    "elo_name": "Flamengo"
-  },
-  {
-    "abbr": "PLM",
-    "type": "BRA",
-    "land": "Bra",
-    "name": "Palmeiras",
-    "elo_name": "Palmeiras"
-  },
-  {
-    "abbr": "AAH",
-    "type": "SAU",
-    "land": "SAU",
-    "name": "Al Ahly",
-    "elo_name": "Al Ahly"
-  },
-  {
-    "abbr": "ALH",
-    "type": "SAU",
-    "land": "SAU",
-    "name": "Al Hilal",
-    "elo_name": "Al Hilal"
-  },
-  {
-    "abbr": "DKU",
-    "type": "INT",
-    "land": "INT",
-    "name": "Danmark - U21",
-    "elo_name": "Danmark - U21"
-  },
-  {
-    "abbr": "SEA",
-    "type": "USA",
-    "land": "USA",
-    "name": "Seattle Sounders",
-    "elo_name": "Seattle Sounders"
-  },
-  {
-    "abbr": "AUC",
-    "type": "NZ",
-    "land": "NZ",
-    "name": "Auckland City",
-    "elo_name": "Auckland City"
-  },
-  {
-    "abbr": "BTF",
-    "type": "BRA",
-    "land": "BRA",
-    "name": "Botafogo",
-    "elo_name": "Botafogo"
-  },
-  {
-    "abbr": "SMP",
-    "type": "ITA",
-    "land": "ITA",
-    "name": "Sampdoria",
-    "elo_name": "Sampdoria"
-  },
-  {
-    "abbr": "JAR",
-    "type": "FIN",
-    "land": "FIN",
-    "name": "Jaro",
-    "elo_name": "Jaro"
-  },
-  {
-    "abbr": "AFT",
-    "type": "ISL",
-    "land": "ISL",
-    "name": "Afturelding",
-    "elo_name": "Afturelding"
-  },
-  {
-    "abbr": "TSU",
-    "type": "INT",
-    "land": "INT",
-    "name": "Tyskland - U21",
-    "elo_name": "Tyskland - U21"
-  },
-  {
-    "abbr": "SND",
-    "type": "NOR",
-    "land": "NOR",
-    "name": "Sandefjord",
-    "elo_name": "Sandefjord"
-  },
-  {
-    "abbr": "KAA",
-    "type": "KAZ",
-    "land": "KAZ",
-    "name": "Kairat Almaty",
-    "elo_name": "Kairat Almaty"
-  },
-  {
-    "abbr": "LRN",
-    "type": "CYP",
-    "land": "CYP",
-    "name": "Larnaca",
-    "elo_name": "Larnaca"
-  },
-  {
-    "abbr": "I99",
-    "type": "GEO",
-    "land": "GEO",
-    "name": "Iberia 1999",
-    "elo_name": "Iberia 1999"
-  },
-  {
-    "abbr": "PAI",
-    "type": "GRÆ",
-    "land": "GRÆ",
-    "name": "Panathinaikos",
-    "elo_name": "Panathinaikos"
-  },
-  {
-    "abbr": "RBZ",
-    "type": "ØST",
-    "land": "ØST",
-    "name": "RB Salzburg",
-    "elo_name": "Salzburg"
-  },
-  {
-    "abbr": "HIB",
-    "type": "SKO",
-    "land": "SKO",
-    "name": "Hibernian",
-    "elo_name": "Hibernian"
-  },
-  {
-    "abbr": "FRS",
-    "type": "NOR",
-    "land": "NOR",
-    "name": "Fredrikstad",
-    "elo_name": "Fredrikstad"
-  },
-  {
-    "abbr": "AKR",
-    "type": "ISL",
-    "land": "ISL",
-    "name": "Akranes",
-    "elo_name": "Akranes"
-  },
-  {
-    "abbr": "KR",
-    "type": "ISL",
-    "land": "ISL",
-    "name": "KR",
-    "elo_name": "KR"
-  },
-  {
-    "abbr": "SJK",
-    "type": "FIN",
-    "land": "FIN",
-    "name": "SJK",
-    "elo_name": "SJK"
-  },
-  {
-    "abbr": "NÜR",
-    "type": "TYS",
-    "land": "TYS",
-    "name": "Nürnberg",
-    "elo_name": "Nuernberg"
-  },
-  {
-    "abbr": "WRE",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Wrexham",
-    "elo_name": "Wrexham"
-  },
-  {
-    "abbr": "VKU",
-    "type": "ISL",
-    "land": "ISL",
-    "name": "Vikingur",
-    "elo_name": "Vikingur"
-  },
-  {
-    "abbr": "RCS",
-    "type": "FRA",
-    "land": "FRA",
-    "name": "Strasbourg",
-    "elo_name": "Strasbourg"
-  },
-  {
-    "abbr": "PIS",
-    "type": "ITA",
-    "land": "ITA",
-    "name": "Pisa",
-    "elo_name": "Pisa"
-  },
-  {
-    "abbr": "BRC",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Brackley Town",
-    "elo_name": "Brackley Town"
-  },
-  {
-    "abbr": "VEJ",
-    "type": "DAN",
-    "land": "DAN",
-    "name": "Vejgaard",
-    "elo_name": "Vejgaard"
-  },
-  {
-    "abbr": "MLG",
-    "type": "SPA",
-    "land": "SPA",
-    "name": "Malaga",
-    "elo_name": "Malaga"
-  },
-  {
-    "abbr": "QAR",
-    "type": "AZE",
-    "land": "AZR",
-    "name": "Qarabag",
-    "elo_name": "Karabakh Agdam"
-  },
-  {
-    "abbr": "SCU",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Scunthorpe",
-    "elo_name": "Scunthorpe"
-  },
-  {
-    "abbr": "MOR",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Morecambe",
-    "elo_name": "Morecambe"
-  },
-  {
-    "abbr": "IND",
-    "type": "INT",
-    "land": "INT",
-    "name": "Indonesien",
-    "elo_name": "Indonesia"
-  },
-  {
-    "abbr": "BLR",
-    "type": "INT",
-    "land": "INT",
-    "name": "Belarus",
-    "elo_name": "Belarus"
-  },
-  {
-    "abbr": "KSA",
-    "type": "INT",
-    "land": "INT",
-    "name": "Saudi-Arabien",
-    "elo_name": "Saudi-Arabia"
-  },
-  {
-    "abbr": "HUD",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Huddersfield",
-    "elo_name": "Huddersfield"
-  },
-  {
-    "abbr": "LUC",
-    "type": "SVE",
-    "land": "SVE",
-    "name": "Lucksta",
-    "elo_name": "Lucksta"
-  },
-  {
-    "abbr": "FRV",
-    "type": "SVE",
-    "land": "SVE",
-    "name": "Friska Viljor",
-    "elo_name": "Friska Viljor"
-  },
-  {
-    "abbr": "KOS",
-    "type": "INT",
-    "land": "INT",
-    "name": "Kosovo",
-    "elo_name": "Kosovo"
-  },
-  {
-    "abbr": "BIE",
-    "type": "TYS",
-    "land": "TYS",
-    "name": "Arminia Bielefeld",
-    "elo_name": "Bielefeld"
-  },
-  {
-    "abbr": "YOR",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "York",
-    "elo_name": "York"
-  },
-  {
-    "abbr": "ROC",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Rochdale",
-    "elo_name": "Rochdale"
-  },
-  {
-    "abbr": "ZAM",
-    "type": "SPA",
-    "land": "SPA",
-    "name": "Zamora",
-    "elo_name": "Zamora"
-  },
-  {
-    "abbr": "OUR",
-    "type": "SPA",
-    "land": "SPA",
-    "name": "Ourense",
-    "elo_name": "Ourense"
-  },
-  {
-    "abbr": "NIG",
-    "type": "INT",
-    "land": "INT",
-    "name": "Nigeria",
-    "elo_name": "Nigeria"
-  },
-  {
-    "abbr": "DRC",
-    "type": "INT",
-    "land": "INT",
-    "name": "DR Congo",
-    "elo_name": "Dem. Rep. of Congo"
-  },
-  {
-    "abbr": "IRK",
-    "type": "INT",
-    "land": "INT",
-    "name": "Irak",
-    "elo_name": "Iraq"
-  },
-  {
-    "abbr": "UAE",
-    "type": "INT",
-    "land": "INT",
-    "name": "UAE",
-    "elo_name": "United Arab Emirates"
-  },
-  {
-    "abbr": "JAM",
-    "type": "INT",
-    "land": "INT",
-    "name": "Jamaica",
-    "elo_name": "Jamaica"
-  },
-  {
-    "abbr": "CUR",
-    "type": "INT",
-    "land": "INT",
-    "name": "Curacao",
-    "elo_name": "Curaçao"
-  },
-  {
-    "abbr": "NMA",
-    "type": "INT",
-    "land": "INT",
-    "name": "Nordmakedonien",
-    "elo_name": "North Macedonia"
-  },
-  {
-    "abbr": "LAU",
-    "type": "SUI",
-    "land": "SUI",
-    "name": "Lausanne",
-    "elo_name": "Lausanne"
-  },
-  {
-    "abbr": "ELC",
-    "type": "SPA",
-    "land": "SPA",
-    "name": "Elche",
-    "elo_name": "Elche"
-  },
-  {
-    "abbr": "CST",
-    "type": "SPA",
-    "land": "SPA",
-    "name": "Castellon",
-    "elo_name": "Castellon"
-  },
-  {
-    "abbr": "CLE",
-    "type": "SPA",
-    "land": "SPA",
-    "name": "Cultural Leonesa",
-    "elo_name": "Cultural Leonesa"
-  },
-  {
-    "abbr": "EMM",
-    "type": "HOL",
-    "land": "HOL",
-    "name": "Embuur",
-    "elo_name": "Embuur"
-  },
-  {
-    "abbr": "CUU",
-    "type": "HOL",
-    "land": "HOL",
-    "name": "Cambuur",
-    "elo_name": "Cambuur"
-  },
-  {
-    "abbr": "WIG",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Wigan",
-    "elo_name": "Wigan"
-  },
-  {
-    "abbr": "PER",
-    "type": "INT",
-    "land": "INT",
-    "name": "Peru",
-    "elo_name": "Peru"
-  },
-  {
-    "abbr": "BLI",
-    "type": "INT",
-    "land": "INT",
-    "name": "Bolivia",
-    "elo_name": "Bolivia"
-  },
-  {
-    "abbr": "HØR",
-    "type": "DAN",
-    "land": "DAN",
-    "name": "Hørsholm",
-    "elo_name": "Hørsholm"
-  },
-  {
-    "abbr": "BRØ",
-    "type": "DAN",
-    "land": "DAN",
-    "name": "Brønshøj",
-    "elo_name": "Brønshøj"
-  },
-  {
-    "abbr": "CHL",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "Chelmsford",
-    "elo_name": "Chelmsford"
-  },
-  {
-    "abbr": "ATO",
-    "type": "ENG",
-    "land": "ENG",
-    "name": "AFC Totton",
-    "elo_name": "AFC Totton"
-  },
-  {
-    "abbr": "STB",
-    "type": "FRA",
-    "land": "FRA",
-    "name": "Strasbourg",
-    "elo_name": "Strasbourg"
-  },
-  {
-    "abbr": "MJÄ",
-    "type": "SWE",
-    "land": "SWE",
-    "name": "Mjällby",
-    "elo_name": "Mjällby"
-  },
-  {
-    "abbr": "ÖRG",
-    "type": "SWE",
-    "land": "SWE",
-    "name": "Ôrgryte",
-    "elo_name": "Ôrgryte"
-  },
-  {
-    "abbr": "LEI",
-    "type": "TYS",
-    "land": "TYS",
-    "name": "Lokomotive Leipizig",
-    "elo_name": "Lokomotive Leipizig"
-  },
-  {
-    "abbr": "RWE",
-    "type": "TYS",
-    "land": "TYS",
-    "name": "RW Essen",
-    "elo_name": "RW Essen"
-  },
-  {
-    "abbr": "WÜK",
-    "type": "TYS",
-    "land": "TYS",
-    "name": "Würzburger Kickers",
-    "elo_name": "Würzburger Kickers"
-  },
-  {
-    "abbr": "LAH",
-    "type": "SWE",
-    "land": "SWE",
-    "name": "Laholm",
-    "elo_name": "Laholm"
-  },
-  {
-    "abbr": "HÄS",
-    "type": "SWE",
-    "land": "SWE",
-    "name": "Hässleholm",
-    "elo_name": "Hässleholm"
   }
 ]
