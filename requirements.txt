@@ -1,3 +1,6 @@
-pandas
+pandas>=1.5,<3.0
 numpy
 requests
+rapidfuzz
+unidecode
+openpyxl
