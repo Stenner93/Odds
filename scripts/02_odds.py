@@ -394,10 +394,13 @@ if os.path.exists(ODDS_CSV) and not FORCE_REFRESH_ODDS:
     _df_ex = pd.read_csv(ODDS_CSV)
     _df_ex = _df_ex[(_df_ex['season'] == CURRENT_SEASON) & (_df_ex['round'] == CURRENT_ROUND)]
     for _, _r in _df_ex.iterrows():
-        if pd.notna(_r.get('odds_1')) and pd.notna(_r.get('odds_x')) and pd.notna(_r.get('odds_2')):
+        has_odds    = pd.notna(_r.get('odds_1')) and pd.notna(_r.get('odds_x')) and pd.notna(_r.get('odds_2'))
+        has_ranking = pd.notna(_r.get('elo_home')) or pd.notna(_r.get('opta_home'))
+        is_national = str(_r.get('league', '')) == 'Landskamp'
+        if has_odds and (has_ranking or is_national):
             _odds_ok.add(_r['match_code'])
 if _odds_ok:
-    print(f'  (springer {len(_odds_ok)} kamp(e) over — odds OK)')
+    print(f'  (springer {len(_odds_ok)} kamp(e) over — odds+ranking OK)')
 
 rows = []
 for _, m in df_rnd.iterrows():
