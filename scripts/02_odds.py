@@ -142,6 +142,42 @@ TEAM_ALIASES = {
     'Norge':              ['Norge','Norway','NOR'],
     'Schweiz':            ['Schweiz','Switzerland','SUI'],
     'Østrig':             ['Østrig','Austria','AUT'],
+    # VM-hold (daniserede navne)
+    'Kroatien':           ['Kroatien','Croatia','CRO'],
+    'Ghana':              ['Ghana','GHA'],
+    'Panama':             ['Panama','PAN'],
+    'Colombia':           ['Colombia','COL'],
+    'Algeriet':           ['Algeriet','Algeria','ALG','Algeria'],
+    'Brasilien':          ['Brasilien','Brazil','BRA','Brasil'],
+    'Japan':              ['Japan','JPN'],
+    'Sydafrika':          ['Sydafrika','South Africa','RSA'],
+    'Canada':             ['Canada','CAN'],
+    'Senegal':            ['Senegal','SEN'],
+    'Tunesien':           ['Tunesien','Tunisia','TUN'],
+    'Egypten':            ['Egypten','Egypt','EGY'],
+    'Iran':               ['Iran','IRN'],
+    'Australien':         ['Australien','Australia','AUS'],
+    'Marokko':            ['Marokko','Morocco','MAR'],
+    'Cameroun':           ['Cameroun','Cameroon','CMR'],
+    'Elfenbenskysten':    ['Elfenbenskysten','Ivory Coast','Côte d\'Ivoire','CIV'],
+    'USA':                ['USA','United States','United States of America','USMNT'],
+    'Mexico':             ['Mexico','MEX'],
+    'Ecuador':            ['Ecuador','ECU'],
+    'Qatar':              ['Qatar','Katar','QAT'],
+    'Saudi-Arabien':      ['Saudi-Arabien','Saudi Arabia','KSA','KSA'],
+    'Bosnien':            ['Bosnien','Bosnia and Herzegovina','Bosnia','BIH'],
+    'Uzbekistan':         ['Uzbekistan','UZB'],
+    'Argentina':          ['Argentina','ARG'],
+    'Østrig':             ['Østrig','Austria','AUT'],
+    # Nordiske klub-hold (Superettan, Veikkausliiga, OBOS-ligaen, Meistriliiga)
+    'Varbergs BOIS':      ['Varbergs BOIS','Varberg','Varbergs BoIS'],
+    'Östers IF':          ['Östers IF','Osters IF','Öster'],
+    'HJK Helsinki':       ['HJK Helsinki','HJK','Helsingin Jalkapalloklubi'],
+    'KuPS':               ['KuPS','Kuopion Palloseura','FC KuPS'],
+    'Strømsgodset':       ['Strømsgodset','Stroemsgodset','IK Strømsgodset','Strøm'],
+    'Odds BK':            ['Odds BK','Odds','SK Odd'],
+    'Levadia Tallinn':    ['Levadia Tallinn','FCI Levadia','Levadia'],
+    'Flora Tallinn':      ['Flora Tallinn','FC Flora','Flora'],
 }
 
 _V2C = {}
@@ -193,6 +229,11 @@ LEAGUE_ODDS_KEY = {
     'Coupe de France':   'soccer_france_coupe_de_france',
     'VM':                'soccer_fifa_world_cup',
     'Landskamp':         'soccer_fifa_world_cup',
+    'Superettan':        'soccer_sweden_superettan',
+    'Allsvenskan':       'soccer_sweden_allsvenskan',
+    'Eliteserien':       'soccer_norway_eliteserien',
+    'OBOS-ligaen':       'soccer_norway_tippeligaen_second',
+    'Veikkausliiga':     'soccer_finland_veikkausliiga',
 }
 
 LEAGUE_DISPLAY = {
@@ -210,6 +251,9 @@ LEAGUE_DISPLAY = {
     'Nations League': 'Nations League', 'Allsvenskan': 'Allsvenskan',
     'Coupe de France': 'Coupe de France', 'Serie B': 'Serie B',
     '1. division': '1. division', 'Landskamp': 'Landskamp',
+    'Superettan': 'Superettan', 'Veikkausliiga': 'Veikkausliiga',
+    'OBOS-ligaen': 'OBOS-ligaen', 'Meistriliiga': 'Meistriliiga',
+    'Eliteserien': 'Eliteserien',
 }
 
 def resolve_league(raw):

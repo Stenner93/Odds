@@ -131,6 +131,9 @@ _LEAGUE_NORM = {
     'fa cup': 'FA Cup', 'copa del rey': 'Copa del Rey',
     'dbu pokalen': 'DBU Pokalen', 'dbu pokal': 'DBU Pokalen',
     'efl cup': 'EFL Cup', 'championship': 'Championship',
+    'superettan': 'Superettan', 'allsvenskan': 'Allsvenskan',
+    'veikkausliiga': 'Veikkausliiga', 'obos': 'OBOS-ligaen',
+    'meistriliiga': 'Meistriliiga', 'eliteserien': 'Eliteserien',
 }
 
 def _norm_league(raw):
@@ -170,8 +173,12 @@ def parse_matches(text):
                 if not re.match(r'^\d+\.?\s+runde', line, re.I):
                     m = re.match(r'^(.+?)\s+-\s+(.+)$', line)
                     if m and home_raw is None:
-                        home_raw = m.group(1).strip()
-                        away_raw = m.group(2).strip()
+                        away_candidate = m.group(2).strip()
+                        # Skip tournament-stage descriptors like "VM - 16. delsfinale"
+                        # (team names never start with a digit)
+                        if not re.match(r'^\d', away_candidate):
+                            home_raw = m.group(1).strip()
+                            away_raw = away_candidate
                     continue
             if league_raw is None and not _is_date(line):
                 league_raw = line.split(',')[0].strip()
