@@ -1,19 +1,19 @@
-16. runde		HOL-SVE	ALM-MAL	BEL-IRN	ARG-ØST	POR-UZB	ENG-GHA	BOS-QAT	SCH-CAN	ECU-TYS	NOR-FRA
-1	Inga Wamsler	1	9	1	1	1	1	1	9	2	2
-1	Dennis Sveistrup	1	9	1	1	1	1	1	1	2	2
-1	Nicolai Frederiksen	1	9	1	1	1	1	1	1	2	2
-0	Benjamin Jakobsen	9	1	1	1	9	1	2	9	2	2
-1	Rasmus Jensen	1	1	1	1	1	1	1	9	2	2
-0	Tanja Wamsler	9	9	1	1	1	1	1	9	2	9
-1	Ricky Frederiksen	1	1	9	1	1	1	1	9	2	2
-1	Søren Jakobsen	1	1	1	1	1	1	1	9	2	2
-1	Kasper Noer	1	1	1	1	1	1	1	2	2	2
-0	Jørgen Frederiksen	9	9	1	1	1	1	9	9	2	1
+17. runde		VAR-ÖST	HJK-KuPS	STR-ODD	KRO-GHA	PAN-ENG	COL-POR	ALG-ØST	LEV-FLO	SAF-CAN	BRA-JAP
+4	Jørgen Frederiksen	9	9	9	9	2	9	9	9	1	1
+3	Noah Wamsler	1	1	1	1	2	2	2	1	2	1
+3	Søren Jakobsen	1	1	1	1	2	2	2	1	2	1
+4	Rasmus Jensen	1	9	1	9	2	9	9	1	2	9
+4	Ole Albrechtsen	1	9	1	1	2	2	9	1	2	1
+3	Kasper Noer	1	1	1	1	2	2	2	1	2	1
+4	Dennis Sveistrup	1	9	1	1	2	2	9	1	2	1
+3	Nicolai Frederiksen	9	9	1	1	2	2	9	1	9	1
+1	Benjamin Jakobsen	9	1	1	1	9	1	2	9	2	2
+3	Ricky Frederiksen	1	1	1	9	2	9	2	1	2	1
+4	Curt Christensen	1	1	1	1	2	9	2	2	2	1
 0	Ualmindeligt inaktiv	0	0	0	0	0	0	0	0	0	0
-1	Lars Huus	1	1	1	1	1	1	1	9	2	9
-0	Morten Wamsler	9	1	1	1	1	1	1	1	2	9
-0	Ole Albrechtsen	9	9	1	1	1	1	1	1	2	2
-1	Noah Wamsler	1	1	1	1	1	1	1	1	2	2
-0	Curt Christensen	2	1	1	1	1	1	1	9	2	9
-1	Anders Stenner	1	9	1	1	1	1	1	1	2	2
-0	Kasper Søndergaard	9	1	1	1	1	1	9	9	2	2
+4	Tanja Wamsler	1	9	1	9	2	9	9	1	2	1
+4	Morten Wamsler	1	9	1	1	2	9	2	1	2	1
+4	Kasper Søndergaard	1	9	1	1	2	9	2	1	2	1
+3	Inga Wamsler	1	1	1	9	2	2	9	1	2	1
+3	Lars Huus	1	9	1	1	2	2	2	1	2	1
+4	Anders Stenner	1	1	1	1	2	2	9	1	2	1
