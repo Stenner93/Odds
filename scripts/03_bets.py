@@ -16,7 +16,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from config import (
-    CURRENT_SEASON, DATA_DIR, MATCHES_CSV, PREDICTIONS_CSV,
+    CURRENT_SEASON, DATA_DIR, MATCHES_CSV, PREDICTIONS_CSV, H2H_CSV,
     _norm_bet, csv_upsert
 )
 
@@ -117,3 +117,44 @@ csv_upsert(
 )
 
 print(f'\n✅ {len(players_seen)} spillere, {len(rows)} gæt gemt → S{CURRENT_SEASON}R{round_num}')
+
+# ── Dan H2H-parringer fra gæt-rækkefølgen ─────────────────────────────────
+# Parringerne er fortløbende par i den rækkefølge spillerne står i input:
+# spiller 1 vs 2, 3 vs 4, osv. (samme regel som den oprindelige notebook).
+# Point/correct beregnes senere af 05_standings.py når resultaterne kendes.
+H2H_COLS = ['season', 'round', 'player_a', 'player_b',
+            'correct_a', 'correct_b', 'h2h_pts_a', 'h2h_pts_b', 'outcome_a']
+
+new_pairs = [
+    {'season': CURRENT_SEASON, 'round': round_num,
+     'player_a': players_seen[i], 'player_b': players_seen[i + 1],
+     'correct_a': None, 'correct_b': None,
+     'h2h_pts_a': None, 'h2h_pts_b': None, 'outcome_a': None}
+    for i in range(0, len(players_seen) - 1, 2)
+]
+
+if os.path.exists(H2H_CSV):
+    df_h2h = pd.read_csv(H2H_CSV)
+    df_h2h['season'] = df_h2h['season'].astype(int)
+    df_h2h['round']  = df_h2h['round'].astype(int)
+else:
+    df_h2h = pd.DataFrame(columns=H2H_COLS)
+
+mask_rnd = (df_h2h['season'] == CURRENT_SEASON) & (df_h2h['round'] == round_num)
+existing = df_h2h[mask_rnd]
+
+# Er runden allerede scoret? (mindst én parring har h2h-point)
+already_scored = (not existing.empty) and existing['h2h_pts_a'].notna().any()
+
+if already_scored:
+    print(f'ℹ H2H: runde {round_num} har allerede point — parringer røres ikke')
+else:
+    # Opret eller genskab parringer (overskriver kun u-scorede parringer)
+    df_h2h = df_h2h[~mask_rnd]
+    df_h2h = pd.concat([df_h2h, pd.DataFrame(new_pairs)], ignore_index=True)
+    df_h2h = df_h2h[H2H_COLS]
+    df_h2h.to_csv(H2H_CSV, index=False)
+    verb = 'opdateret' if not existing.empty else 'oprettet'
+    print(f'✅ H2H: {len(new_pairs)} parringer {verb} for runde {round_num}')
+    for p in new_pairs:
+        print(f'   {p["player_a"]}  vs  {p["player_b"]}')
