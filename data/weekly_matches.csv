@@ -1705,12 +1705,12 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,16,8,SWI-CAN,2026-06-24,21:00,Landskamp,Landskamp,Schweiz,Canada,,,,,1
 4,16,9,ECU-TYS,2026-06-25,22:00,Landskamp,Landskamp,Ecuador,Tyskland,,,,,1
 4,16,10,NOR-FRK,2026-06-26,21:00,Landskamp,Landskamp,Norge,Frankrig,,,,,2
-4,17,1,BOI-ÖST,2026-06-27,15:00,Superettan,Superettan,Varbergs BOIS,Östers IF,,,,,
+4,17,1,BOI-ÖST,2026-06-27,15:00,Superettan,Superettan,Varbergs BOIS,Östers IF,,,,,1
 4,17,2,HJK-KUP,2026-06-27,16:00,Veikkausliiga,Veikkausliiga,HJK Helsinki,KuPS,,,,,2
-4,17,3,STR-ODD,2026-06-27,18:00,OBOS-ligaen,OBOS-ligaen,Strømsgodset,Odds BK,,,,,
+4,17,3,STR-ODD,2026-06-27,18:00,OBOS-ligaen,OBOS-ligaen,Strømsgodset,Odds BK,,,,,X
 4,17,4,KRO-GHA,2026-06-27,23:00,Landskamp,Landskamp,Kroatien,Ghana,,,,,1
 4,17,5,PAN-ENG,2026-06-27,23:00,Landskamp,Landskamp,Panama,England,,,,,2
-4,17,6,CMB-POR,2026-06-28,01:30,Landskamp,Landskamp,Colombia,Portugal,,,,,
+4,17,6,CMB-POR,2026-06-28,01:30,Landskamp,Landskamp,Colombia,Portugal,,,,,X
 4,17,7,ALG-ØST,2026-06-28,04:00,Landskamp,Landskamp,Algeriet,Østrig,,,,,X
 4,17,8,LTA-FLO,2026-06-28,18:00,Meistriliiga,Meistriliiga,Levadia Tallinn,Flora Tallinn,,,,,
 4,17,9,SYD-CAN,2026-06-28,21:00,Landskamp,Landskamp,Sydafrika,Canada,,,,,
