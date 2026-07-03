@@ -490,6 +490,13 @@
     "elo_name": "Birmingham"
   },
   {
+    "abbr": "BIS",
+    "type": "INT",
+    "land": "INT",
+    "name": "Bissen",
+    "elo_name": "Bissen"
+  },
+  {
     "abbr": "BLP",
     "type": "ENG",
     "land": "ENG",
@@ -1722,6 +1729,13 @@
     "elo_name": "Guimaraes"
   },
   {
+    "abbr": "GYO",
+    "type": "INT",
+    "land": "INT",
+    "name": "Györ",
+    "elo_name": "Gyor"
+  },
+  {
     "abbr": "HÄC",
     "type": "CL",
     "land": "SVE",
@@ -2602,6 +2616,13 @@
     "land": "SLO",
     "name": "Maribor",
     "elo_name": "Maribor"
+  },
+  {
+    "abbr": "MA1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Marokko",
+    "elo_name": "Morocco"
   },
   {
     "abbr": "MXK",
@@ -3941,6 +3962,13 @@
     "elo_name": "Super Nova"
   },
   {
+    "abbr": "SUT",
+    "type": "INT",
+    "land": "INT",
+    "name": "Sutjeska",
+    "elo_name": "Sutjeska"
+  },
+  {
     "abbr": "SVE",
     "type": "INT",
     "land": "INT",
@@ -4317,6 +4345,13 @@
     "land": "ISL",
     "name": "Vikingur",
     "elo_name": "Vikingur"
+  },
+  {
+    "abbr": "VIR",
+    "type": "INT",
+    "land": "INT",
+    "name": "Vikingur Reykjavik",
+    "elo_name": "Vikingur Reykjavik"
   },
   {
     "abbr": "VIL",
