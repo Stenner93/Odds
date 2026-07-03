@@ -28,6 +28,7 @@ CURRENT_ROUND      = get_current_round()
 FORCE_REFRESH_ODDS = False
 FORCE_REFRESH_BZZ  = True
 FORCE_REFRESH_N20  = False
+FORCE_REFRESH_NATIONAL_ELO = False   # landshold-ELO opdateres ellers når cache > 7 dage
 
 print(f'Odds-pipeline: sæson {CURRENT_SEASON}, runde {CURRENT_ROUND}')
 
@@ -273,12 +274,72 @@ def resolve_league(raw):
 print('Henter club rankings...')
 opta_df = elo_df = nat_elo_df = pd.DataFrame()
 
-# Landsholds-ELO (World Football Elo) — ClubElo dækker kun klubhold,
-# så landskampe (VM, Nations League, venskabskampe) bruger denne kilde.
+# ── Landsholds-ELO (World Football Elo) ───────────────────────────────────
+# ClubElo dækker kun klubhold; landskampe (VM, Nations League, venskabskampe)
+# bruger denne kilde. Opdateres automatisk fra international-football.net når
+# den cachede fil er ældre end 7 dage (styres af FORCE_REFRESH_NATIONAL_ELO).
+_NAT_ELO_PATH = os.path.join(DATA_DIR, 'national_elo.csv')
+
+def _national_elo_alder_dage():
+    """Dage siden national_elo.csv sidst blev hentet (None hvis mangler/ugyldig)."""
+    if not os.path.exists(_NAT_ELO_PATH):
+        return None
+    try:
+        _c = pd.read_csv(_NAT_ELO_PATH)
+        if 'fetched' in _c.columns and len(_c) > 100:
+            _last = pd.to_datetime(_c['fetched'].iloc[0]).date()
+            return (datetime.date.today() - _last).days
+    except Exception:
+        return None
+    return None
+
+def _hent_national_elo():
+    """Skraber ELO-tabel for alle landshold fra international-football.net."""
+    try:
+        from bs4 import BeautifulSoup
+    except ImportError:
+        print('  ⚠ National ELO: bs4 mangler — springer opdatering over')
+        return []
+    today = datetime.date.today()
+    url = (f'https://www.international-football.net/elo-ratings-table'
+           f'?year={today.year}&month={today.month:02d}&day={today.day:02d}')
+    hdrs = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
+            'Accept': 'text/html', 'Referer': 'https://www.google.com/'}
+    try:
+        r = requests.get(url, headers=hdrs, timeout=20)
+        r.raise_for_status()
+        soup = BeautifulSoup(r.text, 'html.parser')
+        teams = []
+        for t in soup.find_all('table')[1:]:
+            for row in t.find_all('tr'):
+                cells = [td.get_text(strip=True) for td in row.find_all(['td', 'th'])]
+                if len(cells) >= 4 and cells[0].rstrip('.').isdigit():
+                    try:
+                        teams.append({'rank': int(cells[0].rstrip('.')),
+                                      'name': cells[2], 'elo': int(cells[3]),
+                                      'fetched': today.strftime('%Y-%m-%d')})
+                    except (ValueError, IndexError):
+                        pass
+        return teams
+    except Exception as e:
+        print(f'  ⚠ National ELO fetch fejlede: {e}')
+        return []
+
+_nat_alder = _national_elo_alder_dage()
+if FORCE_REFRESH_NATIONAL_ELO or _nat_alder is None or _nat_alder > 7:
+    print('  🌐 Opdaterer landshold-ELO fra international-football.net...')
+    _nations = _hent_national_elo()
+    if len(_nations) > 100:
+        pd.DataFrame(_nations).to_csv(_NAT_ELO_PATH, index=False)
+        print(f'  ✅ Landshold-ELO: {len(_nations)} hold hentet og gemt')
+    else:
+        print(f'  ⚠ Kun {len(_nations)} hold hentet — beholder eksisterende fil')
+elif _nat_alder is not None:
+    print(f'  📋 Landshold-ELO cache {_nat_alder} dage gammel (frisk)')
+
 try:
-    _nat_path = os.path.join(DATA_DIR, 'national_elo.csv')
-    if os.path.exists(_nat_path):
-        nat_elo_df = pd.read_csv(_nat_path)
+    if os.path.exists(_NAT_ELO_PATH):
+        nat_elo_df = pd.read_csv(_NAT_ELO_PATH)
         nat_elo_df['_norm'] = nat_elo_df['name'].apply(_norm)
         print(f'  National ELO: {len(nat_elo_df)} landshold')
 except Exception as e:
