@@ -271,7 +271,19 @@ def resolve_league(raw):
 
 # ── Rankings (Opta + ClubElo) ─────────────────────────────────────────────
 print('Henter club rankings...')
-opta_df = elo_df = pd.DataFrame()
+opta_df = elo_df = nat_elo_df = pd.DataFrame()
+
+# Landsholds-ELO (World Football Elo) — ClubElo dækker kun klubhold,
+# så landskampe (VM, Nations League, venskabskampe) bruger denne kilde.
+try:
+    _nat_path = os.path.join(DATA_DIR, 'national_elo.csv')
+    if os.path.exists(_nat_path):
+        nat_elo_df = pd.read_csv(_nat_path)
+        nat_elo_df['_norm'] = nat_elo_df['name'].apply(_norm)
+        print(f'  National ELO: {len(nat_elo_df)} landshold')
+except Exception as e:
+    print(f'  ⚠ National ELO fejl: {e}')
+
 try:
     rel = requests.get(
         'https://api.github.com/repos/tonyelhabr/club-rankings/releases/latest',
@@ -304,6 +316,15 @@ def _rank(team, df, val_col, cutoff=88):
     m = process.extractOne(primary, df['_norm'].tolist(), scorer=fuzz.WRatio, score_cutoff=cutoff)
     if m: return df.loc[df['_norm'] == m[0], val_col].values[0]
     return None
+
+# Landskampe bruger landsholds-ELO; klubkampe bruger ClubElo (forskellige skalaer,
+# men begge hold i en kamp bruger samme kilde, så elo_diff forbliver konsistent).
+NATIONAL_LEAGUES = {'Landskamp', 'VM', 'Nations League'}
+
+def _elo_rank(team, league):
+    if league in NATIONAL_LEAGUES:
+        return _rank(team, nat_elo_df, 'elo')
+    return _rank(team, elo_df, 'Elo')
 
 # ── Odds API ──────────────────────────────────────────────────────────────
 _odds_cache = {}
@@ -417,12 +438,17 @@ for _, m in df_rnd.iterrows():
     print(f"  [{int(m['match_no']):2}] {home} vs {away}...", end=' ', flush=True)
     mc = m.get('match_code', '')
     if mc in _odds_ok:
-        # Tjek om ranking mangler — i så fald hentes ELO/Opta (ingen odds-API-kald)
+        # Tjek om ranking mangler — i så fald hentes ELO/Opta (ingen odds-API-kald).
+        # Landskampe kræver elo_home (national_elo backfilles indtil den er sat);
+        # klubkampe accepterer elo ELLER opta (ClubElo-dækning bliver ikke bedre af retry).
         _ex_r = _df_ex[_df_ex['match_code'] == mc].iloc[0] if not _df_ex[_df_ex['match_code'] == mc].empty else None
-        _has_ranking = _ex_r is not None and (pd.notna(_ex_r.get('elo_home')) or pd.notna(_ex_r.get('opta_home')))
+        if canonical_league in NATIONAL_LEAGUES:
+            _has_ranking = _ex_r is not None and pd.notna(_ex_r.get('elo_home'))
+        else:
+            _has_ranking = _ex_r is not None and (pd.notna(_ex_r.get('elo_home')) or pd.notna(_ex_r.get('opta_home')))
         if _has_ranking:
             print('(spring over)'); continue
-        eh = _rank(home, elo_df, 'Elo'); ea = _rank(away, elo_df, 'Elo')
+        eh = _elo_rank(home, canonical_league); ea = _elo_rank(away, canonical_league)
         oh = _rank(home, opta_df, 'rating'); oa = _rank(away, opta_df, 'rating')
         eh = int(eh) if eh is not None else None
         ea = int(ea) if ea is not None else None
@@ -445,8 +471,8 @@ for _, m in df_rnd.iterrows():
         print(f"(ELO: {eh or '–'}/{ea or '–'}, Opta: {'✓' if oh else '–'})")
         continue
     o1, ox, o2, p1, p2 = _get_match_odds(home, away, canonical_league)
-    eh = _rank(home, elo_df, 'Elo')
-    ea = _rank(away, elo_df, 'Elo')
+    eh = _elo_rank(home, canonical_league)
+    ea = _elo_rank(away, canonical_league)
     oh = _rank(home, opta_df, 'rating')
     oa = _rank(away, opta_df, 'rating')
     eh = int(eh) if eh is not None else None
