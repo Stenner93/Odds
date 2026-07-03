@@ -789,6 +789,12 @@ function renderNæste(){
             <span class="mc-elo-sep">/</span>
             <span>${m.n20_elo_away||'—'}</span>
           </div>`:''}
+          ${(m.opta_home||m.opta_away)?`<div class="mc-elo-row">
+            <span class="mc-elo-lbl">OPTA</span>
+            <span>${m.opta_home||'—'}</span>
+            <span class="mc-elo-sep">/</span>
+            <span>${m.opta_away||'—'}</span>
+          </div>`:''}
           <div style="margin-top:6px"><span class="mc-res-dot" style="${resBg}">${res||'—'}</span></div>
         </div>
         <div class="mc-matrix">
