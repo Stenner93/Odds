@@ -220,9 +220,14 @@ LEAGUE_ODDS_KEY = {
     'Eredivisie':        'soccer_netherlands_eredivisie',
     'Superligaen':       'soccer_denmark_superliga',
     '1. division':       'soccer_denmark_division_1',
-    'Champions League':  'soccer_uefa_champs_league',
-    'Europa League':     'soccer_uefa_europa_league',
-    'Conference League': 'soccer_uefa_europa_conference_league',
+    # Europæiske turneringer: prøv både hovedturnering OG kvalifikation.
+    # Kval-kampene (juli-aug) ligger under en separat sport-nøgle i Odds API.
+    'Champions League':  ['soccer_uefa_champs_league',
+                          'soccer_uefa_champs_league_qualification'],
+    'Europa League':     ['soccer_uefa_europa_league',
+                          'soccer_uefa_europa_league_qualification'],
+    'Conference League': ['soccer_uefa_europa_conference_league',
+                          'soccer_uefa_europa_conference_league_qualification'],
     'Nations League':    'soccer_uefa_nations_league',
     'Allsvenskan':       'soccer_sweden_allsvenskan',
     'Eliteserien':       'soccer_norway_eliteserien',
@@ -322,41 +327,46 @@ def _fetch_league(sport_key):
         print(f'  ⚠ {sport_key}: {msg}')
     except Exception as e:
         print(f'  ⚠ Odds fejl {sport_key}: {e}')
+    # Cache tomt svar (fx ukendt kval-nøgle) så nøglen kun kaldes én gang pr. kørsel
+    _odds_cache[sport_key] = []
     return []
 
 def _get_match_odds(home, away, league):
     sport_key = LEAGUE_ODDS_KEY.get(league)
     if not sport_key: return None, None, None, None, None
-    events = _fetch_league(sport_key)
+    # Nøgle kan være enkelt streng eller liste af kandidater (fx hovedturnering + kval)
+    sport_keys = sport_key if isinstance(sport_key, (list, tuple)) else [sport_key]
     hc = _canon_set(home); ac = _canon_set(away)
-    for ev in events:
-        evh = _norm(ev.get('home_team', ''))
-        eva = _norm(ev.get('away_team', ''))
-        direct  = (evh in hc and eva in ac)
-        swapped = (evh in ac and eva in hc)
-        if not (direct or swapped):
-            if (max(fuzz.WRatio(_norm(home), evh), fuzz.WRatio(_norm(home), eva)) >= 94 and
-                    max(fuzz.WRatio(_norm(away), evh), fuzz.WRatio(_norm(away), eva)) >= 94):
-                direct = True
-        if direct or swapped:
-            mk = None
-            for b in ev.get('bookmakers', []):
-                for mkt in b.get('markets', []):
-                    if mkt.get('key') == 'h2h':
-                        mk = mkt; break
-                if mk: break
-            if not mk: continue
-            prices = {_norm(o['name']): o['price'] for o in mk.get('outcomes', [])}
-            oh = prices.get(_norm(ev['home_team']))
-            oa = prices.get(_norm(ev['away_team']))
-            od = prices.get('draw')
-            if not oh or not oa: continue
-            if swapped: oh, oa = oa, oh
-            inv_h = 1/oh; inv_a = 1/oa; inv_d = 1/od if od else 0
-            s = inv_h + inv_a + inv_d
-            if s == 0: continue
-            return (round(oh, 2), round(od, 2) if od else None, round(oa, 2),
-                    round(inv_h/s*100, 1), round(inv_a/s*100, 1))
+    for sk in sport_keys:
+        events = _fetch_league(sk)
+        for ev in events:
+            evh = _norm(ev.get('home_team', ''))
+            eva = _norm(ev.get('away_team', ''))
+            direct  = (evh in hc and eva in ac)
+            swapped = (evh in ac and eva in hc)
+            if not (direct or swapped):
+                if (max(fuzz.WRatio(_norm(home), evh), fuzz.WRatio(_norm(home), eva)) >= 94 and
+                        max(fuzz.WRatio(_norm(away), evh), fuzz.WRatio(_norm(away), eva)) >= 94):
+                    direct = True
+            if direct or swapped:
+                mk = None
+                for b in ev.get('bookmakers', []):
+                    for mkt in b.get('markets', []):
+                        if mkt.get('key') == 'h2h':
+                            mk = mkt; break
+                    if mk: break
+                if not mk: continue
+                prices = {_norm(o['name']): o['price'] for o in mk.get('outcomes', [])}
+                oh = prices.get(_norm(ev['home_team']))
+                oa = prices.get(_norm(ev['away_team']))
+                od = prices.get('draw')
+                if not oh or not oa: continue
+                if swapped: oh, oa = oa, oh
+                inv_h = 1/oh; inv_a = 1/oa; inv_d = 1/od if od else 0
+                s = inv_h + inv_a + inv_d
+                if s == 0: continue
+                return (round(oh, 2), round(od, 2) if od else None, round(oa, 2),
+                        round(inv_h/s*100, 1), round(inv_a/s*100, 1))
     return None, None, None, None, None
 
 def _rec_regel(o1, ox, o2):
