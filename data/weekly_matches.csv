@@ -1715,6 +1715,16 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,17,8,LTA-FLO,2026-06-28,18:00,Meistriliiga,Meistriliiga,Levadia Tallinn,Flora Tallinn,,,,,2
 4,17,9,SYD-CAN,2026-06-28,21:00,Landskamp,Landskamp,Sydafrika,Canada,,,,,2
 4,17,10,BRA-JPN,2026-06-29,19:00,Landskamp,Landskamp,Brasilien,Japan,,,,,1
+4,18,1,ELF-NOR,2026-07-02,,Landskamp,Landskamp,Elfenbenskysten,Norge,,,,,2
+4,18,2,FRA-SVE,2026-07-02,,Landskamp,Landskamp,Frankrig,Sverige,,,,,1
+4,18,3,MEX-ECU,2026-07-02,,Landskamp,Landskamp,Mexico,Ecuador,,,,,1
+4,18,4,ENG-CON,2026-07-02,,Landskamp,Landskamp,England,Congo,,,,,1
+4,18,5,BEL-SEN,2026-07-02,,Landskamp,Landskamp,Belgien,Senegal,,,,,X
+4,18,6,USA-BOS,2026-07-02,,Landskamp,Landskamp,USA,Bosnien,,,,,1
+4,18,7,SPA-ØST,2026-07-02,,Landskamp,Landskamp,Spanien,Østrig,,,,,1
+4,18,8,POR-KRO,2026-07-02,,Landskamp,Landskamp,Portugal,Kroatien,,,,,1
+4,18,9,SCH-ALG,2026-07-02,,Landskamp,Landskamp,Schweiz,Algeriet,,,,,1
+4,18,10,AUS-EGY,2026-07-02,,Landskamp,Landskamp,Australien,Egypten,,,,,X
 4,19,1,CAN-MA2,2026-07-04,19:00,Landskamp,Landskamp,Canada,Marokko,,,,,
 4,19,2,PRG-FRK,2026-07-04,23:00,Landskamp,Landskamp,Paraguay,Frankrig,,,,,
 4,19,3,BRS-NOR,2026-07-05,22:00,Landskamp,Landskamp,Brasilien,Norge,,,,,

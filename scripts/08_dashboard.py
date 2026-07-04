@@ -182,6 +182,33 @@ _cell_to_run = _cell_to_run.replace(
     "all_merged.loc[_all_mask & all_merged['bet'].isna(),  'correct'] = 0"
 )
 
+# Afdeling-nulstilling: for aktuel sæson vises kun den aktuelle afdelings runder
+# (17 runder pr. afdeling). Andre sæsoner røres ikke. Dette gør at stilling,
+# heatmap og pts_per_round for aktuel sæson afspejler afdelingen, ikke hele sæsonen.
+_cell_to_run = _cell_to_run.replace(
+    "all_merged = df_p.merge(_df_wm_res, on=['season','round','match_code'], how='left')\n",
+    "all_merged = df_p.merge(_df_wm_res, on=['season','round','match_code'], how='left')\n"
+    "_AFD_SIZE = 17\n"
+    "_cur_rounds = all_merged[all_merged['season']==CURRENT_SEASON]['round']\n"
+    "if len(_cur_rounds):\n"
+    "    _cm = int(_cur_rounds.max()); _ca = (_cm-1)//_AFD_SIZE+1\n"
+    "    _alo = (_ca-1)*_AFD_SIZE+1; _ahi = _ca*_AFD_SIZE\n"
+    "    all_merged = all_merged[~((all_merged['season']==CURRENT_SEASON)&((all_merged['round']<_alo)|(all_merged['round']>_ahi)))].copy()\n"
+)
+
+# Samme afdeling-filter på df_h2h (styrer h2h_standings + h2h_by_round for stillingen)
+_cell_to_run = _cell_to_run.replace(
+    "    df_h2h = pd.read_csv(H2H_CSV)\n"
+    "    df_h2h['season'] = df_h2h['season'].astype(int)\n",
+    "    df_h2h = pd.read_csv(H2H_CSV)\n"
+    "    df_h2h['season'] = df_h2h['season'].astype(int)\n"
+    "    df_h2h['round'] = df_h2h['round'].astype(int)\n"
+    "    _h2h_cur_r = df_h2h[df_h2h['season']==CURRENT_SEASON]['round']\n"
+    "    if len(_h2h_cur_r):\n"
+    "        _hcm=int(_h2h_cur_r.max()); _hca=(_hcm-1)//17+1; _hlo=(_hca-1)*17+1; _hhi=_hca*17\n"
+    "        df_h2h = df_h2h[~((df_h2h['season']==CURRENT_SEASON)&((df_h2h['round']<_hlo)|(df_h2h['round']>_hhi)))].copy()\n"
+)
+
 # Indsæt supplement-kode ved de rigtige markører
 _MARKERS = [
     ('# ── Active players',          _SUPP_COMBINED),

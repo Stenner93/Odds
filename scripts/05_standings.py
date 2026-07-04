@@ -118,7 +118,21 @@ df_h2h.to_csv(H2H_CSV, index=False)
 print(f'✓ h2h.csv: {updated_rounds} runder opdateret, {len(rounds_no_pairings)} mangler parringer')
 
 # ── Stilling ──────────────────────────────────────────────────────────────
-df_h2h_s_updated = df_h2h[df_h2h['season'] == CURRENT_SEASON]
+# Afdeling-nulstilling: en afdeling = 17 runder (fuld round-robin blandt 18
+# spillere). Efter runde 17 nulstiller stillingen til afdeling 2 (runde 18-34),
+# efter runde 34 til afdeling 3 osv. Selve h2h.csv/points.csv bevarer ALLE
+# runder som historik — kun den viste stilling (standings.csv) filtreres.
+AFD_SIZE = 17
+_max_r  = int(df_matches[df_matches['season'] == CURRENT_SEASON]['round'].max())
+CUR_AFD = (_max_r - 1) // AFD_SIZE + 1
+_afd_lo = (CUR_AFD - 1) * AFD_SIZE + 1
+_afd_hi = CUR_AFD * AFD_SIZE
+print(f'ℹ Afdeling {CUR_AFD} (runde {_afd_lo}-{_afd_hi}) — stillingen nulstillet hertil')
+
+df_h2h_s_updated = df_h2h[
+    (df_h2h['season'] == CURRENT_SEASON) &
+    (df_h2h['round'] >= _afd_lo) & (df_h2h['round'] <= _afd_hi)
+]
 
 # Nullstil point KUN for runder der hverken er færdige ELLER har eksisterende point fra Colab.
 # Runder med udfyldte h2h_pts (fra Colab) bevares selvom weekly_matches ikke er komplet.

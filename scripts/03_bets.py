@@ -52,6 +52,21 @@ print(f'📋 Runde {round_num} detekteret')
 df_matches = pd.read_csv(MATCHES_CSV)
 df_matches['season'] = df_matches['season'].astype(int)
 df_matches['round']  = df_matches['round'].astype(int)
+
+# ── Afdeling-mapping ──────────────────────────────────────────────────────
+# En "N. runde" i headeren er afdeling-relativ (1-17). Vi er i afdeling
+# ((max_runde-1)//17 + 1). Mapper afd-relativ runde til global runde, HVIS
+# der findes kampe der (ellers beholdes tallet — robust mod begge konventioner).
+AFD_SIZE = 17
+if round_num <= AFD_SIZE:
+    _rounds = set(df_matches[df_matches['season'] == CURRENT_SEASON]['round'])
+    _max_r  = max(_rounds) if _rounds else 0
+    _base   = ((_max_r - 1) // AFD_SIZE) * AFD_SIZE if _max_r else 0
+    _global = _base + round_num
+    if _global != round_num and _global in _rounds:
+        print(f'   → afdeling {(_max_r - 1)//AFD_SIZE + 1}: runde {round_num} = global runde {_global}')
+        round_num = _global
+
 df_rnd = df_matches[
     (df_matches['season'] == CURRENT_SEASON) &
     (df_matches['round']  == round_num)
