@@ -209,6 +209,36 @@ _cell_to_run = _cell_to_run.replace(
     "        df_h2h = df_h2h[~((df_h2h['season']==CURRENT_SEASON)&((df_h2h['round']<_hlo)|(df_h2h['round']>_hhi)))].copy()\n"
 )
 
+# Fix H2H-sandsynlighed (DP): medregn diff-bet kampe UDEN odds (fx CL-kval)
+# via uniform 1/3-prior i stedet for at ignorere dem — ellers kan en spiller
+# fejlagtigt vises med 0% selvom han sagtens kan hente ind på de resterende kampe.
+_cell_to_run = _cell_to_run.replace(
+    "            # Saml diff-bet kampe med odds\n"
+    "            _diff = []\n"
+    "            for _mc, _probs in _odds_prob.items():\n"
+    "                if cur_results.get(_mc): continue\n"
+    "                _ba = _b1.get(_mc); _bb = _b2.get(_mc)\n"
+    "                if _ba and _bb and _ba != _bb:\n"
+    "                    _pa = _probs.get(_ba, 0)\n"
+    "                    _pb = _probs.get(_bb, 0)\n"
+    "                    _pn = max(0.0, 1.0 - _pa - _pb)\n"
+    "                    _diff.append((_pa, _pb, _pn))\n",
+    "            # Saml diff-bet kampe (odds hvis muligt, ellers uniform 1/3-prior)\n"
+    "            _diff = []\n"
+    "            for _mc in (set(_b1) | set(_b2)):\n"
+    "                if cur_results.get(_mc): continue\n"
+    "                _ba = _b1.get(_mc); _bb = _b2.get(_mc)\n"
+    "                if _ba and _bb and _ba != _bb:\n"
+    "                    _probs = _odds_prob.get(_mc)\n"
+    "                    if _probs:\n"
+    "                        _pa = _probs.get(_ba, 0)\n"
+    "                        _pb = _probs.get(_bb, 0)\n"
+    "                        _pn = max(0.0, 1.0 - _pa - _pb)\n"
+    "                    else:\n"
+    "                        _pa = 1.0/3; _pb = 1.0/3; _pn = 1.0/3\n"
+    "                    _diff.append((_pa, _pb, _pn))\n"
+)
+
 # Indsæt supplement-kode ved de rigtige markører
 _MARKERS = [
     ('# ── Active players',          _SUPP_COMBINED),
