@@ -64,9 +64,16 @@ def _sdb_fetch(endpoint):
 
 def _sportsdb_result(home, away, date_str):
     home_en, away_en = _to_english(home), _to_english(away)
-    name_pairs = [(home_en, away_en, False), (away_en, home_en, True)]
-    if (home_en, away_en) != (home, away):
-        name_pairs += [(home, away, False), (away, home, True)]
+    # Prøv ALLE kombinationer af dansk+engelsk navn i begge retninger.
+    # Vigtigt for fx USA: kilden bruger "USA", men elo_name er "United States",
+    # så kombinationen "USA vs Belgium" skal også prøves.
+    homes = list(dict.fromkeys([home_en, home]))
+    aways = list(dict.fromkeys([away_en, away]))
+    name_pairs = []
+    for _h in homes:
+        for _a in aways:
+            name_pairs.append((_h, _a, False))   # direkte
+            name_pairs.append((_a, _h, True))    # ombyttet
     seen = set()
     for h, a, swapped in name_pairs:
         key = (h, a)
@@ -132,17 +139,24 @@ def _n20_result(home, away, date_str: str):
     matches = _n20_fetch(date_str)
     if not matches:
         return None
-    home_en, away_en = _to_english(home), _to_english(away)
-    nh, na = _norm(home_en), _norm(away_en)
+    # Prøv både dansk og engelsk navnevariant (fx USA / United States)
+    home_vars = list(dict.fromkeys([_norm(_to_english(home)), _norm(home)]))
+    away_vars = list(dict.fromkeys([_norm(_to_english(away)), _norm(away)]))
     all_homes = [_norm(m['home']) for m in matches]
-    best = process.extractOne(nh, all_homes, scorer=fuzz.token_sort_ratio)
-    if not best or best[1] < 75:
+    all_aways = [_norm(m['away']) for m in matches]
+
+    def _pick(home_list, away_list, invert):
+        for hv in home_list:
+            best = process.extractOne(hv, all_homes, scorer=fuzz.token_sort_ratio)
+            if not best or best[1] < 75:
+                continue
+            for m in [mm for mm in matches if _norm(mm['home']) == all_homes[best[2]]]:
+                if any(fuzz.token_sort_ratio(av, _norm(m['away'])) >= 75 for av in away_list):
+                    return {'1':'2','2':'1','X':'X'}[m['result']] if invert else m['result']
         return None
-    candidates = [m for m in matches if _norm(m['home']) == all_homes[best[2]]]
-    for m in candidates:
-        if fuzz.token_sort_ratio(na, _norm(m['away'])) >= 75:
-            return m['result']
-    return None
+
+    # Direkte (home som hjemmehold) — ellers ombyttet (home optræder som udehold)
+    return _pick(home_vars, away_vars, False) or _pick(away_vars, home_vars, True)
 
 # ── Hoved-loop ────────────────────────────────────────────────────────────
 df_matches = pd.read_csv(MATCHES_CSV)
