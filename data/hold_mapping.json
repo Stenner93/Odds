@@ -133,6 +133,13 @@
     "elo_name": "AIK"
   },
   {
+    "abbr": "AIS",
+    "type": "INT",
+    "land": "INT",
+    "name": "AIK Stockholm",
+    "elo_name": "AIK Stockholm"
+  },
+  {
     "abbr": "AJA",
     "type": "HOL",
     "land": "HOL",
@@ -1113,6 +1120,13 @@
     "elo_name": "Dem. Rep. of Congo"
   },
   {
+    "abbr": "DRO",
+    "type": "INT",
+    "land": "INT",
+    "name": "Drogheda",
+    "elo_name": "Drogheda"
+  },
+  {
     "abbr": "DUD",
     "type": "ECL",
     "land": "LUX",
@@ -1132,6 +1146,13 @@
     "land": "SVK",
     "name": "Dunajska Streda",
     "elo_name": "Dunajska Streda"
+  },
+  {
+    "abbr": "DU1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Dundalk",
+    "elo_name": "Dundalk"
   },
   {
     "abbr": "DUU",
@@ -2238,6 +2259,13 @@
     "land": "INT",
     "name": "KuPS",
     "elo_name": "KuPS"
+  },
+  {
+    "abbr": "KVA",
+    "type": "INT",
+    "land": "INT",
+    "name": "Kvartfinale",
+    "elo_name": "Kvartfinale"
   },
   {
     "abbr": "LAG",
@@ -4088,6 +4116,13 @@
     "elo_name": "Trnava"
   },
   {
+    "abbr": "TRO",
+    "type": "INT",
+    "land": "INT",
+    "name": "Tromsø",
+    "elo_name": "Tromso"
+  },
+  {
     "abbr": "TWE",
     "type": "HOL",
     "land": "HOL",
@@ -4128,6 +4163,13 @@
     "land": "INT",
     "name": "Tyskland - U21",
     "elo_name": "Tyskland - U21"
+  },
+  {
+    "abbr": "U.C",
+    "type": "INT",
+    "land": "INT",
+    "name": "U. Cluj",
+    "elo_name": "U. Cluj"
   },
   {
     "abbr": "UAE",
@@ -4548,6 +4590,13 @@
     "land": "ZAM",
     "name": "Zesco United",
     "elo_name": "Zesco United"
+  },
+  {
+    "abbr": "ZIL",
+    "type": "INT",
+    "land": "INT",
+    "name": "Zilina",
+    "elo_name": "Zilina"
   },
   {
     "abbr": "ZRI",
