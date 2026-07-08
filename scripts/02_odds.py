@@ -221,14 +221,13 @@ LEAGUE_ODDS_KEY = {
     'Eredivisie':        'soccer_netherlands_eredivisie',
     'Superligaen':       'soccer_denmark_superliga',
     '1. division':       'soccer_denmark_division_1',
-    # Europæiske turneringer: prøv både hovedturnering OG kvalifikation.
-    # Kval-kampene (juli-aug) ligger under en separat sport-nøgle i Odds API.
-    'Champions League':  ['soccer_uefa_champs_league',
-                          'soccer_uefa_champs_league_qualification'],
-    'Europa League':     ['soccer_uefa_europa_league',
-                          'soccer_uefa_europa_league_qualification'],
-    'Conference League': ['soccer_uefa_europa_conference_league',
-                          'soccer_uefa_europa_conference_league_qualification'],
+    # NB: The Odds API har IKKE separate kvalifikations-feeds (fx
+    # soccer_uefa_europa_league_qualification = "Unknown sport"), og hoved-
+    # turneringernes feeds er tomme i kval-sæsonen (juli-aug). Europæiske
+    # kval-kampe kan derfor ikke få odds herfra.
+    'Champions League':  'soccer_uefa_champs_league',
+    'Europa League':     'soccer_uefa_europa_league',
+    'Conference League': 'soccer_uefa_europa_conference_league',
     'Nations League':    'soccer_uefa_nations_league',
     'Allsvenskan':       'soccer_sweden_allsvenskan',
     'Eliteserien':       'soccer_norway_eliteserien',
