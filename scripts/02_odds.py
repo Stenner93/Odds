@@ -427,9 +427,15 @@ def _get_match_odds(home, away, league):
             direct  = (evh in hc and eva in ac)
             swapped = (evh in ac and eva in hc)
             if not (direct or swapped):
-                if (max(fuzz.WRatio(_norm(home), evh), fuzz.WRatio(_norm(home), eva)) >= 94 and
-                        max(fuzz.WRatio(_norm(away), evh), fuzz.WRatio(_norm(away), eva)) >= 94):
+                # Robust navnematch med token_set_ratio, der håndterer delnavne
+                # som "AIK" vs "AIK Stockholm", "Drogheda" vs "Drogheda United",
+                # "VPS" vs "VPS Vaasa", "SJK" vs "SJK Seinäjoki".
+                _nh, _na = _norm(home), _norm(away)
+                _tm = lambda a, b: fuzz.token_set_ratio(a, b) >= 88
+                if _tm(_nh, evh) and _tm(_na, eva):
                     direct = True
+                elif _tm(_nh, eva) and _tm(_na, evh):
+                    swapped = True
             if direct or swapped:
                 mk = None
                 for b in ev.get('bookmakers', []):
