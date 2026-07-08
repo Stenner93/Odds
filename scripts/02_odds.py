@@ -449,6 +449,13 @@ def _get_match_odds(home, away, league):
                 if s == 0: continue
                 return (round(oh, 2), round(od, 2) if od else None, round(oa, 2),
                         round(inv_h/s*100, 1), round(inv_a/s*100, 1))
+    # Diagnostik: ingen odds-match — vis hvilke kampe feed'et faktisk indeholdt,
+    # så man kan se om det er timing (kampen mangler) eller navne-mismatch.
+    _avail = [f"{ev.get('home_team','?')} v {ev.get('away_team','?')}"
+              for sk in sport_keys for ev in _odds_cache.get(sk, [])]
+    if _avail:
+        print(f"      ↳ ingen match for '{home} v {away}'; feed indeholdt: "
+              f"{' | '.join(_avail[:15])}", flush=True)
     return None, None, None, None, None
 
 def _rec_regel(o1, ox, o2):
