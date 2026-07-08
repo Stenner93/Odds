@@ -173,11 +173,17 @@ def parse_matches(text):
                 if not re.match(r'^\d+\.?\s+runde', line, re.I):
                     m = re.match(r'^(.+?)\s+-\s+(.+)$', line)
                     if m and home_raw is None:
+                        home_candidate = m.group(1).strip()
                         away_candidate = m.group(2).strip()
-                        # Skip tournament-stage descriptors like "VM - 16. delsfinale"
-                        # (team names never start with a digit)
-                        if not re.match(r'^\d', away_candidate):
-                            home_raw = m.group(1).strip()
+                        # Skip turneringstrin-beskrivelser der også har bindestreg,
+                        # fx "VM - Kvartfinale", "EM - Semifinale", "VM - 16. delsfinale".
+                        # Rigtige holdnavne starter aldrig med et ciffer eller et
+                        # trin-ord, og hjemmesiden er aldrig "VM"/"EM".
+                        _stage = re.match(
+                            r'^(kvart|semi|kvalifik|delsfinale|finale|gruppe|ottendedels|\d)',
+                            away_candidate, re.I)
+                        if not _stage and home_candidate.lower() not in ('vm', 'em'):
+                            home_raw = home_candidate
                             away_raw = away_candidate
                     continue
             if league_raw is None and not _is_date(line):
