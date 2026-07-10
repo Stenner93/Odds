@@ -1733,9 +1733,9 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,19,6,USA-BEL,2026-07-07,02:00,Landskamp,Landskamp,USA,Belgien,,,,,2
 4,19,7,KLA-BIS,2026-07-07,20:45,Champions League,Champions League,Klaksvik,Bissen,,,,,1
 4,19,8,REY-GYÖ,2026-07-07,21:00,Champions League,Champions League,Vikingur Reykjavik,Györ,,,,,1
-4,19,9,KAA-SUT,2026-07-08,17:00,Champions League,Champions League,Kairat Almaty,Sutjeska,,,,,
-4,19,10,FLO-I99,2026-07-08,18:00,Champions League,Champions League,Flora Tallinn,Iberia 1999,,,,,
-4,20,1,DKI-U.,2026-07-09,19:00,Europa League,Europa League,Dynamo Kiev,U. Cluj,,,,,
+4,19,9,KAA-SUT,2026-07-08,17:00,Champions League,Champions League,Kairat Almaty,Sutjeska,,,,,1
+4,19,10,FLO-I99,2026-07-08,18:00,Champions League,Champions League,Flora Tallinn,Iberia 1999,,,,,2
+4,20,1,DKI-U.,2026-07-09,19:00,Europa League,Europa League,Dynamo Kiev,U. Cluj,,,,,X
 4,20,2,HAJ-ZIL,2026-07-09,20:00,Europa League,Europa League,Hajduk Split,Zilina,,,,,1
 4,20,3,FRK-MAR,2026-07-09,22:00,Landskamp,Landskamp,Frankrig,Marokko,,,,,1
 4,20,4,VPS-SJK,2026-07-10,18:00,Veikkausliiga,Veikkausliiga,VPS,SJK,,,,,

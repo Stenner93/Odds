@@ -1,19 +1,19 @@
-2. runde		CAN-MAR	PAR-FRA	BRA-NOR	MEX-ENG	POR-SPA	USA-BEL	KLA-BIS	VIK-GYÖ	KAI-SUT	FLO-IBE
-0	Curt Christensen	2	2	9	9	2	1	1	9	1	1
-0	Inga Wamsler	1	2	1	2	9	2	1	9	1	1
-0	Kasper Noer	2	2	1	2	2	1	1	1	1	1
-0	Rasmus Jensen	2	2	9	9	2	9	1	2	1	9
+3. runde		DYN-UCL	HAJ-ZIL	FRA-MAR	VPS-SJK	DUN-DRO	SPA-BEL	MJÄ-AIK	TRO-VÅL	NOR-ENG	ARG-SCH
+2	Inga Wamsler	1	1	1	9	1	1	1	9	2	1
+2	Jørgen Frederiksen	9	9	1	1	9	9	9	9	9	9
+1	Morten Wamsler	1	1	9	1	1	1	1	1	9	9
+2	Kasper Noer	1	1	1	1	1	1	1	1	2	1
+2	Søren Jakobsen	1	1	1	1	1	1	1	1	2	1
+2	Dennis Sveistrup	1	1	1	1	1	1	1	1	2	1
+2	Ricky Frederiksen	1	1	1	1	1	1	1	1	2	1
+2	Lars Huus	1	1	1	1	1	1	1	1	2	1
+2	Rasmus Jensen	1	1	1	1	9	1	1	1	9	1
+2	Noah Wamsler	1	1	1	1	1	1	1	1	2	1
+1	Tanja Wamsler	1	1	9	9	1	9	1	9	9	2
 0	Ualmindeligt inaktiv	0	0	0	0	0	0	0	0	0	0
-0	Ole Albrechtsen	2	2	1	9	2	2	1	1	1	1
-0	Kasper Søndergaard	2	2	9	9	9	1	1	1	1	1
-0	Ricky Frederiksen	2	2	1	9	9	2	9	1	1	1
-0	Dennis Sveistrup	2	2	9	9	9	9	1	1	1	9
-0	Benjamin Jakobsen	9	9	9	9	2	9	9	9	1	1
-0	Morten Wamsler	1	2	1	9	2	9	1	1	1	1
-0	Søren Jakobsen	2	2	1	2	2	1	1	1	1	1
-0	Lars Huus	2	2	9	9	2	1	1	1	1	1
-0	Nicolai Frederiksen	9	2	1	2	9	9	1	1	1	9
-0	Noah Wamsler	1	2	1	2	2	1	1	1	1	1
-0	Tanja Wamsler	1	2	1	9	9	9	1	9	1	1
-0	Jørgen Frederiksen	9	2	9	2	9	1	9	9	9	9
-0	Anders Stenner	2	2	1	9	2	9	1	1	1	1
+1	Benjamin Jakobsen	9	9	9	9	2	9	9	9	1	1
+1	Kasper Søndergaard	1	1	9	1	1	1	1	1	9	1
+2	Anders Stenner	1	1	1	1	1	1	1	1	2	1
+2	Ole Albrechtsen	1	1	1	1	1	1	9	1	2	1
+1	Nicolai Frederiksen	1	9	1	1	1	9	1	9	9	1
+2	Curt Christensen	1	1	1	9	1	1	2	9	2	1
