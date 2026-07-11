@@ -1739,8 +1739,8 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,20,2,HAJ-ZIL,2026-07-09,20:00,Europa League,Europa League,Hajduk Split,Zilina,,,,,1
 4,20,3,FRK-MAR,2026-07-09,22:00,Landskamp,Landskamp,Frankrig,Marokko,,,,,1
 4,20,4,VPS-SJK,2026-07-10,18:00,Veikkausliiga,Veikkausliiga,VPS,SJK,,,,,1
-4,20,5,DU2-DRO,2026-07-10,20:45,Premier Division,Premier Division,Dundalk,Drogheda,,,,,
-4,20,6,SPA-BEL,2026-07-10,21:00,Landskamp,Landskamp,Spanien,Belgien,,,,,
+4,20,5,DU2-DRO,2026-07-10,20:45,Premier Division,Premier Division,Dundalk,Drogheda,,,,,2
+4,20,6,SPA-BEL,2026-07-10,21:00,Landskamp,Landskamp,Spanien,Belgien,,,,,1
 4,20,7,MJÄ-AIS,2026-07-11,15:00,Allsvenskan,Allsvenskan,Mjällby,AIK Stockholm,,,,,
 4,20,8,TRO-VÅL,2026-07-11,18:00,Eliteserien,Eliteserien,Tromsø,Vålerenga,,,,,
 4,20,9,NOR-ENG,2026-07-11,23:00,Landskamp,Landskamp,Norge,England,,,,,
