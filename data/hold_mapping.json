@@ -28,6 +28,13 @@
     "elo_name": "AaB"
   },
   {
+    "abbr": "AAL",
+    "type": "INT",
+    "land": "INT",
+    "name": "Aalesund",
+    "elo_name": "Aalesund"
+  },
+  {
     "abbr": "AAF",
     "type": "DAN",
     "land": "DAN",
@@ -201,6 +208,13 @@
     "land": "SPA",
     "name": "Almeria",
     "elo_name": "Almeria"
+  },
+  {
+    "abbr": "ALU",
+    "type": "INT",
+    "land": "INT",
+    "name": "Aluminij",
+    "elo_name": "Aluminij"
   },
   {
     "abbr": "AMO",
@@ -523,6 +537,13 @@
     "land": "TYS",
     "name": "Bochum",
     "elo_name": "Bochum"
+  },
+  {
+    "abbr": "BOD",
+    "type": "NOR",
+    "land": "NOR",
+    "name": "Bodø Glimt",
+    "elo_name": "Bodoe Glimt"
   },
   {
     "abbr": "BOD",
@@ -1799,6 +1820,13 @@
     "elo_name": "Hammarby"
   },
   {
+    "abbr": "HA1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Hamrun",
+    "elo_name": "Hamrun"
+  },
+  {
     "abbr": "HAN",
     "type": "TYS",
     "land": "TYS",
@@ -2007,6 +2035,13 @@
     "land": "GEO",
     "name": "Iberia 1999",
     "elo_name": "Iberia 1999"
+  },
+  {
+    "abbr": "GOT",
+    "type": "INT",
+    "land": "INT",
+    "name": "IFK Gøteborg",
+    "elo_name": "IFK Goteborg"
   },
   {
     "abbr": "IND",
@@ -2912,6 +2947,13 @@
     "elo_name": "Notts County"
   },
   {
+    "abbr": "NSR",
+    "type": "INT",
+    "land": "INT",
+    "name": "NSI Runavik",
+    "elo_name": "NSI Runavik"
+  },
+  {
     "abbr": "NÜR",
     "type": "TYS",
     "land": "TYS",
@@ -3645,6 +3687,13 @@
     "land": "IRL",
     "name": "Shelbourne",
     "elo_name": "Shelbourne"
+  },
+  {
+    "abbr": "SHT",
+    "type": "CL",
+    "land": "GEO",
+    "name": "Sherif Tiraspol",
+    "elo_name": "Sheriff Tiraspol"
   },
   {
     "abbr": "SHT",
