@@ -1745,13 +1745,13 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,20,8,TRO-VÅL,2026-07-11,18:00,Eliteserien,Eliteserien,Tromsø,Vålerenga,,,,,1
 4,20,9,NOR-ENG,2026-07-11,23:00,Landskamp,Landskamp,Norge,England,,,,,2
 4,20,10,ARG-SWI,2026-07-12,03:00,Landskamp,Landskamp,Argentina,Schweiz,,,,,1
-4,21,1,GYO-VIR,2026-07-14,19:00,Champions League,Champions League,Györ,Vikingur Reykjavik,,,,,
+4,21,1,GYO-VIR,2026-07-14,19:00,Champions League,Champions League,Györ,Vikingur Reykjavik,,,,,X
 4,21,2,FRK-SPA,2026-07-14,21:00,VM,VM,Frankrig,Spanien,,,,,2
-4,21,3,BIS-KLA,2026-07-15,20:15,Champions League,Champions League,Bissen,Klaksvik,,,,,
+4,21,3,BIS-KLA,2026-07-15,20:15,Champions League,Champions League,Bissen,Klaksvik,,,,,2
 4,21,4,ENG-ARG,2026-07-15,21:00,VM,VM,England,Argentina,,,,,2
-4,21,5,VKU-STJ,2026-07-16,19:00,Conference League,Conference League,Vikingur,Stjärnan,,,,,
+4,21,5,VKU-STJ,2026-07-16,19:00,Conference League,Conference League,Vikingur,Stjärnan,,,,,X
 4,21,6,VÅL-AAL,2026-07-16,19:00,Eliteserien,Eliteserien,Vålerenga,Aalesund,,,,,1
-4,21,7,HA2-NSI,2026-07-16,19:30,Conference League,Conference League,Hamrun,NSI Runavik,,,,,
+4,21,7,HA2-NSI,2026-07-16,19:30,Conference League,Conference League,Hamrun,NSI Runavik,,,,,2
 4,21,8,ALU-SHE,2026-07-16,20:00,Europa League,Europa League,Aluminij,Sherif Tiraspol,,,,,2
 4,21,9,IFK-BRO,2026-07-17,19:00,Allsvenskan,Allsvenskan,IFK Gøteborg,Brommapojkarna,,,,,
 4,21,10,GLI-FRS,2026-07-17,19:15,Eliteserien,Eliteserien,Bodø Glimt,Fredrikstad,,,,,
