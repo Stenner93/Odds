@@ -1755,6 +1755,16 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,21,8,ALU-SHE,2026-07-16,20:00,Europa League,Europa League,Aluminij,Sherif Tiraspol,,,,,2
 4,21,9,IFK-BRO,2026-07-17,19:00,Allsvenskan,Allsvenskan,IFK Gøteborg,Brommapojkarna,,,,,
 4,21,10,GLI-FRS,2026-07-17,19:15,Eliteserien,Eliteserien,Bodø Glimt,Fredrikstad,,,,,
+4,22,1,FRK-ENG,2026-07-18,23:00,Landskamp,Landskamp,Frankrig,England,,,,,
+4,22,2,SPA-ARG,2026-07-19,21:00,VM,VM,Spanien,Argentina,,,,,
+4,22,3,KAL-MA2,2026-07-20,19:00,Allsvenskan,Allsvenskan,Kalmar,Malmø,,,,,
+4,22,4,AGF-POZ,2026-07-21,19:00,Champions League,Champions League Kval,AGF,Lech Poznań,,,,,
+4,22,5,STG-HEA,2026-07-21,20:30,Champions League,Champions League Kval,Sturm Graz,Hearts,,,,,
+4,22,6,LSØ-VIK,2026-07-22,19:00,Eliteserien,Eliteserien,Lillestrøm,Viking,,,,,
+4,22,7,BES-FCM,2026-07-23,19:00,Europa League,Europa League Kval,Besiktas,FC Midtjylland,,,,,
+4,22,8,GAI-FCN,2026-07-23,19:00,Conference League,Conference League Kval,GAIS,FC Nordsjælland,,,,,
+4,22,9,ZHY-KØB,2026-07-23,19:00,Conference League,Conference League Kval,Polissya Zhytomyr,FC København,,,,,
+4,22,10,VFF-OB,2026-07-24,19:00,Superligaen,Superliga,Viborg,OB,,,,,
 5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2
 5,1,2,AVI-TOT,,,,,AVI,TOT,,,,,1
 5,1,3,BVB-STU,,,,,BVB,STU,,,,,2

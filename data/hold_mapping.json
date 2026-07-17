@@ -2366,6 +2366,13 @@
     "elo_name": "Lecce"
   },
   {
+    "abbr": "LEP",
+    "type": "INT",
+    "land": "INT",
+    "name": "Lech Poznań",
+    "elo_name": "Lech Poznan"
+  },
+  {
     "abbr": "LEE",
     "type": "PL",
     "land": "ENG",
@@ -2602,6 +2609,13 @@
     "land": "SPA",
     "name": "Mallorca",
     "elo_name": "Mallorca"
+  },
+  {
+    "abbr": "MFF",
+    "type": "SVE",
+    "land": "SVE",
+    "name": "Malmø",
+    "elo_name": "Malmoe"
   },
   {
     "abbr": "MFF",
@@ -3218,6 +3232,13 @@
     "land": "INT",
     "name": "Polen",
     "elo_name": "Poland"
+  },
+  {
+    "abbr": "POZ",
+    "type": "INT",
+    "land": "INT",
+    "name": "Polissya Zhytomyr",
+    "elo_name": "Polissya Zhytomyr"
   },
   {
     "abbr": "PVA",
