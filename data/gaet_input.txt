@@ -1,19 +1,19 @@
-4. runde		GYÖ-VIK	FRA-SPA	BIS-KLA	ENG-ARG	VIK-STJ	VÅL-AAL	HAM-NSI	ALU-SHT	IFK-BRO	BOD-FRE
+5. runde		FRA-ENG	SPA-ARG	KAL-MAL	AGF-LEC	STG-HEA	LIL-VIK	BES-FCM	GAI-FCN	POL-FCK	VIB-OB
+0	Ricky Frederiksen	1	9	9	1	1	2	1	1	2	1
+0	Jørgen Frederiksen	9	9	9	9	1	1	9	9	1	9
+0	Morten Wamsler	9	1	2	2	1	2	1	9	2	1
 0	Ualmindeligt inaktiv	0	0	0	0	0	0	0	0	0	0
-0	Rasmus Jensen	2	1	9	9	1	1	1	1	9	1
-0	Lars Huus	1	9	2	9	1	1	9	9	1	1
+0	Dennis Sveistrup	9	9	9	9	1	9	1	1	2	1
+0	Lars Huus	2	2	1	2	1	2	2	2	2	2
+0	Kasper Noer	1	2	2	1	1	2	1	2	2	1
+0	Noah Wamsler	1	1	2	1	1	1	1	2	2	1
+0	Søren Jakobsen	1	1	2	1	1	9	1	9	2	2
+0	Kasper Søndergaard	1	9	2	9	1	2	2	2	9	1
 0	Benjamin Jakobsen	1	9	9	9	1	1	1	2	1	1
-0	Ole Albrechtsen	1	1	9	9	2	1	1	2	9	1
-0	Inga Wamsler	1	1	1	9	1	2	1	1	9	1
-0	Tanja Wamsler	1	9	1	9	1	2	1	9	9	1
-0	Anders Stenner	1	1	1	9	2	1	1	2	1	1
-0	Kasper Søndergaard	1	9	9	9	9	9	1	2	9	1
-0	Dennis Sveistrup	1	9	2	9	2	1	1	2	1	1
-0	Curt Christensen	1	9	2	9	1	1	9	2	1	1
-1	Ricky Frederiksen	1	2	1	2	9	9	1	2	9	1
-1	Jørgen Frederiksen	9	9	9	1	9	9	9	9	1	9
-0	Nicolai Frederiksen	1	1	9	1	1	9	2	1	1	1
-0	Noah Wamsler	1	1	1	1	1	2	1	1	1	1
-0	Morten Wamsler	1	9	1	1	1	2	1	9	1	1
-0	Kasper Noer	1	1	1	1	2	1	1	2	1	1
-0	Søren Jakobsen	1	1	9	1	1	1	1	2	1	1
+0	Curt Christensen	9	1	2	9	1	1	9	9	2	1
+0	Anders Stenner	1	1	2	1	1	2	1	2	2	1
+0	Rasmus Jensen	1	1	9	1	1	2	9	1	2	9
+0	Nicolai Frederiksen	9	9	1	1	9	9	1	9	9	9
+0	Ole Albrechtsen	1	1	9	1	1	2	1	9	2	9
+0	Inga Wamsler	1	1	2	9	1	1	1	2	2	9
+0	Tanja Wamsler	9	1	2	9	1	1	1	9	2	9
