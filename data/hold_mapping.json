@@ -1722,6 +1722,13 @@
     "elo_name": "Go Ahead Eagles"
   },
   {
+    "abbr": "GOZ",
+    "type": "INT",
+    "land": "INT",
+    "name": "Gornik Zabrze",
+    "elo_name": "Gornik Zabrze"
+  },
+  {
     "abbr": "GÖT",
     "type": "SVE",
     "land": "SVE",
@@ -2210,6 +2217,13 @@
     "land": "SVE",
     "name": "Karlstad",
     "elo_name": "Karlstad"
+  },
+  {
+    "abbr": "KAU",
+    "type": "INT",
+    "land": "INT",
+    "name": "Kauno Zalgiris",
+    "elo_name": "Kauno Zalgiris"
   },
   {
     "abbr": "KAY",
@@ -4121,6 +4135,13 @@
     "land": "DAN",
     "name": "Thisted FC",
     "elo_name": "Thisted FC"
+  },
+  {
+    "abbr": "THU",
+    "type": "INT",
+    "land": "INT",
+    "name": "Thun",
+    "elo_name": "Thun"
   },
   {
     "abbr": "TIG",
