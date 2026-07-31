@@ -549,6 +549,13 @@
     "abbr": "BOD",
     "type": "NOR",
     "land": "NOR",
+    "name": "Bodø/​Glimt",
+    "elo_name": "Bodoe Glimt"
+  },
+  {
+    "abbr": "BOD",
+    "type": "NOR",
+    "land": "NOR",
     "name": "Bodø/Glimt",
     "elo_name": "Bodoe Glimt"
   },
@@ -1069,6 +1076,13 @@
     "land": "LET",
     "name": "Daugavpils",
     "elo_name": "Daugavpils"
+  },
+  {
+    "abbr": "DEB",
+    "type": "INT",
+    "land": "INT",
+    "name": "Debrecen",
+    "elo_name": "Debrecen"
   },
   {
     "abbr": "DLC",
@@ -3521,6 +3535,13 @@
     "elo_name": "Rotherham"
   },
   {
+    "abbr": "RUS",
+    "type": "INT",
+    "land": "INT",
+    "name": "Royale Union SG",
+    "elo_name": "Royale Union SG"
+  },
+  {
     "abbr": "RUM",
     "type": "INT",
     "land": "INT",
@@ -3540,6 +3561,13 @@
     "land": "TYS",
     "name": "Saarbrücken",
     "elo_name": "Saarbrücken"
+  },
+  {
+    "abbr": "SAB",
+    "type": "INT",
+    "land": "INT",
+    "name": "Sabah Baku",
+    "elo_name": "Sabah Baku"
   },
   {
     "abbr": "SAL",
@@ -3759,6 +3787,13 @@
     "elo_name": "Silkeborg"
   },
   {
+    "abbr": "SI1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Sirius",
+    "elo_name": "Sirius"
+  },
+  {
     "abbr": "SIR",
     "type": "BOS",
     "land": "BOS",
@@ -3967,6 +4002,13 @@
     "land": "NOR",
     "name": "Stabæk",
     "elo_name": "Stabaek"
+  },
+  {
+    "abbr": "ST1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Start",
+    "elo_name": "Start"
   },
   {
     "abbr": "STE",
