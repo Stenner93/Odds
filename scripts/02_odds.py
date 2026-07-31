@@ -240,6 +240,7 @@ LEAGUE_ODDS_KEY = {
     'OBOS-ligaen':       'soccer_norway_tippeligaen_second',
     'Veikkausliiga':     'soccer_finland_veikkausliiga',
     'Premier Division':  'soccer_league_of_ireland',
+    'Premiership':       'soccer_spl',
 }
 
 LEAGUE_DISPLAY = {
