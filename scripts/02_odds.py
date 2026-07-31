@@ -431,8 +431,18 @@ def _get_match_odds(home, away, league):
                 # Robust navnematch med token_set_ratio, der håndterer delnavne
                 # som "AIK" vs "AIK Stockholm", "Drogheda" vs "Drogheda United",
                 # "VPS" vs "VPS Vaasa", "SJK" vs "SJK Seinäjoki".
+                # + præfiks-fald for forkortede navne hvor token afviger på suffiks,
+                #   fx "Halmstad" vs "Halmstads BK" (min. 7 tegn for at undgå fx
+                #   "Viking" vs "Vikingur").
                 _nh, _na = _norm(home), _norm(away)
-                _tm = lambda a, b: fuzz.token_set_ratio(a, b) >= 88
+                def _tm(a, b):
+                    if fuzz.token_set_ratio(a, b) >= 88:
+                        return True
+                    for _x in a.split():
+                        for _y in b.split():
+                            if len(_x) >= 7 and len(_y) >= 7 and (_x.startswith(_y) or _y.startswith(_x)):
+                                return True
+                    return False
                 if _tm(_nh, evh) and _tm(_na, eva):
                     direct = True
                 elif _tm(_nh, eva) and _tm(_na, evh):
