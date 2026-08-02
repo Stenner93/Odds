@@ -1,19 +1,19 @@
-6. runde		AGF-BRØ	SER-BAS	MAL-ELF	ROS-FRE	DIN-THU	KAU-KLA	FCK-POL	GOR-FEN	FCM-BES	FCN-GAI
-0	Lars Huus	9	2	1	1	1	9	1	2	2	1
-0	Kasper Søndergaard	9	9	1	1	9	1	1	9	1	1
-0	Ualmindeligt inaktiv	0	0	0	0	0	0	0	0	0	0
-0	Kasper Noer	2	1	1	1	1	1	1	2	1	1
-0	Rasmus Jensen	9	1	1	1	1	1	1	9	1	1
-0	Inga Wamsler	1	2	1	1	9	9	1	1	1	1
-0	Curt Christensen	9	2	1	1	1	9	1	2	1	1
-0	Dennis Sveistrup	9	9	1	1	1	1	1	2	1	1
-0	Noah Wamsler	1	2	1	1	1	2	1	1	1	1
-0	Søren Jakobsen	1	1	1	1	1	1	1	2	9	1
-0	Jørgen Frederiksen	9	9	9	9	1	9	9	9	9	1
+7. runde		STA-VIK	ABE-HEA	BRØ-VIB	PSV-ALK	HAL-SIR	ROY-BOD	SPA-LYO	AGF-SAB	DEB-FCK	VAL-FCN
+1	Anders Stenner	2	9	1	1	2	9	2	1	2	2
+1	Kasper Noer	2	2	1	1	2	1	2	1	2	2
+1	Nicolai Frederiksen	9	1	1	1	9	1	2	1	2	9
+2	Rasmus Jensen	2	1	1	1	2	9	9	1	9	2
+1	Søren Jakobsen	2	2	1	1	2	1	2	1	2	2
+1	Lars Huus	9	1	1	9	1	2	9	1	9	2
+1	Kasper Søndergaard	2	9	1	1	2	1	9	1	9	9
+2	Curt Christensen	2	1	1	1	1	9	9	1	2	2
+2	Inga Wamsler	2	1	2	1	9	2	1	1	2	9
+2	Morten Wamsler	2	1	9	1	2	2	9	1	2	2
+1	Ricky Frederiksen	2	9	1	1	2	1	9	1	2	2
+2	Tanja Wamsler	2	1	9	1	9	2	9	1	2	9
+1	Dennis Sveistrup	2	9	1	1	2	9	2	1	2	2
+0	Jørgen Frederiksen	1	9	1	1	9	9	9	1	9	9
 0	Benjamin Jakobsen	1	9	9	9	1	1	1	2	1	1
-0	Tanja Wamsler	9	2	1	1	9	9	1	9	1	1
-0	Nicolai Frederiksen	9	9	1	1	9	9	1	2	9	9
-0	Morten Wamsler	9	2	1	1	1	2	1	9	1	1
-0	Anders Stenner	1	1	1	1	1	1	1	2	1	1
-0	Ole Albrechtsen	2	2	1	1	1	1	1	2	1	1
-0	Ricky Frederiksen	1	9	1	1	1	9	1	2	9	9
+2	Ole Albrechtsen	2	1	1	1	2	1	2	1	2	2
+2	Noah Wamsler	2	1	2	1	2	2	1	1	2	2
+0	Ualmindeligt inaktiv	0	0	0	0	0	0	0	0	0	0
