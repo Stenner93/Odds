@@ -1776,13 +1776,13 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,23,9,FCM-BES,2026-07-30,19:00,Europa League,Europa League Kval,FC Midtjylland,Besiktas,,,,,2
 4,23,10,FCN-GAI,2026-07-30,19:00,Conference League,Conference League Kval,FC Nordsjælland,GAIS,,,,,1
 4,24,1,ST2-VIK,2026-08-01,18:00,Eliteserien,Eliteserien,Start,Viking,,,,,2
-4,24,2,ABE-HEA,2026-08-01,18:30,Premiership,Premiership,Aberdeen,Hearts,,,,,
+4,24,2,ABE-HEA,2026-08-01,18:30,Premiership,Premiership,Aberdeen,Hearts,,,,,1
 4,24,3,BIF-VFF,2026-08-02,16:00,Superligaen,Superliga,Brøndby,Viborg,,,,,1
 4,24,4,PSV-AZ,2026-08-02,18:00,Johan Cruyff Shield,Johan Cruyff Shield,PSV,AZ Alkmaar,,,,,
 4,24,5,HAL-SI2,2026-08-03,19:00,Allsvenskan,Allsvenskan,Halmstad,Sirius,,,,,2
-4,24,6,ROY-BO2,2026-08-04,20:00,Champions League,Champions League Kval,Royale Union SG,Bodø/​Glimt,,,,,
-4,24,7,SPP-LYO,2026-08-04,20:00,Champions League,Champions League Kval,Sparta Prag,Lyon,,,,,
-4,24,8,AGF-SAB,2026-08-05,18:30,Champions League,Champions League Kval,AGF,Sabah Baku,,,,,
+4,24,6,ROY-BO2,2026-08-04,20:00,Champions League,Champions League Kval,Royale Union SG,Bodø/​Glimt,,,,,X
+4,24,7,SPP-LYO,2026-08-04,20:00,Champions League,Champions League Kval,Sparta Prag,Lyon,,,,,1
+4,24,8,AGF-SAB,2026-08-05,18:30,Champions League,Champions League Kval,AGF,Sabah Baku,,,,,1
 4,24,9,DEB-KØB,2026-08-06,19:00,Conference League,Conference League Kval,Debrecen,FC København,,,,,
 4,24,10,VLU-FCN,2026-08-06,19:00,Conference League,Conference League Kval,Valur,FC Nordsjælland,,,,,
 5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2
