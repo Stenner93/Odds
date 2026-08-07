@@ -801,6 +801,84 @@ def _fetch_n20_for_date(date_str):
         return [m for m in (_n20_extract(i) for i in items) if m]
     except Exception: return []
 
+# ── Competition-baseret N20 (dato-feed'et mangler fx CL-kval) ──────────────
+# Vores liga -> N20's competition-navn (fra competition-URL'en)
+N20_COMPETITION = {
+    'Champions League':  'Champions League Qualification',
+    'Europa League':     'Europa League Qualification',
+    'Conference League': 'Conference League Qualification',
+}
+
+def _n20_season_str(dates):
+    """Udled sæson 'YYYY-YYYY+1' fra kampdatoerne (europæisk sæson: juli–juni)."""
+    yrs = []
+    for d in dates:
+        try:
+            _dd = datetime.date.fromisoformat(str(d)[:10]); yrs.append((_dd.year, _dd.month))
+        except Exception:
+            pass
+    if yrs:
+        y, mo = max(yrs)
+    else:
+        _t = datetime.date.today(); y, mo = _t.year, _t.month
+    return f'{y}-{y+1}' if mo >= 7 else f'{y-1}-{y}'
+
+def _n20_items_from_obj(obj, out):
+    """Gå rekursivt gennem JSON og saml alt der ligner en N20-kamp (pred_probs)."""
+    if isinstance(obj, dict):
+        if 'pred_probs' in obj:
+            m = _n20_extract(obj)
+            if m: out.append(m)
+        for v in obj.values():
+            _n20_items_from_obj(v, out)
+    elif isinstance(obj, list):
+        for v in obj:
+            _n20_items_from_obj(v, out)
+
+def _n20_from_html(html):
+    """Fallback: udtræk indlejret JSON fra competition-HTML-siden (fx __NEXT_DATA__)."""
+    out = []
+    try:
+        import re as _re, json as _js
+        for _m in _re.finditer(r'<script[^>]*id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, _re.S):
+            try: _n20_items_from_obj(_js.loads(_m.group(1)), out)
+            except Exception: pass
+    except Exception:
+        pass
+    return out
+
+def _fetch_n20_for_competition(comp, season):
+    """Prøv flere kandidat-endpoints for competition-baseret N20. Logger hvad der virker."""
+    import urllib.parse as _url
+    _c = _url.quote(comp)
+    _cands = [
+        f'https://numbertwenty.io/predict_grouped?competition={_c}&season={season}&tz_offset=0',
+        f'https://numbertwenty.io/predict_grouped?competition={_c}&tz_offset=0',
+    ]
+    for _u in _cands:
+        try:
+            r = requests.get(_u, timeout=25, headers={'User-Agent': 'Mozilla/5.0'})
+            if r.status_code != 200:
+                print(f'    ↳ N20 {comp}: HTTP {r.status_code} ({_u.split("?")[1][:45]})')
+                continue
+            raw = r.json()
+            items = raw if isinstance(raw, list) else raw.get('matches', [])
+            got = [m for m in (_n20_extract(i) for i in items) if m]
+            print(f'    ↳ N20 {comp}: {len(got)} kampe ({_u.split("?")[1][:45]})')
+            if got: return got
+        except Exception as _e:
+            print(f'    ↳ N20 {comp}: fejl ({str(_e)[:60]})')
+    # Fallback: HTML-siden
+    try:
+        _u = f'https://numbertwenty.io/competition/{_c}/{season}/'
+        r = requests.get(_u, timeout=25, headers={'User-Agent': 'Mozilla/5.0'})
+        got = _n20_from_html(r.text) if r.status_code == 200 else []
+        print(f'    ↳ N20 {comp}: {len(got)} kampe via HTML-side (HTTP {r.status_code})')
+        return got
+    except Exception as _e:
+        print(f'    ↳ N20 {comp}: HTML-fejl ({str(_e)[:60]})')
+    return []
+
 if os.path.exists(ODDS_CSV):
     try:
         _df_odds_n20 = pd.read_csv(ODDS_CSV)
@@ -840,6 +918,19 @@ if os.path.exists(ODDS_CSV):
                 for _m in _fetch_n20_for_date(_d):
                     _key = _n20_norm(_m['team'])
                     _all_n20[_key] = _m
+
+            # Competition-baseret N20 for kval-turneringer som dato-feed'et mangler (fx CL-kval)
+            _n20_comps = set()
+            if 'league' in _df_cur_n20.columns:
+                for _lg in _df_cur_n20['league'].dropna():
+                    _cn = N20_COMPETITION.get(resolve_league(str(_lg)))
+                    if _cn: _n20_comps.add(_cn)
+            if _n20_comps:
+                _season_n20 = _n20_season_str(_dates)
+                print(f'  Henter N20 for {len(_n20_comps)} turnering(er), sæson {_season_n20}')
+                for _cn in sorted(_n20_comps):
+                    for _m in _fetch_n20_for_competition(_cn, _season_n20):
+                        _all_n20[_n20_norm(_m['team'])] = _m
 
             _all_teams = list(_all_n20.keys())
             _updates_n20 = []
