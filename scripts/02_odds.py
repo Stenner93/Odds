@@ -757,6 +757,7 @@ _N20_ALIASES = {
     'parissg': 'parissaintgermain', 'psg': 'parissaintgermain',
     'bvb': 'borussiadortmund', 'dortmund': 'borussiadortmund',
     'leverkusen': 'bayerleverkusen', 'inter': 'intermilan',
+    'sabahbaku': 'sabahfk',
 }
 
 def _n20_variants(name):
@@ -910,31 +911,10 @@ def _n20_from_html(html):
         pass
     return out
 
-_N20_DEBUG = os.environ.get('N20_DEBUG') == '1'
-
-def _n20_dbg_json(raw):
-    """Kort beskrivelse af en JSON-respons struktur (til fejlsøgning)."""
-    try:
-        if isinstance(raw, list):
-            s = f'list[{len(raw)}]'
-            if raw and isinstance(raw[0], dict):
-                s += ' item0.keys=' + ','.join(list(raw[0].keys())[:12])
-            return s
-        if isinstance(raw, dict):
-            s = 'dict keys=' + ','.join(list(raw.keys())[:12])
-            for _k, _v in raw.items():
-                if isinstance(_v, list) and _v:
-                    s += f' | {_k}=list[{len(_v)}]'
-                    if isinstance(_v[0], dict):
-                        s += ' item0.keys=' + ','.join(list(_v[0].keys())[:12])
-                    break
-            return s
-        return type(raw).__name__
-    except Exception as _e:
-        return f'<dbg-fejl {_e}>'
-
 def _fetch_n20_for_competition(comp, season):
-    """Prøv flere kandidat-endpoints for competition-baseret N20. Logger hvad der virker."""
+    """Hent competition-baseret N20 (fx CL/EL-kval som dato-feed'et mangler).
+    Prøver først JSON-endpointet; falder ellers tilbage til at parse selve
+    competition-siden, hvor kamp-objekterne ligger indlejret i et JS-modul."""
     import urllib.parse as _url
     _c = _url.quote(comp)
     _cands = [
@@ -945,42 +925,24 @@ def _fetch_n20_for_competition(comp, season):
         try:
             r = requests.get(_u, timeout=25, headers={'User-Agent': 'Mozilla/5.0'})
             if r.status_code != 200:
-                print(f'    ↳ N20 {comp}: HTTP {r.status_code} ({_u.split("?")[1][:45]})')
                 continue
-            _ct = r.headers.get('content-type', '')
-            try:
-                raw = r.json()
-            except Exception:
-                if _N20_DEBUG:
-                    print(f'      [dbg] {_u}')
-                    print(f'      [dbg] non-JSON ct={_ct} len={len(r.text)} head={r.text[:200]!r}')
-                continue
+            raw = r.json()
             items = raw if isinstance(raw, list) else raw.get('matches', [])
             got = [m for m in (_n20_extract(i) for i in items) if m]
-            print(f'    ↳ N20 {comp}: {len(got)} kampe ({_u.split("?")[1][:45]})')
-            if _N20_DEBUG and not got:
-                print(f'      [dbg] {_u}')
-                print(f'      [dbg] ct={_ct} struct={_n20_dbg_json(raw)}')
-            if got: return got
-        except Exception as _e:
-            print(f'    ↳ N20 {comp}: fejl ({str(_e)[:60]})')
-    # Fallback: HTML-siden
+            if got:
+                print(f'    ↳ N20 {comp}: {len(got)} kampe (JSON)')
+                return got
+        except Exception:
+            pass
+    # Fallback: parse competition-HTML-siden
     try:
         _u = f'https://numbertwenty.io/competition/{_c}/{season}/'
         r = requests.get(_u, timeout=25, headers={'User-Agent': 'Mozilla/5.0'})
         got = _n20_from_html(r.text) if r.status_code == 200 else []
-        print(f'    ↳ N20 {comp}: {len(got)} kampe via HTML-side (HTTP {r.status_code})')
-        if _N20_DEBUG and r.status_code == 200:
-            _objs = _n20_json_objs_with(r.text, '"pred_probs"')
-            print(f'      [dbg] rå objekter m/pred_probs={len(_objs)}, udtrukket={len(got)}')
-            if _objs:
-                print(f'      [dbg] objekt0 keys={list(_objs[0].keys())}')
-            for _g in got[:12]:
-                print(f'      [dbg] kamp: {_g["team"]} vs {_g["opponent"]} '
-                      f'({_g["prob_1"]}/{_g["prob_x"]}/{_g["prob_2"]})')
+        print(f'    ↳ N20 {comp}: {len(got)} kampe (HTML)')
         return got
     except Exception as _e:
-        print(f'    ↳ N20 {comp}: HTML-fejl ({str(_e)[:60]})')
+        print(f'    ↳ N20 {comp}: fejl ({str(_e)[:60]})')
     return []
 
 if os.path.exists(ODDS_CSV):
@@ -1022,34 +984,6 @@ if os.path.exists(ODDS_CSV):
                 for _m in _fetch_n20_for_date(_d):
                     _key = _n20_norm(_m['team'])
                     _all_n20[_key] = _m
-
-            if _N20_DEBUG:
-                # Dump ALLE competition-labels + hold i dato-feed'et, så vi kan se
-                # om kval-kampene faktisk findes dér (bare under andet navn/label).
-                _labels = {}
-                for _d in _dates:
-                    try:
-                        _r = requests.get(
-                            f'https://numbertwenty.io/predict_grouped?date={_d}&tz_offset=0',
-                            timeout=20, headers={'User-Agent': 'Mozilla/5.0'})
-                        if _r.status_code != 200: continue
-                        _raw = _r.json()
-                        _its = _raw if isinstance(_raw, list) else _raw.get('matches', [])
-                        for _it in _its:
-                            if not isinstance(_it, dict): continue
-                            _lab = (_it.get('Competition') or _it.get('competition')
-                                    or _it.get('League') or _it.get('league')
-                                    or _it.get('Comp') or '?')
-                            _labels[str(_lab)] = _labels.get(str(_lab), 0) + 1
-                            _tt = f"{_it.get('Team') or _it.get('team') or _it.get('home_team')}"
-                            _oo = f"{_it.get('Opponent') or _it.get('opponent') or _it.get('away_team')}"
-                            if any(_kw in (_tt + _oo).lower() for _kw in
-                                   ['glimt','sabah','lyon','sparta','anderlecht','paok','union','agf','villa']):
-                                print(f'      [dbg] dato-feed kamp: {_tt} vs {_oo} | label={_lab}')
-                    except Exception as _e:
-                        print(f'      [dbg] dato-scan fejl {_d}: {_e}')
-                print(f'      [dbg] dato-feed labels: '
-                      + '; '.join(f'{_k}={_v}' for _k, _v in sorted(_labels.items())))
 
             # Competition-baseret N20 for kval-turneringer som dato-feed'et mangler (fx CL-kval)
             _n20_comps = set()

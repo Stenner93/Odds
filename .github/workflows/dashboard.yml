@@ -89,7 +89,6 @@ jobs:
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
           BZZOIRO_TOKEN: ${{ secrets.BZZOIRO_TOKEN }}
-          N20_DEBUG: "1"
 
       - name: 03 — Indlæs spillernes gæt
         if: >
