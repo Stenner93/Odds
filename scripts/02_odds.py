@@ -205,6 +205,38 @@ def _canon_set(name):
     variants = [name] + TEAM_ALIASES.get(name, [])
     return {_norm(x) for x in variants}
 
+# ── Option A: selvlærende odds-alias, forankret i ligaens feed ────────────
+# Når en kamp KUN kan matches via fuzzy mod odds-feed'et, gemmes feed'ets
+# holdnavn som alias for vores navn. Navnet stammer altid fra en kamp i den
+# pågældende liga-feed (begge hold skal matche), så det er forankret i ligaen.
+# Indlæses her, så senere kørsler matcher exact.
+import json as _json_alias
+ODDS_ALIASES_PATH = os.path.join(DATA_DIR, 'odds_aliases.json')
+_auto_aliases_new = {}
+try:
+    if os.path.exists(ODDS_ALIASES_PATH):
+        _stored_al = _json_alias.load(open(ODDS_ALIASES_PATH, encoding='utf-8'))
+        for _our, _feed in _stored_al.items():
+            TEAM_ALIASES.setdefault(_our, [_our])
+            if _feed not in TEAM_ALIASES[_our]:
+                TEAM_ALIASES[_our].append(_feed)
+        if _stored_al:
+            print(f'  📎 Odds-alias indlæst: {len(_stored_al)} lærte navne')
+except Exception as _e:
+    print(f'  ⚠ odds_aliases.json kunne ikke indlæses: {_e}')
+
+def _record_odds_alias(our, feed):
+    """Gem 'vores navn -> feed-navn' hvis de afviger og ikke allerede er kendt."""
+    our = str(our).strip(); feed = str(feed).strip()
+    if not our or not feed or _norm(our) == _norm(feed):
+        return
+    if feed in TEAM_ALIASES.get(our, []):
+        return
+    _auto_aliases_new[our] = feed
+    TEAM_ALIASES.setdefault(our, [our])
+    if feed not in TEAM_ALIASES[our]:
+        TEAM_ALIASES[our].append(feed)
+
 LEAGUE_ODDS_KEY = {
     'Premier League':    'soccer_epl',
     'Championship':      'soccer_efl_champ',
@@ -427,6 +459,7 @@ def _get_match_odds(home, away, league):
             eva = _norm(ev.get('away_team', ''))
             direct  = (evh in hc and eva in ac)
             swapped = (evh in ac and eva in hc)
+            matched_fuzzy = False
             if not (direct or swapped):
                 # Robust navnematch med token_set_ratio, der håndterer delnavne
                 # som "AIK" vs "AIK Stockholm", "Drogheda" vs "Drogheda United",
@@ -444,9 +477,9 @@ def _get_match_odds(home, away, league):
                                 return True
                     return False
                 if _tm(_nh, evh) and _tm(_na, eva):
-                    direct = True
+                    direct = True; matched_fuzzy = True
                 elif _tm(_nh, eva) and _tm(_na, evh):
-                    swapped = True
+                    swapped = True; matched_fuzzy = True
             if direct or swapped:
                 mk = None
                 for b in ev.get('bookmakers', []):
@@ -464,6 +497,9 @@ def _get_match_odds(home, away, league):
                 inv_h = 1/oh; inv_a = 1/oa; inv_d = 1/od if od else 0
                 s = inv_h + inv_a + inv_d
                 if s == 0: continue
+                if matched_fuzzy:  # lær alias fra ligaens feed (Option A)
+                    _record_odds_alias(home, ev.get('home_team') if direct else ev.get('away_team'))
+                    _record_odds_alias(away, ev.get('away_team') if direct else ev.get('home_team'))
                 return (round(oh, 2), round(od, 2) if od else None, round(oa, 2),
                         round(inv_h/s*100, 1), round(inv_a/s*100, 1))
     # Diagnostik: ingen odds-match — vis hvilke kampe feed'et faktisk indeholdt,
@@ -605,6 +641,20 @@ if not df_new.empty:
                key_cols=['season', 'round', 'match_no'], overwrite_if_new_data=True)
 else:
     print('  (alle kampe springet over)')
+
+# Option A: gem nyligt lærte odds-aliaser (forankret i ligaens feed)
+if _auto_aliases_new:
+    try:
+        _merged_al = {}
+        if os.path.exists(ODDS_ALIASES_PATH):
+            _merged_al = _json_alias.load(open(ODDS_ALIASES_PATH, encoding='utf-8'))
+        _merged_al.update(_auto_aliases_new)
+        _json_alias.dump(_merged_al, open(ODDS_ALIASES_PATH, 'w', encoding='utf-8'),
+                         ensure_ascii=False, indent=2, sort_keys=True)
+        print('  📎 Lærte odds-alias: ' +
+              ', '.join(f'{k} → {v}' for k, v in _auto_aliases_new.items()))
+    except Exception as _e:
+        print(f'  ⚠ kunne ikke gemme odds_aliases.json: {_e}')
 
 # ══════════════════════════════════════════════════════════════════════════
 # 02-C: BZZOIRO ML-predictions
