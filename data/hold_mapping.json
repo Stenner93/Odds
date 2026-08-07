@@ -1141,6 +1141,13 @@
     "elo_name": "Djurgarden"
   },
   {
+    "abbr": "DJU",
+    "type": "SVE",
+    "land": "SVE",
+    "name": "Djurgårdens",
+    "elo_name": "Djurgarden"
+  },
+  {
     "abbr": "BVB",
     "type": "TYS",
     "land": "TYS",
@@ -2791,6 +2798,13 @@
     "land": "ENG",
     "name": "Middlesbrough",
     "elo_name": "Middlesbrough"
+  },
+  {
+    "abbr": "MIL",
+    "type": "INT",
+    "land": "INT",
+    "name": "Millwall",
+    "elo_name": "Millwall"
   },
   {
     "abbr": "MIR",
@@ -4457,6 +4471,13 @@
     "land": "SVE",
     "name": "Värnamo",
     "elo_name": "Varnamo"
+  },
+  {
+    "abbr": "VAS",
+    "type": "INT",
+    "land": "INT",
+    "name": "Västerås",
+    "elo_name": "Vasteras"
   },
   {
     "abbr": "VEJ",
