@@ -847,6 +847,29 @@ def _n20_from_html(html):
         pass
     return out
 
+_N20_DEBUG = os.environ.get('N20_DEBUG') == '1'
+
+def _n20_dbg_json(raw):
+    """Kort beskrivelse af en JSON-respons struktur (til fejlsøgning)."""
+    try:
+        if isinstance(raw, list):
+            s = f'list[{len(raw)}]'
+            if raw and isinstance(raw[0], dict):
+                s += ' item0.keys=' + ','.join(list(raw[0].keys())[:12])
+            return s
+        if isinstance(raw, dict):
+            s = 'dict keys=' + ','.join(list(raw.keys())[:12])
+            for _k, _v in raw.items():
+                if isinstance(_v, list) and _v:
+                    s += f' | {_k}=list[{len(_v)}]'
+                    if isinstance(_v[0], dict):
+                        s += ' item0.keys=' + ','.join(list(_v[0].keys())[:12])
+                    break
+            return s
+        return type(raw).__name__
+    except Exception as _e:
+        return f'<dbg-fejl {_e}>'
+
 def _fetch_n20_for_competition(comp, season):
     """Prøv flere kandidat-endpoints for competition-baseret N20. Logger hvad der virker."""
     import urllib.parse as _url
@@ -861,10 +884,20 @@ def _fetch_n20_for_competition(comp, season):
             if r.status_code != 200:
                 print(f'    ↳ N20 {comp}: HTTP {r.status_code} ({_u.split("?")[1][:45]})')
                 continue
-            raw = r.json()
+            _ct = r.headers.get('content-type', '')
+            try:
+                raw = r.json()
+            except Exception:
+                if _N20_DEBUG:
+                    print(f'      [dbg] {_u}')
+                    print(f'      [dbg] non-JSON ct={_ct} len={len(r.text)} head={r.text[:200]!r}')
+                continue
             items = raw if isinstance(raw, list) else raw.get('matches', [])
             got = [m for m in (_n20_extract(i) for i in items) if m]
             print(f'    ↳ N20 {comp}: {len(got)} kampe ({_u.split("?")[1][:45]})')
+            if _N20_DEBUG and not got:
+                print(f'      [dbg] {_u}')
+                print(f'      [dbg] ct={_ct} struct={_n20_dbg_json(raw)}')
             if got: return got
         except Exception as _e:
             print(f'    ↳ N20 {comp}: fejl ({str(_e)[:60]})')
@@ -874,6 +907,27 @@ def _fetch_n20_for_competition(comp, season):
         r = requests.get(_u, timeout=25, headers={'User-Agent': 'Mozilla/5.0'})
         got = _n20_from_html(r.text) if r.status_code == 200 else []
         print(f'    ↳ N20 {comp}: {len(got)} kampe via HTML-side (HTTP {r.status_code})')
+        if _N20_DEBUG and not got and r.status_code == 200:
+            import re as _re
+            _h = r.text
+            _nd = _re.search(r'<script[^>]*id="__NEXT_DATA__"[^>]*>(.*?)</script>', _h, _re.S)
+            print(f'      [dbg] HTML len={len(_h)} __NEXT_DATA__={"ja" if _nd else "nej"} '
+                  f'pred_probs_i_html={"ja" if "pred_probs" in _h else "nej"}')
+            if _nd:
+                try:
+                    import json as _js
+                    _nj = _js.loads(_nd.group(1))
+                    print(f'      [dbg] NEXT keys={list(_nj.keys())[:8]}')
+                    _pp = (((_nj.get('props') or {}).get('pageProps')) or {})
+                    print(f'      [dbg] pageProps keys={list(_pp.keys())[:15]}')
+                    for _k, _v in _pp.items():
+                        if isinstance(_v, list) and _v:
+                            print(f'      [dbg] pageProps.{_k}=list[{len(_v)}] '
+                                  f'item0.keys={list(_v[0].keys())[:12] if isinstance(_v[0], dict) else _v[0]}')
+                except Exception as _e2:
+                    print(f'      [dbg] NEXT parse-fejl {_e2}')
+            else:
+                print(f'      [dbg] head={_h[:300]!r}')
         return got
     except Exception as _e:
         print(f'    ↳ N20 {comp}: HTML-fejl ({str(_e)[:60]})')
@@ -918,6 +972,34 @@ if os.path.exists(ODDS_CSV):
                 for _m in _fetch_n20_for_date(_d):
                     _key = _n20_norm(_m['team'])
                     _all_n20[_key] = _m
+
+            if _N20_DEBUG:
+                # Dump ALLE competition-labels + hold i dato-feed'et, så vi kan se
+                # om kval-kampene faktisk findes dér (bare under andet navn/label).
+                _labels = {}
+                for _d in _dates:
+                    try:
+                        _r = requests.get(
+                            f'https://numbertwenty.io/predict_grouped?date={_d}&tz_offset=0',
+                            timeout=20, headers={'User-Agent': 'Mozilla/5.0'})
+                        if _r.status_code != 200: continue
+                        _raw = _r.json()
+                        _its = _raw if isinstance(_raw, list) else _raw.get('matches', [])
+                        for _it in _its:
+                            if not isinstance(_it, dict): continue
+                            _lab = (_it.get('Competition') or _it.get('competition')
+                                    or _it.get('League') or _it.get('league')
+                                    or _it.get('Comp') or '?')
+                            _labels[str(_lab)] = _labels.get(str(_lab), 0) + 1
+                            _tt = f"{_it.get('Team') or _it.get('team') or _it.get('home_team')}"
+                            _oo = f"{_it.get('Opponent') or _it.get('opponent') or _it.get('away_team')}"
+                            if any(_kw in (_tt + _oo).lower() for _kw in
+                                   ['glimt','sabah','lyon','sparta','anderlecht','paok','union','agf','villa']):
+                                print(f'      [dbg] dato-feed kamp: {_tt} vs {_oo} | label={_lab}')
+                    except Exception as _e:
+                        print(f'      [dbg] dato-scan fejl {_d}: {_e}')
+                print(f'      [dbg] dato-feed labels: '
+                      + '; '.join(f'{_k}={_v}' for _k, _v in sorted(_labels.items())))
 
             # Competition-baseret N20 for kval-turneringer som dato-feed'et mangler (fx CL-kval)
             _n20_comps = set()
