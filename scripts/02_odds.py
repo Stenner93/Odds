@@ -913,21 +913,20 @@ def _fetch_n20_for_competition(comp, season):
             _nd = _re.search(r'<script[^>]*id="__NEXT_DATA__"[^>]*>(.*?)</script>', _h, _re.S)
             print(f'      [dbg] HTML len={len(_h)} __NEXT_DATA__={"ja" if _nd else "nej"} '
                   f'pred_probs_i_html={"ja" if "pred_probs" in _h else "nej"}')
-            if _nd:
-                try:
-                    import json as _js
-                    _nj = _js.loads(_nd.group(1))
-                    print(f'      [dbg] NEXT keys={list(_nj.keys())[:8]}')
-                    _pp = (((_nj.get('props') or {}).get('pageProps')) or {})
-                    print(f'      [dbg] pageProps keys={list(_pp.keys())[:15]}')
-                    for _k, _v in _pp.items():
-                        if isinstance(_v, list) and _v:
-                            print(f'      [dbg] pageProps.{_k}=list[{len(_v)}] '
-                                  f'item0.keys={list(_v[0].keys())[:12] if isinstance(_v[0], dict) else _v[0]}')
-                except Exception as _e2:
-                    print(f'      [dbg] NEXT parse-fejl {_e2}')
-            else:
-                print(f'      [dbg] head={_h[:300]!r}')
+            # Inventér alle <script> tags og deres signatur
+            _scripts = _re.findall(r'<script([^>]*)>(.*?)</script>', _h, _re.S)
+            print(f'      [dbg] antal <script>={len(_scripts)}')
+            for _si, (_attr, _body) in enumerate(_scripts):
+                _has = 'pred_probs' in _body
+                if _has or _si < 6:
+                    print(f'      [dbg] script#{_si} attr={_attr.strip()[:80]!r} '
+                          f'len={len(_body)} pred_probs={"JA" if _has else "nej"} '
+                          f'head={_body.strip()[:90]!r}')
+            # Kontekst omkring første pred_probs i hele HTML'en
+            _pi = _h.find('pred_probs')
+            if _pi >= 0:
+                print(f'      [dbg] kontekst omkring pred_probs:')
+                print(f'      [dbg] ...{_h[max(0,_pi-400):_pi+300]!r}...')
         return got
     except Exception as _e:
         print(f'    ↳ N20 {comp}: HTML-fejl ({str(_e)[:60]})')
