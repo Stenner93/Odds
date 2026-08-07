@@ -777,14 +777,24 @@ def _n20_variants(name):
 def _n20_extract(item):
     team = (item.get('Team') or item.get('team') or item.get('home_team') or '')
     opp  = (item.get('Opponent') or item.get('opponent') or item.get('away_team') or '')
+    # Competition-siden: holdnavne ligger i team_slug som "Hjemme/Ude"
+    if (not team or not opp) and item.get('team_slug'):
+        _parts = str(item['team_slug']).split('/')
+        if len(_parts) >= 2:
+            if not team: team = _parts[0].strip()
+            if not opp:  opp  = _parts[-1].strip()
     pp   = item.get('pred_probs') or {}
     if not pp or not team: return None
     try:
+        p1 = round(float(pp.get('1', pp.get('home', 0))) * 100, 1)
+        px = round(float(pp.get('X', pp.get('draw', 0))) * 100, 1)
+        p2 = round(float(pp.get('2', pp.get('away', 0))) * 100, 1)
+        # 0-sandsynlighed = fremtidig/ukendt tie (fx næste runde) — spring over
+        if p1 + px + p2 <= 0:
+            return None
         return {
             'team': str(team).strip(), 'opponent': str(opp).strip(),
-            'prob_1': round(float(pp.get('1', pp.get('home', 0))) * 100, 1),
-            'prob_x': round(float(pp.get('X', pp.get('draw', 0))) * 100, 1),
-            'prob_2': round(float(pp.get('2', pp.get('away', 0))) * 100, 1),
+            'prob_1': p1, 'prob_x': px, 'prob_2': p2,
             'elo_home': item.get('Elo_Team') or item.get('elo_team'),
             'elo_away': item.get('Elo_Opponent') or item.get('elo_opponent'),
         }
@@ -835,14 +845,67 @@ def _n20_items_from_obj(obj, out):
         for v in obj:
             _n20_items_from_obj(v, out)
 
+def _n20_json_objs_with(text, needle='"pred_probs"'):
+    """Find alle balancerede JSON-objekter i `text` der indeholder `needle`.
+    N20's competition-side lægger kamp-objekterne i et stort JS-modul (ikke ren JSON),
+    så vi kan ikke json.loads hele scriptet. I stedet klipper vi hvert kamp-objekt ud
+    ved at gå ud til den omkringliggende {..} og parse det enkeltvis."""
+    import json as _js
+    out = []
+    n = len(text)
+    idx = 0
+    while True:
+        p = text.find(needle, idx)
+        if p < 0:
+            break
+        # gå til venstre og find objektets start-{ (dybde 0)
+        depth = 0; start = -1; i = p
+        while i >= 0:
+            c = text[i]
+            if c == '}':
+                depth += 1
+            elif c == '{':
+                if depth == 0:
+                    start = i; break
+                depth -= 1
+            i -= 1
+        if start < 0:
+            idx = p + len(needle); continue
+        # gå til højre og find matchende } (string-bevidst)
+        depth = 0; end = -1; instr = False; esc = False; j = start
+        while j < n:
+            c = text[j]
+            if instr:
+                if esc: esc = False
+                elif c == '\\': esc = True
+                elif c == '"': instr = False
+            else:
+                if c == '"': instr = True
+                elif c == '{': depth += 1
+                elif c == '}':
+                    depth -= 1
+                    if depth == 0:
+                        end = j; break
+            j += 1
+        if end < 0:
+            idx = p + len(needle); continue
+        try:
+            out.append(_js.loads(text[start:end + 1]))
+        except Exception:
+            pass
+        idx = end + 1
+    return out
+
 def _n20_from_html(html):
-    """Fallback: udtræk indlejret JSON fra competition-HTML-siden (fx __NEXT_DATA__)."""
+    """Udtræk indlejrede kamp-objekter fra competition-HTML-siden.
+    N20 er ikke Next.js — data ligger i et stort <script type="module"> som JS-objekter.
+    Vi finder hvert objekt med pred_probs og udtrækker holdnavne + sandsynligheder."""
     out = []
     try:
-        import re as _re, json as _js
-        for _m in _re.finditer(r'<script[^>]*id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, _re.S):
-            try: _n20_items_from_obj(_js.loads(_m.group(1)), out)
-            except Exception: pass
+        for _obj in _n20_json_objs_with(html, '"pred_probs"'):
+            m = _n20_extract(_obj)
+            if m:
+                out.append(m)
     except Exception:
         pass
     return out
@@ -907,26 +970,14 @@ def _fetch_n20_for_competition(comp, season):
         r = requests.get(_u, timeout=25, headers={'User-Agent': 'Mozilla/5.0'})
         got = _n20_from_html(r.text) if r.status_code == 200 else []
         print(f'    ↳ N20 {comp}: {len(got)} kampe via HTML-side (HTTP {r.status_code})')
-        if _N20_DEBUG and not got and r.status_code == 200:
-            import re as _re
-            _h = r.text
-            _nd = _re.search(r'<script[^>]*id="__NEXT_DATA__"[^>]*>(.*?)</script>', _h, _re.S)
-            print(f'      [dbg] HTML len={len(_h)} __NEXT_DATA__={"ja" if _nd else "nej"} '
-                  f'pred_probs_i_html={"ja" if "pred_probs" in _h else "nej"}')
-            # Inventér alle <script> tags og deres signatur
-            _scripts = _re.findall(r'<script([^>]*)>(.*?)</script>', _h, _re.S)
-            print(f'      [dbg] antal <script>={len(_scripts)}')
-            for _si, (_attr, _body) in enumerate(_scripts):
-                _has = 'pred_probs' in _body
-                if _has or _si < 6:
-                    print(f'      [dbg] script#{_si} attr={_attr.strip()[:80]!r} '
-                          f'len={len(_body)} pred_probs={"JA" if _has else "nej"} '
-                          f'head={_body.strip()[:90]!r}')
-            # Kontekst omkring første pred_probs i hele HTML'en
-            _pi = _h.find('pred_probs')
-            if _pi >= 0:
-                print(f'      [dbg] kontekst omkring pred_probs:')
-                print(f'      [dbg] ...{_h[max(0,_pi-400):_pi+300]!r}...')
+        if _N20_DEBUG and r.status_code == 200:
+            _objs = _n20_json_objs_with(r.text, '"pred_probs"')
+            print(f'      [dbg] rå objekter m/pred_probs={len(_objs)}, udtrukket={len(got)}')
+            if _objs:
+                print(f'      [dbg] objekt0 keys={list(_objs[0].keys())}')
+            for _g in got[:12]:
+                print(f'      [dbg] kamp: {_g["team"]} vs {_g["opponent"]} '
+                      f'({_g["prob_1"]}/{_g["prob_x"]}/{_g["prob_2"]})')
         return got
     except Exception as _e:
         print(f'    ↳ N20 {comp}: HTML-fejl ({str(_e)[:60]})')
