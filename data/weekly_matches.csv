@@ -1791,8 +1791,8 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,25,4,RFC-LBK,2026-08-09,16:00,Superligaen,Superliga,Randers,Lyngby,,,,,1
 4,25,5,VÄS-DJ2,2026-08-10,19:00,Allsvenskan,Allsvenskan,Västerås,Djurgårdens,,,,,1
 4,25,6,BOD-RUS,2026-08-11,18:00,Champions League,Champions League Kval,Bodø/​Glimt,Royale Union SG,,,,,
-4,25,7,SAB-AGF,2026-08-11,18:00,Champions League,Champions League Kval,Sabah Baku,AGF,,,,,
-4,25,8,LYO-SPP,2026-08-11,21:00,Champions League,Champions League Kval,Lyon,Sparta Prag,,,,,
+4,25,7,SAB-AGF,2026-08-11,18:00,Champions League,Champions League Kval,Sabah Baku,AGF,,,,,1
+4,25,8,LYO-SPP,2026-08-11,21:00,Champions League,Champions League Kval,Lyon,Sparta Prag,,,,,1
 4,25,9,PSG-AVI,2026-08-12,21:00,UEFA Super Cup,UEFA Super Cup,Paris SG,Aston Villa,,,,,
 4,25,10,AND-PAO,2026-08-13,20:30,Europa League,Europa League Kval,Anderlecht,PAOK,,,,,
 5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2
