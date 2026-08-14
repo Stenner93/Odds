@@ -2,9 +2,12 @@ name: Opdater dashboard
 
 on:
   schedule:
-    # 6:30 dansk tid (CET = UTC+1) — kører dagligt
-    # Sommerhalvår (CEST = UTC+2): kører 7:30 dansk tid
-    - cron: '30 5 * * *'
+    # Man–tor + lør–søn kl. 05:30 UTC (07:30 dansk sommertid / 06:30 vintertid):
+    # rutine-opdatering — odds, resultater, stilling, dashboard (UDEN Cognito-scraping)
+    - cron: '30 5 * * 0-4,6'
+    # Fredag kl. 05:00 UTC (07:00 dansk sommertid / 06:00 vintertid): "gør det hele" —
+    # scraper ny runde fra Cognito Forms + odds + resultater + stilling + dashboard
+    - cron: '0 5 * * 5'
 
   workflow_dispatch:
     inputs:
@@ -65,19 +68,19 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Installer Playwright (kun ved Cognito-scraping)
-        if: github.event.inputs.hent_kampe == 'true'
+        if: github.event.inputs.hent_kampe == 'true' || github.event.schedule == '0 5 * * 5'
         run: |
           pip install playwright
           playwright install chromium --with-deps
 
       - name: 01 — Hent kampe fra Cognito
-        if: github.event.inputs.hent_kampe == 'true'
+        if: github.event.inputs.hent_kampe == 'true' || github.event.schedule == '0 5 * * 5'
         run: python scripts/01_kampe.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 06 — Opdater hold_mapping.json med nye hold
-        if: github.event.inputs.hent_kampe == 'true'
+        if: github.event.inputs.hent_kampe == 'true' || github.event.schedule == '0 5 * * 5'
         run: python scripts/06_mapping_update.py
 
       - name: 02 — Hent odds og model-forudsigelser
