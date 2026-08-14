@@ -2100,6 +2100,13 @@
     "elo_name": "Inter Miami"
   },
   {
+    "abbr": "IN1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Inter Turku",
+    "elo_name": "Inter Turku"
+  },
+  {
     "abbr": "IPS",
     "type": "PL",
     "land": "PL",
@@ -2828,6 +2835,13 @@
     "elo_name": "Mlada Boleslav"
   },
   {
+    "abbr": "MOD",
+    "type": "INT",
+    "land": "INT",
+    "name": "Modena",
+    "elo_name": "Modena"
+  },
+  {
     "abbr": "MOL",
     "type": "NOR",
     "land": "NOR",
@@ -3465,6 +3479,13 @@
     "elo_name": "RFS"
   },
   {
+    "abbr": "RIJ",
+    "type": "INT",
+    "land": "INT",
+    "name": "Rijeka",
+    "elo_name": "Rijeka"
+  },
+  {
     "abbr": "RIT",
     "type": "LIT",
     "land": "LIT",
@@ -3990,6 +4011,13 @@
     "elo_name": "St Johnstone"
   },
   {
+    "abbr": "SGA",
+    "type": "SCH",
+    "land": "SCH",
+    "name": "St. Gallen",
+    "elo_name": "StGallen"
+  },
+  {
     "abbr": "STP",
     "type": "IRL",
     "land": "IRL",
@@ -4431,6 +4459,13 @@
     "elo_name": "Valladolid"
   },
   {
+    "abbr": "VA1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Vallecas",
+    "elo_name": "Vallecas"
+  },
+  {
     "abbr": "VLM",
     "type": "LET",
     "land": "LET",
@@ -4499,6 +4534,13 @@
     "land": "BOS",
     "name": "Velez Mostar",
     "elo_name": "Velez Mostar"
+  },
+  {
+    "abbr": "VEN",
+    "type": "INT",
+    "land": "INT",
+    "name": "Venezia",
+    "elo_name": "Venezia"
   },
   {
     "abbr": "VEZ",
