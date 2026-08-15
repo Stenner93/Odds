@@ -1,19 +1,19 @@
-8. runde		QPR-MIL	WOL-KAI	LIL-ROS	RAN-LYN	VÄS-DJU	BOD-ROY	SAB-AGF	LYO-SPP	PSG-AST	AND-PAO
-0	Morten Wamsler	1	9	2	1	2	1	1	9	1	1
-0	Nicolai Frederiksen	1	1	9	1	9	9	9	1	1	1
+9. runde		VEN-MOD	SEV-VAL	HAN-WOL	ARS-MAC	BRØ-SJE	FEN-LYO	NIJ-BOD	FCM-RIJ	FCN-STG	TUR-FCK
+0	Anders Stenner	1	1	2	9	1	1	9	1	1	2
 0	Ualmindeligt inaktiv	0	0	0	0	0	0	0	0	0	0
-0	Søren Jakobsen	2	1	1	1	2	1	1	1	1	9
-0	Ole Albrechtsen	1	1	1	1	2	1	9	1	1	1
-0	Dennis Sveistrup	9	1	9	1	2	1	1	1	1	2
-0	Jørgen Frederiksen	9	1	9	9	9	9	9	1	1	9
-0	Kasper Søndergaard	9	1	1	1	2	1	1	1	1	9
-0	Kasper Noer	2	1	2	1	2	1	2	1	1	1
-0	Inga Wamsler	1	1	9	1	2	1	9	1	1	1
-0	Tanja Wamsler	1	9	9	1	2	1	9	9	1	1
+0	Inga Wamsler	9	1	2	2	1	9	2	1	1	2
+0	Noah Wamsler	1	1	2	2	1	1	2	1	1	2
+0	Kasper Søndergaard	1	1	2	9	1	2	1	1	1	2
+0	Ole Albrechtsen	9	1	9	2	1	1	2	1	1	2
 0	Benjamin Jakobsen	1	9	9	9	1	1	1	2	1	1
-0	Noah Wamsler	1	1	2	1	2	1	1	1	1	1
-0	Anders Stenner	2	1	1	1	2	1	9	1	1	1
-0	Curt Christensen	9	1	1	9	9	1	9	1	1	1
-0	Lars Huus	1	1	2	1	2	1	2	1	1	1
-0	Rasmus Jensen	2	1	9	2	2	1	9	1	1	2
-0	Ricky Frederiksen	9	1	1	9	2	1	1	1	1	9
+0	Rasmus Jensen	1	1	9	9	1	1	2	1	1	2
+0	Lars Huus	1	1	9	9	1	9	9	1	1	9
+0	Jørgen Frederiksen	9	1	9	9	1	2	9	1	1	9
+0	Ricky Frederiksen	1	1	9	9	1	1	2	1	1	2
+0	Morten Wamsler	1	1	9	2	1	1	2	1	9	2
+0	Søren Jakobsen	1	1	2	9	1	1	9	1	1	2
+0	Curt Christensen	9	1	9	1	1	9	2	1	1	2
+0	Dennis Sveistrup	1	9	9	9	1	1	2	1	1	2
+0	Tanja Wamsler	9	1	9	2	1	9	2	1	9	2
+0	Nicolai Frederiksen	1	1	9	9	1	1	1	1	9	2
+0	Kasper Noer	1	1	2	2	2	1	2	1	1	2
