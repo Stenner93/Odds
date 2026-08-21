@@ -2030,6 +2030,13 @@
     "elo_name": "Honka Espoo"
   },
   {
+    "abbr": "HOR",
+    "type": "INT",
+    "land": "INT",
+    "name": "Horsens",
+    "elo_name": "Horsens"
+  },
+  {
     "abbr": "HØR",
     "type": "DAN",
     "land": "DAN",
@@ -2385,6 +2392,13 @@
     "land": "SPA",
     "name": "Las Palmas",
     "elo_name": "Las Palmas"
+  },
+  {
+    "abbr": "LA1",
+    "type": "INT",
+    "land": "INT",
+    "name": "LASK",
+    "elo_name": "LASK"
   },
   {
     "abbr": "LAU",
