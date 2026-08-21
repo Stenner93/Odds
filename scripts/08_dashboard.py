@@ -255,26 +255,39 @@ _ns['_h2h_correct']       = _h2h_correct
 _ns['_h2h_round_correct'] = _h2h_round_correct
 exec(_cell_to_run, _ns)  # html-variablen sættes her
 
-# ── Skriv dashboard.html til repo-roden ──────────────────────────────────
-# Startsiden (index.html) genereres af 09_startpage.py; det fulde dashboard
-# lever på dashboard.html og linkes derfra. Vi gør logoet klikbart hjem og
-# tilføjer et "← Startside"-link i headeren.
+# ── Indsæt "Forside"-fanen og skriv index.html ───────────────────────────
+# Forsiden er en kompakt oversigt (H2H, næste runde, stilling) der lever som
+# den første fane i topbanneret og er default-siden. Stykkerne bygges af
+# 09_startpage.build_forside_pieces() og injiceres i den genererede HTML.
 _html = _ns.get('html')
 if not _html:
     print('❌ html-variablen ikke sat efter exec — tjek celle 08')
     sys.exit(1)
 
-_html = _html.replace(
-    '<div class="logo">Odds<span>klub</span></div>',
-    '<a class="logo" href="index.html" style="text-decoration:none">Odds<span>klub</span></a>'
-    '<a href="index.html" style="text-decoration:none;color:var(--grn);background:rgba(34,197,94,.1);'
-    'border:1px solid rgba(34,197,94,.25);border-radius:7px;padding:6px 11px;font-size:12px;'
-    'font-weight:600;white-space:nowrap;flex-shrink:0">← Startside</a>',
-    1,
-)
+import importlib.util as _ilu
+_sp_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '09_startpage.py')
+try:
+    _spec = _ilu.spec_from_file_location('startpage', _sp_path)
+    _sp = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_sp)
+    _fs_style, _fs_nav, _fs_page = _sp.build_forside_pieces(DATA_DIR)
+    # 1) scopede styles ind i <head>
+    _html = _html.replace('</head>', _fs_style + '\n</head>', 1)
+    # 2) nav-knap først; Stilling er ikke længere default-aktiv
+    _html = _html.replace(
+        "<button class=\"active\" onclick=\"showPage('stilling',this)\">Stilling</button>",
+        _fs_nav + "<button onclick=\"showPage('stilling',this)\">Stilling</button>", 1)
+    # 3) forside-siden indsættes som default-aktiv; Stilling deaktiveres
+    _html = _html.replace('<div class="page active" id="page-stilling">',
+                          '<div class="page" id="page-stilling">', 1)
+    _html = _html.replace(
+        '<main>',
+        '<main>\n<div class="page active" id="page-forside">' + _fs_page + '</div>', 1)
+    print('✓ Forside-fane indsat som default-side')
+except Exception as _e:
+    print(f'⚠ Kunne ikke bygge forside-fane ({_e}) — dashboard genereres uden den')
 
-OUTPUT_PATH = os.path.join(REPO_ROOT, 'dashboard.html')
+OUTPUT_PATH = os.path.join(REPO_ROOT, 'index.html')
 with open(OUTPUT_PATH, 'w', encoding='utf-8') as _f_out:
     _f_out.write(_html)
 
-print(f'✅ dashboard.html gemt ({len(_html)//1024} KB) → {OUTPUT_PATH}')
+print(f'✅ index.html gemt ({len(_html)//1024} KB) → {OUTPUT_PATH}')
