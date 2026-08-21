@@ -124,11 +124,18 @@ jobs:
           github.event_name == 'push'
         run: python scripts/08_dashboard.py
 
+      - name: 09 — Generer kompakt startside
+        if: >
+          github.event_name == 'schedule' ||
+          github.event.inputs.opdater_dashboard == 'true' ||
+          github.event_name == 'push'
+        run: python scripts/09_startpage.py
+
       - name: Commit og push ændringer
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ index.html
+          git add data/ index.html dashboard.html
           git diff --cached --quiet && echo "Ingen ændringer" && exit 0
           git commit -m "Auto: pipeline kørt [skip ci]"
           git push
