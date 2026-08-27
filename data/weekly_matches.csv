@@ -1810,9 +1810,9 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,27,3,HOR-LBK,2026-08-23,16:00,Superligaen,Superliga,Horsens,Lyngby,,,,,1
 4,27,4,ATM-VIL,2026-08-23,17:00,La Liga,La Liga,Atletico Madrid,Villarreal,,,,,X
 4,27,5,BLG-LAZ,2026-08-24,18:30,Serie A,Serie A,Bologna,Lazio,,,,,2
-4,27,6,LA2-CEL,2026-08-25,21:00,Champions League,Champions League Kval,LASK,Celtic,,,,,
-4,27,7,LYO-FEN,2026-08-26,21:00,Champions League,Champions League Kval,Lyon,Fenerbahce,,,,,
-4,27,8,VIK-ZAG,2026-08-26,21:00,Champions League,Champions League Kval,Viking,Dinamo Zagreb,,,,,
+4,27,6,LA2-CEL,2026-08-25,21:00,Champions League,Champions League Kval,LASK,Celtic,,,,,1
+4,27,7,LYO-FEN,2026-08-26,21:00,Champions League,Champions League Kval,Lyon,Fenerbahce,,,,,2
+4,27,8,VIK-ZAG,2026-08-26,21:00,Champions League,Champions League Kval,Viking,Dinamo Zagreb,,,,,1
 4,27,9,SGA-FCN,2026-08-27,20:00,Conference League,Conference League Kval,St. Gallen,FC Nordsjælland,,,,,
 4,27,10,RIJ-FCM,2026-08-27,20:45,Conference League,Conference League Kval,Rijeka,FC Midtjylland,,,,,
 5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2
