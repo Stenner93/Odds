@@ -1806,15 +1806,15 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,26,9,FCN-ST.,2026-08-20,19:00,Conference League,Conference League Kval,FC Nordsjælland,St. Gallen,,,,,1
 4,26,10,TUR-KØB,2026-08-20,19:00,Conference League,Conference League Kval,Inter Turku,FC København,,,,,X
 4,27,1,BRN-TOT,2026-08-22,18:30,Premier League,Premier League,Brentford,Tottenham,,,,,1
-4,27,2,BVB-BAY,2026-08-22,20:30,Super Cup,Super Cup,Dortmund,Bayern,,,,,
+4,27,2,BVB-BAY,2026-08-22,20:30,Super Cup,Super Cup,Dortmund,Bayern,,,,,2
 4,27,3,HOR-LBK,2026-08-23,16:00,Superligaen,Superliga,Horsens,Lyngby,,,,,1
 4,27,4,ATM-VIL,2026-08-23,17:00,La Liga,La Liga,Atletico Madrid,Villarreal,,,,,X
 4,27,5,BLG-LAZ,2026-08-24,18:30,Serie A,Serie A,Bologna,Lazio,,,,,2
 4,27,6,LA2-CEL,2026-08-25,21:00,Champions League,Champions League Kval,LASK,Celtic,,,,,1
 4,27,7,LYO-FEN,2026-08-26,21:00,Champions League,Champions League Kval,Lyon,Fenerbahce,,,,,2
 4,27,8,VIK-ZAG,2026-08-26,21:00,Champions League,Champions League Kval,Viking,Dinamo Zagreb,,,,,1
-4,27,9,SGA-FCN,2026-08-27,20:00,Conference League,Conference League Kval,St. Gallen,FC Nordsjælland,,,,,
-4,27,10,RIJ-FCM,2026-08-27,20:45,Conference League,Conference League Kval,Rijeka,FC Midtjylland,,,,,
+4,27,9,SGA-FCN,2026-08-27,20:00,Conference League,Conference League Kval,St. Gallen,FC Nordsjælland,,,,,2
+4,27,10,RIJ-FCM,2026-08-27,20:45,Conference League,Conference League Kval,Rijeka,FC Midtjylland,,,,,2
 5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2
 5,1,2,AVI-TOT,,,,,AVI,TOT,,,,,1
 5,1,3,BVB-STU,,,,,BVB,STU,,,,,2
