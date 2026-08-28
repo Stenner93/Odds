@@ -2352,6 +2352,13 @@
     "elo_name": "Kvartfinale"
   },
   {
+    "abbr": "LAC",
+    "type": "INT",
+    "land": "INT",
+    "name": "La Coruña",
+    "elo_name": "La Coruna"
+  },
+  {
     "abbr": "LAG",
     "type": "MLS",
     "land": "USA",
@@ -2462,6 +2469,13 @@
     "land": "ENG",
     "name": "Leicester",
     "elo_name": "Leicester"
+  },
+  {
+    "abbr": "LE1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Leipzig",
+    "elo_name": "Leipzig"
   },
   {
     "abbr": "LEN",
@@ -2877,6 +2891,13 @@
     "elo_name": "Monaco"
   },
   {
+    "abbr": "MO1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Mönchengladbach",
+    "elo_name": "Monchengladbach"
+  },
+  {
     "abbr": "MON",
     "type": "INT",
     "land": "INT",
@@ -3015,6 +3036,13 @@
     "land": "ENG",
     "name": "Norwich",
     "elo_name": "Norwich"
+  },
+  {
+    "abbr": "NO1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Nottingham",
+    "elo_name": "Nottingham"
   },
   {
     "abbr": "NOT",
@@ -3463,6 +3491,13 @@
     "land": "SPA",
     "name": "Real Oviedo",
     "elo_name": "Oviedo"
+  },
+  {
+    "abbr": "RES",
+    "type": "INT",
+    "land": "INT",
+    "name": "Real Sociedad",
+    "elo_name": "Real Sociedad"
   },
   {
     "abbr": "REG",
