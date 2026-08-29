@@ -1,19 +1,19 @@
-10. runde		BRE-TOT	DOR-BAY	HOR-LYN	ATM-VIL	BOL-LAZ	LAS-CEL	LYO-FEN	VIK-DIZ	STG-FCN	RIJ-FCM
-0	Anders Stenner	9	2	9	1	1	1	1	1	1	9
-0	Søren Jakobsen	1	2	9	1	1	1	1	1	1	1
+11. runde		LIV-NOT	LEI-MGL	FCN-BIF	LAC-VAL	ATA-BOL	STO-NOR	AGF-FCM	TOU-LIL	CAG-VER	RSO-CEL
+0	Curt Christensen	1	1	2	9	1	9	2	9	2	1
+0	Ole Albrechtsen	1	1	1	9	1	9	2	2	1	2
+0	Kasper Søndergaard	1	1	1	9	1	1	9	2	1	1
 0	Rasmus Jensen	9	2	2	1	1	1	1	1	9	9
-0	Dennis Sveistrup	2	2	1	1	9	1	1	9	2	2
-0	Jørgen Frederiksen	9	1	9	1	1	1	1	1	9	1
-0	Curt Christensen	9	2	9	1	9	2	1	1	9	9
-0	Tanja Wamsler	9	2	1	1	9	2	9	9	1	2
-0	Kasper Søndergaard	2	2	1	1	9	9	1	9	1	2
-0	Ole Albrechtsen	9	2	9	1	9	2	1	9	1	2
-0	Lars Huus	9	2	9	1	2	2	1	2	1	9
+0	Søren Jakobsen	1	1	1	1	1	9	9	2	1	1
+0	Jørgen Frederiksen	1	9	9	2	9	9	9	2	9	9
+0	Inga Wamsler	1	1	1	9	1	9	2	2	1	1
+0	Anders Stenner	1	1	9	1	1	2	2	2	1	1
+0	Nicolai Frederiksen	1	9	9	2	1	1	9	9	1	1
 0	Ualmindeligt inaktiv	0	0	0	0	0	0	0	0	0	0
-0	Inga Wamsler	1	2	1	1	9	2	9	2	1	2
-0	Morten Wamsler	9	2	1	1	1	2	1	9	1	2
+0	Dennis Sveistrup	1	1	9	9	1	9	2	2	1	9
+0	Morten Wamsler	1	1	9	1	1	2	2	9	1	1
+0	Ricky Frederiksen	1	1	9	9	1	9	2	2	1	1
+0	Noah Wamsler	1	1	1	1	1	2	2	2	1	1
 0	Benjamin Jakobsen	9	9	9	9	2	9	9	9	1	1
-0	Noah Wamsler	1	2	1	1	1	2	1	2	1	2
-0	Nicolai Frederiksen	2	2	1	1	9	2	9	9	9	2
-0	Kasper Noer	2	2	1	1	1	1	1	1	2	2
-0	Ricky Frederiksen	9	2	2	1	2	1	1	1	1	2
+0	Kasper Noer	1	1	1	1	1	2	2	2	1	1
+0	Lars Huus	1	1	9	2	1	9	2	9	1	1
+0	Tanja Wamsler	1	1	9	9	1	9	2	9	1	1

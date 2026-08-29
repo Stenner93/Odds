@@ -16,6 +16,7 @@ Kan også køres standalone for at bygge en preview-fil:
     python scripts/09_startpage.py [output.html]
 """
 import os, sys, html
+from collections import defaultdict
 import pandas as pd
 
 FOCUS_PLAYER   = 'Anders Stenner'
@@ -111,22 +112,65 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
             d = preds[(preds['season'] == CURRENT_SEASON) & (preds['round'] == h2h_round) & (preds['player'] == p)]
             return {r['match_code']: _norm_bet(r['bet']) for _, r in d.iterrows()}
         mb, ob = bets(focus_player), bets(opp)
-        rows, played = [], 0
+
+        # Odds-implicerede sandsynligheder pr. kamp (margin-normaliseret, som dashboardet)
+        prob_map = {}
+        for _, o in odds[(odds['season'] == CURRENT_SEASON) & (odds['round'] == h2h_round)].iterrows():
+            try:
+                p1 = float(o['prob_1']) / 100.0; p2 = float(o['prob_2']) / 100.0
+                if p1 == p1 and p2 == p2:
+                    prob_map[o['match_code']] = {'1': p1, '2': p2, 'X': max(0.0, 1 - p1 - p2)}
+            except (TypeError, ValueError):
+                pass
+
+        rows, played, me_cor, opp_cor, diffs = [], 0, 0, 0, []
         for _, m in hm.iterrows():
             mc = m['match_code']; res = res_map.get(mc)
-            if res: played += 1
+            a, b = mb.get(mc), ob.get(mc)
+            if res:
+                played += 1
+                if a == res: me_cor += 1
+                if b == res: opp_cor += 1
+            elif a and b and a != b:
+                # uafgjort kamp hvor de har gættet forskelligt → afgørende for H2H
+                pm = prob_map.get(mc)
+                if pm:
+                    pa = pm.get(a, 0.0); pb = pm.get(b, 0.0); pn = max(0.0, 1 - pa - pb)
+                else:
+                    pa = pb = pn = 1.0 / 3     # ingen odds → uniform prior
+                diffs.append((pa, pb, pn))
             rows.append({'label': f"{m['home_team']}–{m['away_team']}",
-                         'res': res, 'me': mb.get(mc), 'opp': ob.get(mc)})
-        pts_me, pts_opp = _ic(pick('h2h_pts_a', 'h2h_pts_b')), _ic(pick('h2h_pts_b', 'h2h_pts_a'))
+                         'res': res, 'me': a, 'opp': b})
+
+        # DP: fordeling af (mine korrekte − modstanderens) over uafgjorte differens-kampe
+        lead = me_cor - opp_cor
+        dist = {lead: 1.0}
+        for pa, pb, pn in diffs:
+            nd = defaultdict(float)
+            for d, p in dist.items():
+                nd[d + 1] += p * pa
+                nd[d - 1] += p * pb
+                nd[d]     += p * pn
+            dist = nd
+        p_win  = round(sum(p for d, p in dist.items() if d > 0) * 100)
+        p_tie  = round(sum(p for d, p in dist.items() if d == 0) * 100)
+        p_loss = max(0, 100 - p_win - p_tie)
+
         complete = (played == len(rows) and len(rows) > 0)
-        outcome = None
         if complete:
+            pts_me = _ic(pick('h2h_pts_a', 'h2h_pts_b')); pts_opp = _ic(pick('h2h_pts_b', 'h2h_pts_a'))
+            if pts_me == 0 and pts_opp == 0 and me_cor != opp_cor:   # h2h.csv endnu ikke scoret
+                pts_me, pts_opp = (3, 0) if me_cor > opp_cor else (0, 3)
             outcome = ('vandt', 'win') if pts_me > pts_opp else \
                       ('tabte', 'loss') if pts_me < pts_opp else ('uafgjort', 'draw')
-        h2h_block = {'opp': opp, 'me_cor': _ic(pick('correct_a', 'correct_b')),
-                     'opp_cor': _ic(pick('correct_b', 'correct_a')),
+        else:
+            pts_me = pts_opp = 0
+            outcome = None
+
+        h2h_block = {'opp': opp, 'me_cor': me_cor, 'opp_cor': opp_cor,
                      'pts_me': pts_me, 'pts_opp': pts_opp, 'played': played,
-                     'total': len(rows), 'outcome': outcome, 'rows': rows}
+                     'total': len(rows), 'outcome': outcome, 'rows': rows,
+                     'p_win': p_win, 'p_tie': p_tie, 'p_loss': p_loss, 'n_open': len(diffs)}
 
     # ── Stilling ───────────────────────────────────────────────────────────
     st_rows, focus_rank = [], None
@@ -202,6 +246,15 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
                 f'<span class="fs-gc">{andpick(x["opp"], x["res"])}</span></div>')
         grid = '\n'.join(grows)
         first = esc(focus_player.split()[0])
+        # Sandsynlighedsbjælke — vises mens runden er i gang og der er afgørende kampe tilbage
+        prob_html = ''
+        if not b['outcome'] and b['n_open'] > 0:
+            opp_first = esc(b['opp'].split()[0])
+            prob_html = f'''<div class="fs-prob">
+    <div class="fs-prob-top"><span>Vinderchance · odds-baseret</span><span class="fs-prob-pct">{b["p_win"]}%</span></div>
+    <div class="fs-prob-bar"><span class="w" style="width:{b["p_win"]}%"></span><span class="t" style="width:{b["p_tie"]}%"></span><span class="l" style="width:{b["p_loss"]}%"></span></div>
+    <div class="fs-prob-lbl"><span>{first} {b["p_win"]}%</span><span>Uafgjort {b["p_tie"]}%</span><span>{opp_first} {b["p_loss"]}%</span></div>
+  </div>'''
         h2h_html = f'''<section class="fs-card fs-h2h">
   <div class="fs-chead"><span class="fs-ctitle"><span class="fs-bar"></span>Din H2H · runde {h2h_round}</span><span class="fs-cmeta">{meta}</span></div>
   <div class="fs-h2hsc">
@@ -209,6 +262,7 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
     <div class="fs-mid"><div class="fs-vs"><span class="win">{b["me_cor"]}</span><span class="sep">–</span><span>{b["opp_cor"]}</span></div>{badge}</div>
     <div class="fs-hp r"><div class="fs-nm">{esc(b["opp"])}</div><div class="fs-sub">{b["opp_cor"]} rigtige</div></div>
   </div>
+  {prob_html}
   <div class="fs-g">
     <div class="fs-grow head"><span>Runde {h2h_round} · afd. {ha}, {hrel}. runde</span><span class="fs-gc">R</span><span class="fs-gc">{first}</span><span class="fs-gc">Mod.</span></div>
     {grid}
@@ -302,6 +356,14 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
 #page-forside .fs-badge.loss{background:var(--red);color:#fff}
 #page-forside .fs-badge.draw{background:#4b5563;color:#fff}
 #page-forside .fs-badge.live{background:rgba(245,158,11,.15);color:var(--gld);border:1px solid rgba(245,158,11,.3)}
+#page-forside .fs-prob{padding:10px 13px;border-top:1px solid var(--bdr);display:flex;flex-direction:column;gap:6px}
+#page-forside .fs-prob-top{display:flex;justify-content:space-between;align-items:baseline;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+#page-forside .fs-prob-pct{font-size:15px;font-weight:800;color:var(--grn)}
+#page-forside .fs-prob-bar{display:flex;height:8px;border-radius:99px;overflow:hidden;background:var(--bdr)}
+#page-forside .fs-prob-bar .w{background:var(--grn)}
+#page-forside .fs-prob-bar .t{background:#6b7280}
+#page-forside .fs-prob-bar .l{background:var(--red)}
+#page-forside .fs-prob-lbl{display:flex;justify-content:space-between;font-size:10.5px;color:var(--mut);font-variant-numeric:tabular-nums}
 #page-forside .fs-g{display:flex;flex-direction:column}
 #page-forside .fs-grow{display:grid;grid-template-columns:1fr 16px 44px 44px;align-items:center;gap:8px;padding:6px 13px;border-top:1px solid var(--bdr);font-size:12px}
 #page-forside .fs-grow.head{border-top:0;color:var(--mut);font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding-top:9px;padding-bottom:7px}
