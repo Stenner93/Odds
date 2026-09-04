@@ -1,3 +1,7 @@
 # Trigger-fil til Cognito-scrape (sikkerhedsnet mod forsinket GitHub-cron).
-# Et push til main der ændrer denne fil kører trin 01/06 (Cognito-scrape) prompte.
-# Den ugentlige sikkerhedsnet-opgave skriver et tidsstempel her fredag morgen.
+# Sådan udløses en scrape: skriv et nyt tidsstempel her OG medtag markøren
+# [scrape] i commit-beskeden, og push til main. Push'et fyrer workflowet
+# (denne fil er i paths), og [scrape] i beskeden kører trin 01/06 (Cognito).
+# Push-kørsler forsinkes IKKE som GitHub-cron.
+#
+# Senest udløst: 2026-09-04 09:46 UTC
