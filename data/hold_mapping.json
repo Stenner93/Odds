@@ -1421,6 +1421,13 @@
     "elo_name": "Nordsjaelland"
   },
   {
+    "abbr": "PO1",
+    "type": "INT",
+    "land": "INT",
+    "name": "FC Porto",
+    "elo_name": "FC Porto"
+  },
+  {
     "abbr": "FCR",
     "type": "DAN",
     "land": "DAN",

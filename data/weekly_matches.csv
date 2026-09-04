@@ -1825,6 +1825,16 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,28,8,TOU-LIL,2026-09-03,20:45,Ligue 1,Ligue 1,Toulouse,Lille,,,,,2
 4,28,9,CAG-VER,2026-09-03,21:00,Coppa Italia,Coppa Italia,Cagliari,Verona,,,,,2
 4,28,10,REA-VIG,2026-09-03,21:00,La Liga,La Liga,Real Sociedad,Celta Vigo,,,,,X
+4,29,1,INT-NAP,2026-09-05,18:00,Serie A,Serie A,Inter,Napoli,,,,,
+4,29,2,AJA-PSV,2026-09-05,20:00,Eredivisie,Eredivisie,Ajax,PSV,,,,,
+4,29,3,ARS-CHE,2026-09-06,17:30,Premier League,Premier League,Arsenal,Chelsea,,,,,
+4,29,4,ESP-SEV,2026-09-06,21:00,La Liga,La Liga,Espanyol,Sevilla,,,,,
+4,29,5,FCM-FCN,2026-09-07,19:00,Superligaen,Superliga,FC Midtjylland,FC Nordsjælland,,,,,
+4,29,6,PO2-MCI,2026-09-08,21:00,Champions League,Champions League,FC Porto,Manchester City,,,,,
+4,29,7,RMA-INT,2026-09-08,21:00,Champions League,Champions League,Real Madrid,Inter,,,,,
+4,29,8,LIV-ATM,2026-09-09,21:00,Champions League,Champions League,Liverpool,Atletico Madrid,,,,,
+4,29,9,NAP-ARS,2026-09-09,21:00,Champions League,Champions League,Napoli,Arsenal,,,,,
+4,29,10,CMO-RBL,2026-09-10,21:00,Champions League,Champions League,Como,RB Leipzig,,,,,
 5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2
 5,1,2,AVI-TOT,,,,,AVI,TOT,,,,,1
 5,1,3,BVB-STU,,,,,BVB,STU,,,,,2
