@@ -5,3 +5,4 @@
 # Push-kørsler forsinkes IKKE som GitHub-cron.
 #
 # Senest udløst: 2026-09-04 09:46 UTC
+# scrape udløst 2026-09-04 09:52 UTC
