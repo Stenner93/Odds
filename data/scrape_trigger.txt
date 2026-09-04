@@ -1,0 +1,3 @@
+# Trigger-fil til Cognito-scrape (sikkerhedsnet mod forsinket GitHub-cron).
+# Et push til main der ændrer denne fil kører trin 01/06 (Cognito-scrape) prompte.
+# Den ugentlige sikkerhedsnet-opgave skriver et tidsstempel her fredag morgen.
