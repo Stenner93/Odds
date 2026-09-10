@@ -1832,8 +1832,8 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,29,5,FCM-FCN,2026-09-07,19:00,Superligaen,Superliga,FC Midtjylland,FC Nordsjælland,,,,,X
 4,29,6,PO2-MCI,2026-09-08,21:00,Champions League,Champions League,FC Porto,Manchester City,,,,,2
 4,29,7,RMA-INT,2026-09-08,21:00,Champions League,Champions League,Real Madrid,Inter,,,,,1
-4,29,8,LIV-ATM,2026-09-09,21:00,Champions League,Champions League,Liverpool,Atletico Madrid,,,,,
-4,29,9,NAP-ARS,2026-09-09,21:00,Champions League,Champions League,Napoli,Arsenal,,,,,
+4,29,8,LIV-ATM,2026-09-09,21:00,Champions League,Champions League,Liverpool,Atletico Madrid,,,,,1
+4,29,9,NAP-ARS,2026-09-09,21:00,Champions League,Champions League,Napoli,Arsenal,,,,,2
 4,29,10,CMO-RBL,2026-09-10,21:00,Champions League,Champions League,Como,RB Leipzig,,,,,
 5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2
 5,1,2,AVI-TOT,,,,,AVI,TOT,,,,,1
