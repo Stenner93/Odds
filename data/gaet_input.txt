@@ -1,19 +1,19 @@
-12. runde		INT-NAP	AJX-PSV	ARS-CHE	ESP-SEV	FCM-FCN	POR-MAC	RMA-INT	LIV-ATM	NAP-ARS	COM-LEI
-0	Ole Albrechtsen	1	1	1	9	1	2	1	9	2	1
-0	Jørgen Frederiksen	1	1	1	9	9	2	1	1	9	9
-0	Morten Wamsler	1	2	1	9	1	2	1	9	2	2
-0	Kasper Søndergaard	1	2	1	1	1	2	1	9	2	9
-0	Rasmus Jensen	1	9	1	9	9	2	1	9	9	1
-0	Lars Huus	1	2	1	9	1	2	1	9	9	2
+13. runde		AUG-LEV	LAZ-MIL	MAU-MAC	FCN-AGF	VIL-BET	FIO-PIS	MIL-BEN	AND-LYO	BES-MAR	RSO-BOU
+2	Søren Jakobsen	2	2	2	1	1	1	1	2	1	2
+2	Ole Albrechtsen	1	1	2	1	2	1	1	9	1	2
+2	Kasper Søndergaard	2	9	9	1	1	1	1	2	1	9
+1	Kasper Noer	2	2	1	1	1	1	1	2	1	2
+1	Nicolai Frederiksen	9	2	9	9	9	1	1	9	9	9
+2	Inga Wamsler	2	2	2	1	9	1	9	2	1	1
+3	Dennis Sveistrup	2	9	2	1	1	1	1	2	1	9
+2	Noah Wamsler	2	2	2	1	1	1	1	2	1	1
+2	Curt Christensen	2	9	9	1	1	1	1	2	9	9
+3	Rasmus Jensen	2	9	2	1	1	1	9	2	1	9
+2	Benjamin Jakobsen	9	9	9	9	2	9	9	9	1	1
 0	Ualmindeligt inaktiv	0	0	0	0	0	0	0	0	0	0
-0	Ricky Frederiksen	1	2	9	9	1	2	1	9	9	2
-0	Noah Wamsler	1	2	1	1	1	2	1	1	2	2
-0	Benjamin Jakobsen	9	9	9	9	2	9	9	9	1	1
-0	Kasper Noer	1	2	1	1	1	9	1	1	2	1
-0	Dennis Sveistrup	1	9	1	1	1	2	1	1	2	1
-0	Tanja Wamsler	1	2	9	9	1	2	1	9	2	9
-0	Curt Christensen	1	2	9	2	9	9	1	1	2	9
-0	Inga Wamsler	1	2	9	1	1	2	1	1	2	9
-0	Søren Jakobsen	1	1	1	1	1	2	1	1	2	1
-0	Anders Stenner	1	2	1	1	1	2	1	1	2	9
-0	Nicolai Frederiksen	9	9	9	9	1	2	1	9	9	9
+1	Jørgen Frederiksen	9	2	9	9	9	1	1	9	2	9
+2	Tanja Wamsler	2	9	2	9	9	9	9	9	1	1
+2	Lars Huus	2	9	1	1	2	1	1	2	1	9
+3	Morten Wamsler	2	9	2	1	1	1	1	9	1	1
+2	Ricky Frederiksen	2	9	9	1	9	1	1	9	1	1
+2	Anders Stenner	2	2	2	1	1	1	1	1	1	1
