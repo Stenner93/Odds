@@ -1841,8 +1841,8 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,30,4,FCN-AGF,2026-09-13,18:00,Superligaen,Superliga,FC Nordsjælland,AGF,,,,,1
 4,30,5,VIL-BET,2026-09-14,21:00,La Liga,La Liga,Villarreal,Betis,,,,,
 4,30,6,FIO-PIS,2026-09-15,21:00,Coppa Italia,Coppa Italia,Fiorentina,Pisa,,,,,1
-4,30,7,ACM-SLB,2026-09-16,21:00,Europa League,Europa League,Milan,Benfica,,,,,
-4,30,8,AND-LYO,2026-09-16,21:00,Europa League,Europa League,Anderlecht,Lyon,,,,,
+4,30,7,ACM-SLB,2026-09-16,21:00,Europa League,Europa League,Milan,Benfica,,,,,2
+4,30,8,AND-LYO,2026-09-16,21:00,Europa League,Europa League,Anderlecht,Lyon,,,,,2
 4,30,9,BES-OM,2026-09-17,21:00,Europa League,Europa League,Besiktas,Marseille,,,,,
 4,30,10,RES-BOU,2026-09-17,21:00,Europa League,Europa League,Real Sociedad,Bournemouth,,,,,
 5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2
