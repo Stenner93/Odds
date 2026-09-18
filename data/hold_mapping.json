@@ -1792,6 +1792,13 @@
     "elo_name": "Grimsby"
   },
   {
+    "abbr": "GRO",
+    "type": "INT",
+    "land": "INT",
+    "name": "Grorud",
+    "elo_name": "Grorud"
+  },
+  {
     "abbr": "GUA",
     "type": "SPA",
     "land": "SPA",
@@ -2924,6 +2931,13 @@
     "land": "ENG",
     "name": "Morecambe",
     "elo_name": "Morecambe"
+  },
+  {
+    "abbr": "MO2",
+    "type": "INT",
+    "land": "INT",
+    "name": "Moss",
+    "elo_name": "Moss"
   },
   {
     "abbr": "MOT",
