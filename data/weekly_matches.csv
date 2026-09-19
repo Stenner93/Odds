@@ -1845,7 +1845,7 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,30,8,AND-LYO,2026-09-16,21:00,Europa League,Europa League,Anderlecht,Lyon,,,,,2
 4,30,9,BES-OM,2026-09-17,21:00,Europa League,Europa League,Besiktas,Marseille,,,,,1
 4,30,10,RES-BOU,2026-09-17,21:00,Europa League,Europa League,Real Sociedad,Bournemouth,,,,,2
-4,31,1,ROM-INT,2026-09-19,18:00,Serie A,Serie A,Roma,Inter,,,,,
+4,31,1,ROM-INT,2026-09-19,18:00,Serie A,Serie A,Roma,Inter,,,,,X
 4,31,2,STU-BVB,2026-09-19,18:30,Bundesliga,Bundesliga,Stuttgart,Dortmund,,,,,
 4,31,3,BIF-KØB,2026-09-20,14:00,Superligaen,Superliga,Brøndby,FC København,,,,,
 4,31,4,ATM-RMA,2026-09-20,16:15,La Liga,La Liga,Atletico Madrid,Real Madrid,,,,,
