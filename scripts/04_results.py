@@ -41,6 +41,20 @@ def _to_english(name: str) -> str:
 def _norm(s: str) -> str:
     return unidecode(str(s)).lower().strip().replace(' ','').replace('-','').replace('.','')
 
+def _name_match(a: str, b: str) -> bool:
+    """True hvis to normaliserede holdnavne er samme klub.
+    Robust mod klub-præfikser/-suffikser: token_sort_ratio ≥ 75 ELLER en klar
+    delstreng (fx 'dortmund' i 'borussiadortmund'). _norm fjerner mellemrum, så
+    token-baseret fuzzy-match fejler for flerordede klubnavne — 'Borussia
+    Dortmund' vs 'Dortmund' giver kun 66.7 < 75 — og delstreng-reglen fanger dem.
+    Kravet len ≥ 5 undgår falske match på korte fragmenter."""
+    if not a or not b:
+        return False
+    if fuzz.token_sort_ratio(a, b) >= 75:
+        return True
+    short, lng = (a, b) if len(a) <= len(b) else (b, a)
+    return len(short) >= 5 and short in lng
+
 def _score_to_1x2(home_score, away_score):
     try:
         h, a = int(home_score), int(away_score)
@@ -142,17 +156,14 @@ def _n20_result(home, away, date_str: str):
     # Prøv både dansk og engelsk navnevariant (fx USA / United States)
     home_vars = list(dict.fromkeys([_norm(_to_english(home)), _norm(home)]))
     away_vars = list(dict.fromkeys([_norm(_to_english(away)), _norm(away)]))
-    all_homes = [_norm(m['home']) for m in matches]
-    all_aways = [_norm(m['away']) for m in matches]
-
     def _pick(home_list, away_list, invert):
-        for hv in home_list:
-            best = process.extractOne(hv, all_homes, scorer=fuzz.token_sort_ratio)
-            if not best or best[1] < 75:
-                continue
-            for m in [mm for mm in matches if _norm(mm['home']) == all_homes[best[2]]]:
-                if any(fuzz.token_sort_ratio(av, _norm(m['away'])) >= 75 for av in away_list):
-                    return {'1':'2','2':'1','X':'X'}[m['result']] if invert else m['result']
+        # Iterér over datoens kampe og kræv match på BÅDE hjemme- og udehold.
+        # _name_match er robust mod klub-præfikser (fx 'Borussia Dortmund').
+        for m in matches:
+            mh, ma = _norm(m['home']), _norm(m['away'])
+            if any(_name_match(hv, mh) for hv in home_list) and \
+               any(_name_match(av, ma) for av in away_list):
+                return {'1':'2','2':'1','X':'X'}[m['result']] if invert else m['result']
         return None
 
     # Direkte (home som hjemmehold) — ellers ombyttet (home optræder som udehold)
