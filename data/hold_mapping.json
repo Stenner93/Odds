@@ -3871,6 +3871,13 @@
     "elo_name": "Sheriff Tiraspol"
   },
   {
+    "abbr": "SIE",
+    "type": "INT",
+    "land": "INT",
+    "name": "Siegen",
+    "elo_name": "Siegen"
+  },
+  {
     "abbr": "SIF",
     "type": "DAN",
     "land": "DAN",
@@ -4765,6 +4772,13 @@
     "land": "ENG",
     "name": "West Ham",
     "elo_name": "West Ham"
+  },
+  {
+    "abbr": "WIE",
+    "type": "INT",
+    "land": "INT",
+    "name": "Wiedenbrück",
+    "elo_name": "Wiedenbruck"
   },
   {
     "abbr": "WIG",
