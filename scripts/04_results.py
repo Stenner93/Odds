@@ -170,33 +170,58 @@ def _n20_result(home, away, date_str: str):
     return _pick(home_vars, away_vars, False) or _pick(away_vars, home_vars, True)
 
 # ── Hoved-loop ────────────────────────────────────────────────────────────
+import datetime as _dt
 df_matches = pd.read_csv(MATCHES_CSV)
 df_matches['season'] = df_matches['season'].astype(int)
 df_matches['round']  = df_matches['round'].astype(int)
 
-_cs = str(int(CURRENT_SEASON))
-_cr = str(int(CURRENT_ROUND))
-df_rnd = df_matches[
-    (df_matches['season'].astype(str) == _cs) &
-    (df_matches['round'].astype(str)  == _cr)
-].copy()
+_cs = int(CURRENT_SEASON)
+_cr = int(CURRENT_ROUND)
 
-print(f'📊 {len(df_rnd)} kampe — sæson {_cs} runde {_cr}')
+def _has_result(v):
+    return pd.notna(v) and str(v).strip() not in ('', 'None', 'nan')
+
+# Kampe der tjekkes = den aktuelle runde PLUS "efternølere": kampe i tidligere
+# runder der stadig mangler resultat, men er spillet inden for de sidste
+# LOOKBACK_DAYS dage. Uden dette hentes en tidligere rundes sene kampe ALDRIG,
+# når en ny runde er scrapet ind (så CURRENT_ROUND = max-runde er rykket videre).
+# Fx blev ITA-BEL (runde 31, spillet 25/9) forældreløs da runde 32 kom ind.
+LOOKBACK_DAYS = 14
+_today = _dt.date.today()
+
+def _recent_undecided(row):
+    if int(row['round']) == _cr or _has_result(row.get('result')):
+        return False
+    try:
+        md = _dt.date.fromisoformat(str(row.get('date', '')).strip()[:10])
+    except Exception:
+        return False
+    return 0 <= (_today - md).days <= LOOKBACK_DAYS
+
+_cur_mask    = (df_matches['season'] == _cs) & (df_matches['round'] == _cr)
+_orphan_mask = (df_matches['season'] == _cs) & df_matches.apply(_recent_undecided, axis=1)
+df_rnd = df_matches[_cur_mask | _orphan_mask].copy()
+
+_n_orphan = int(_orphan_mask.sum())
+print(f'📊 {len(df_rnd)} kampe — sæson {_cs} runde {_cr}'
+      + (f' (+ {_n_orphan} efternølere fra tidligere runder)' if _n_orphan else ''))
 if df_rnd.empty:
     print('⚠ Ingen kampe for denne runde — kør 01_kampe.py først')
     sys.exit(0)
 
-auto_results = {}
-for _, row in df_rnd.sort_values('match_no').iterrows():
+auto_results = {}   # (runde, match_no) -> resultat
+for _, row in df_rnd.sort_values(['round', 'match_no']).iterrows():
+    rnd  = int(row['round'])
     mn   = int(row['match_no'])
     home = str(row['home_team'])
     away = str(row['away_team'])
     date = str(row.get('date', ''))
     existing = row.get('result')
+    tag = f'R{rnd} #{mn:>2}'
 
-    if pd.notna(existing) and str(existing).strip() not in ('', 'None', 'nan'):
-        print(f'  ℹ️  #{mn:>2}: {home} vs {away} — {existing} (allerede gemt)')
-        auto_results[mn] = existing
+    if _has_result(existing):
+        print(f'  ℹ️  {tag}: {home} vs {away} — {existing} (allerede gemt)')
+        auto_results[(rnd, mn)] = existing
         continue
 
     result = _sportsdb_result(home, away, date)
@@ -206,19 +231,19 @@ for _, row in df_rnd.sort_values('match_no').iterrows():
         source = 'N20'
 
     if result:
-        auto_results[mn] = result
-        print(f'  ✅ #{mn:>2}: {home} vs {away} — {result} ({source})')
+        auto_results[(rnd, mn)] = result
+        print(f'  ✅ {tag}: {home} vs {away} — {result} ({source})')
     else:
-        auto_results[mn] = None
-        print(f'  ❌ #{mn:>2}: {home} vs {away} — ikke afsluttet endnu')
+        auto_results[(rnd, mn)] = None
+        print(f'  ❌ {tag}: {home} vs {away} — ikke afsluttet endnu')
 
-# Skriv resultater tilbage til weekly_matches.csv
+# Skriv resultater tilbage til weekly_matches.csv (nøgle: runde + match_no)
 updated = 0
-for mn, result in auto_results.items():
+for (rnd, mn), result in auto_results.items():
     if result:
         mask = (
-            (df_matches['season'] == CURRENT_SEASON) &
-            (df_matches['round']  == CURRENT_ROUND)  &
+            (df_matches['season'] == _cs) &
+            (df_matches['round']  == rnd)  &
             (df_matches['match_no'] == mn)
         )
         existing = df_matches.loc[mask, 'result'].values
