@@ -1,19 +1,19 @@
-14. runde		ROM-INT	STU-DOR	BRØ-FCK	ATM-RMA	HBK-HOB	NOT-GRI	GRO-MOS	HOL-TYS	NOR-DAN	ITA-BEL
-0	Anders Stenner	2	1	2	2	9	1	2	1	1	1
-0	Benjamin Jakobsen	9	9	9	9	2	9	9	9	1	1
-0	Rasmus Jensen	9	2	2	9	2	1	9	1	1	9
-0	Jørgen Frederiksen	9	2	2	9	9	9	9	9	9	1
-0	Nicolai Frederiksen	9	9	9	9	1	1	1	9	1	9
-0	Søren Jakobsen	9	9	2	2	1	1	2	2	1	1
-0	Tanja Wamsler	9	9	2	1	2	1	2	9	1	9
-0	Ole Albrechtsen	9	2	2	9	9	9	2	9	1	1
+15. runde		ENG-SPA	DAN-WAL	NOR-POR	BEL-FRA	SVE-POL	SPA-KRO	WIE-SIE	DAN-POR	FRA-ITA	BOS-SVE
+0	Jørgen Frederiksen	9	1	1	9	1	1	9	1	9	9
+0	Morten Wamsler	2	1	9	2	1	1	9	2	1	2
+0	Dennis Sveistrup	9	1	9	2	1	1	9	2	1	2
+0	Anders Stenner	2	1	2	2	1	1	2	2	1	9
+0	Ole Albrechtsen	2	1	1	1	1	1	1	1	1	9
+0	Rasmus Jensen	2	1	9	2	9	1	9	9	1	2
+0	Ricky Frederiksen	2	1	2	2	9	1	2	2	1	1
+0	Nicolai Frederiksen	9	1	2	2	9	1	9	2	1	9
+0	Lars Huus	9	1	9	2	1	1	1	2	1	9
+0	Noah Wamsler	2	1	1	2	1	1	1	2	1	2
+0	Curt Christensen	2	1	9	2	1	1	1	9	9	9
+0	Kasper Noer	2	1	2	2	1	1	2	2	1	2
+0	Benjamin Jakobsen	9	1	9	2	1	1	9	9	1	9
+0	Inga Wamsler	2	1	1	9	1	1	1	2	1	9
+0	Søren Jakobsen	9	1	1	2	1	1	1	9	1	1
+0	Tanja Wamsler	2	1	9	9	1	1	9	2	1	9
+0	Kasper Søndergaard	9	1	2	9	1	1	1	2	1	2
 0	Ualmindeligt inaktiv	0	0	0	0	0	0	0	0	0	0
-0	Dennis Sveistrup	9	1	2	2	1	1	2	9	1	1
-0	Kasper Noer	2	2	2	2	1	1	2	2	1	1
-0	Lars Huus	2	2	9	9	1	1	1	9	1	1
-0	Inga Wamsler	2	9	2	1	2	1	2	2	1	9
-0	Ricky Frederiksen	9	2	2	2	9	1	1	9	1	1
-0	Noah Wamsler	2	2	2	1	2	1	2	2	1	1
-0	Kasper Søndergaard	2	9	2	9	1	1	9	9	1	9
-0	Morten Wamsler	9	2	2	1	2	1	2	9	1	1
-0	Curt Christensen	1	2	2	2	2	2	9	2	9	1
