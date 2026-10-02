@@ -1865,6 +1865,16 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,32,8,DAN-POR,2026-10-01,20:45,Nations League,UEFA Nations League,Danmark,Portugal,,,,,2
 4,32,9,FRK-ITA,2026-10-02,20:45,Nations League,UEFA Nations League,Frankrig,Italien,,,,,
 4,32,10,BOS-SVE,2026-10-02,20:45,Nations League,UEFA Nations League,Bosnien,Sverige,,,,,
+4,33,1,KRO-ENG,2026-10-03,18:00,Nations League,Nations League,Kroatien,England,,,,,
+4,33,2,SPA-TJE,2026-10-03,20:45,Nations League,Nations League,Spanien,Tjekkiet,,,,,
+4,33,3,POR-NOR,2026-10-04,20:45,Nations League,Nations League,Portugal,Norge,,,,,
+4,33,4,WAL-DAN,2026-10-04,20:45,Nations League,Nations League,Wales,Danmark,,,,,
+4,33,5,FRK-BEL,2026-10-05,20:45,Nations League,Nations League,Frankrig,Belgien,,,,,
+4,33,6,ITA-TYR,2026-10-05,20:45,Nations League,Nations League,Italien,Tyrkiet,,,,,
+4,33,7,ENG-TJE,2026-10-06,20:45,Nations League,Nations League,England,Tjekkiet,,,,,
+4,33,8,KRO-SPA,2026-10-06,20:45,Nations League,UEFA Nations League,Kroatien,Spanien,,,,,
+4,33,9,CRT-MUR,2026-10-07,20:30,Primera RFEF,Primera RFEF,Cartagena,Murcia,,,,,
+4,33,10,HJ2-VPS,2026-10-08,17:00,Veikkausliiga,Veikkausliiga,HJK,VPS,,,,,
 5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2
 5,1,2,AVI-TOT,,,,,AVI,TOT,,,,,1
 5,1,3,BVB-STU,,,,,BVB,STU,,,,,2

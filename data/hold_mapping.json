@@ -1981,6 +1981,13 @@
     "elo_name": "Hillerød"
   },
   {
+    "abbr": "HJ1",
+    "type": "INT",
+    "land": "INT",
+    "name": "HJK",
+    "elo_name": "HJK"
+  },
+  {
     "abbr": "HJK",
     "type": "FIN",
     "land": "FIN",
@@ -2945,6 +2952,13 @@
     "land": "SKO",
     "name": "Motherwell",
     "elo_name": "Motherwell"
+  },
+  {
+    "abbr": "MUR",
+    "type": "INT",
+    "land": "INT",
+    "name": "Murcia",
+    "elo_name": "Murcia"
   },
   {
     "abbr": "NÆS",

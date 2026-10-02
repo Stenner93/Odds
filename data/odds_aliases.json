@@ -3,6 +3,7 @@
   "Betis": "Real Betis",
   "Dortmund": "Borussia Dortmund",
   "FC Porto": "Porto",
+  "HJK": "HJK Helsinki",
   "Horsens": "AC Horsens",
   "La Coruña": "Deportivo La Coruña",
   "Leipzig": "RB Leipzig",
@@ -10,5 +11,6 @@
   "Mönchengladbach": "Borussia Monchengladbach",
   "Norwich": "Norwich City",
   "Nottingham": "Nottingham Forest",
-  "Stoke": "Stoke City"
+  "Stoke": "Stoke City",
+  "VPS": "VPS Vaasa"
 }
