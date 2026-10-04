@@ -1865,8 +1865,8 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,32,8,DAN-POR,2026-10-01,20:45,Nations League,UEFA Nations League,Danmark,Portugal,,,,,2
 4,32,9,FRK-ITA,2026-10-02,20:45,Nations League,UEFA Nations League,Frankrig,Italien,,,,,X
 4,32,10,BOS-SVE,2026-10-02,20:45,Nations League,UEFA Nations League,Bosnien,Sverige,,,,,X
-4,33,1,KRO-ENG,2026-10-03,18:00,Nations League,Nations League,Kroatien,England,,,,,
-4,33,2,SPA-TJE,2026-10-03,20:45,Nations League,Nations League,Spanien,Tjekkiet,,,,,
+4,33,1,KRO-ENG,2026-10-03,18:00,Nations League,Nations League,Kroatien,England,,,,,2
+4,33,2,SPA-TJE,2026-10-03,20:45,Nations League,Nations League,Spanien,Tjekkiet,,,,,1
 4,33,3,POR-NOR,2026-10-04,20:45,Nations League,Nations League,Portugal,Norge,,,,,
 4,33,4,WAL-DAN,2026-10-04,20:45,Nations League,Nations League,Wales,Danmark,,,,,
 4,33,5,FRK-BEL,2026-10-05,20:45,Nations League,Nations League,Frankrig,Belgien,,,,,
