@@ -87,14 +87,29 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
     fx = wm_s[wm_s['round'] == next_round].sort_values('match_no')
     odds_map = {r['match_code']: r for _, r in
                 odds[(odds['season'] == CURRENT_SEASON) & (odds['round'] == next_round)].iterrows()}
+    def _f(v):
+        try:
+            x = float(v)
+            return x if x == x else None
+        except (TypeError, ValueError):
+            return None
+    _FAV = {'1.0': '1', '1': '1', '2.0': '2', '2': '2', 'x': 'X', 'X': 'X'}
     next_rows = []
     for _, m in fx.iterrows():
         o = odds_map.get(m['match_code'])
+        g = lambda k: (o[k] if (o is not None and k in o) else None)
+        p1 = _f(g('prob_1')); p2 = _f(g('prob_2'))
+        px = max(0.0, 100 - p1 - p2) if (p1 is not None and p2 is not None) else None
+        bud = None
+        if o is not None:
+            bud = _FAV.get(str(g('favourit')).strip()) or _FAV.get(str(g('rec_ensemble')).strip())
         next_rows.append({
             'home': m['home_team'], 'away': m['away_team'],
-            'o1': _num(o['odds_1']) if o is not None else None,
-            'ox': _num(o['odds_x']) if o is not None else None,
-            'o2': _num(o['odds_2']) if o is not None else None,
+            'odds': (p1, px, p2),
+            'n20':  (_f(g('n20_prob_1')), _f(g('n20_prob_x')), _f(g('n20_prob_2'))),
+            'elo':  (_f(g('elo_home')), _f(g('elo_away'))),
+            'opta': (_f(g('opta_home')), _f(g('opta_away'))),
+            'bud':  bud,
         })
 
     # ── H2H ────────────────────────────────────────────────────────────────
@@ -205,22 +220,54 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
             return f'<span class="fs-apw">{chip}{tick}</span>'
         return chip
 
-    # Næste runde
+    # Næste runde — kilderækker pr. kamp (Odds, n20, Elo, Opta).
+    # Kolonnerne er altid 1 / X / 2. Odds+n20 vises som sandsynlighed (%),
+    # Elo+Opta som styrketal pr. hold (hjemme | diff | ude). Favoritten
+    # fremhæves; mangler en kilde data, udelades dens linje.
+    def _pct(v):
+        return None if v is None else f'{round(v)}%'
+
+    def _hi3(t):
+        xs = [v for v in t if v is not None]
+        if not xs: return None
+        mx = max(xs)
+        return next(i for i, v in enumerate(t) if v == mx)
+
+    def _prow(label, vals, hi):
+        cells = ''.join(
+            f'<span class="fs-sv{" hi" if hi == i else ""}'
+            f'{" mut" if v is None else ""}">{v if v is not None else "·"}</span>'
+            for i, v in enumerate(vals))
+        return f'<div class="fs-src"><span class="fs-sl">{label}</span>{cells}</div>'
+
     nr = []
     for r in next_rows:
-        if r['o1'] and r['ox'] and r['o2']:
-            try:
-                best = [float(r['o1']), float(r['ox']), float(r['o2'])]
-                bi = best.index(min(best))
-            except ValueError:
-                bi = -1
-            cells = ''.join(f'<span class="fs-od{" best" if i == bi else ""}">{v}</span>'
-                            for i, v in enumerate([r['o1'], r['ox'], r['o2']]))
-            right = f'<div class="fs-odds">{cells}</div>'
-        else:
-            right = '<span class="fs-wait">afventer</span>'
-        nr.append(f'<div class="fs-fx"><div class="fs-tm"><span class="fs-t">{esc(r["home"])}</span>'
-                  f'<span class="fs-t away">{esc(r["away"])}</span></div>{right}</div>')
+        srows = []
+        if any(v is not None for v in r['odds']):
+            srows.append(_prow('Odds', [_pct(v) for v in r['odds']], _hi3(r['odds'])))
+        if any(v is not None for v in r['n20']):
+            srows.append(_prow('n20', [_pct(v) for v in r['n20']], _hi3(r['n20'])))
+        eh, ea = r['elo']
+        if eh is not None or ea is not None:
+            diff = f'{eh - ea:+.0f}' if (eh is not None and ea is not None) else None
+            hi = (0 if eh >= ea else 2) if (eh is not None and ea is not None) else None
+            srows.append(_prow('Elo', [None if eh is None else f'{eh:.0f}', diff,
+                                       None if ea is None else f'{ea:.0f}'], hi))
+        oh, oa = r['opta']
+        if oh is not None or oa is not None:
+            diff = f'{oh - oa:+.1f}' if (oh is not None and oa is not None) else None
+            hi = (0 if oh >= oa else 2) if (oh is not None and oa is not None) else None
+            srows.append(_prow('Opta', [None if oh is None else f'{oh:g}', diff,
+                                        None if oa is None else f'{oa:g}'], hi))
+        bud = (f'<span class="fs-budw"><span class="fs-bl">bud</span>'
+               f'<span class="fs-pk {PC[r["bud"]]}">{r["bud"]}</span></span>') if r.get('bud') else ''
+        body = (f'<div class="fs-srcs">{"".join(srows)}</div>' if srows
+                else '<div class="fs-srcs"><span class="fs-wait">afventer data</span></div>')
+        nr.append(
+            f'<div class="fs-fx"><div class="fs-fxh">'
+            f'<div class="fs-tm"><span class="fs-t">{esc(r["home"])}</span>'
+            f'<span class="fs-t away">{esc(r["away"])}</span></div>{bud}</div>'
+            f'{body}</div>')
     nr_html = '\n'.join(nr)
     nr_afd, nr_rel = _afd_label(next_round)
 
@@ -310,6 +357,7 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
     <span class="fs-it"><span class="fs-pk fs-p1">1</span> Hjemme</span>
     <span class="fs-it"><span class="fs-pk fs-px">X</span> Uafgjort</span>
     <span class="fs-it"><span class="fs-pk fs-p2">2</span> Ude</span>
+    <span class="fs-it">Odds · n20 = sandsynlighed &nbsp;·&nbsp; Elo · Opta = styrketal</span>
     <span class="fs-it">H2H = point · Rgt = rigtige</span>
   </div>
 </div>'''
@@ -332,15 +380,21 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
 #page-forside .fs-ghost{background:transparent;color:var(--mut);border:1px dashed var(--bdr)}
 #page-forside .fs-apw{display:inline-flex;align-items:center;justify-content:center;gap:4px}
 #page-forside .fs-tk{font-size:11px;font-weight:800}#page-forside .fs-tk.ok{color:var(--grn)}#page-forside .fs-tk.no{color:var(--red)}
-#page-forside .fs-fx{display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;padding:9px 13px;border-top:1px solid var(--bdr)}
+#page-forside .fs-fx{display:flex;flex-direction:column;gap:8px;padding:10px 13px;border-top:1px solid var(--bdr)}
 #page-forside .fs-fx:first-child{border-top:0}
+#page-forside .fs-fxh{display:flex;align-items:center;justify-content:space-between;gap:10px}
 #page-forside .fs-tm{min-width:0;font-size:13px;line-height:1.3}
 #page-forside .fs-t{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #page-forside .fs-t.away{color:var(--mut)}
-#page-forside .fs-odds{display:flex;gap:4px}
-#page-forside .fs-od{font-size:11px;font-weight:600;color:var(--mut);background:var(--sf);border:1px solid var(--bdr);border-radius:5px;padding:5px 6px;min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
-#page-forside .fs-od.best{color:var(--txt);border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.1);font-weight:700}
-#page-forside .fs-wait{font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);border:1px dashed var(--bdr);border-radius:6px;padding:5px 8px}
+#page-forside .fs-budw{display:flex;align-items:center;gap:5px;flex-shrink:0}
+#page-forside .fs-bl{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+#page-forside .fs-srcs{display:flex;flex-direction:column;gap:3px}
+#page-forside .fs-src{display:grid;grid-template-columns:32px repeat(3,1fr);align-items:center;gap:4px}
+#page-forside .fs-sl{font-size:9.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--mut)}
+#page-forside .fs-sv{font-size:11px;font-weight:600;color:var(--mut);background:var(--sf);border:1px solid var(--bdr);border-radius:5px;padding:4px 2px;text-align:center;font-variant-numeric:tabular-nums}
+#page-forside .fs-sv.hi{color:var(--txt);border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.1);font-weight:800}
+#page-forside .fs-sv.mut{background:transparent;border-color:transparent;opacity:.45}
+#page-forside .fs-wait{font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);border:1px dashed var(--bdr);border-radius:6px;padding:5px 8px;align-self:flex-start}
 #page-forside .fs-h2hsc{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 13px;background:var(--sf)}
 #page-forside .fs-hp{flex:1;min-width:0}
 #page-forside .fs-hp .fs-nm{font-size:12.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
