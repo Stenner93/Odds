@@ -105,6 +105,7 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
             bud = _FAV.get(str(g('favourit')).strip()) or _FAV.get(str(g('rec_ensemble')).strip())
         next_rows.append({
             'home': m['home_team'], 'away': m['away_team'],
+            'league': str(m.get('league', '') or '').strip(),
             'odds': (p1, px, p2),
             'n20':  (_f(g('n20_prob_1')), _f(g('n20_prob_x')), _f(g('n20_prob_2'))),
             'elo':  (_f(g('elo_home')), _f(g('elo_away'))),
@@ -261,12 +262,16 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
                                         None if oa is None else f'{oa:g}'], hi))
         bud = (f'<span class="fs-budw"><span class="fs-bl">bud</span>'
                f'<span class="fs-pk {PC[r["bud"]]}">{r["bud"]}</span></span>') if r.get('bud') else ''
+        lg = esc(r.get('league') or '')
+        right = (f'<div class="fs-fxr">'
+                 + (f'<span class="fs-lg">{lg}</span>' if lg else '')
+                 + bud + '</div>')
         body = (f'<div class="fs-srcs">{"".join(srows)}</div>' if srows
                 else '<div class="fs-srcs"><span class="fs-wait">afventer data</span></div>')
         nr.append(
             f'<div class="fs-fx"><div class="fs-fxh">'
             f'<div class="fs-tm"><span class="fs-t">{esc(r["home"])}</span>'
-            f'<span class="fs-t away">{esc(r["away"])}</span></div>{bud}</div>'
+            f'<span class="fs-t away">{esc(r["away"])}</span></div>{right}</div>'
             f'{body}</div>')
     nr_html = '\n'.join(nr)
     nr_afd, nr_rel = _afd_label(next_round)
@@ -386,6 +391,8 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
 #page-forside .fs-tm{min-width:0;font-size:13px;line-height:1.3}
 #page-forside .fs-t{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #page-forside .fs-t.away{color:var(--mut)}
+#page-forside .fs-fxr{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0}
+#page-forside .fs-lg{font-size:9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
 #page-forside .fs-budw{display:flex;align-items:center;gap:5px;flex-shrink:0}
 #page-forside .fs-bl{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
 #page-forside .fs-srcs{display:flex;flex-direction:column;gap:3px}
