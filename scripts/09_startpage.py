@@ -93,6 +93,15 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
             return x if x == x else None
         except (TypeError, ValueError):
             return None
+    _WD = ['man', 'tir', 'ons', 'tor', 'fre', 'lør', 'søn']
+    def _when(d, t):
+        # Kamptidspunkt fra Cognito-scrapet (weekly_matches: date + time), fx "tir 14/10 21:00"
+        try:
+            dd = pd.to_datetime(str(d)[:10]).date()
+        except Exception:
+            return ''
+        tt = str(t).strip() if isinstance(t, str) and str(t).strip() else ''
+        return f'{_WD[dd.weekday()]} {dd.day}/{dd.month}' + (f' {tt}' if tt else '')
     _FAV = {'1.0': '1', '1': '1', '2.0': '2', '2': '2', 'x': 'X', 'X': 'X'}
     next_rows = []
     for _, m in fx.iterrows():
@@ -106,6 +115,7 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
         next_rows.append({
             'home': m['home_team'], 'away': m['away_team'],
             'league': str(m.get('league', '') or '').strip(),
+            'when': _when(m.get('date'), m.get('time')),
             'odds': (p1, px, p2),
             'n20':  (_f(g('n20_prob_1')), _f(g('n20_prob_x')), _f(g('n20_prob_2'))),
             'elo':  (_f(g('elo_home')), _f(g('elo_away'))),
@@ -263,9 +273,11 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
         bud = (f'<span class="fs-budw"><span class="fs-bl">bud</span>'
                f'<span class="fs-pk {PC[r["bud"]]}">{r["bud"]}</span></span>') if r.get('bud') else ''
         lg = esc(r.get('league') or '')
+        wh = esc(r.get('when') or '')
+        low = ((f'<span class="fs-when">{wh}</span>' if wh else '') + bud)
         right = (f'<div class="fs-fxr">'
                  + (f'<span class="fs-lg">{lg}</span>' if lg else '')
-                 + bud + '</div>')
+                 + (f'<div class="fs-fxb">{low}</div>' if low else '') + '</div>')
         body = (f'<div class="fs-srcs">{"".join(srows)}</div>' if srows
                 else '<div class="fs-srcs"><span class="fs-wait">afventer data</span></div>')
         nr.append(
@@ -393,6 +405,8 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
 #page-forside .fs-t.away{color:var(--mut)}
 #page-forside .fs-fxr{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0}
 #page-forside .fs-lg{font-size:9px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
+#page-forside .fs-fxb{display:flex;align-items:center;gap:7px}
+#page-forside .fs-when{font-size:10px;font-weight:600;color:var(--mut);white-space:nowrap;font-variant-numeric:tabular-nums}
 #page-forside .fs-budw{display:flex;align-items:center;gap:5px;flex-shrink:0}
 #page-forside .fs-bl{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
 #page-forside .fs-srcs{display:flex;flex-direction:column;gap:3px}
