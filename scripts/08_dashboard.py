@@ -264,6 +264,35 @@ if not _html:
     print('❌ html-variablen ikke sat efter exec — tjek celle 08')
     sys.exit(1)
 
+# ── Ligatabel til Stilling-fanen (V/U/T + "mål" = egne : modstanderens rigtige) ──
+# Bygges fra h2h.csv (kun scorede runder). Aktuel sæson filtreres til aktuel
+# afdeling, så tabellen stemmer med standings.csv. Injiceres som global LEAGUE.
+try:
+    import pandas as _pdl
+    _hl = _pdl.read_csv(os.path.join(DATA_DIR, 'h2h.csv'))
+    _hl['season'] = _hl['season'].astype(int); _hl['round'] = _hl['round'].astype(int)
+    _cur = _hl[_hl['season'] == CURRENT_SEASON]['round']
+    if len(_cur):
+        _a = (int(_cur.max()) - 1) // 17 + 1; _lo, _hi = (_a - 1) * 17 + 1, _a * 17
+        _hl = _hl[~((_hl['season'] == CURRENT_SEASON) & ((_hl['round'] < _lo) | (_hl['round'] > _hi)))]
+    _hl = _hl[_hl['h2h_pts_a'].notna() & _hl['h2h_pts_b'].notna()]
+    _LEAGUE = {}
+    def _ci(v):
+        try: return int(v) if v == v else 0
+        except (TypeError, ValueError): return 0
+    for _, _r in _hl.iterrows():
+        for _p, _cf, _ca, _pt in ((_r['player_a'], _r['correct_a'], _r['correct_b'], _r['h2h_pts_a']),
+                                  (_r['player_b'], _r['correct_b'], _r['correct_a'], _r['h2h_pts_b'])):
+            _x = _LEAGUE.setdefault(str(int(_r['season'])), {}).setdefault(
+                _p, {'k': 0, 'v': 0, 'u': 0, 't': 0, 'gf': 0, 'ga': 0, 'pt': 0})
+            _pt = _ci(_pt)
+            _x['k'] += 1; _x['gf'] += _ci(_cf); _x['ga'] += _ci(_ca); _x['pt'] += _pt
+            _x['v' if _pt >= 3 else ('u' if _pt == 1 else 't')] += 1
+    _html = _html.replace('</head>', '<script>var LEAGUE=' + json.dumps(_LEAGUE, ensure_ascii=False) + ';</script>\n</head>', 1)
+    print(f'✓ Ligatabel: {sum(len(v) for v in _LEAGUE.values())} spiller-sæsoner')
+except Exception as _e:
+    print(f'⚠ Ligatabel kunne ikke bygges ({_e})')
+
 import importlib.util as _ilu
 _sp_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '09_startpage.py')
 try:

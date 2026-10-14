@@ -37,6 +37,7 @@ main{max-width:1440px;margin:0 auto;padding:22px 20px}
 table.st{width:100%;border-collapse:collapse}
 table.st th{font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);text-align:left;padding:8px 10px;border-bottom:1px solid var(--bdr);background:rgba(0,0,0,.15)}
 table.st td{padding:10px 10px;border-bottom:1px solid rgba(55,65,81,.5);font-size:13px}
+table.st.lg th,table.st.lg td{padding:8px 6px}table.st .lgn{text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}table.st.lg th.lgn{text-align:center}table.st .lgp{white-space:nowrap;max-width:150px;overflow:hidden;text-overflow:ellipsis}
 table.st tr:last-child td{border-bottom:none}table.st tr:hover td{background:rgba(255,255,255,.02)}
 .rank{font-weight:900;font-size:14px;color:var(--mut);display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,.05);border:1px solid var(--bdr)}
 .r1{background:linear-gradient(135deg,#d97706,#f59e0b);color:#0d1117;border-color:#f59e0b}
@@ -173,8 +174,9 @@ code{background:rgba(0,0,0,.3);padding:2px 6px;border-radius:4px;font-size:11px;
   <div class="g5 mb" id="stat-cards"></div>
   <div class="g2 mb">
     <div class="card"><div class="ct">H2H-stilling — sæson <span class="cur-s"></span></div>
-      <table class="st"><thead><tr><th>#</th><th>Spiller</th><th>H2H pt</th><th>Rigtige gæt</th><th style="text-align:right">Nøjagtighed</th></tr></thead>
-      <tbody id="standings-body"></tbody></table>
+      <div style="overflow-x:auto"><table class="st lg"><thead><tr><th>#</th><th>Spiller</th><th class="lgn" title="Kampe">K</th><th class="lgn" title="Sejre">V</th><th class="lgn" title="Uafgjorte">U</th><th class="lgn" title="Nederlag">T</th><th class="lgn" title="Egne rigtige : modstandernes rigtige">Mål</th><th class="lgn" title="Målforskel">+/-</th><th class="lgn" title="H2H-point">Pt</th></tr></thead>
+      <tbody id="standings-body"></tbody></table></div>
+      <div style="font-size:10.5px;color:var(--mut);padding:8px 10px 2px">Mål = egne rigtige gæt : modstandernes rigtige gæt i H2H-kampene</div>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px">
       <div class="card" id="my-h2h-card" style="display:none"></div>
@@ -564,7 +566,11 @@ function renderStilling(){
     const bw=Math.round((row.h2h_pts||0)/maxH2H*100);
     const pctBar=row.answered>0?Math.round(row.points/row.answered*100):0;
     const h2hDisp=row.h2h_pts!=null?`<span class="pts">${row.h2h_pts}</span>`:`<span style="color:var(--mut)">—</span>`;
-    return`<tr><td><span class="rank ${rc}">${i+1}</span></td><td>${row.player}</td><td>${h2hDisp}</td><td>${row.points}</td><td style="text-align:right"><div style="display:flex;align-items:center;gap:5px;justify-content:flex-end"><div class="bw"><div class="bf" style="width:${pctBar}%"></div></div><span style="font-size:11px;color:var(--mut)">${pct}%</span></div></td></tr>`;
+    const L=(typeof LEAGUE!=='undefined'&&(LEAGUE[curSeason]||LEAGUE[String(curSeason)])||{})[row.player];
+    const dash='<span style="color:var(--mut)">—</span>';
+    const gd=L?L.gf-L.ga:null;
+    const gdDisp=gd==null?dash:`<span style="color:${gd>0?'var(--grn)':gd<0?'var(--red)':'var(--mut)'}">${gd>0?'+':''}${gd}</span>`;
+    return`<tr><td><span class="rank ${rc}">${i+1}</span></td><td class="lgp">${row.player}</td><td class="lgn">${L?L.k:dash}</td><td class="lgn">${L?L.v:dash}</td><td class="lgn">${L?L.u:dash}</td><td class="lgn">${L?L.t:dash}</td><td class="lgn">${L?L.gf+':'+L.ga:row.points}</td><td class="lgn">${gdDisp}</td><td class="lgn">${h2hDisp}</td></tr>`;
   }).join('');
 
   // Kumulative rigtige gæt pr. runde (enkelt sæson)
