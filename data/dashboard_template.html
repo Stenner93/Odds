@@ -145,6 +145,26 @@ code{background:rgba(0,0,0,.3);padding:2px 6px;border-radius:4px;font-size:11px;
 .fav{display:inline-block;padding:2px 9px;border-radius:5px;font-size:12px;font-weight:700}
 .fav1{background:rgba(59,130,246,.15);color:var(--blu)}.favX{background:rgba(156,163,175,.15);color:#94a3b8}.fav2{background:rgba(239,68,68,.15);color:var(--red)}
 @media(max-width:800px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}.cs2,.cs3{grid-column:span 1}nav button{font-size:10px;padding:5px 8px}.odds-row{grid-template-columns:1fr 1fr 1fr}}
+/* Mobil-layout: undgå vandret side-scroll. Grid-børn må skrumpe (brede tabeller/heatmaps
+   scroller inde i deres kort), og topmenuen bliver en vandret scroll-stribe. */
+.g2>*,.g3>*,.g4>*,.g5>*{min-width:0}
+@media(max-width:800px){
+  main{padding:14px 12px}
+  header{padding:0 12px;gap:10px}
+  .logo{font-size:17px}
+  nav{min-width:0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  nav::-webkit-scrollbar{display:none}
+  nav button{flex-shrink:0;white-space:nowrap}
+  #last-updated{display:none}
+  .g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}
+  .g5{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card{padding:12px}
+}
+@media(max-width:520px){
+  table.st.lg th,table.st.lg td{padding:7px 3px;font-size:12px}
+  table.st.lg .lgk{display:none}
+  table.st .lgp{max-width:108px}
+}
 </style>
 </head>
 <body>
@@ -174,7 +194,7 @@ code{background:rgba(0,0,0,.3);padding:2px 6px;border-radius:4px;font-size:11px;
   <div class="g5 mb" id="stat-cards"></div>
   <div class="g2 mb">
     <div class="card"><div class="ct">H2H-stilling — sæson <span class="cur-s"></span></div>
-      <div style="overflow-x:auto"><table class="st lg"><thead><tr><th>#</th><th>Spiller</th><th class="lgn" title="Kampe">K</th><th class="lgn" title="Sejre">V</th><th class="lgn" title="Uafgjorte">U</th><th class="lgn" title="Nederlag">T</th><th class="lgn" title="Egne rigtige : modstandernes rigtige">Mål</th><th class="lgn" title="Målforskel">+/-</th><th class="lgn" title="H2H-point">Pt</th></tr></thead>
+      <div style="overflow-x:auto"><table class="st lg"><thead><tr><th>#</th><th>Spiller</th><th class="lgn lgk" title="Kampe">K</th><th class="lgn" title="Sejre">V</th><th class="lgn" title="Uafgjorte">U</th><th class="lgn" title="Nederlag">T</th><th class="lgn" title="Egne rigtige : modstandernes rigtige">Mål</th><th class="lgn" title="Målforskel">+/-</th><th class="lgn" title="H2H-point">Pt</th></tr></thead>
       <tbody id="standings-body"></tbody></table></div>
       <div style="font-size:10.5px;color:var(--mut);padding:8px 10px 2px">Mål = egne rigtige gæt : modstandernes rigtige gæt i H2H-kampene</div>
     </div>
@@ -570,7 +590,7 @@ function renderStilling(){
     const dash='<span style="color:var(--mut)">—</span>';
     const gd=L?L.gf-L.ga:null;
     const gdDisp=gd==null?dash:`<span style="color:${gd>0?'var(--grn)':gd<0?'var(--red)':'var(--mut)'}">${gd>0?'+':''}${gd}</span>`;
-    return`<tr><td><span class="rank ${rc}">${i+1}</span></td><td class="lgp">${row.player}</td><td class="lgn">${L?L.k:dash}</td><td class="lgn">${L?L.v:dash}</td><td class="lgn">${L?L.u:dash}</td><td class="lgn">${L?L.t:dash}</td><td class="lgn">${L?L.gf+':'+L.ga:row.points}</td><td class="lgn">${gdDisp}</td><td class="lgn">${h2hDisp}</td></tr>`;
+    return`<tr><td><span class="rank ${rc}">${i+1}</span></td><td class="lgp">${row.player}</td><td class="lgn lgk">${L?L.k:dash}</td><td class="lgn">${L?L.v:dash}</td><td class="lgn">${L?L.u:dash}</td><td class="lgn">${L?L.t:dash}</td><td class="lgn">${L?L.gf+':'+L.ga:row.points}</td><td class="lgn">${gdDisp}</td><td class="lgn">${h2hDisp}</td></tr>`;
   }).join('');
 
   // Kumulative rigtige gæt pr. runde (enkelt sæson)
