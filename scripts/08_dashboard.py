@@ -315,6 +315,29 @@ try:
 except Exception as _e:
     print(f'⚠ Kunne ikke bygge forside-fane ({_e}) — dashboard genereres uden den')
 
+# ── Predictor-logbog + "Analyse"-fanen ─────────────────────────────────────
+# 07 fryser hver predictors bud før kickoff i data/predictor_log.csv (odds.csv
+# overskrives løbende). 10 bygger Analyse-fanen (scouting, predictors, dine valg)
+# og indsættes efter Stilling i topbanneret.
+_here = os.path.dirname(os.path.abspath(__file__))
+try:
+    _spec = _ilu.spec_from_file_location('predlog', os.path.join(_here, '07_predictor_log.py'))
+    _pl = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_pl)
+    print(f'✓ Predictor-logbog: {_pl.update_log(DATA_DIR)} kampe opdateret før kickoff')
+except Exception as _e:
+    print(f'⚠ Predictor-logbog kunne ikke opdateres ({_e})')
+try:
+    _spec = _ilu.spec_from_file_location('analysis', os.path.join(_here, '10_analysis.py'))
+    _an = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_an)
+    _an_style, _an_nav, _an_page = _an.build_analysis_pieces(DATA_DIR)
+    _html = _html.replace('</head>', _an_style + '\n</head>', 1)
+    _btn = "<button onclick=\"showPage('stilling',this)\">Stilling</button>"
+    _html = _html.replace(_btn, _btn + _an_nav, 1) if _btn in _html else _html.replace('</nav>', _an_nav + '</nav>', 1)
+    _html = _html.replace('<main>', '<main>\n<div class="page" id="page-analyse">' + _an_page + '</div>', 1)
+    print('✓ Analyse-fane indsat')
+except Exception as _e:
+    print(f'⚠ Kunne ikke bygge analyse-fane ({_e})')
+
 OUTPUT_PATH = os.path.join(REPO_ROOT, 'index.html')
 with open(OUTPUT_PATH, 'w', encoding='utf-8') as _f_out:
     _f_out.write(_html)
