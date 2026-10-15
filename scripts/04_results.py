@@ -38,6 +38,21 @@ def _to_english(name: str) -> str:
     plain = unidecode(name)
     return _DAN_TO_ENG.get(plain, name)
 
+# Lærte feed-navne fra odds-pipelinen (02) — fx "Paris SG" -> "Paris Saint Germain",
+# "FC København" -> "FC Copenhagen". Bruges også til resultat-matching, så et hold
+# kun skal "læres" ét sted.
+_ODDS_ALIASES: dict = {}
+try:
+    with open(os.path.join(DATA_DIR, 'odds_aliases.json'), encoding='utf-8') as _f:
+        _ODDS_ALIASES = json.load(_f)
+except Exception:
+    pass
+
+def _variants(name: str) -> list:
+    """Alle kendte navne for et hold: vores navn, ELO-navn og lært feed-alias."""
+    out = [name, _to_english(name), _ODDS_ALIASES.get(name), _ODDS_ALIASES.get(_to_english(name))]
+    return list(dict.fromkeys(v for v in out if v))
+
 def _norm(s: str) -> str:
     return unidecode(str(s)).lower().strip().replace(' ','').replace('-','').replace('.','')
 
@@ -54,6 +69,39 @@ def _name_match(a: str, b: str) -> bool:
         return True
     short, lng = (a, b) if len(a) <= len(b) else (b, a)
     return len(short) >= 5 and short in lng
+
+def _toks(s: str) -> list:
+    s = unidecode(str(s)).lower()
+    for ch in "-./&'\u200b":
+        s = s.replace(ch, ' ')
+    return [t for t in s.split() if t]
+
+def _tok_match(a: str, b: str) -> bool:
+    """Forkortelses-regler på ord-niveau (det fuzzy-match på sammentrukne navne ikke kan):
+    - akronym:   'PSG'      = 'Paris Saint-Germain'   (initialer af alle ord)
+    - initialer: 'Paris SG' = 'Paris Saint-Germain'   (fælles første ord + initialer)
+    - ord-præfiks: 'Man City' = 'Manchester City'     (samme antal ord, hvert ord et præfiks)
+    Reglerne kræver fælles første ord eller fuld initial-match, så fx 'Paris FC' ≠ 'Paris SG'
+    og 'Man City' ≠ 'Man United'."""
+    ta, tb = _toks(a), _toks(b)
+    if not ta or not tb:
+        return False
+    if len(ta) > len(tb):
+        ta, tb = tb, ta
+    if len(ta) == 1 and 2 <= len(ta[0]) <= 4 and len(tb) >= 2 and ta[0] == ''.join(t[0] for t in tb):
+        return True
+    if len(ta) >= 2 and ta[0] == tb[0] and len(ta[0]) >= 3 and len(tb) > len(ta) - 1 \
+            and ''.join(ta[1:]) == ''.join(t[0] for t in tb[1:]):
+        return True
+    if len(ta) == len(tb) and all(x == y or (len(x) >= 3 and y.startswith(x)) or (len(y) >= 3 and x.startswith(y))
+                                  for x, y in zip(ta, tb)):
+        return True
+    return False
+
+def _team_match(a: str, b: str) -> bool:
+    """Er to rå holdnavne samme klub? Kombinerer fuzzy/delstreng (_name_match) og
+    forkortelses-reglerne (_tok_match)."""
+    return _name_match(_norm(a), _norm(b)) or _tok_match(a, b)
 
 def _score_to_1x2(home_score, away_score):
     try:
@@ -77,12 +125,11 @@ def _sdb_fetch(endpoint):
         return None
 
 def _sportsdb_result(home, away, date_str):
-    home_en, away_en = _to_english(home), _to_english(away)
-    # Prøv ALLE kombinationer af dansk+engelsk navn i begge retninger.
-    # Vigtigt for fx USA: kilden bruger "USA", men elo_name er "United States",
-    # så kombinationen "USA vs Belgium" skal også prøves.
-    homes = list(dict.fromkeys([home_en, home]))
-    aways = list(dict.fromkeys([away_en, away]))
+    # Prøv ALLE kombinationer af kendte navne (dansk, ELO-navn, lært alias) i begge
+    # retninger. Vigtigt for fx USA ("USA" vs "United States") og PSG ("Paris SG"
+    # vs "Paris Saint Germain").
+    homes = _variants(home)
+    aways = _variants(away)
     name_pairs = []
     for _h in homes:
         for _a in aways:
@@ -103,7 +150,13 @@ def _sportsdb_result(home, away, date_str):
             _st = str(ev.get('strStatus') or '').strip().lower()
             if _st and _st not in ('match finished', 'ft', 'finished', 'aet', 'pens', 'ap'):
                 continue
-            result = _score_to_1x2(ev.get('intHomeScore'), ev.get('intAwayScore'))
+            # Puljen afgøres efter 90 min. Forlænget spilletid/straffe spilles kun når
+            # det står lige efter 90 min, så AET/straffe = X (slutscoren inkl.
+            # forlænget spilletid må IKKE bruges — fx VM-finalen 1-0 AET er X).
+            if _st in ('aet', 'pens', 'ap'):
+                result = 'X'
+            else:
+                result = _score_to_1x2(ev.get('intHomeScore'), ev.get('intAwayScore'))
             if result:
                 if swapped:
                     result = {'1': '2', '2': '1', 'X': 'X'}[result]
@@ -135,7 +188,8 @@ def _n20_fetch(date_str: str) -> list:
                 continue
             gf = next((item[k] for k in ['GF','gf','HomeGoals'] if k in item and item[k] is not None), None)
             ga = next((item[k] for k in ['GA','ga','AwayGoals'] if k in item and item[k] is not None), None)
-            res = _score_to_1x2(gf, ga)
+            # AET/PEN = uafgjort efter 90 min (se SportsDB-kommentaren ovenfor)
+            res = 'X' if status in ('PEN', 'AET') else _score_to_1x2(gf, ga)
             if not res:
                 continue
             team = str(item.get('Team') or item.get('home_team') or '').strip()
@@ -153,21 +207,26 @@ def _n20_result(home, away, date_str: str):
     matches = _n20_fetch(date_str)
     if not matches:
         return None
-    # Prøv både dansk og engelsk navnevariant (fx USA / United States)
-    home_vars = list(dict.fromkeys([_norm(_to_english(home)), _norm(home)]))
-    away_vars = list(dict.fromkeys([_norm(_to_english(away)), _norm(away)]))
+    home_vars, away_vars = _variants(home), _variants(away)
     def _pick(home_list, away_list, invert):
         # Iterér over datoens kampe og kræv match på BÅDE hjemme- og udehold.
-        # _name_match er robust mod klub-præfikser (fx 'Borussia Dortmund').
         for m in matches:
-            mh, ma = _norm(m['home']), _norm(m['away'])
-            if any(_name_match(hv, mh) for hv in home_list) and \
-               any(_name_match(av, ma) for av in away_list):
+            if any(_team_match(hv, m['home']) for hv in home_list) and \
+               any(_team_match(av, m['away']) for av in away_list):
                 return {'1':'2','2':'1','X':'X'}[m['result']] if invert else m['result']
         return None
 
     # Direkte (home som hjemmehold) — ellers ombyttet (home optræder som udehold)
     return _pick(home_vars, away_vars, False) or _pick(away_vars, home_vars, True)
+
+def _n20_candidates(home, away, date_str: str) -> list:
+    """Diagnostik: N20-kampe på datoen hvor mindst ét ord går igen fra et af holdene."""
+    words = {t for n in _variants(home) + _variants(away) for t in _toks(n) if len(t) >= 4}
+    out = []
+    for m in _n20_fetch(date_str):
+        if words & set(_toks(m['home']) + _toks(m['away'])):
+            out.append(f"{m['home']} v {m['away']} ({m['result']})")
+    return out[:6]
 
 # ── Hoved-loop ────────────────────────────────────────────────────────────
 import datetime as _dt
@@ -236,6 +295,15 @@ for _, row in df_rnd.sort_values(['round', 'match_no']).iterrows():
     else:
         auto_results[(rnd, mn)] = None
         print(f'  ❌ {tag}: {home} vs {away} — ikke afsluttet endnu')
+        # Diagnostik for kampe der burde være spillet: vis hvad N20 havde på datoen,
+        # så et navne-mismatch kan ses direkte i loggen.
+        try:
+            if _dt.date.fromisoformat(date[:10]) < _today:
+                _c = _n20_candidates(home, away, date)
+                if _c:
+                    print(f'      ↳ N20 havde på {date[:10]}: ' + ' | '.join(_c))
+        except Exception:
+            pass
 
 # Skriv resultater tilbage til weekly_matches.csv (nøgle: runde + match_no)
 updated = 0
