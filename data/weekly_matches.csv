@@ -1885,6 +1885,16 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,34,8,BOD-BVB,2026-10-14,21:00,Champions League,Champions League,Bodø/​Glimt,Dortmund,,,,,1
 4,34,9,MCI-PSG,2026-10-14,21:00,Champions League,Champions League,Manchester City,Paris SG,,,,,2
 4,34,10,KØB-BRA,2026-10-15,21:00,Conference League,Conference League,FC København,Braga,,,,,1
+4,35,1,BLG-INT,2026-10-17,18:00,Serie A,Serie A,Bologna,Inter,,,,,
+4,35,2,BET-BAR,2026-10-17,18:30,La Liga,La Liga,Betis,Barcelona,,,,,
+4,35,3,LEE-UTD,2026-10-18,15:00,Premier League,Premier League,Leeds,Manchester Utd.,,,,,
+4,35,4,MO1-HOF,2026-10-18,17:30,Bundesliga,Bundesliga,Mönchengladbach,Hoffenheim,,,,,
+4,35,5,VFF-FCM,2026-10-19,19:00,Superligaen,Superliga,Viborg,FC Midtjylland,,,,,
+4,35,6,LIV-VIL,2026-10-20,21:00,Champions League,Champions League,Liverpool,Villarreal,,,,,
+4,35,7,PSG-BAR,2026-10-20,21:00,Champions League,Champions League,Paris SG,Barcelona,,,,,
+4,35,8,BAY-ARS,2026-10-21,21:00,Champions League,Champions League,Bayern,Arsenal,,,,,
+4,35,9,RMA-RBL,2026-10-21,21:00,Champions League,Champions League,Real Madrid,RB Leipzig,,,,,
+4,35,10,RØD-KØB,2026-10-22,18:45,Conference League,Conference League,Røde Stjerne,FC København,,,,,
 5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2
 5,1,2,AVI-TOT,,,,,AVI,TOT,,,,,1
 5,1,3,BVB-STU,,,,,BVB,STU,,,,,2

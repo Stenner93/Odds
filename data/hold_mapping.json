@@ -2772,6 +2772,13 @@
     "elo_name": "Man United"
   },
   {
+    "abbr": "MA2",
+    "type": "INT",
+    "land": "INT",
+    "name": "Manchester Utd.",
+    "elo_name": "Manchester Utd."
+  },
+  {
     "abbr": "MAN",
     "type": "ENG",
     "land": "ENG",
