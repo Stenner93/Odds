@@ -56,6 +56,12 @@ on:
 permissions:
   contents: write
 
+# Kør aldrig to pipelines samtidig: den der blev færdig sidst fik før sin push
+# afvist (non-fast-forward), og dens data — fx en fredags-scrape — gik tabt.
+concurrency:
+  group: dashboard-pipeline
+  cancel-in-progress: false
+
 jobs:
   byg-dashboard:
     runs-on: ubuntu-latest
@@ -135,4 +141,23 @@ jobs:
           git add data/ index.html
           git diff --cached --quiet && echo "Ingen ændringer" && exit 0
           git commit -m "Auto: pipeline kørt [skip ci]"
-          git push
+          # Push med genforsøg: hvis main er rykket imens (fx en manuel commit),
+          # læg vores commit ovenpå og genbyg dashboardet. Konflikt i index.html
+          # løses ved genbygning; konflikt i data/ stopper kørslen tydeligt.
+          for i in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "Push afvist — henter main og prøver igen ($i/3)"
+            git fetch origin main
+            if ! git rebase origin/main; then
+              C=$(git diff --name-only --diff-filter=U)
+              if [ "$C" = "index.html" ]; then
+                git checkout --theirs index.html && git add index.html
+                GIT_EDITOR=true git rebase --continue || { git rebase --abort; exit 1; }
+              else
+                echo "::error::Rebase-konflikt i: $C"; git rebase --abort; exit 1
+              fi
+            fi
+            python scripts/08_dashboard.py && git add index.html
+            git diff --cached --quiet || git commit -m "Auto: dashboard genbygget efter rebase [skip ci]"
+          done
+          exit 1
