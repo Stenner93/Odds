@@ -59,7 +59,7 @@ TEAM_ALIASES = {
     # Klubnavne der afviger fra ranking-kilderne (Opta / ClubElo) — fundet ved
     # gennemgang af alle sæson 4-klubhold mod Opta Power Rankings (okt. 2026).
     'Mönchengladbach':    ['Mönchengladbach','Gladbach','Borussia Mönchengladbach',"Borussia M'gladbach",'Borussia VfL Mönchengladbach'],
-    'Røde Stjerne':       ['Røde Stjerne','Crvena Zvezda','Crvena zvezda','Red Star Belgrade','FK Crvena zvezda Beograd'],
+    'Røde Stjerne':       ['Røde Stjerne','Crvena Zvezda','Crvena zvezda','FK Crvena Zvezda','Red Star Belgrade','FK Crvena zvezda Beograd'],
     'La Coruña':          ['La Coruña','Deportivo La Coruña','Deportivo de A Coruña','RC Deportivo de A Coruña','Deportivo'],
     'AIK Stockholm':      ['AIK Stockholm','AIK','AIK Fotboll'],
     'AZ Alkmaar':         ['AZ Alkmaar','AZ'],
@@ -180,6 +180,8 @@ TEAM_ALIASES = {
     'Uzbekistan':         ['Uzbekistan','UZB'],
     'Argentina':          ['Argentina','ARG'],
     'Østrig':             ['Østrig','Austria','AUT'],
+    'Tjekkiet':           ['Tjekkiet','Czech Republic','Czechia','CZE'],
+    'Tyrkiet':            ['Tyrkiet','Turkey','Türkiye','Turkiye','TUR'],
     # Nordiske klub-hold (Superettan, Veikkausliiga, OBOS-ligaen, Meistriliiga)
     'Varbergs BOIS':      ['Varbergs BOIS','Varberg','Varbergs BoIS'],
     'Östers IF':          ['Östers IF','Osters IF','Öster'],
@@ -909,6 +911,39 @@ def _n20_variants(name):
     if n not in variants: variants.append(n)
     return variants
 
+def _n20_all_variants(name):
+    """N20-normaliserede navne for et hold: kupon-navn, TEAM_ALIASES og hold_mapping."""
+    out = list(_n20_variants(name))
+    alt = _HM_ELO.get(name)
+    if alt:
+        out += [v for v in _n20_variants(alt) if v not in out]
+    return out
+
+def _n20_name_ok(variants, n20_name):
+    nn = _n20_norm(n20_name)
+    if not nn: return False
+    for v in variants:
+        if v == nn: return True
+        short, lng = (v, nn) if len(v) <= len(nn) else (nn, v)
+        if len(short) >= 5 and short in lng: return True
+        if fuzz.token_sort_ratio(v, nn) >= 88: return True
+    return False
+
+def _n20_opp_ok(item, away):
+    """Modstanderen i N20-kampen må ikke modsige vores udehold (tom = ukendt = ok)."""
+    return not item.get('opponent') or _n20_name_ok(_n20_all_variants(away), item['opponent'])
+
+def _n20_find(home, away, items):
+    hv, av = _n20_all_variants(home), _n20_all_variants(away)
+    for it in items:
+        if _n20_name_ok(hv, it['team']) and it.get('opponent') and _n20_name_ok(av, it['opponent']):
+            return it
+    for it in items:   # ombyttet: N20 lister kampen fra udeholdets side
+        if _n20_name_ok(av, it['team']) and it.get('opponent') and _n20_name_ok(hv, it['opponent']):
+            return dict(it, prob_1=it['prob_2'], prob_2=it['prob_1'],
+                        elo_home=it.get('elo_away'), elo_away=it.get('elo_home'))
+    return None
+
 def _n20_extract(item):
     team = (item.get('Team') or item.get('team') or item.get('home_team') or '')
     opp  = (item.get('Opponent') or item.get('opponent') or item.get('away_team') or '')
@@ -1114,10 +1149,12 @@ if os.path.exists(ODDS_CSV):
             print(f'  Henter N20 for {len(_dates)} datoer')
 
             _all_n20 = {}
+            _n20_list = []   # alle kampe (dict'en overskriver ved hold med flere kampe)
             for _d in _dates:
                 for _m in _fetch_n20_for_date(_d):
                     _key = _n20_norm(_m['team'])
                     _all_n20[_key] = _m
+                    _n20_list.append(_m)
 
             # Competition-baseret N20 for kval-turneringer som dato-feed'et mangler (fx CL-kval)
             _n20_comps = set()
@@ -1131,6 +1168,7 @@ if os.path.exists(ODDS_CSV):
                 for _cn in sorted(_n20_comps):
                     for _m in _fetch_n20_for_competition(_cn, _season_n20):
                         _all_n20[_n20_norm(_m['team'])] = _m
+                        _n20_list.append(_m)
 
             _all_teams = list(_all_n20.keys())
             _updates_n20 = []
@@ -1140,14 +1178,20 @@ if os.path.exists(ODDS_CSV):
                 _away = str(_row.get('away_team', '')).strip()
                 _mc   = str(_row['match_code'])
                 if not _home or _home == 'nan': continue
-                _hn_variants = _n20_variants(_home)
-                _found = None
-                for _hn in _hn_variants:
-                    if _hn in _all_n20:
-                        _found = _all_n20[_hn]; break
-                if not _found and _all_teams:
-                    _bm, _bs, _ = process.extractOne(_hn_variants[0], _all_teams, scorer=fuzz.token_sort_ratio)
-                    if _bs >= 78: _found = _all_n20[_bm]
+                # Match på BÅDE hjemme- og udehold (også ombyttet), med alle kendte
+                # navne (kupon, TEAM_ALIASES, hold_mapping) og delnavne — fx
+                # "Røde Stjerne" -> "Crvena Zvezda" ⊂ "FK Crvena Zvezda".
+                _found = _n20_find(_home, _away, _n20_list)
+                if not _found:
+                    # Reserve (gammel adfærd): kun hjemmehold, men kun hvis N20-kampens
+                    # modstander ikke modsiger vores udehold.
+                    _hn_variants = _n20_all_variants(_home)
+                    for _hn in _hn_variants:
+                        if _hn in _all_n20 and _n20_opp_ok(_all_n20[_hn], _away):
+                            _found = _all_n20[_hn]; break
+                    if not _found and _all_teams:
+                        _bm, _bs, _ = process.extractOne(_hn_variants[0], _all_teams, scorer=fuzz.token_sort_ratio)
+                        if _bs >= 78 and _n20_opp_ok(_all_n20[_bm], _away): _found = _all_n20[_bm]
                 if _found:
                     _probs = [('1', _found['prob_1']), ('X', _found['prob_x']), ('2', _found['prob_2'])]
                     _rec = max(_probs, key=lambda x: x[1])[0]
