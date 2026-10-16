@@ -7,3 +7,4 @@
 # Senest udløst: 2026-09-04 09:46 UTC
 # scrape udløst 2026-09-04 09:52 UTC
 # scrape udløst 2026-10-16 07:11 UTC
+# scrape udløst 2026-10-16 07:30 UTC (genforsøg efter push-race)
