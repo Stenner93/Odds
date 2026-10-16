@@ -56,6 +56,16 @@ TEAM_ALIASES = {
     'Esbjerg':            ['Esbjerg','Esbjerg FB'],
     'Manchester City':    ['Manchester City','Man City','ManCity'],
     'Manchester United':  ['Manchester United','Man Utd','Man United','Manchester Utd'],
+    # Klubnavne der afviger fra ranking-kilderne (Opta / ClubElo) — fundet ved
+    # gennemgang af alle sæson 4-klubhold mod Opta Power Rankings (okt. 2026).
+    'Mönchengladbach':    ['Mönchengladbach','Gladbach','Borussia Mönchengladbach',"Borussia M'gladbach",'Borussia VfL Mönchengladbach'],
+    'Røde Stjerne':       ['Røde Stjerne','Crvena Zvezda','Crvena zvezda','Red Star Belgrade','FK Crvena zvezda Beograd'],
+    'La Coruña':          ['La Coruña','Deportivo La Coruña','Deportivo de A Coruña','RC Deportivo de A Coruña','Deportivo'],
+    'AIK Stockholm':      ['AIK Stockholm','AIK','AIK Fotboll'],
+    'AZ Alkmaar':         ['AZ Alkmaar','AZ'],
+    'Nijmegen':           ['Nijmegen','NEC','NEC Nijmegen'],
+    'Royale Union SG':    ['Royale Union SG','Union Saint-Gilloise','Royale Union Saint-Gilloise','R. Union SG','Union SG'],
+    'Sherif Tiraspol':    ['Sherif Tiraspol','Sheriff Tiraspol','FK Sheriff Tiraspol'],
     'Arsenal':            ['Arsenal','Arsenal FC'],
     'Chelsea':            ['Chelsea','Chelsea FC'],
     'Liverpool':          ['Liverpool','Liverpool FC'],
@@ -188,7 +198,13 @@ for canon, variants in TEAM_ALIASES.items():
         _V2C[v] = canon
 
 def _norm(s):
-    return unidecode(str(s)).lower().replace('-', ' ').replace('/', ' ').strip()
+    # Punktum og apostrof fjernes ("Manchester Utd." = "Manchester Utd",
+    # "Borussia M'gladbach" = "Borussia Mgladbach"); mellemrum samles.
+    s = unidecode(str(s)).lower()
+    for ch in ('-', '/', '.', '\u200b'):
+        s = s.replace(ch, ' ')
+    s = s.replace("'", '').replace('`', '')
+    return ' '.join(s.split())
 
 _NORM_V2C = {_norm(v): c for v, c in _V2C.items()}
 
@@ -198,7 +214,9 @@ def resolve_team(raw):
     if raw in _V2C: return _V2C[raw]
     n = _norm(raw)
     if n in _NORM_V2C: return _NORM_V2C[n]
-    TEAM_ALIASES[raw] = [raw]; _V2C[raw] = raw; _NORM_V2C[n] = raw
+    # setdefault — overskriv ikke en aliasliste der allerede er lært (fx fra
+    # odds_aliases.json); før blev "Manchester Utd." -> "Manchester United" slettet her.
+    TEAM_ALIASES.setdefault(raw, [raw]); _V2C[raw] = raw; _NORM_V2C[n] = raw
     return raw
 
 def _canon_set(name):
@@ -378,38 +396,149 @@ try:
 except Exception as e:
     print(f'  ⚠ National ELO fejl: {e}')
 
+# ── Opta Power Rankings ──────────────────────────────────────────────────
+# Primær kilde: theanalyst.com's egen JSON (opdateres dagligt, ~14.000 hold, tre
+# navnevarianter pr. hold: navn / kort navn / klubnavn). Den tidligere kilde
+# (tonyelhabr/club-rankings på GitHub) er ikke opdateret siden januar 2026 og
+# bruges kun som sidste reserve. Seneste vellykkede hentning caches i
+# data/opta_rankings.csv, så et udfald ikke tømmer Opta-kolonnen.
+_OPTA_CACHE = os.path.join(DATA_DIR, 'opta_rankings.csv')
+
+def _cache_age_days(path):
+    try:
+        return (datetime.date.today() - datetime.date.fromisoformat(str(pd.read_csv(path, nrows=1)['fetched'].iloc[0])[:10])).days
+    except Exception:
+        return 10**6
+
+def _opta_long(df):
+    """Én række pr. navnevariant (prioritet: navn < kort navn < klubnavn)."""
+    rows = []
+    for prio, col in enumerate(['team', 'short_name', 'club_name']):
+        if col in df.columns:
+            x = df[['rating', col]].dropna().rename(columns={col: 'team_variant'})
+            x['_prio'] = prio
+            rows.append(x)
+    L = pd.concat(rows, ignore_index=True)
+    L['_norm'] = L['team_variant'].apply(_norm)
+    L = L.sort_values(['_prio', 'rating'], ascending=[True, False]).drop_duplicates('_norm')
+    return L.reset_index(drop=True)
+
+def _load_opta():
+    try:
+        r = requests.get('https://dataviz.theanalyst.com/opta-power-rankings/pr-reference.json',
+                         timeout=40, headers={'User-Agent': 'Mozilla/5.0'})
+        r.raise_for_status()
+        d = pd.DataFrame(r.json())
+        d = d.rename(columns={'contestantName': 'team', 'contestantShortName': 'short_name',
+                              'contestantClubName': 'club_name', 'currentRating': 'rating'})
+        if len(d) > 1000:
+            d['fetched'] = datetime.date.today().isoformat()
+            if _cache_age_days(_OPTA_CACHE) >= 7:   # reserve-cache højst ugentligt (filen er ~1 MB)
+                d[['team', 'short_name', 'club_name', 'rating', 'rank', 'fetched']].to_csv(_OPTA_CACHE, index=False)
+            print(f'  Opta: {len(d)} hold (theanalyst.com, i dag)')
+            return _opta_long(d)
+        print(f'  ⚠ Opta (theanalyst): kun {len(d)} hold')
+    except Exception as e:
+        print(f'  ⚠ Opta (theanalyst) fejlede: {str(e)[:120]}')
+    if os.path.exists(_OPTA_CACHE):
+        d = pd.read_csv(_OPTA_CACHE)
+        print(f"  Opta: {len(d)} hold fra cache (hentet {d['fetched'].iloc[0]})")
+        return _opta_long(d)
+    try:
+        rel = requests.get('https://api.github.com/repos/tonyelhabr/club-rankings/releases/latest', timeout=30).json()
+        assets = {x['name']: x['browser_download_url'] for x in rel.get('assets', [])}
+        d = pd.read_csv(assets['opta-club-rankings.csv'], low_memory=False)
+        d['updated_at'] = pd.to_datetime(d['updated_at'], errors='coerce')
+        d = d[d['updated_at'] == d['updated_at'].max()].copy()
+        print(f"  Opta: {len(d)} hold (reserve: tonyelhabr, {(datetime.date.today() - d['updated_at'].max().date()).days} dage gammel)")
+        return _opta_long(d)
+    except Exception as e:
+        print(f'  ⚠ Opta reserve fejlede: {str(e)[:120]} — ingen Opta i denne kørsel')
+    return pd.DataFrame()
+
+# ── ClubElo ──────────────────────────────────────────────────────────────
+# Har fejlet i stilhed siden ca. runde 28 (ingen "ELO: N hold" i loggen). Prøver
+# nu https og http, logger statuskoden og falder tilbage til seneste cache.
+_CLUBELO_CACHE = os.path.join(DATA_DIR, 'club_elo.csv')
+
+def _load_clubelo():
+    _d = datetime.date.today().isoformat()
+    for url in (f'https://api.clubelo.com/{_d}', f'http://api.clubelo.com/{_d}'):
+        try:
+            r = requests.get(url, timeout=20, headers={'User-Agent': 'Mozilla/5.0'})
+            if r.status_code == 200 and r.text.startswith('Rank'):
+                df = pd.read_csv(io.StringIO(r.text))
+                if len(df) > 100:
+                    df['fetched'] = _d
+                    if _cache_age_days(_CLUBELO_CACHE) >= 7:
+                        df.to_csv(_CLUBELO_CACHE, index=False)
+                    print(f'  ELO: {len(df)} klubhold (clubelo.com)')
+                    return df
+            print(f'  ⚠ ClubElo {url.split(":")[0]}: HTTP {r.status_code}, {len(r.text)} bytes')
+        except Exception as e:
+            print(f'  ⚠ ClubElo {url.split(":")[0]} fejlede: {str(e)[:100]}')
+    if os.path.exists(_CLUBELO_CACHE):
+        df = pd.read_csv(_CLUBELO_CACHE)
+        print(f"  ELO: {len(df)} klubhold fra cache (hentet {df['fetched'].iloc[0]})")
+        return df
+    print('  ⚠ Ingen klub-ELO i denne kørsel (clubelo.com svarer ikke, og ingen cache endnu)')
+    return pd.DataFrame()
+
+opta_df = _load_opta()
+elo_df = _load_clubelo()
+if not elo_df.empty:
+    elo_df['_norm'] = elo_df['Club'].apply(_norm)
+
+# Kuponens holdnavn -> engelsk/officielt navn fra hold_mapping.json (fx
+# "Røde Stjerne" -> "Crvena Zvezda"). Bruges til ranking-opslag (Opta/ELO).
+_HM_ELO = {}
 try:
-    rel = requests.get(
-        'https://api.github.com/repos/tonyelhabr/club-rankings/releases/latest',
-        timeout=30).json()
-    assets = {a['name']: a['browser_download_url']
-              for a in rel.get('assets', []) if a['name'].endswith('.csv')}
-    if 'opta-club-rankings.csv' in assets:
-        opta_df = pd.read_csv(assets['opta-club-rankings.csv'], low_memory=False)
-        opta_df['updated_at'] = pd.to_datetime(opta_df['updated_at'], errors='coerce')
-        opta_df = opta_df[opta_df['updated_at'] == opta_df['updated_at'].max()].copy()
-        opta_df['_norm'] = opta_df['team'].apply(_norm)
-        _opta_age = (datetime.date.today() - opta_df['updated_at'].max().date()).days
-        print(f'  Opta: {len(opta_df)} hold ({_opta_age} dage siden)')
-    _today_str = datetime.date.today().isoformat()
-    _elo_r = requests.get(f'http://api.clubelo.com/{_today_str}', timeout=15)
-    if _elo_r.status_code == 200:
-        elo_df = pd.read_csv(io.StringIO(_elo_r.text))
-        elo_df['_norm'] = elo_df['Club'].apply(_norm)
-        print(f'  ELO: {len(elo_df)} hold')
-except Exception as e:
-    print(f'  ⚠ Rankings fejl: {e}')
+    for _e in json.load(open(os.path.join(DATA_DIR, 'hold_mapping.json'), encoding='utf-8')):
+        if _e.get('name') and _e.get('elo_name') and _e['name'] not in _HM_ELO:
+            _HM_ELO[_e['name']] = _e['elo_name']
+except Exception:
+    pass
+
+def _rank_names(team):
+    """Alle normaliserede navne et hold kan stå under i en rankingliste."""
+    out = set()
+    for n in dict.fromkeys([team, _HM_ELO.get(team), _HM_ELO.get(resolve_team(team))]):
+        if n:
+            out |= _canon_set(resolve_team(n)) | _canon_set(n)
+    return out
 
 def _rank(team, df, val_col, cutoff=88):
     if df.empty: return None
-    canonical = resolve_team(team)
-    for alias_norm in _canon_set(canonical):
+    names = _rank_names(team)
+    for alias_norm in names:
         ex = df[df['_norm'] == alias_norm]
-        if not ex.empty: return ex[val_col].values[0]
-    primary = _norm(canonical)
-    m = process.extractOne(primary, df['_norm'].tolist(), scorer=fuzz.WRatio, score_cutoff=cutoff)
-    if m: return df.loc[df['_norm'] == m[0], val_col].values[0]
+        if not ex.empty: return ex[val_col].values[0]   # df er sorteret efter prioritet
+    primary = _norm(resolve_team(team))
+    # Fuzzy kun mod kandidatnavne af rimelig længde: WRatio's delstrengs-match giver
+    # ellers 90 til meget korte navne ("Mönchengladbach" -> fijianske "Ba",
+    # "Sherif Tiraspol" -> "Tira", "Brescia" -> "ÍA").
+    _min = max(5, len(primary) // 2)
+    cands = [c for c in df['_norm'].tolist() if len(c) >= _min]
+    m = process.extractOne(primary, cands, scorer=fuzz.WRatio, score_cutoff=cutoff)
+    if m:
+        # Synligt i loggen, så et forkert fuzzy-match kan opdages og rettes med et alias
+        print(f"[fuzzy: '{team}' -> '{m[0]}' ({m[1]:.0f})]", end=' ')
+        return df.loc[df['_norm'] == m[0], val_col].values[0]
     return None
+
+def _opta_diag(home, away, oh, oa, league):
+    """Log nærmeste Opta-navne for et klubhold der ikke kunne matches."""
+    if league in NATIONAL_LEAGUES or opta_df.empty:
+        return
+    for t, v in ((home, oh), (away, oa)):
+        if v is None:
+            print(f"\n      ↳ ingen Opta for '{t}'; nærmeste: {', '.join(_rank_candidates(t, opta_df))}", end='')
+
+def _rank_candidates(team, df, k=3):
+    """Diagnostik: nærmeste navne i rankinglisten når et hold ikke matches."""
+    if df.empty: return []
+    hits = process.extract(_norm(resolve_team(team)), df['_norm'].unique().tolist(), scorer=fuzz.WRatio, limit=k)
+    return [f"{h[0]} ({h[1]:.0f})" for h in hits]
 
 # Landskampe bruger landsholds-ELO; klubkampe bruger ClubElo (forskellige skalaer,
 # men begge hold i en kamp bruger samme kilde, så elo_diff forbliver konsistent).
@@ -566,11 +695,15 @@ for _, m in df_rnd.iterrows():
         if canonical_league in NATIONAL_LEAGUES:
             _has_ranking = _ex_r is not None and pd.notna(_ex_r.get('elo_home'))
         else:
-            _has_ranking = _ex_r is not None and (pd.notna(_ex_r.get('elo_home')) or pd.notna(_ex_r.get('opta_home')))
+            # Begge hold skal have en værdi — ellers prøves igen (fx efter et nyt alias)
+            _has_ranking = _ex_r is not None and (
+                (pd.notna(_ex_r.get('elo_home')) and pd.notna(_ex_r.get('elo_away'))) or
+                (pd.notna(_ex_r.get('opta_home')) and pd.notna(_ex_r.get('opta_away'))))
         if _has_ranking:
             print('(spring over)'); continue
         eh = _elo_rank(home, canonical_league); ea = _elo_rank(away, canonical_league)
         oh = _rank(home, opta_df, 'rating'); oa = _rank(away, opta_df, 'rating')
+        _opta_diag(home, away, oh, oa, canonical_league)
         eh = int(eh) if eh is not None else None
         ea = int(ea) if ea is not None else None
         if eh is None and ea is None and oh is None and oa is None:
@@ -596,6 +729,7 @@ for _, m in df_rnd.iterrows():
     ea = _elo_rank(away, canonical_league)
     oh = _rank(home, opta_df, 'rating')
     oa = _rank(away, opta_df, 'rating')
+    _opta_diag(home, away, oh, oa, canonical_league)
     eh = int(eh) if eh is not None else None
     ea = int(ea) if ea is not None else None
     if p1 is not None and p2 is not None:
