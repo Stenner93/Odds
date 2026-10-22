@@ -1892,8 +1892,8 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,35,5,VFF-FCM,2026-10-19,19:00,Superligaen,Superliga,Viborg,FC Midtjylland,,,,,2
 4,35,6,LIV-VIL,2026-10-20,21:00,Champions League,Champions League,Liverpool,Villarreal,,,,,1
 4,35,7,PSG-BAR,2026-10-20,21:00,Champions League,Champions League,Paris SG,Barcelona,,,,,1
-4,35,8,BAY-ARS,2026-10-21,21:00,Champions League,Champions League,Bayern,Arsenal,,,,,
-4,35,9,RMA-RBL,2026-10-21,21:00,Champions League,Champions League,Real Madrid,RB Leipzig,,,,,
+4,35,8,BAY-ARS,2026-10-21,21:00,Champions League,Champions League,Bayern,Arsenal,,,,,X
+4,35,9,RMA-RBL,2026-10-21,21:00,Champions League,Champions League,Real Madrid,RB Leipzig,,,,,1
 4,35,10,RØD-KØB,2026-10-22,18:45,Conference League,Conference League,Røde Stjerne,FC København,,,,,
 5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2
 5,1,2,AVI-TOT,,,,,AVI,TOT,,,,,1
