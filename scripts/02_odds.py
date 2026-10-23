@@ -81,6 +81,9 @@ TEAM_ALIASES = {
     'Aston Villa':        ['Aston Villa','Villa'],
     'Leeds United':       ['Leeds United','Leeds'],
     'Sheffield United':   ['Sheffield United','Sheffield Utd'],
+    'Sheffield Wednesday':['Sheffield Wednesday','Sheffield Wed','Sheffield Weds'],
+    'Cambridge Utd.':     ['Cambridge Utd.','Cambridge United','Cambridge Utd'],
+    'Fenerbahce':         ['Fenerbahce','Fenerbahçe','Fenerbahce SK'],
     'Wolverhampton':      ['Wolverhampton','Wolves','Wolverhampton Wanderers'],
     'Everton':            ['Everton'],
     'Brentford':          ['Brentford'],
@@ -273,6 +276,10 @@ LEAGUE_ODDS_KEY = {
     'Eredivisie':        'soccer_netherlands_eredivisie',
     'Superligaen':       'soccer_denmark_superliga',
     '1. division':       'soccer_denmark_division_1',
+    'League One':        'soccer_england_league1',
+    'League Two':        'soccer_england_league2',
+    'Super Lig':         'soccer_turkey_super_league',
+    'Süper Lig':         'soccer_turkey_super_league',
     # NB: The Odds API har IKKE separate kvalifikations-feeds (fx
     # soccer_uefa_europa_league_qualification = "Unknown sport"), og hoved-
     # turneringernes feeds er tomme i kval-sæsonen (juli-aug). Europæiske
@@ -313,6 +320,8 @@ LEAGUE_DISPLAY = {
     'Superettan': 'Superettan', 'Veikkausliiga': 'Veikkausliiga',
     'OBOS-ligaen': 'OBOS-ligaen', 'Meistriliiga': 'Meistriliiga',
     'Eliteserien': 'Eliteserien',
+    'League One': 'League One', 'League Two': 'League Two',
+    'Super Lig': 'Super Lig', 'Süper Lig': 'Super Lig',
 }
 
 def resolve_league(raw):
