@@ -770,6 +770,13 @@
     "elo_name": "Cagliari"
   },
   {
+    "abbr": "CA1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Cambridge Utd.",
+    "elo_name": "Cambridge Utd."
+  },
+  {
     "abbr": "CAM",
     "type": "HOL",
     "land": "HOL",
@@ -2098,6 +2105,13 @@
     "land": "INT",
     "name": "IFK Gøteborg",
     "elo_name": "IFK Goteborg"
+  },
+  {
+    "abbr": "SI2",
+    "type": "INT",
+    "land": "INT",
+    "name": "IK Sirius",
+    "elo_name": "IK Sirius"
   },
   {
     "abbr": "IND",
