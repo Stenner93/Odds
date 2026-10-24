@@ -1895,8 +1895,8 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,35,8,BAY-ARS,2026-10-21,21:00,Champions League,Champions League,Bayern,Arsenal,,,,,X
 4,35,9,RMA-RBL,2026-10-21,21:00,Champions League,Champions League,Real Madrid,RB Leipzig,,,,,1
 4,35,10,RØD-KØB,2026-10-22,18:45,Conference League,Conference League,Røde Stjerne,FC København,,,,,X
-4,36,1,AVI-MCI,2026-10-24,13:30,Premier League,Premier League,Aston Villa,Manchester City,,,,,
-4,36,2,NAP-ROM,2026-10-24,18:00,Serie A,Serie A,Napoli,Roma,,,,,
+4,36,1,AVI-MCI,2026-10-24,13:30,Premier League,Premier League,Aston Villa,Manchester City,,,,,1
+4,36,2,NAP-ROM,2026-10-24,18:00,Serie A,Serie A,Napoli,Roma,,,,,X
 4,36,3,PSV-FEY,2026-10-25,14:30,Eredivisie,Eredivisie,PSV,Feyenoord,,,,,
 4,36,4,HOR-SJE,2026-10-25,16:00,Superligaen,Superliga,Horsens,SønderjyskE,,,,,
 4,36,5,BAR-RMA,2026-10-25,21:00,La Liga,La Liga,Barcelona,Real Madrid,,,,,
