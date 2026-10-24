@@ -1,19 +1,19 @@
-1. runde		BOL-INT	BET-BAR	LEE-MAU	GLA-HOF	VIB-FCM	LIV-VIL	PSG-BAR	BAY-ARS	RMA-LEI	RST-FCK
-0	Nicolai Frederiksen	2	2	9	1	2	1	9	1	1	9
-0	Kasper Søndergaard	2	2	2	1	1	1	2	1	1	9
-0	Inga Wamsler	9	2	2	1	2	1	1	9	1	2
-0	Lars Huus	2	2	9	2	9	1	9	1	1	9
-0	Ricky Frederiksen	9	9	2	1	9	1	9	1	1	1
-0	Dennis Sveistrup	9	2	1	1	9	1	9	1	1	2
-0	Søren Jakobsen	2	2	2	1	2	1	1	1	1	9
-0	Benjamin Jakobsen	9	1	9	2	1	1	9	9	1	9
-0	Tanja Wamsler	9	2	9	1	2	1	9	9	1	2
-0	Kasper Noer	2	2	2	2	2	1	1	1	1	9
-0	Ole Albrechtsen	2	2	9	1	2	1	1	9	1	9
-0	Noah Wamsler	2	2	2	1	2	1	1	1	1	2
-0	Anders Stenner	2	2	1	2	9	1	1	1	1	1
-0	Curt Christensen	9	2	9	1	9	1	9	1	1	9
-0	Jørgen Frederiksen	2	2	9	1	9	1	1	1	1	1
+2. runde		AST-MAC	NAP-ROM	PSV-FEY	HOR-SJE	BAR-RMA	GAL-FEN	SHW-CAM	PAR-UDI	HAM-SIR	BOD-VIK
+0	Curt Christensen	0	0	0	0	0	0	0	0	0	0
+0	Inga Wamsler	0	0	0	0	0	0	0	0	0	0
+0	Kasper Noer	0	0	0	0	0	0	0	0	0	0
+0	Rasmus Jensen	0	0	0	0	0	0	0	0	0	0
 0	Ualmindeligt inaktiv	0	0	0	0	0	0	0	0	0	0
-0	Rasmus Jensen	2	2	1	9	2	1	9	1	1	9
-0	Morten Wamsler	2	2	9	1	2	1	9	1	1	2
+0	Ole Albrechtsen	0	0	0	0	0	0	0	0	0	0
+0	Kasper Søndergaard	0	0	0	0	0	0	0	0	0	0
+0	Ricky Frederiksen	0	0	0	0	0	0	0	0	0	0
+0	Dennis Sveistrup	0	0	0	0	0	0	0	0	0	0
+0	Benjamin Jakobsen	0	0	0	0	0	0	0	0	0	0
+0	Morten Wamsler	0	0	0	0	0	0	0	0	0	0
+0	Søren Jakobsen	0	0	0	0	0	0	0	0	0	0
+0	Lars Huus	0	0	0	0	0	0	0	0	0	0
+0	Nicolai Frederiksen	0	0	0	0	0	0	0	0	0	0
+0	Noah Wamsler	0	0	0	0	0	0	0	0	0	0
+0	Tanja Wamsler	0	0	0	0	0	0	0	0	0	0
+0	Jørgen Frederiksen	0	0	0	0	0	0	0	0	0	0
+0	Anders Stenner	0	0	0	0	0	0	0	0	0	0
