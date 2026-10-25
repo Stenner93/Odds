@@ -90,6 +90,11 @@ def _tok_match(a: str, b: str) -> bool:
         ta, tb = tb, ta
     if len(ta) == 1 and 2 <= len(ta[0]) <= 4 and len(tb) >= 2 and ta[0] == ''.join(t[0] for t in tb):
         return True
+    # kort klubnavn = første ord i det lange: 'PSV' = 'PSV Eindhoven', 'AIK' = 'AIK Fotboll'
+    # (præcis 3 bogstaver og ikke en generisk præfiks som FC/AFC, så 'Real' ≠ 'Real Madrid')
+    if len(ta) == 1 and len(ta[0]) == 3 and ta[0] not in ('afc', 'cfc', 'sfc', 'ssc', 'vfb', 'vfl', 'tsv', 'man')\
+            and len(tb) >= 2 and ta[0] == tb[0]:
+        return True
     if len(ta) >= 2 and ta[0] == tb[0] and len(ta[0]) >= 3 and len(tb) > len(ta) - 1 \
             and ''.join(ta[1:]) == ''.join(t[0] for t in tb[1:]):
         return True
