@@ -91,7 +91,7 @@ def compute(data_dir, focus=FOCUS_PLAYER):
             P.append(k + ('ELO', '1' if r['elo_home'] >= r['elo_away'] else '2'))
         if pd.notna(r.get('opta_home')) and pd.notna(r.get('opta_away')):
             P.append(k + ('Opta', '1' if r['opta_home'] >= r['opta_away'] else '2'))
-        for nm, c in (('n20', 'n20_rec'), ('Ensemble', 'rec_ensemble'), ('Odds-MC', 'rec_odds_mc')):
+        for nm, c in (('n20', 'n20_rec'), ('Ensemble', 'rec_ensemble'), ('Odds-MC', 'rec_odds_mc'), ('Bzzoiro', 'rec_bzz')):
             v = _pick(r.get(c)) if pd.notna(r.get(c)) else None
             if v: P.append(k + (nm, v))
     P = pd.DataFrame(P, columns=KEY + ['pred', 'pick'])
@@ -109,7 +109,7 @@ def compute(data_dir, focus=FOCUS_PLAYER):
     ALL = pd.concat([P, crowd, me], ignore_index=True).merge(wm[KEY + ['result', 'cat']], on=KEY)
     ALL['ok'] = ALL['pick'] == ALL['result']
 
-    preds = ['Bookies', 'ELO', 'Opta', 'n20', 'Ensemble', 'Odds-MC', 'Folket', focus.split()[0]]
+    preds = ['Bookies', 'ELO', 'Opta', 'n20', 'Ensemble', 'Odds-MC', 'Bzzoiro', 'Folket', focus.split()[0]]
     cur_s = int(pr['season'].max())
 
     def _acc(frame, plist):

@@ -23,10 +23,10 @@ from config import (
     ODDS_API_KEY, BZZOIRO_TOKEN,
     csv_upsert, get_current_round
 )
+from bzzoiro import Bzzoiro
 
 CURRENT_ROUND      = get_current_round()
 FORCE_REFRESH_ODDS = False
-FORCE_REFRESH_BZZ  = True
 FORCE_REFRESH_N20  = False
 FORCE_REFRESH_NATIONAL_ELO = False   # landshold-ELO opdateres ellers når cache > 7 dage
 
@@ -666,6 +666,11 @@ def _rec_lr(o1, ox, o2, elo_home, elo_away):
         return 'X'
     return None
 
+# Bzzoiro: konsensus-odds som RESERVE (kun når The Odds API ikke har kampen)
+# og modelforudsigelser til logbogen. Samme navnevarianter som odds-opslaget.
+_bzz = Bzzoiro(BZZOIRO_TOKEN,
+               variants=lambda n: [n] + TEAM_ALIASES.get(n, []) + [_HM_ELO.get(n)])
+
 # Hent kampe for aktuel runde
 df_matches = pd.read_csv(MATCHES_CSV)
 df_matches['season'] = df_matches['season'].astype(int)
@@ -687,6 +692,9 @@ if os.path.exists(ODDS_CSV) and not FORCE_REFRESH_ODDS:
     _df_ex = pd.read_csv(ODDS_CSV)
     _df_ex = _df_ex[(_df_ex['season'] == CURRENT_SEASON) & (_df_ex['round'] == CURRENT_ROUND)]
     for _, _r in _df_ex.iterrows():
+        # Reserve-odds fra Bzzoiro tæller ikke som "OK" — The Odds API prøves igen
+        if str(_r.get('odds_src', '')) == 'bzzoiro':
+            continue
         if pd.notna(_r.get('odds_1')) and pd.notna(_r.get('odds_x')) and pd.notna(_r.get('odds_2')):
             _odds_ok.add(_r['match_code'])
 if _odds_ok:
@@ -736,6 +744,16 @@ for _, m in df_rnd.iterrows():
         print(f"(ELO: {eh or '–'}/{ea or '–'}, Opta: {'✓' if oh else '–'})")
         continue
     o1, ox, o2, p1, p2 = _get_match_odds(home, away, canonical_league)
+    odds_src = 'oddsapi' if o1 else None
+    if not o1 and _bzz.enabled:
+        _bo = _bzz.odds(home, away, str(m.get('date', '')))
+        if _bo:
+            o1, ox, o2 = _bo
+            _ih, _id, _ia = 1/o1, 1/ox, 1/o2
+            _s = _ih + _id + _ia
+            p1, p2 = round(_ih/_s*100, 1), round(_ia/_s*100, 1)
+            odds_src = 'bzzoiro'
+            print('[reserve-odds: Bzzoiro]', end=' ')
     eh = _elo_rank(home, canonical_league)
     ea = _elo_rank(away, canonical_league)
     oh = _rank(home, opta_df, 'rating')
@@ -767,6 +785,7 @@ for _, m in df_rnd.iterrows():
         'rec_regel': _rec_regel(o1, ox, o2),
         'rec_lr':    _rec_lr(o1, ox, o2, eh, ea),
         'rec_bzz':   None,
+        'odds_src':  odds_src,
     })
     print('OK' if o1 else ('ELO' if eh else '--'))
 
@@ -802,93 +821,39 @@ if _auto_aliases_new:
         print(f'  ⚠ kunne ikke gemme odds_aliases.json: {_e}')
 
 # ══════════════════════════════════════════════════════════════════════════
-# 02-C: BZZOIRO ML-predictions
+# 02-C: BZZOIRO modelforudsigelser — KUN til logbogen (indgår ikke i ensemblet)
 # ══════════════════════════════════════════════════════════════════════════
-print(f'\nBzzoiro ML-predictions (S{CURRENT_SEASON} R{CURRENT_ROUND})...')
+# Kildetesten (S4, 123 kampe) gav 59 % træf mod bookmakerfavorittens 61 %, så
+# forudsigelserne logges (rec_bzz + bzz_p1/px/p2 → predictor_log.csv) og
+# evalueres i Analyse-fanen, før de evt. får vægt i ensemblet.
+print(f'\nBzzoiro-forudsigelser (S{CURRENT_SEASON} R{CURRENT_ROUND})...')
 
-_BZZ_BASE    = 'https://sports.bzzoiro.com/api/v2'
-_BZZ_HEADERS = {'Authorization': f'Token {BZZOIRO_TOKEN}'} if BZZOIRO_TOKEN else {}
-
-_BZZ_LEAGUE_IDS = {
-    'Premier League': 1, 'La Liga': 3, 'Serie A': 4, 'Bundesliga': 5,
-    'Ligue 1': 6, 'Champions League': 7, 'Europa League': 8,
-    'Eredivisie': 10, 'Superligaen': 11, '1. division': 38,
-    'Liga Portugal': 2, 'FA Cup': 39, 'Allsvenskan': 26,
-    'Copa del Rey': 41, 'Championship': 12,
-}
-
-_bzz_cache = {}
-
-def _bzz_fetch_day(date_str):
-    if not BZZOIRO_TOKEN: return []
-    if date_str in _bzz_cache: return _bzz_cache[date_str]
-    try:
-        r = requests.get(f'{_BZZ_BASE}/events/',
-                         headers=_BZZ_HEADERS,
-                         params={'date_from': date_str, 'date_to': date_str, 'limit': 200},
-                         timeout=15)
-        r.raise_for_status()
-        events = r.json().get('results', [])
-        _bzz_cache[date_str] = events
-        return events
-    except Exception as e:
-        print(f'  ⚠ Bzzoiro fejl ({date_str}): {e}')
-        return []
-
-def _bzz_prediction(home, away, date_str, league):
-    if not BZZOIRO_TOKEN: return None
-    events = _bzz_fetch_day(date_str)
-    if not events: return None
-    league_id  = _BZZ_LEAGUE_IDS.get(league)
-    candidates = [e for e in events if e.get('league_id') == league_id] or events
-
-    def clean_t(n):
-        return unidecode(str(n)).lower().replace('fc ', '').replace('afc ', '').replace('sc ', '').strip()
-
-    nh = clean_t(home); na = clean_t(away)
-    best_score = 0; best_id = None
-    for ev in candidates:
-        eh = clean_t(ev.get('home_team', ''))
-        ea = clean_t(ev.get('away_team', ''))
-        score = max((fuzz.WRatio(nh, eh) + fuzz.WRatio(na, ea)) / 2,
-                    (fuzz.WRatio(nh, ea) + fuzz.WRatio(na, eh)) / 2)
-        if score > best_score:
-            best_score = score; best_id = ev.get('id')
-    if best_score < 55 or best_id is None: return None
-    try:
-        r = requests.get(f'{_BZZ_BASE}/predictions/{best_id}/', headers=_BZZ_HEADERS, timeout=15)
-        if r.status_code == 404: return None
-        r.raise_for_status()
-        data = r.json()
-        p1, px, p2 = data.get('home_win'), data.get('draw'), data.get('away_win')
-        if None in (p1, px, p2): return None
-        return max([(p1, '1'), (px, 'X'), (p2, '2')], key=lambda x: x[0])[1]
-    except Exception:
-        return None
-
-if BZZOIRO_TOKEN and os.path.exists(ODDS_CSV):
+if _bzz.enabled and os.path.exists(ODDS_CSV):
     df_m_bzz = pd.read_csv(MATCHES_CSV)
     df_m_bzz = df_m_bzz[(df_m_bzz['season'] == CURRENT_SEASON) & (df_m_bzz['round'] == CURRENT_ROUND)]
-    df_m_bzz.drop_duplicates(subset=['season', 'round', 'home_team', 'away_team'], keep='last', inplace=True)
-    bzz_results = []
+    df_m_bzz = df_m_bzz.drop_duplicates(subset=['season', 'round', 'home_team', 'away_team'], keep='last')
+    df_odds_bzz = pd.read_csv(ODDS_CSV)
+    for _c in ['rec_bzz', 'bzz_p1', 'bzz_px', 'bzz_p2']:
+        if _c not in df_odds_bzz.columns:
+            df_odds_bzz[_c] = None
+        df_odds_bzz[_c] = df_odds_bzz[_c].astype(object)
+    n_bzz = 0
     for _, m in df_m_bzz.iterrows():
-        print(f"  {m['home_team']} vs {m['away_team']}...", end=' ', flush=True)
-        res = _bzz_prediction(m['home_team'], m['away_team'],
-                              str(m.get('date', '')), resolve_league(m['league']))
-        print(res or '--')
-        if res:
-            bzz_results.append({'match_no': m['match_no'], 'rec_bzz': res})
-    if bzz_results:
-        df_odds_bzz = pd.read_csv(ODDS_CSV)
-        for r in bzz_results:
-            mask = ((df_odds_bzz['season'] == CURRENT_SEASON) &
-                    (df_odds_bzz['round']  == CURRENT_ROUND) &
-                    (df_odds_bzz['match_no'] == r['match_no']))
-            df_odds_bzz.loc[mask, 'rec_bzz'] = r['rec_bzz']
+        pr = _bzz.prediction(m['home_team'], m['away_team'], str(m.get('date', '')))
+        if not pr:
+            continue
+        rec = max(zip(pr, ['1', 'X', '2']))[1]
+        mask = ((df_odds_bzz['season'] == CURRENT_SEASON) &
+                (df_odds_bzz['round'] == CURRENT_ROUND) &
+                (df_odds_bzz['match_no'] == m['match_no']))
+        df_odds_bzz.loc[mask, ['rec_bzz', 'bzz_p1', 'bzz_px', 'bzz_p2']] = [rec, *pr]
+        print(f"  {m['match_code']}: {rec} ({pr[0]}/{pr[1]}/{pr[2]})")
+        n_bzz += 1
+    if n_bzz:
         df_odds_bzz.to_csv(ODDS_CSV, index=False)
-        print(f'✅ Bzzoiro: {len(bzz_results)} predictions opdateret')
+    print(f'✅ Bzzoiro: {n_bzz} forudsigelser gemt (kald i alt: {_bzz.calls})')
 else:
-    print('  (ingen Bzzoiro-token eller odds.csv mangler)')
+    print('  (ingen BZZOIRO_TOKEN eller odds.csv mangler)')
 
 # ══════════════════════════════════════════════════════════════════════════
 # 02-D: numbertwenty.io predictions
@@ -1381,8 +1346,9 @@ print(f'\nEnsemble...')
 
 _W_PRIOR = {
     'rec_odds_mc': 0.35, 'rec_poisson': 0.25, 'rec_lr': 0.15,
-    'n20_rec': 0.12, 'rec_bzz': 0.08, 'rec_regel': 0.05,
+    'n20_rec': 0.12, 'rec_regel': 0.05,
 }
+# rec_bzz er bevidst udeladt (kun logbog indtil videre — se 02-C)
 
 _calib_json = os.path.join(DATA_DIR, 'model_calibration.json')
 if os.path.exists(_calib_json):
@@ -1396,6 +1362,7 @@ if os.path.exists(_calib_json):
 else:
     _weights = _W_PRIOR
     print('  ℹ Bruger priori-vægte')
+_weights = {k: v for k, v in _weights.items() if k != 'rec_bzz'}
 
 if os.path.exists(ODDS_CSV):
     try:

@@ -30,6 +30,7 @@ LOG_FIELDS = [
     'poisson_p1', 'poisson_px', 'poisson_p2', 'rec_poisson',
     'odds_mc_p1', 'odds_mc_px', 'odds_mc_p2', 'rec_odds_mc',
     'rec_ensemble', 'ensemble_conf', 'ensemble_p1', 'ensemble_px', 'ensemble_p2',
+    'bzz_p1', 'bzz_px', 'bzz_p2', 'odds_src',
 ]
 KEY = ['season', 'round', 'match_code']
 COLS = KEY + LOG_FIELDS + ['kilde', 'logged_at']

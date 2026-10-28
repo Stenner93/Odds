@@ -14,8 +14,8 @@ API_SEASON_YEAR = 2025
 
 # ── API-nøgler (hentes fra GitHub Secrets via miljøvariabler) ────────────
 GITHUB_TOKEN   = os.environ.get('GITHUB_TOKEN', '')
-ODDS_API_KEY   = os.environ.get('ODDS_API_KEY', 'c0c769b1de997f244fde74902a303138')
-BZZOIRO_TOKEN  = os.environ.get('BZZOIRO_TOKEN', '456373dd0bdb3336ac9cadf4fc903d1d3d322a79')
+ODDS_API_KEY   = os.environ.get('ODDS_API_KEY', '')
+BZZOIRO_TOKEN  = os.environ.get('BZZOIRO_TOKEN', '')
 SPORTSDB_API_KEY = '123'
 
 # ── GitHub repo-info ─────────────────────────────────────────────────────

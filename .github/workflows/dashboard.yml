@@ -119,6 +119,8 @@ jobs:
           github.event.inputs.hent_resultater == 'true' ||
           github.event_name == 'push'
         run: python scripts/04_results.py
+        env:
+          BZZOIRO_TOKEN: ${{ secrets.BZZOIRO_TOKEN }}
 
       - name: 05 — Beregn point og stilling
         if: >

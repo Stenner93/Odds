@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """
-04_results.py — Henter kampresultater fra TheSportsDB og numbertwenty.io.
-Kilde 1: thesportsdb.com (gratis nøgle '123') — søger på engelske holdnavne
-Kilde 2: numbertwenty.io predict_grouped (Status=FT) — fuzzy match på holdnavne
+04_results.py — Henter kampresultater (1/X/2 efter 90 min).
+Kilde 1: Bzzoiro (sports.bzzoiro.com) — faste hold-ID'er, 90-min-score adskilt
+         fra forlænget tid/straffe. Kræver BZZOIRO_TOKEN; springes over uden.
+Kilde 2: thesportsdb.com (gratis nøgle '123') — søger på engelske holdnavne
+Kilde 3: numbertwenty.io predict_grouped (Status=FT) — fuzzy match på holdnavne
 """
 import os, sys, time, json
 import pandas as pd
@@ -12,9 +14,10 @@ from unidecode import unidecode
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from config import (
-    CURRENT_SEASON, MATCHES_CSV, SPORTSDB_API_KEY, DATA_DIR,
+    CURRENT_SEASON, MATCHES_CSV, SPORTSDB_API_KEY, DATA_DIR, BZZOIRO_TOKEN,
     get_current_round
 )
+from bzzoiro import Bzzoiro
 
 CURRENT_ROUND   = get_current_round()
 SPORTSDB_BASE   = f'https://www.thesportsdb.com/api/v1/json/{SPORTSDB_API_KEY}'
@@ -273,6 +276,10 @@ if df_rnd.empty:
     print('⚠ Ingen kampe for denne runde — kør 01_kampe.py først')
     sys.exit(0)
 
+_bzz = Bzzoiro(BZZOIRO_TOKEN, variants=_variants)
+if not _bzz.enabled:
+    print('  ℹ Bzzoiro sprunget over (ingen BZZOIRO_TOKEN) — bruger SportsDB/N20')
+
 auto_results = {}   # (runde, match_no) -> resultat
 for _, row in df_rnd.sort_values(['round', 'match_no']).iterrows():
     rnd  = int(row['round'])
@@ -288,8 +295,11 @@ for _, row in df_rnd.sort_values(['round', 'match_no']).iterrows():
         auto_results[(rnd, mn)] = existing
         continue
 
-    result = _sportsdb_result(home, away, date)
-    source = 'SportsDB'
+    result = _bzz.result(home, away, date) if _bzz.enabled else None
+    source = 'Bzzoiro'
+    if not result:
+        result = _sportsdb_result(home, away, date)
+        source = 'SportsDB'
     if not result:
         result = _n20_result(home, away, date)
         source = 'N20'
