@@ -1,0 +1,25 @@
+name: Kildetest
+
+# Manuel test af nye datakilder (Bzzoiro, pitchapi) mod sæson 4-data.
+# Læser kun — ændrer ingen filer og committer intet. Rapporten står i loggen.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Test kilder
+        run: python tools/source_test.py
+        env:
+          BZZOIRO_TOKEN: ${{ secrets.BZZOIRO_TOKEN }}
+          PITCHAPI_KEY: ${{ secrets.PITCHAPI_KEY }}
