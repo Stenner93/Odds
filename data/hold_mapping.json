@@ -308,6 +308,13 @@
     "elo_name": "Atalanta"
   },
   {
+    "abbr": "ATC",
+    "type": "INT",
+    "land": "INT",
+    "name": "Athl. Club",
+    "elo_name": "Athl. Club"
+  },
+  {
     "abbr": "BIL",
     "type": "SPA",
     "land": "SPA",
