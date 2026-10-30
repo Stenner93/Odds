@@ -91,7 +91,7 @@ TEAM_ALIASES = {
     'Real Madrid':        ['Real Madrid','Real Madrid CF'],
     'Barcelona':          ['Barcelona','FC Barcelona'],
     'Atlético Madrid':    ['Atlético Madrid','Atletico Madrid','Atletico de Madrid','Atletico'],
-    'Athletic Bilbao':    ['Athletic Bilbao','Athletic Club','Athletic Club Bilbao'],
+    'Athletic Bilbao':    ['Athletic Bilbao','Athletic Club','Athletic Club Bilbao','Athl. Club','Athl. Bilbao'],
     'Real Betis':         ['Real Betis','Betis'],
     'Villarreal':         ['Villarreal','Villarreal CF'],
     'Real Sociedad':      ['Real Sociedad'],
@@ -428,9 +428,13 @@ def _opta_long(df):
         if col in df.columns:
             x = df[['rating', col]].dropna().rename(columns={col: 'team_variant'})
             x['_prio'] = prio
+            x['_club'] = x.index          # samme klub = samme række i kilden
             rows.append(x)
     L = pd.concat(rows, ignore_index=True)
     L['_norm'] = L['team_variant'].apply(_norm)
+    # Tvetydigt navn = bruges af flere klubber (fx 'atletico', 'inter', 'sporting').
+    # Kun sidste udvej i _rank — ellers kan et hold få en anden klubs rating.
+    L['_amb'] = L.groupby('_norm')['_club'].transform('nunique') > 1
     L = L.sort_values(['_prio', 'rating'], ascending=[True, False]).drop_duplicates('_norm')
     return L.reset_index(drop=True)
 
@@ -510,20 +514,32 @@ try:
 except Exception:
     pass
 
+# Forkortelser i kuponens/feeds' holdnavne ("Athl. Club", "Manchester Utd.")
+_ABBR = {'athl': 'athletic', 'atl': 'atletico', 'utd': 'united'}
+
+def _expand_abbr(n):
+    return ' '.join(_ABBR.get(t, t) for t in n.split())
+
 def _rank_names(team):
-    """Alle normaliserede navne et hold kan stå under i en rankingliste."""
+    """Alle normaliserede navne et hold kan stå under i en rankingliste,
+    mest specifikke (længste) først — så 'atletico de madrid' prøves før
+    'atletico'. Rækkefølgen er deterministisk (et set gav tilfældig orden)."""
     out = set()
     for n in dict.fromkeys([team, _HM_ELO.get(team), _HM_ELO.get(resolve_team(team))]):
         if n:
             out |= _canon_set(resolve_team(n)) | _canon_set(n)
-    return out
+    out |= {_expand_abbr(x) for x in out}
+    return sorted(out, key=lambda x: (-len(x), x))
 
 def _rank(team, df, val_col, cutoff=88):
     if df.empty: return None
     names = _rank_names(team)
-    for alias_norm in names:
-        ex = df[df['_norm'] == alias_norm]
-        if not ex.empty: return ex[val_col].values[0]   # df er sorteret efter prioritet
+    amb = df['_amb'] if '_amb' in df.columns else pd.Series(False, index=df.index)
+    # 1) entydige navne (mest specifikke først), 2) tvetydige som sidste udvej
+    for only_unique in (True, False):
+        for alias_norm in names:
+            ex = df[(df['_norm'] == alias_norm) & (~amb if only_unique else True)]
+            if not ex.empty: return ex[val_col].values[0]   # df er sorteret efter prioritet
     primary = _norm(resolve_team(team))
     # Fuzzy kun mod kandidatnavne af rimelig længde: WRatio's delstrengs-match giver
     # ellers 90 til meget korte navne ("Mönchengladbach" -> fijianske "Ba",
