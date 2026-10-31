@@ -1,19 +1,19 @@
-2. runde		AST-MAC	NAP-ROM	PSV-FEY	HOR-SJE	BAR-RMA	GAL-FEN	SHW-CAM	PAR-UDI	HAM-SIR	BOD-VIK
-0	Curt Christensen	2	2	1	1	1	1	9	9	2	1
-0	Inga Wamsler	2	1	2	9	1	1	1	1	9	1
-0	Kasper Noer	2	9	1	2	1	1	1	2	1	2
+3. runde		BAY-DOR	MIL-INT	LIV-ARS	ATH-RSO	SJE-FCK	ATM-BAY	MAU-ROM	DOR-BET	POR-NAP	FCM-AJX
+0	Inga Wamsler	1	9	2	1	2	2	9	1	1	2
+0	Jørgen Frederiksen	1	1	9	9	2	9	1	1	9	9
+0	Morten Wamsler	1	2	9	1	2	9	1	1	1	2
+0	Kasper Noer	1	2	1	1	2	2	1	1	1	2
+0	Søren Jakobsen	1	9	9	1	2	2	1	1	1	1
+0	Dennis Sveistrup	1	2	2	9	2	2	2	1	1	2
+0	Ricky Frederiksen	1	2	9	1	2	2	2	1	9	2
+0	Lars Huus	1	9	1	1	2	9	1	1	9	9
 0	Rasmus Jensen	2	9	1	9	1	1	1	1	9	2
+0	Noah Wamsler	1	2	2	1	2	2	1	1	1	2
+0	Tanja Wamsler	1	9	9	1	2	9	9	1	1	2
 0	Ualmindeligt inaktiv	0	0	0	0	0	0	0	0	0	0
-0	Ole Albrechtsen	9	9	1	9	1	1	1	1	1	9
-0	Kasper Søndergaard	2	9	1	9	1	1	9	9	9	1
-0	Ricky Frederiksen	2	9	1	1	1	1	9	1	2	1
-0	Dennis Sveistrup	9	2	1	1	1	9	1	9	1	1
 0	Benjamin Jakobsen	9	1	9	2	1	1	9	9	1	9
-0	Morten Wamsler	2	1	9	2	1	1	9	1	1	1
-0	Søren Jakobsen	2	9	1	9	1	1	1	1	1	1
-0	Lars Huus	9	1	1	1	1	1	1	9	1	1
-0	Nicolai Frederiksen	2	9	1	9	1	9	1	9	1	1
-0	Noah Wamsler	2	1	2	2	1	1	1	1	1	1
-0	Tanja Wamsler	2	1	9	9	1	1	9	1	9	1
-0	Jørgen Frederiksen	2	1	1	9	9	9	9	9	1	9
-0	Anders Stenner	2	9	1	1	1	1	1	9	1	1
+0	Kasper Søndergaard	1	9	9	9	2	2	2	1	1	1
+0	Anders Stenner	1	2	2	1	2	2	9	1	9	2
+0	Ole Albrechtsen	1	2	9	2	2	2	1	1	1	1
+0	Nicolai Frederiksen	1	9	9	1	2	2	9	1	9	2
+0	Curt Christensen	1	9	9	1	2	2	9	1	2	2
