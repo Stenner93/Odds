@@ -113,6 +113,7 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
         if o is not None:
             bud = _FAV.get(str(g('favourit')).strip()) or _FAV.get(str(g('rec_ensemble')).strip())
         next_rows.append({
+            'mc': m['match_code'],
             'home': m['home_team'], 'away': m['away_team'],
             'league': str(m.get('league', '') or '').strip(),
             'when': _when(m.get('date'), m.get('time')),
@@ -165,8 +166,9 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
                 else:
                     pa = pb = pn = 1.0 / 3     # ingen odds → uniform prior
                 diffs.append((pa, pb, pn))
-            rows.append({'label': f"{m['home_team']}–{m['away_team']}",
-                         'res': res, 'me': a, 'opp': b})
+            rows.append({'label': f"{m['home_team']}–{m['away_team']}", 'mc': mc,
+                         'res': res, 'me': a, 'opp': b,
+                         'dif': bool(a and b and a != b)})
 
         # DP: fordeling af (mine korrekte − modstanderens) over uafgjorte differens-kampe
         lead = me_cor - opp_cor
@@ -251,6 +253,11 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
             for i, v in enumerate(vals))
         return f'<div class="fs-src"><span class="fs-sl">{label}</span>{cells}</div>'
 
+    # Kampe hvor du og din H2H-modstander har gættet forskelligt (de afgør H2H'en)
+    dif_mc = set()
+    if h2h_block and h2h_round == next_round:
+        dif_mc = {x['mc'] for x in h2h_block['rows'] if x['dif'] and not x['res']}
+
     nr = []
     for r in next_rows:
         srows = []
@@ -274,14 +281,16 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
                f'<span class="fs-pk {PC[r["bud"]]}">{r["bud"]}</span></span>') if r.get('bud') else ''
         lg = esc(r.get('league') or '')
         wh = esc(r.get('when') or '')
-        low = ((f'<span class="fs-when">{wh}</span>' if wh else '') + bud)
+        afg = ('<span class="fs-afg" title="Du og din H2H-modstander har gættet forskelligt">afgør</span>'
+               if r['mc'] in dif_mc else '')
+        low = (afg + (f'<span class="fs-when">{wh}</span>' if wh else '') + bud)
         right = (f'<div class="fs-fxr">'
                  + (f'<span class="fs-lg">{lg}</span>' if lg else '')
                  + (f'<div class="fs-fxb">{low}</div>' if low else '') + '</div>')
         body = (f'<div class="fs-srcs">{"".join(srows)}</div>' if srows
                 else '<div class="fs-srcs"><span class="fs-wait">afventer data</span></div>')
         nr.append(
-            f'<div class="fs-fx"><div class="fs-fxh">'
+            f'<div class="fs-fx{" dif" if r["mc"] in dif_mc else ""}"><div class="fs-fxh">'
             f'<div class="fs-tm"><span class="fs-t">{esc(r["home"])}</span>'
             f'<span class="fs-t away">{esc(r["away"])}</span></div>{right}</div>'
             f'{body}</div>')
@@ -304,11 +313,17 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
             res_cell = (f'<span class="fs-res">{x["res"]}</span>' if x['res']
                         else '<span class="fs-res pd">·</span>')
             grows.append(
-                f'<div class="fs-grow"><span class="fs-gm">{esc(x["label"])}</span>'
+                f'<div class="fs-grow{" dif" if x["dif"] else ""}"><span class="fs-gm">{esc(x["label"])}</span>'
                 f'{res_cell}'
                 f'<span class="fs-gc">{andpick(x["me"], x["res"])}</span>'
                 f'<span class="fs-gc">{andpick(x["opp"], x["res"])}</span></div>')
         grid = '\n'.join(grows)
+        n_dif = sum(1 for x in b['rows'] if x['dif'])
+        n_dif_open = sum(1 for x in b['rows'] if x['dif'] and not x['res'])
+        dif_note = (f'<div class="fs-foot"><span class="fs-afg">afgør</span> '
+                    f'{n_dif} kampe med forskellige gæt'
+                    + (f' · {n_dif_open} ikke spillet endnu' if n_dif_open and n_dif_open != n_dif else '')
+                    + ' — kun de kan ændre H2H-stillingen</div>') if n_dif else ''
         first = esc(focus_player.split()[0])
         # Sandsynlighedsbjælke — vises mens runden er i gang og der er afgørende kampe tilbage
         prob_html = ''
@@ -331,6 +346,7 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
     <div class="fs-grow head"><span>Runde {h2h_round} · afd. {ha}, {hrel}. runde</span><span class="fs-gc">R</span><span class="fs-gc">{first}</span><span class="fs-gc">Mod.</span></div>
     {grid}
   </div>
+  {dif_note}
 </section>'''
     else:
         h2h_html = f'<section class="fs-card fs-h2h"><div class="fs-chead"><span class="fs-ctitle"><span class="fs-bar"></span>Din H2H</span></div><div class="fs-empty">Ingen H2H-runde for {esc(focus_player)} endnu.</div></section>'
@@ -446,6 +462,10 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
 #page-forside .fs-gc{display:grid;place-items:center}
 #page-forside .fs-res{font-size:11px;font-weight:700;text-align:center;font-variant-numeric:tabular-nums}
 #page-forside .fs-res.pd{color:var(--mut)}
+#page-forside .fs-afg{display:inline-block;font-size:8.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--gld);background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.35);border-radius:4px;padding:1px 4px;line-height:1.3;white-space:nowrap}
+#page-forside .fs-grow.dif{background:rgba(245,158,11,.07);box-shadow:inset 3px 0 0 var(--gld)}
+#page-forside .fs-grow.dif .fs-gm{color:var(--txt);font-weight:600}
+#page-forside .fs-fx.dif{box-shadow:inset 3px 0 0 var(--gld)}
 #page-forside .fs-stand{display:flex;flex-direction:column}
 #page-forside .fs-srow{display:grid;grid-template-columns:24px 1fr auto auto;align-items:center;gap:10px;padding:7px 13px;border-top:1px solid var(--bdr);font-size:12.5px}
 #page-forside .fs-srow:first-child{border-top:0}
