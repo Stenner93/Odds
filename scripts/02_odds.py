@@ -150,6 +150,7 @@ TEAM_ALIASES = {
     'Spanien':            ['Spanien','Spain','ESP'],
     'Italien':            ['Italien','Italy','ITA'],
     'Holland':            ['Holland','Netherlands','NED'],
+    'Grækenland':         ['Grækenland','Greece','GRE'],
     'Portugal':           ['Portugal','POR'],
     'Belgien':            ['Belgien','Belgium','BEL'],
     'Sverige':            ['Sverige','Sweden','SWE'],
@@ -213,12 +214,19 @@ def _norm(s):
 
 _NORM_V2C = {_norm(v): c for v, c in _V2C.items()}
 
+# Forkortelser i kuponens/feeds' holdnavne ("Athl. Club", "Atl. Madrid", "Manchester Utd.")
+_ABBR = {'athl': 'athletic', 'atl': 'atletico', 'utd': 'united'}
+
+def _expand_abbr(n):
+    return ' '.join(_ABBR.get(t, t) for t in n.split())
+
 def resolve_team(raw):
     if not raw or str(raw).strip() in ('', 'nan'): return raw
     raw = str(raw).strip()
     if raw in _V2C: return _V2C[raw]
     n = _norm(raw)
     if n in _NORM_V2C: return _NORM_V2C[n]
+    if _expand_abbr(n) in _NORM_V2C: return _NORM_V2C[_expand_abbr(n)]
     # setdefault — overskriv ikke en aliasliste der allerede er lært (fx fra
     # odds_aliases.json); før blev "Manchester Utd." -> "Manchester United" slettet her.
     TEAM_ALIASES.setdefault(raw, [raw]); _V2C[raw] = raw; _NORM_V2C[n] = raw
@@ -514,12 +522,6 @@ try:
 except Exception:
     pass
 
-# Forkortelser i kuponens/feeds' holdnavne ("Athl. Club", "Manchester Utd.")
-_ABBR = {'athl': 'athletic', 'atl': 'atletico', 'utd': 'united'}
-
-def _expand_abbr(n):
-    return ' '.join(_ABBR.get(t, t) for t in n.split())
-
 def _rank_names(team):
     """Alle normaliserede navne et hold kan stå under i en rankingliste,
     mest specifikke (længste) først — så 'atletico de madrid' prøves før
@@ -607,7 +609,8 @@ def _get_match_odds(home, away, league):
     if not sport_key: return None, None, None, None, None
     # Nøgle kan være enkelt streng eller liste af kandidater (fx hovedturnering + kval)
     sport_keys = sport_key if isinstance(sport_key, (list, tuple)) else [sport_key]
-    hc = _canon_set(home); ac = _canon_set(away)
+    hc = _canon_set(home) | _canon_set(resolve_team(home))
+    ac = _canon_set(away) | _canon_set(resolve_team(away))
     for sk in sport_keys:
         events = _fetch_league(sk)
         for ev in events:
@@ -737,7 +740,10 @@ for _, m in df_rnd.iterrows():
         if _has_ranking:
             print('(spring over)'); continue
         eh = _elo_rank(home, canonical_league); ea = _elo_rank(away, canonical_league)
-        oh = _rank(home, opta_df, 'rating'); oa = _rank(away, opta_df, 'rating')
+        # Opta Power Rankings har kun klubber — landshold ville matche klubber med samme navn
+        oh = oa = None
+        if canonical_league not in NATIONAL_LEAGUES:
+            oh = _rank(home, opta_df, 'rating'); oa = _rank(away, opta_df, 'rating')
         _opta_diag(home, away, oh, oa, canonical_league)
         eh = int(eh) if eh is not None else None
         ea = int(ea) if ea is not None else None
@@ -772,8 +778,10 @@ for _, m in df_rnd.iterrows():
             print('[reserve-odds: Bzzoiro]', end=' ')
     eh = _elo_rank(home, canonical_league)
     ea = _elo_rank(away, canonical_league)
-    oh = _rank(home, opta_df, 'rating')
-    oa = _rank(away, opta_df, 'rating')
+    oh = oa = None
+    if canonical_league not in NATIONAL_LEAGUES:   # Opta har kun klubber
+        oh = _rank(home, opta_df, 'rating')
+        oa = _rank(away, opta_df, 'rating')
     _opta_diag(home, away, oh, oa, canonical_league)
     eh = int(eh) if eh is not None else None
     ea = int(ea) if ea is not None else None

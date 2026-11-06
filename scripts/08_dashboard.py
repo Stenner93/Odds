@@ -185,15 +185,28 @@ _cell_to_run = _cell_to_run.replace(
 # Afdeling-nulstilling: for aktuel sæson vises kun den aktuelle afdelings runder
 # (17 runder pr. afdeling). Andre sæsoner røres ikke. Dette gør at stilling,
 # heatmap og pts_per_round for aktuel sæson afspejler afdelingen, ikke hele sæsonen.
+# NB: filteret sættes ind lige før standings (efter 'correct' er beregnet), og
+# en ufiltreret kopi (_am_full) gemmes til spillerprofiler og hist_compare, som
+# skal tælle HELE sæsonen (ellers viste fx 'S4: 15' kun afdelingens rigtige).
+_STAND_ANCHOR = "# ── Standings pr. sæson ───────────────────────────────────────────────────\n"
 _cell_to_run = _cell_to_run.replace(
-    "all_merged = df_p.merge(_df_wm_res, on=['season','round','match_code'], how='left')\n",
-    "all_merged = df_p.merge(_df_wm_res, on=['season','round','match_code'], how='left')\n"
+    _STAND_ANCHOR,
+    "_am_full = all_merged.copy()\n"
     "_AFD_SIZE = 17\n"
     "_cur_rounds = all_merged[all_merged['season']==CURRENT_SEASON]['round']\n"
     "if len(_cur_rounds):\n"
     "    _cm = int(_cur_rounds.max()); _ca = (_cm-1)//_AFD_SIZE+1\n"
     "    _alo = (_ca-1)*_AFD_SIZE+1; _ahi = _ca*_AFD_SIZE\n"
     "    all_merged = all_merged[~((all_merged['season']==CURRENT_SEASON)&((all_merged['round']<_alo)|(all_merged['round']>_ahi)))].copy()\n"
+    + _STAND_ANCHOR, 1
+)
+# Spillerprofiler + historik (rigtige pr. sæson) bruger hele sæsonen
+_cell_to_run = _cell_to_run.replace(
+    "hist_compare = {}\nfor player, grp in all_merged.groupby('player'):",
+    "hist_compare = {}\nfor player, grp in _am_full.groupby('player'):", 1
+).replace(
+    "player_stats = {}\nfor player, grp in all_merged.groupby('player'):",
+    "player_stats = {}\nfor player, grp in _am_full.groupby('player'):", 1
 )
 
 # Samme afdeling-filter på df_h2h (styrer h2h_standings + h2h_by_round for stillingen)
