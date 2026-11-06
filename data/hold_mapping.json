@@ -322,6 +322,13 @@
     "elo_name": "Bilbao"
   },
   {
+    "abbr": "ATL",
+    "type": "INT",
+    "land": "INT",
+    "name": "Atl. Madrid",
+    "elo_name": "Atl. Madrid"
+  },
+  {
     "abbr": "ATM",
     "type": "SPA",
     "land": "SPA",
@@ -700,6 +707,13 @@
     "elo_name": "Breidablik"
   },
   {
+    "abbr": "BR1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Bremen",
+    "elo_name": "Bremen"
+  },
+  {
     "abbr": "BRN",
     "type": "PL",
     "land": "PL",
@@ -719,6 +733,13 @@
     "land": "AUS",
     "name": "Brisbane Roar",
     "elo_name": "Brisbane Roar"
+  },
+  {
+    "abbr": "BRR",
+    "type": "INT",
+    "land": "INT",
+    "name": "Bristol Rovers",
+    "elo_name": "Bristol Rovers"
   },
   {
     "abbr": "BRO",
@@ -3171,6 +3192,13 @@
     "elo_name": "Oldenburg"
   },
   {
+    "abbr": "OL1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Oldham",
+    "elo_name": "Oldham"
+  },
+  {
     "abbr": "LJU",
     "type": "CL",
     "land": "SLO",
@@ -3533,6 +3561,13 @@
     "land": "ØST",
     "name": "RB Salzburg",
     "elo_name": "Salzburg"
+  },
+  {
+    "abbr": "REA",
+    "type": "INT",
+    "land": "INT",
+    "name": "Reading",
+    "elo_name": "Reading"
   },
   {
     "abbr": "RMA",
