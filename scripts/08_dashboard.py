@@ -318,6 +318,8 @@ try:
         _html = _html.replace('</head>', '<script>var NEXT_OPP=' + json.dumps(
             {'name': _no, 'round': _nr, 'predicted': _npred}, ensure_ascii=False) + ';</script>\n</head>', 1)
         print(f'✓ Næste modstander: {_no} (runde {_nr}{", forventet" if _npred else ""})')
+        _html = _html.replace('</head>', '<script>var OPP_MEETS=' + json.dumps(
+            _sp.season_meetings(DATA_DIR), ensure_ascii=False) + ';</script>\n</head>', 1)
     except Exception as _e:
         print(f'  ⚠ Næste modstander fejlede: {_e}')
     # H2H-program (din afdeling) som kort i Stilling-fanen

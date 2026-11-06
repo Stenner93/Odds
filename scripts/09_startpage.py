@@ -569,6 +569,22 @@ def next_opponent(data_dir, focus_player=FOCUS_PLAYER, now=None):
             return p, nxt, True
     return opp, cur, False
 
+def season_meetings(data_dir, focus_player=FOCUS_PLAYER):
+    """{modstander: [[runde, mine rigtige, deres rigtige], ...]} for afsluttede
+    H2H-møder i indeværende sæson (til Næste runde-fanens historik)."""
+    h2h = pd.read_csv(os.path.join(data_dir, 'h2h.csv'))
+    h2h = h2h[(h2h['season'].astype(int) == CURRENT_SEASON) &
+              ((h2h['player_a'] == focus_player) | (h2h['player_b'] == focus_player))]
+    out = {}
+    for _, x in h2h.sort_values('round').iterrows():
+        if pd.isna(x.get('h2h_pts_a')) or pd.isna(x.get('correct_a')) or pd.isna(x.get('correct_b')):
+            continue
+        me_a = x['player_a'] == focus_player
+        opp = x['player_b'] if me_a else x['player_a']
+        m, o = (x['correct_a'], x['correct_b']) if me_a else (x['correct_b'], x['correct_a'])
+        out.setdefault(opp, []).append([int(x['round']), int(m), int(o)])
+    return out
+
 # ── Stilling-fanen: dit H2H-program for afdelingen ─────────────────────────
 def build_program_card(data_dir, focus_player=FOCUS_PLAYER):
     """(style_html, card_html) — programkort til Stilling-fanen."""
