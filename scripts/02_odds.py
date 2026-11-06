@@ -979,6 +979,64 @@ def _fetch_n20_for_date(date_str):
         return [m for m in (_n20_extract(i) for i in items) if m]
     except Exception: return []
 
+# ── N20 kampside (match_details) — sidste fallback ────────────────────────
+# Dato-feed'et mangler nogle turneringer (fx EFL Trophy, NM Cup). Kampsiden
+# numbertwenty.io/match_details/{dato}_{hold}_{hold}/ har dem, men kræver N20's
+# præcise holdnavne (store/små bogstaver; "Oldham" virker ikke, "Oldham Athletic"
+# gør). Siden indeholder også andre kampe fra turneringen, så én fundet side kan
+# dække flere af rundens kampe. Vi prøver kendte navne + typiske endelser.
+_N20_SUFFIX = ['', ' Athletic', ' Town', ' United', ' City', ' Rovers', ' FC']
+_n20_page_cache = {}       # dato -> liste af kampe (med dato) fra fundne sider
+_n20_page_calls = [0]
+_N20_PAGE_MAX_CALLS = 60
+
+def _n20_url_names(name):
+    base = [name, resolve_team(name)] + TEAM_ALIASES.get(resolve_team(name), []) + [_HM_ELO.get(name)]
+    base = [b for b in dict.fromkeys(str(x).strip() for x in base if x) if b and b.isascii()] or [name]
+    out = []
+    for suf in _N20_SUFFIX:
+        for b in base:
+            if suf and b.endswith(suf.strip()):
+                continue
+            out.append(b + suf)
+    return list(dict.fromkeys(out))
+
+def _n20_items_on_date(html, date_str):
+    out = []
+    for o in _n20_json_objs_with(html, '"pred_probs"'):
+        if str(o.get('Day_UTC') or o.get('DateTime') or '')[:10] != date_str:
+            continue
+        m = _n20_extract(o)
+        if m: out.append(m)
+    return out
+
+def _n20_from_match_page(home, away, date_str):
+    import urllib.parse as _url
+    date_str = str(date_str)[:10]
+    hit = _n20_find(home, away, _n20_page_cache.get(date_str, []))
+    if hit:
+        return hit
+    hs, as_ = _n20_url_names(home), _n20_url_names(away)
+    combos = [(h, a) for i, h in enumerate(hs) for j, a in enumerate(as_) if i + j <= 4][:25]
+    for h, a in combos:
+        if _n20_page_calls[0] >= _N20_PAGE_MAX_CALLS:
+            break
+        _n20_page_calls[0] += 1
+        u = f"https://numbertwenty.io/match_details/{date_str}_{_url.quote(h)}_{_url.quote(a)}/"
+        try:
+            r = requests.get(u, timeout=25, headers={'User-Agent': 'Mozilla/5.0'})
+        except Exception:
+            continue
+        if r.status_code != 200 or '"pred_probs"' not in r.text:
+            continue
+        items = _n20_items_on_date(r.text, date_str)
+        _n20_page_cache.setdefault(date_str, []).extend(items)
+        hit = _n20_find(home, away, items)
+        if hit:
+            print(f'    ↳ N20 kampside: {h} – {a}')
+            return hit
+    return None
+
 # ── Competition-baseret N20 (dato-feed'et mangler fx CL-kval) ──────────────
 # Vores liga -> N20's competition-navn (fra competition-URL'en)
 N20_COMPETITION = {
@@ -1190,6 +1248,8 @@ if os.path.exists(ODDS_CSV):
                     if not _found and _all_teams:
                         _bm, _bs, _ = process.extractOne(_hn_variants[0], _all_teams, scorer=fuzz.token_sort_ratio)
                         if _bs >= 78 and _n20_opp_ok(_all_n20[_bm], _away): _found = _all_n20[_bm]
+                if not _found:
+                    _found = _n20_from_match_page(_home, _away, _row.get('date', ''))
                 if _found:
                     _probs = [('1', _found['prob_1']), ('X', _found['prob_x']), ('2', _found['prob_2'])]
                     _rec = max(_probs, key=lambda x: x[1])[0]
