@@ -249,6 +249,12 @@ for _marker, _code in _MARKERS:
     if _marker in _cell_to_run:
         _cell_to_run = _cell_to_run.replace(_marker, _code + '\n' + _marker, 1)
 
+# bet_dist manglede 'total', som Næste runde- og Gæt-profil-fanerne dividerer
+# med (gav fx "14600% hjemme"). Tilføjes her.
+_bd_old = "    bet_dist[player] = {'1': int(counts.get('1',0)), 'X': int(counts.get('X',0)), '2': int(counts.get('2',0))}"
+if _bd_old in _cell_to_run:
+    _cell_to_run = _cell_to_run.replace(_bd_old, _bd_old + "\n    bet_dist[player]['total'] = sum(bet_dist[player].values())", 1)
+
 # Kør i et namespace der har adgang til alle globale variabler
 _ns = {k: v for k, v in globals().items()}
 _ns['_h2h_correct']       = _h2h_correct
@@ -306,6 +312,14 @@ try:
         "<button class=\"active\" onclick=\"showPage('stilling',this)\">Stilling</button>",
         _fs_nav + "<button onclick=\"showPage('stilling',this)\">Stilling</button>", 1)
     # 3) forside-siden indsættes som default-aktiv; Stilling deaktiveres
+    # Næste runde-fanen: forvalgt modstander i dropdown
+    try:
+        _no, _nr, _npred = _sp.next_opponent(DATA_DIR)
+        _html = _html.replace('</head>', '<script>var NEXT_OPP=' + json.dumps(
+            {'name': _no, 'round': _nr, 'predicted': _npred}, ensure_ascii=False) + ';</script>\n</head>', 1)
+        print(f'✓ Næste modstander: {_no} (runde {_nr}{", forventet" if _npred else ""})')
+    except Exception as _e:
+        print(f'  ⚠ Næste modstander fejlede: {_e}')
     # H2H-program (din afdeling) som kort i Stilling-fanen
     try:
         _pg_style, _pg_card = _sp.build_program_card(DATA_DIR)
