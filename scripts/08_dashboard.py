@@ -306,6 +306,16 @@ try:
         "<button class=\"active\" onclick=\"showPage('stilling',this)\">Stilling</button>",
         _fs_nav + "<button onclick=\"showPage('stilling',this)\">Stilling</button>", 1)
     # 3) forside-siden indsættes som default-aktiv; Stilling deaktiveres
+    # H2H-program (din afdeling) som kort i Stilling-fanen
+    try:
+        _pg_style, _pg_card = _sp.build_program_card(DATA_DIR)
+        _anchor = '<div class="card" id="my-h2h-card" style="display:none"></div>'
+        if _pg_card and _anchor in _html:
+            _html = _html.replace('</head>', _pg_style + '\n</head>', 1)
+            _html = _html.replace(_anchor, _anchor + '\n      ' + _pg_card, 1)
+            print('✓ H2H-program indsat i Stilling-fanen')
+    except Exception as _e:
+        print(f'  ⚠ H2H-program fejlede: {_e}')
     _html = _html.replace('<div class="page active" id="page-stilling">',
                           '<div class="page" id="page-stilling">', 1)
     _html = _html.replace(

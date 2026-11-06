@@ -15,8 +15,9 @@ dashboardets egne klasser.
 Kan også køres standalone for at bygge en preview-fil:
     python scripts/09_startpage.py [output.html]
 """
-import os, sys, html
+import os, sys, html, datetime as _dt
 from collections import defaultdict
+from zoneinfo import ZoneInfo
 import pandas as pd
 
 FOCUS_PLAYER   = 'Anders Stenner'
@@ -52,6 +53,63 @@ def esc(s):
 def _ic(v):
     try: return int(v) if v == v else 0
     except (TypeError, ValueError): return 0
+
+# ── H2H-program ──────────────────────────────────────────────────────────
+# Alle afdelinger har samme parringsprogram (18 spillere, 17 runder: alle møder
+# alle én gang). Runde r i afd. 3 = runde r-17 i afd. 2 = r-34 i afd. 1. Det har
+# holdt i alle afdelinger i sæson 3 og 4, så kommende modstandere kan forudsiges.
+_CPH = ZoneInfo('Europe/Copenhagen')
+
+def _opp_in(h2h, season, rnd, focus):
+    x = h2h[(h2h['season'] == season) & (h2h['round'] == rnd) &
+            ((h2h['player_a'] == focus) | (h2h['player_b'] == focus))]
+    if x.empty:
+        return None, None
+    r = x.iloc[0]
+    return (r['player_b'] if r['player_a'] == focus else r['player_a']), r
+
+def predicted_opponent(h2h, season, rnd, focus):
+    """Modstander i runde rnd ud fra samme runde i tidligere afdelinger."""
+    for back in (AFD_SIZE, 2 * AFD_SIZE):
+        if rnd - back >= 1:
+            opp, _ = _opp_in(h2h, season, rnd - back, focus)
+            if opp:
+                return opp
+    return None
+
+def h2h_program(h2h, season, focus, ref_round):
+    """Programmet for den afdeling ref_round ligger i: én række pr. runde med
+    modstander (faktisk parring, ellers forudsagt) og resultat hvis spillet."""
+    afd, _ = _afd_label(ref_round)
+    out = []
+    for r in range((afd - 1) * AFD_SIZE + 1, afd * AFD_SIZE + 1):
+        opp, row = _opp_in(h2h, season, r, focus)
+        rec = {'round': r, 'rel': r - (afd - 1) * AFD_SIZE, 'opp': opp,
+               'predicted': False, 'me': None, 'them': None, 'pts': None}
+        if opp is None:
+            rec['opp'] = predicted_opponent(h2h, season, r, focus)
+            rec['predicted'] = True
+        else:
+            me_a = row['player_a'] == focus
+            ca, cb = row.get('correct_a'), row.get('correct_b')
+            pa, pb = row.get('h2h_pts_a'), row.get('h2h_pts_b')
+            if pd.notna(pa) and pd.notna(pb):
+                rec['pts'] = int(pa if me_a else pb)
+            if pd.notna(ca) and pd.notna(cb):
+                rec['me'], rec['them'] = (int(ca), int(cb)) if me_a else (int(cb), int(ca))
+        out.append(rec)
+    return out
+
+def _switch_at(wm_s, rnd):
+    """Tidspunkt hvor forsiden skifter til næste rundes modstander: natten
+    mellem torsdag og fredag efter rundens sidste kamp (fredag 00:00, dansk tid)."""
+    d = pd.to_datetime(wm_s[wm_s['round'] == rnd]['date'], errors='coerce').max()
+    if pd.isna(d):
+        return None
+    d = d.date()
+    days = (4 - d.weekday()) % 7 or 7          # første fredag EFTER sidste kampdag
+    f = d + _dt.timedelta(days=days)
+    return _dt.datetime(f.year, f.month, f.day, tzinfo=_CPH)
 
 # ═══════════════════════════════════════════════════════════════════════════
 def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
@@ -237,6 +295,29 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
     # Kolonnerne er altid 1 / X / 2. Odds+n20 vises som sandsynlighed (%),
     # Elo+Opta som styrketal pr. hold (hjemme | diff | ude). Favoritten
     # fremhæves; mangler en kilde data, udelades dens linje.
+    # ── Skift til næste rundes modstander natten mellem torsdag og fredag ──
+    pred_block = None
+    if h2h_round is not None:
+        _sw = _switch_at(wm_s, h2h_round)
+        _now = _dt.datetime.now(_CPH)
+        nxt = h2h_round + 1
+        if _sw is not None and _now >= _sw and nxt <= 3 * AFD_SIZE:   # sæsonen = 3 afdelinger
+            opp_n = predicted_opponent(h2h, CURRENT_SEASON, nxt, focus_player)
+            if opp_n:
+                # Tidligere møder i sæsonen
+                meets = []
+                for _, x in h2h[(h2h['season'] == CURRENT_SEASON) & (h2h['round'] < nxt)].iterrows():
+                    if {x['player_a'], x['player_b']} == {focus_player, opp_n} and pd.notna(x.get('correct_a')):
+                        me_a = x['player_a'] == focus_player
+                        mc_, oc_ = (x['correct_a'], x['correct_b']) if me_a else (x['correct_b'], x['correct_a'])
+                        mc_, oc_ = int(mc_), int(oc_)
+                        meets.append((int(x['round']), mc_, oc_))
+                last = None
+                if h2h_block:
+                    lb = h2h_block
+                    last = (h2h_round, lb['opp'], lb['me_cor'], lb['opp_cor'], lb['outcome'])
+                pred_block = {'round': nxt, 'opp': opp_n, 'meets': meets, 'last': last}
+
     def _pct(v):
         return None if v is None else f'{round(v)}%'
 
@@ -298,7 +379,60 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
     nr_afd, nr_rel = _afd_label(next_round)
 
     # H2H
-    if h2h_block:
+    prog = h2h_program(h2h, CURRENT_SEASON, focus_player,
+                       pred_block['round'] if pred_block else (h2h_round or next_round))
+    cur_r = pred_block['round'] if pred_block else h2h_round
+    upcoming = [p for p in prog if p['round'] > (cur_r or 0) and p['opp']][:3]
+    up_html = ''
+    if upcoming:
+        up_html = ('<div class="fs-up"><span class="fs-upl">Derefter</span>'
+                   + ''.join(f'<span class="fs-upi"><span class="fs-upr">{p["rel"]}.</span>{esc(p["opp"].split()[0])}</span>'
+                             for p in upcoming)
+                   + '<span class="fs-upm">hele programmet under Stilling</span></div>')
+
+    if pred_block:
+        pb = pred_block; pa_, prel = _afd_label(pb['round'])
+        def _wl(m, o):
+            return ('V', 'win') if m > o else (('T', 'loss') if m < o else ('U', 'draw'))
+        meet_html = ''
+        if pb['meets']:
+            meet_html = ('<div class="fs-meets"><span class="fs-upl">Tidligere i sæsonen</span>'
+                         + ''.join(f'<span class="fs-meet {_wl(m, o)[1]}">R{r} {_wl(m, o)[0]} {m}–{o}</span>'
+                                   for r, m, o in pb['meets']) + '</div>')
+        last_html = ''
+        if pb['last']:
+            r0, o0, m0, t0, oc0 = pb['last']
+            txt = (f'{oc0[0]} {m0}–{t0}' if oc0 else f'{m0}–{t0}, ikke færdig')
+            last_html = f'<div class="fs-foot">Runde {r0} mod {esc(o0)}: <b>{esc(txt)}</b></div>'
+        # Kampene i runden (hvis kuponen er hentet) med dine gæt, hvis de er lagt ind
+        g_html = ''
+        if next_round == pb['round']:
+            my = {r['match_code']: _norm_bet(r['bet']) for _, r in preds[
+                (preds['season'] == CURRENT_SEASON) & (preds['round'] == pb['round']) &
+                (preds['player'] == focus_player)].iterrows()}
+            gr = []
+            for _, m in wm_s[wm_s['round'] == pb['round']].sort_values('match_no').iterrows():
+                a = my.get(m['match_code'])
+                cell = f'<span class="fs-pk {PC[a]}">{a}</span>' if a else '<span class="fs-pk fs-ghost">·</span>'
+                gr.append(f'<div class="fs-grow pr"><span class="fs-gm">{esc(m["home_team"])}–{esc(m["away_team"])}</span>'
+                          f'<span class="fs-gc">{cell}</span></div>')
+            g_html = (f'<div class="fs-g"><div class="fs-grow pr head"><span>Runde {pb["round"]} · afd. {pa_}, {prel}. runde</span>'
+                      f'<span class="fs-gc">{esc(focus_player.split()[0])}</span></div>{"".join(gr)}</div>')
+        else:
+            g_html = '<div class="fs-empty">Kampene vises, når kuponen er hentet (fredag morgen).</div>'
+        h2h_html = f'''<section class="fs-card fs-h2h">
+  <div class="fs-chead"><span class="fs-ctitle"><span class="fs-bar"></span>Din H2H · runde {pb["round"]}</span><span class="fs-cmeta">forventet modstander</span></div>
+  <div class="fs-h2hsc">
+    <div class="fs-hp me"><div class="fs-nm">{esc(focus_player)}</div><div class="fs-sub">afd. {pa_}, {prel}. runde</div></div>
+    <div class="fs-mid"><div class="fs-vs"><span class="sep">mod</span></div><span class="fs-badge live">kommende</span></div>
+    <div class="fs-hp r"><div class="fs-nm">{esc(pb["opp"])}</div><div class="fs-sub">ud fra afdelingsprogrammet</div></div>
+  </div>
+  {meet_html}
+  {g_html}
+  {up_html}
+  {last_html}
+</section>'''
+    elif h2h_block:
         b = h2h_block; ha, hrel = _afd_label(h2h_round)
         if b['outcome']:
             verb, cls = b['outcome']
@@ -347,6 +481,7 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
     {grid}
   </div>
   {dif_note}
+  {up_html}
 </section>'''
     else:
         h2h_html = f'<section class="fs-card fs-h2h"><div class="fs-chead"><span class="fs-ctitle"><span class="fs-bar"></span>Din H2H</span></div><div class="fs-empty">Ingen H2H-runde for {esc(focus_player)} endnu.</div></section>'
@@ -466,6 +601,16 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
 #page-forside .fs-grow.dif{background:rgba(245,158,11,.07);box-shadow:inset 3px 0 0 var(--gld)}
 #page-forside .fs-grow.dif .fs-gm{color:var(--txt);font-weight:600}
 #page-forside .fs-fx.dif{box-shadow:inset 3px 0 0 var(--gld)}
+#page-forside .fs-up,#page-forside .fs-meets{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 13px;border-top:1px solid var(--bdr);font-size:11.5px}
+#page-forside .fs-upl{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-right:2px}
+#page-forside .fs-upi{background:var(--sf);border:1px solid var(--bdr);border-radius:5px;padding:2px 7px;white-space:nowrap}
+#page-forside .fs-upr{color:var(--mut);margin-right:4px;font-variant-numeric:tabular-nums}
+#page-forside .fs-upm{font-size:10px;color:var(--mut);margin-left:auto}
+#page-forside .fs-meet{border-radius:5px;padding:2px 7px;font-size:11px;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+#page-forside .fs-meet.win{background:rgba(34,197,94,.15);color:var(--grn)}
+#page-forside .fs-meet.loss{background:rgba(239,68,68,.15);color:var(--red)}
+#page-forside .fs-meet.draw{background:rgba(107,114,128,.25);color:var(--txt)}
+#page-forside .fs-grow.pr{grid-template-columns:1fr 44px}
 #page-forside .fs-stand{display:flex;flex-direction:column}
 #page-forside .fs-srow{display:grid;grid-template-columns:24px 1fr auto auto;align-items:center;gap:10px;padding:7px 13px;border-top:1px solid var(--bdr);font-size:12.5px}
 #page-forside .fs-srow:first-child{border-top:0}
@@ -485,6 +630,65 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
 </style>'''
 
     return style, nav_button, page_inner
+
+# ── Stilling-fanen: dit H2H-program for afdelingen ─────────────────────────
+def build_program_card(data_dir, focus_player=FOCUS_PLAYER):
+    """(style_html, card_html) — programkort til Stilling-fanen."""
+    h2h = pd.read_csv(os.path.join(data_dir, 'h2h.csv'))
+    h2h['season'] = h2h['season'].astype(int); h2h['round'] = h2h['round'].astype(int)
+    wm = pd.read_csv(os.path.join(data_dir, 'weekly_matches.csv'))
+    wm['season'] = wm['season'].astype(int); wm['round'] = wm['round'].astype(int)
+    wm_s = wm[wm['season'] == CURRENT_SEASON]
+    hf = h2h[(h2h['season'] == CURRENT_SEASON) &
+             ((h2h['player_a'] == focus_player) | (h2h['player_b'] == focus_player))]
+    if hf.empty:
+        return '', ''
+    ref = int(hf['round'].max())
+    prog = h2h_program(h2h, CURRENT_SEASON, focus_player, ref)
+    afd, _ = _afd_label(ref)
+    v = u = t = 0
+    rows = []
+    for p in prog:
+        if p['pts'] is not None and p['me'] is not None:
+            res = 'V' if p['me'] > p['them'] else ('T' if p['me'] < p['them'] else 'U')
+            v += res == 'V'; u += res == 'U'; t += res == 'T'
+            cls = {'V': 'win', 'T': 'loss', 'U': 'draw'}[res]
+            cell = f'<span class="hp-r {cls}">{res} {p["me"]}–{p["them"]}</span>'
+            rcls = ''
+        elif not p['predicted']:
+            cell = (f'<span class="hp-r live">i gang {p["me"]}–{p["them"]}</span>'
+                    if p['me'] is not None else '<span class="hp-r live">i gang</span>')
+            rcls = ' cur'
+        else:
+            cell = '<span class="hp-r pd">kommende</span>'
+            rcls = ' pred'
+        opp = esc(p['opp']) if p['opp'] else '<span class="hp-mut">ukendt</span>'
+        rows.append(f'<tr class="hp-row{rcls}"><td class="hp-n">{p["rel"]}</td><td class="hp-n hp-mut">R{p["round"]}</td>'
+                    f'<td>{opp}</td><td class="hp-c">{cell}</td></tr>')
+    card = f'''<div class="card" id="h2h-program-card">
+  <div class="ct">Dit H2H-program — afdeling {afd} <span class="hp-mut" style="font-weight:600">· {v}V {u}U {t}T</span></div>
+  <div style="overflow-x:auto"><table class="hp-t"><thead><tr><th>Rd</th><th>Global</th><th>Modstander</th><th class="hp-c">Resultat</th></tr></thead>
+  <tbody>{"".join(rows)}</tbody></table></div>
+  <div class="hp-note">Kommende modstandere er forudsagt: alle afdelinger følger samme parringsprogram (runde r = runde r−17 i forrige afdeling). Programmet ændrer sig, hvis en spiller kommer til eller falder fra.</div>
+</div>'''
+    style = '''<style>
+#h2h-program-card .hp-t{width:100%;border-collapse:collapse;font-size:12.5px}
+#h2h-program-card .hp-t th{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);text-align:left;padding:6px 8px;border-bottom:1px solid var(--bdr)}
+#h2h-program-card .hp-t td{padding:6px 8px;border-bottom:1px solid var(--bdr);white-space:nowrap}
+#h2h-program-card .hp-n{font-variant-numeric:tabular-nums;width:1%}
+#h2h-program-card .hp-c{text-align:right}
+#h2h-program-card .hp-mut{color:var(--mut)}
+#h2h-program-card .hp-row.cur{background:rgba(245,158,11,.08);box-shadow:inset 3px 0 0 var(--gld)}
+#h2h-program-card .hp-row.pred td:nth-child(3){color:var(--mut)}
+#h2h-program-card .hp-r{display:inline-block;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:700;font-variant-numeric:tabular-nums}
+#h2h-program-card .hp-r.win{background:rgba(34,197,94,.15);color:var(--grn)}
+#h2h-program-card .hp-r.loss{background:rgba(239,68,68,.15);color:var(--red)}
+#h2h-program-card .hp-r.draw{background:rgba(107,114,128,.25)}
+#h2h-program-card .hp-r.live{color:var(--gld);border:1px solid rgba(245,158,11,.35)}
+#h2h-program-card .hp-r.pd{color:var(--mut);font-weight:600}
+#h2h-program-card .hp-note{font-size:10.5px;color:var(--mut);padding:8px 8px 2px}
+</style>'''
+    return style, card
 
 # ── Standalone preview (til lokal test) ────────────────────────────────────
 if __name__ == '__main__':
