@@ -143,7 +143,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ index.html
+          git add data/ index.html widget.json
           git diff --cached --quiet && echo "Ingen ændringer" && exit 0
           git commit -m "Auto: pipeline kørt [skip ci]"
           # Push med genforsøg: hvis main er rykket imens (fx en manuel commit),

@@ -585,6 +585,84 @@ def season_meetings(data_dir, focus_player=FOCUS_PLAYER):
         out.setdefault(opp, []).append([int(x['round']), int(m), int(o)])
     return out
 
+# ── Android-widget (KWGT m.fl.): widget.json ──────────────────────────────
+def build_widget(data_dir, focus_player=FOCUS_PLAYER, now=None):
+    """Lille, flad JSON med din H2H og stilling til en hjemmeskærms-widget.
+    Felterne er bevidst flade og færdigformaterede, så widget-formlerne er korte."""
+    now = now or _dt.datetime.now(_CPH)
+    h2h = pd.read_csv(os.path.join(data_dir, 'h2h.csv'))
+    h2h['season'] = h2h['season'].astype(int); h2h['round'] = h2h['round'].astype(int)
+    wm = pd.read_csv(os.path.join(data_dir, 'weekly_matches.csv'))
+    wm['season'] = wm['season'].astype(int); wm['round'] = wm['round'].astype(int)
+    wm_s = wm[wm['season'] == CURRENT_SEASON]
+    pr = pd.read_csv(os.path.join(data_dir, 'predictions.csv'))
+    pr = pr[(pr['season'].astype(int) == CURRENT_SEASON)]
+    st = pd.read_csv(os.path.join(data_dir, 'standings.csv'))
+    st = st[st['season'].astype(int) == CURRENT_SEASON].sort_values('pos')
+
+    first = lambda n: str(n).split()[0] if n else ''
+    out = {'opdateret': now.strftime('%d/%m %H:%M'), 'saeson': CURRENT_SEASON}
+
+    # Din aktuelle H2H (seneste runde med parring)
+    hf = h2h[(h2h['season'] == CURRENT_SEASON) &
+             ((h2h['player_a'] == focus_player) | (h2h['player_b'] == focus_player))]
+    if not hf.empty:
+        rnd = int(hf['round'].max())
+        opp, _ = _opp_in(h2h, CURRENT_SEASON, rnd, focus_player)
+        ms = wm_s[wm_s['round'] == rnd]
+        res = {r['match_code']: str(r['result']).strip() for _, r in ms.iterrows()
+               if str(r['result']).strip() in ('1', 'X', '2')}
+        def bets(p):
+            d = pr[(pr['round'].astype(int) == rnd) & (pr['player'] == p)]
+            return {r['match_code']: _norm_bet(r['bet']) for _, r in d.iterrows()}
+        mb, ob = bets(focus_player), bets(opp)
+        me = sum(1 for mc, r in res.items() if mb.get(mc) == r)
+        th = sum(1 for mc, r in res.items() if ob.get(mc) == r)
+        open_dif = sum(1 for mc in ms['match_code'] if mc not in res
+                       and mb.get(mc) and ob.get(mc) and mb.get(mc) != ob.get(mc))
+        played, total = len(res), len(ms)
+        done = played == total and total > 0
+        if done:
+            status = 'Vundet' if me > th else ('Tabt' if me < th else 'Uafgjort')
+        else:
+            status = 'Fører' if me > th else ('Bagud' if me < th else 'Lige')
+        color = '#22c55e' if me > th else ('#ef4444' if me < th else '#9ca3af')
+        afd, rel = _afd_label(rnd)
+        out.update({
+            'h2h_runde': rnd, 'h2h_afd_runde': rel,
+            'h2h_modstander': opp, 'h2h_modstander_kort': first(opp),
+            'h2h_mine': me, 'h2h_deres': th,
+            'h2h_score': f'{me}–{th}',
+            'h2h_spillet': f'{played}/{total}',
+            'h2h_status': status,
+            'h2h_farve': color,
+            'h2h_afgoerende_tilbage': open_dif,
+            'h2h_linje': f'Runde {rnd} · mod {first(opp)}',
+            'h2h_info': f'{status} · {played}/{total} spillet'
+                        + (f' · {open_dif} afgørende tilbage' if (not done and open_dif) else ''),
+        })
+    # Næste modstander (forventet fra natten til fredag)
+    try:
+        no, nr, npred = next_opponent(data_dir, focus_player, now=now)
+        out.update({'naeste_modstander': no, 'naeste_modstander_kort': first(no), 'naeste_runde': nr,
+                    'naeste_linje': f'Næste: {first(no)} (R{nr})' if no else ''})
+    except Exception:
+        pass
+    # Stilling (aktuel afdeling)
+    if not st.empty:
+        me_row = st[st['player'] == focus_player]
+        if not me_row.empty:
+            r = me_row.iloc[0]
+            out.update({'placering': int(r['pos']), 'point': int(r['total_h2h_pts']),
+                        'rigtige': int(r['total_correct']),
+                        'stilling_linje': f"Nr. {int(r['pos'])} · {int(r['total_h2h_pts'])} pt · {int(r['total_correct'])} rigtige"})
+        for i, (_, r) in enumerate(st.head(5).iterrows(), 1):
+            out[f'top{i}_navn'] = first(r['player'])
+            out[f'top{i}_point'] = int(r['total_h2h_pts'])
+            out[f'top{i}_linje'] = f"{i}. {first(r['player'])} {int(r['total_h2h_pts'])}"
+        out['top_linje'] = '  '.join(out.get(f'top{i}_linje', '') for i in (1, 2, 3)).strip()
+    return out
+
 # ── Stilling-fanen: dit H2H-program for afdelingen ─────────────────────────
 def build_program_card(data_dir, focus_player=FOCUS_PLAYER):
     """(style_html, card_html) — programkort til Stilling-fanen."""

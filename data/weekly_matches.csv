@@ -1921,8 +1921,8 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,38,4,NAP-LAZ,2026-11-08,12:30,Serie A,Serie A,Napoli,Lazio,,,,,X
 4,38,5,ATL-BAR,2026-11-08,21:00,La Liga,La Liga,Atl. Madrid,Barcelona,,,,,2
 4,38,6,HIF-AAF,2026-11-09,19:00,1. division,1. division,Hvidovre,Aarhus Fremad,,,,,1
-4,38,7,ROV-REA,2026-11-10,20:00,EFL Trophy,EFL Trophy,Bristol Rovers,Reading,,,,,
-4,38,8,BFC-OL2,2026-11-11,20:00,EFL Trophy,EFL Trophy,Barnsley,Oldham,,,,,
+4,38,7,ROV-REA,2026-11-10,20:00,EFL Trophy,EFL Trophy,Bristol Rovers,Reading,,,,,X
+4,38,8,BFC-OL2,2026-11-11,20:00,EFL Trophy,EFL Trophy,Barnsley,Oldham,,,,,1
 4,38,9,ITA-FRK,2026-11-12,20:45,Nations League,Nations League,Italien,Frankrig,,,,,
 4,38,10,HOL-GRÆ,2026-11-13,20:45,Nations League,Nations League,Holland,Grækenland,,,,,
 5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2

@@ -335,6 +335,14 @@ try:
             _sp.season_meetings(DATA_DIR), ensure_ascii=False) + ';</script>\n</head>', 1)
     except Exception as _e:
         print(f'  ⚠ Næste modstander fejlede: {_e}')
+    # widget.json til Android-widget (KWGT) — ved siden af index.html
+    try:
+        _wj = _sp.build_widget(DATA_DIR)
+        with open(os.path.join(os.path.dirname(DATA_DIR), 'widget.json'), 'w', encoding='utf-8') as _f:
+            json.dump(_wj, _f, ensure_ascii=False, indent=1)
+        print(f"✓ widget.json: {_wj.get('h2h_linje', '')} · {_wj.get('h2h_score', '')}")
+    except Exception as _e:
+        print(f'  ⚠ widget.json fejlede: {_e}')
     # H2H-program (din afdeling) som kort i Stilling-fanen
     try:
         _pg_style, _pg_card = _sp.build_program_card(DATA_DIR)
