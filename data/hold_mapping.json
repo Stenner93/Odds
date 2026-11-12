@@ -196,6 +196,13 @@
     "elo_name": "Albania"
   },
   {
+    "abbr": "ALC",
+    "type": "INT",
+    "land": "INT",
+    "name": "Alcoyano",
+    "elo_name": "Alcoyano"
+  },
+  {
     "abbr": "ALG",
     "type": "INT",
     "land": "INT",
@@ -1386,6 +1393,13 @@
     "elo_name": "FA2000"
   },
   {
+    "abbr": "FAE",
+    "type": "INT",
+    "land": "INT",
+    "name": "Færøerne",
+    "elo_name": "Faeroerne"
+  },
+  {
     "abbr": "FAR",
     "type": "CL",
     "land": "RUM",
@@ -1622,6 +1636,13 @@
     "land": "U21",
     "name": "Frankrig - U21",
     "elo_name": "Frankrig - U21"
+  },
+  {
+    "abbr": "FR1",
+    "type": "INT",
+    "land": "INT",
+    "name": "Fredericia",
+    "elo_name": "Fredericia"
   },
   {
     "abbr": "FRS",
@@ -2952,6 +2973,13 @@
     "land": "NOR",
     "name": "Molde",
     "elo_name": "Molde"
+  },
+  {
+    "abbr": "MO3",
+    "type": "INT",
+    "land": "INT",
+    "name": "Moldova",
+    "elo_name": "Moldova"
   },
   {
     "abbr": "ASM",
