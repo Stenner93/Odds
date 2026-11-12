@@ -151,6 +151,8 @@ TEAM_ALIASES = {
     'Italien':            ['Italien','Italy','ITA'],
     'Holland':            ['Holland','Netherlands','NED'],
     'Grækenland':         ['Grækenland','Greece','GRE'],
+    'Færøerne':           ['Færøerne','Faroe Islands','Faroes','Faeroerne'],
+    'Sydkorea':           ['Sydkorea','South Korea','Korea Republic'],
     'Portugal':           ['Portugal','POR'],
     'Belgien':            ['Belgien','Belgium','BEL'],
     'Sverige':            ['Sverige','Sweden','SWE'],
@@ -963,8 +965,9 @@ def _n20_extract(item):
         return {
             'team': str(team).strip(), 'opponent': str(opp).strip(),
             'prob_1': p1, 'prob_x': px, 'prob_2': p2,
-            'elo_home': item.get('Elo_Team') or item.get('elo_team'),
-            'elo_away': item.get('Elo_Opponent') or item.get('elo_opponent'),
+            # N20 omdøbte felterne (dato-feedet har nu kun *_global)
+            'elo_home': item.get('Elo_Team') or item.get('elo_team') or item.get('Elo_Team_global'),
+            'elo_away': item.get('Elo_Opponent') or item.get('elo_opponent') or item.get('Elo_Opponent_global'),
         }
     except Exception: return None
 
