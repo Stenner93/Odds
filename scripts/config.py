@@ -93,7 +93,11 @@ def csv_upsert(path, df_new, key_cols, overwrite_if_new_data=False):
                     merged[col] = merged[new]
                 elif old in merged.columns:
                     merged[col] = merged[old]
-            df_final = merged[df_new.columns]
+            # Behold også kolonner der kun findes i den eksisterende fil (fx n20_*,
+            # ensemble_*, bzz_*, elo_src i odds.csv) — før blev de smidt væk for
+            # ALLE runder, hver gang upsert kørte, så kun aktuel runde havde dem.
+            _cols = list(df_existing.columns) + [c for c in df_new.columns if c not in df_existing.columns]
+            df_final = merged[[c for c in _cols if c in merged.columns]]
         except Exception as e:
             print(f'  ⚠ csv_upsert læsefejl ({os.path.basename(path)}): {e} — opretter ny')
             df_final = df_new

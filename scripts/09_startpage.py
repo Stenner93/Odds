@@ -178,6 +178,7 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
             'odds': (p1, px, p2),
             'n20':  (_f(g('n20_prob_1')), _f(g('n20_prob_x')), _f(g('n20_prob_2'))),
             'elo':  (_f(g('elo_home')), _f(g('elo_away'))),
+            'elo_src': str(g('elo_src') or ''),
             'opta': (_f(g('opta_home')), _f(g('opta_away'))),
             'bud':  bud,
         })
@@ -327,7 +328,8 @@ def build_forside_pieces(data_dir, focus_player=FOCUS_PLAYER):
         if eh is not None or ea is not None:
             diff = f'{eh - ea:+.0f}' if (eh is not None and ea is not None) else None
             hi = (0 if eh >= ea else 2) if (eh is not None and ea is not None) else None
-            srows.append(_prow('Elo', [None if eh is None else f'{eh:.0f}', diff,
+            # N-Elo = N20's ELO (reserve mens ClubElo er nede; anden skala end ClubElo)
+            srows.append(_prow('N-Elo' if r.get('elo_src') == 'n20' else 'Elo', [None if eh is None else f'{eh:.0f}', diff,
                                        None if ea is None else f'{ea:.0f}'], hi))
         oh, oa = r['opta']
         if oh is not None or oa is not None:
