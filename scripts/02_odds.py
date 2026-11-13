@@ -1284,27 +1284,27 @@ if os.path.exists(ODDS_CSV):
                 _df_odds_n20.to_csv(ODDS_CSV, index=False)
                 print(f'✅ N20: {len(_updates_n20)} predictions opdateret')
 
-            # ── Klub-ELO-reserve: ClubElo har været nede siden ca. runde 28 ("Site
-            # overloaded"). Mangler en klubkamp ELO, bruges N20's ELO for BEGGE hold
-            # (samme skala inden for kampen; N20 ligger ca. 1400-1600). elo_src viser kilden.
-            if 'n20_elo_home' in _df_odds_n20.columns:
-                if 'elo_src' not in _df_odds_n20.columns:
-                    _df_odds_n20['elo_src'] = None
-                _df_odds_n20['elo_src'] = _df_odds_n20['elo_src'].astype(object)
-                _cur = ((_df_odds_n20['season'].astype(int) == CURRENT_SEASON) &
-                        (_df_odds_n20['round'].astype(int) == CURRENT_ROUND))
-                _fill = (_cur & ~_df_odds_n20['league'].isin(NATIONAL_LEAGUES) &
-                         (_df_odds_n20['elo_home'].isna() | _df_odds_n20['elo_away'].isna()) &
-                         _df_odds_n20['n20_elo_home'].notna() & _df_odds_n20['n20_elo_away'].notna())
-                if _fill.any():
-                    _df_odds_n20.loc[_fill, 'elo_home'] = _df_odds_n20.loc[_fill, 'n20_elo_home'].round(0)
-                    _df_odds_n20.loc[_fill, 'elo_away'] = _df_odds_n20.loc[_fill, 'n20_elo_away'].round(0)
-                    _df_odds_n20.loc[_fill, 'elo_diff'] = (_df_odds_n20.loc[_fill, 'elo_home'] -
-                                                           _df_odds_n20.loc[_fill, 'elo_away'])
-                    _df_odds_n20.loc[_fill, 'elo_src'] = 'n20'
-                    _df_odds_n20.to_csv(ODDS_CSV, index=False)
-                    print(f'  ELO-reserve (N20) for {int(_fill.sum())} klubkamp(e): ' +
-                          ', '.join(_df_odds_n20.loc[_fill, 'match_code']))
+        # ── Klub-ELO-reserve: ClubElo har været nede siden ca. runde 28 ("Site
+        # overloaded"). Mangler en klubkamp ELO, bruges N20's ELO for BEGGE hold
+        # (samme skala inden for kampen; N20 ligger ca. 1400-1600). elo_src viser kilden.
+        if 'n20_elo_home' in _df_odds_n20.columns:
+            if 'elo_src' not in _df_odds_n20.columns:
+                _df_odds_n20['elo_src'] = None
+            _df_odds_n20['elo_src'] = _df_odds_n20['elo_src'].astype(object)
+            _cur = ((_df_odds_n20['season'].astype(int) == CURRENT_SEASON) &
+                    (_df_odds_n20['round'].astype(int) == CURRENT_ROUND))
+            _fill = (_cur & ~_df_odds_n20['league'].isin(NATIONAL_LEAGUES) &
+                     (_df_odds_n20['elo_home'].isna() | _df_odds_n20['elo_away'].isna()) &
+                     _df_odds_n20['n20_elo_home'].notna() & _df_odds_n20['n20_elo_away'].notna())
+            if _fill.any():
+                _df_odds_n20.loc[_fill, 'elo_home'] = _df_odds_n20.loc[_fill, 'n20_elo_home'].round(0)
+                _df_odds_n20.loc[_fill, 'elo_away'] = _df_odds_n20.loc[_fill, 'n20_elo_away'].round(0)
+                _df_odds_n20.loc[_fill, 'elo_diff'] = (_df_odds_n20.loc[_fill, 'elo_home'] -
+                                                       _df_odds_n20.loc[_fill, 'elo_away'])
+                _df_odds_n20.loc[_fill, 'elo_src'] = 'n20'
+                _df_odds_n20.to_csv(ODDS_CSV, index=False)
+                print(f'  ELO-reserve (N20) for {int(_fill.sum())} klubkamp(e): ' +
+                      ', '.join(_df_odds_n20.loc[_fill, 'match_code']))
     except Exception as _n20_e:
         print(f'  ⚠ N20 fejl: {_n20_e}')
 
