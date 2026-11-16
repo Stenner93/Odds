@@ -25,6 +25,13 @@ on:
     #   Apr–okt (CEST = UTC+2): 21:27 og 23:57 UTC
     - cron: '27 21 * 4-10 *'
     - cron: '57 23 * 4-10 *'
+    # Morgenkørsel ca. 05:47 dansk tid: H2H/stilling opdateret med gårsdagens
+    # resultater, inden dagen starter.
+    - cron: '47 4 * 1-3,11-12 *'
+    - cron: '47 3 * 4-10 *'
+    # NB: natkørslerne og morgenkørslen er RESULTATKØRSLER — de springer odds (02)
+    # og gæt (03) over og henter kun resultater, stilling og dashboard. Listen
+    # står også i env.RESULTS_ONLY nedenfor; hold dem ens.
 
   workflow_dispatch:
     inputs:
@@ -70,6 +77,10 @@ permissions:
 
 # Kør aldrig to pipelines samtidig: den der blev færdig sidst fik før sin push
 # afvist (non-fast-forward), og dens data — fx en fredags-scrape — gik tabt.
+# Resultatkørsler (se schedule): kun 04 resultater, 05 stilling, 08 dashboard.
+env:
+  RESULTS_ONLY: "|27 22 * 1-3,11-12 *|57 0 * 1-3,11-12 *|27 21 * 4-10 *|57 23 * 4-10 *|47 4 * 1-3,11-12 *|47 3 * 4-10 *|"
+
 concurrency:
   group: dashboard-pipeline
   cancel-in-progress: false
@@ -110,7 +121,7 @@ jobs:
 
       - name: 02 — Hent odds og model-forudsigelser
         if: >
-          github.event_name == 'schedule' ||
+          (github.event_name == 'schedule' && !contains(env.RESULTS_ONLY, format('|{0}|', github.event.schedule))) ||
           github.event_name == 'push' ||
           github.event.inputs.hent_odds == 'true'
         run: python scripts/02_odds.py
@@ -120,7 +131,7 @@ jobs:
 
       - name: 03 — Indlæs spillernes gæt
         if: >
-          github.event_name == 'schedule' ||
+          (github.event_name == 'schedule' && !contains(env.RESULTS_ONLY, format('|{0}|', github.event.schedule))) ||
           github.event.inputs.indlaes_gaet == 'true' ||
           (github.event_name == 'push' && contains(github.event.head_commit.modified, 'data/gaet_input.txt'))
         run: python scripts/03_bets.py
