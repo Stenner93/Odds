@@ -1911,6 +1911,13 @@
     "elo_name": "Halmstad"
   },
   {
+    "abbr": "HAS",
+    "type": "INT",
+    "land": "INT",
+    "name": "Hamburger SV",
+    "elo_name": "Hamburger SV"
+  },
+  {
     "abbr": "HAM",
     "type": "ECL",
     "land": "SVE",

@@ -1935,6 +1935,16 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,39,8,IRL-KOS,2026-11-17,20:45,Nations League,Nations League,Irland,Kosovo,,,,,1
 4,39,9,ALC-MAL,2026-11-18,20:00,Copa del Rey,Copa del Rey,Alcoyano,Mallorca,,,,,2
 4,39,10,FR2-HIL,2026-11-19,19:00,1. division,1. division,Fredericia,Hillerød,,,,,1
+4,40,1,SEV-BET,2026-11-21,18:30,La Liga,La Liga,Sevilla,Betis,,,,,
+4,40,2,NAP-TOR,2026-11-21,20:45,Serie A,Serie A,Napoli,Torino,,,,,
+4,40,3,LIV-MA2,2026-11-22,17:30,Premier League,Premier League,Liverpool,Manchester Utd.,,,,,
+4,40,4,BR1-SV,2026-11-22,17:30,Bundesliga,Bundesliga,Bremen,Hamburger SV,,,,,
+4,40,5,BIF-FCM,2026-11-23,19:00,Superligaen,Superliga,Brøndby,FC Midtjylland,,,,,
+4,40,6,ARS-BVB,2026-11-24,21:00,Champions League,Champions League,Arsenal,Dortmund,,,,,
+4,40,7,MCI-NAP,2026-11-24,21:00,Champions League,Champions League,Manchester City,Napoli,,,,,
+4,40,8,CLU-LIV,2026-11-25,21:00,Champions League,Champions League,Club Brugge,Liverpool,,,,,
+4,40,9,SPO-MAU,2026-11-25,21:00,Champions League,Champions League,Sporting Lissabon,Manchester United,,,,,
+4,40,10,SKB-AGF,2026-11-26,18:45,Conference League,Conference League,Brann,AGF,,,,,
 5,1,1,ASM-SLB,,,,,ASM,SLB,,,,,2
 5,1,2,AVI-TOT,,,,,AVI,TOT,,,,,1
 5,1,3,BVB-STU,,,,,BVB,STU,,,,,2
