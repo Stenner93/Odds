@@ -1940,8 +1940,8 @@ season,round,match_no,match_code,date,time,league,league_raw,home_team,away_team
 4,40,3,LIV-MA2,2026-11-22,17:30,Premier League,Premier League,Liverpool,Manchester Utd.,,,,,1
 4,40,4,BR1-SV,2026-11-22,17:30,Bundesliga,Bundesliga,Bremen,Hamburger SV,,,,,1
 4,40,5,BIF-FCM,2026-11-23,19:00,Superligaen,Superliga,Brøndby,FC Midtjylland,,,,,2
-4,40,6,ARS-BVB,2026-11-24,21:00,Champions League,Champions League,Arsenal,Dortmund,,,,,
-4,40,7,MCI-NAP,2026-11-24,21:00,Champions League,Champions League,Manchester City,Napoli,,,,,
+4,40,6,ARS-BVB,2026-11-24,21:00,Champions League,Champions League,Arsenal,Dortmund,,,,,X
+4,40,7,MCI-NAP,2026-11-24,21:00,Champions League,Champions League,Manchester City,Napoli,,,,,X
 4,40,8,CLU-LIV,2026-11-25,21:00,Champions League,Champions League,Club Brugge,Liverpool,,,,,
 4,40,9,SPO-MAU,2026-11-25,21:00,Champions League,Champions League,Sporting Lissabon,Manchester United,,,,,
 4,40,10,SKB-AGF,2026-11-26,18:45,Conference League,Conference League,Brann,AGF,,,,,
