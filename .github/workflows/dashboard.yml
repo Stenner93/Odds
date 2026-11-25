@@ -92,6 +92,11 @@ jobs:
     steps:
       - name: Hent repo
         uses: actions/checkout@v4
+        with:
+          # Hent NYESTE main, ikke commit'en fra da kørslen blev sat i kø. En kørsel
+          # der venter i concurrency-køen startede ellers fra en forældet commit og
+          # fik rebase-konflikt i data/predictor_log.csv (fx 25/11 kl. 09:18).
+          ref: main
 
       - name: Opsæt Python
         uses: actions/setup-python@v5
