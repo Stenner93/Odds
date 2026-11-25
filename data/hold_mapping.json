@@ -315,6 +315,13 @@
     "elo_name": "Atalanta"
   },
   {
+    "abbr": "ATB",
+    "type": "INT",
+    "land": "INT",
+    "name": "Athl. Bilbao",
+    "elo_name": "Athl. Bilbao"
+  },
+  {
     "abbr": "ATC",
     "type": "SPA",
     "land": "SPA",
