@@ -19,7 +19,7 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - name: Test kilder
-        run: python tools/source_test.py
+        run: python tools/source_test.py && python tools/bzz_elo_probe.py
         env:
           BZZOIRO_TOKEN: ${{ secrets.BZZOIRO_TOKEN }}
           PITCHAPI_KEY: ${{ secrets.PITCHAPI_KEY }}
